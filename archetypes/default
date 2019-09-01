@@ -1,0 +1,9 @@
+---
+title: "{{ replace .Name "-" " " | title }}"
+date: "{{ .Date .Time}}"
+toc: true
+categories:
+ - "编程"
+tags:
+ - code
+---

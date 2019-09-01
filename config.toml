@@ -1,0 +1,101 @@
+baseURL = "https://xiongdahu.github.io"
+title = "香取"
+LanguageCode = "zh-CN"
+Theme =  "next"
+MetaDataFormat =  "yaml"
+CanonifyUrls =  true
+BuildDrafts =  false
+PaginatePath =  "p"
+Paginate = 8
+DisablePathToLower =  false
+HasCJKLanguage = true
+PreserveTaxonomyNames = false
+UglyUrls = false
+# 代码配色
+PygmentsStyle = "vs"
+pygmentsCodefences = true
+pygmentsCodefencesGuessSyntax = true
+DefaultContentLanguage = "zh"
+footnoteReturnLinkContents = "↩"
+# 首页摘要长度,单篇中使用<!--more-->可以覆盖这个设置,注意没用more左右没用空格
+summaryLength = 25
+# 使用emoji,
+enableEmoji = true
+# Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
+# This will then update the Lastmod parameter for each page using the last git commit date for that content file
+enableGitInfo = true
+# 图片,注意,图片地址/开始表示static目录下的,如果使用相对地址则编译后是siteUrl/post/md-file-name/image-name,即图片和md必须在同一目录
+staticdir = "static"
+
+# googleAnalytics = ""
+
+# markdown解析引擎blackfriday配置, 
+# extensions :  noEmptyLineBeforeBlock-代码块前面无需空行,hardLineBreak-换行无需使用backslash
+# extensionsmask spaceHeaders-标题之间无需空格
+[blackfriday]
+  angledQuotes = true
+  extensions = ["hardLineBreak","noEmptyLineBeforeBlock"]
+  extensionsmask = ["spaceHeaders"]
+  fractions = false
+  plainIDAnchors = true
+
+[Params]
+  homeSubtitle = "香取海"
+  Introduce = "the craft of programming"
+  Description = "编程是一门手艺"
+  Keywords =  "读书,思考,代码,架构,JVM,Java,Clojure,Scala,Python"
+  Subtitle = "the craft of programming"
+  Imglogo = "/img/logo.png"
+  AuthorImg = "/img/author.jpg"
+  DateFormat = "2006-01-02"
+  YearFormat = "2006年"
+  MonthFormat = "01-02"
+  #BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
+  Fancybox = true
+
+[Author]
+  Name = "熊打虎"
+
+[Params.Share]
+  #DuoShuo = "xxx"
+  #Baidu = true
+
+[[Menu.Main]]
+  Name = "首页"
+  Pre = "home"
+  URL = "/"
+  Weight = 1
+[[Menu.Main]]
+  Name = "归档"
+  Pre = "archive"
+  URL = "/post/"
+  Weight = 2
+[[Menu.Main]]
+  Name = "编程"
+  Pre = "code"
+  URL = "/categories/编程/"
+  Weight = 3
+[[Menu.Main]]
+  Name = "翻译"
+  Pre = "pencil"
+  URL = "/categories/翻译/"
+  Weight = 4
+[[Menu.Main]]
+  Name = "思考"
+  Pre = "coffee"
+  URL = "/categories/思考/"
+  Weight = 5
+[[Menu.Main]]
+  Name = "关于"
+  Pre = "user"
+  URL = "/about/"
+  Weight = 99
+
+[[Params.Socials]]
+  Name = "GitHub"
+  Icon = "github"
+  URL = "https://github.com/xiongdahu/"
+[[Params.Socials]]
+  Name = "知乎"
+  Icon = "globe"
+  URL = "https://www.zhihu.com/people/boris-hsiung"  

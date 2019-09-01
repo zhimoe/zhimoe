@@ -1,0 +1,44 @@
+# https://docs.travis-ci.com/user/deployment/pages/
+# https://docs.travis-ci.com/user/reference/xenial/
+# https://docs.travis-ci.com/user/languages/python/
+# https://docs.travis-ci.com/user/customizing-the-build/
+
+dist: xenial
+language: python
+python: 3.7
+
+# Handle git submodules yourself
+git:
+    submodules: false
+# Use sed to replace the SSH URL with the public URL, then initialize submodules
+before_install:
+  - sudo apt update -qq
+  - sudo apt -yq install apt-transport-https
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.email ${GITHUB_EMAIL}
+  - git config --global user.name ${GITHUB_USERNAME}
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+
+install:
+  # install latest hugo release version
+  # - wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p;q}}' | xargs wget
+  # use local hugo pkg for speed
+  - sudo dpkg -i hugo*.deb
+  - rm -rf public 2> /dev/null
+
+  # compile src to dist
+script:
+  - hugo -d ./dist/
+
+after_success:
+  - git clone https://xiongdahu:${GITHUB_TOKEN}@github.com/xiongdahu/xiongdahu.github.io.git
+  - cd xiongdahu.github.io 
+  - git rm -rf . && git clean -fxd 
+  - mv -v ../dist/* .
+  - git add .
+  - git commit -m "update site"
+  - git remote set-url origin https://xiongdahu:${GITHUB_TOKEN}@github.com/xiongdahu/xiongdahu.github.io.git
+  - git remote -v
+  - git push -q -f
+
