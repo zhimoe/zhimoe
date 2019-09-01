@@ -1,6 +1,6 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: "{{ .Date .Time}}"
+date: "{{ .Date }}"
 toc: true
 categories:
  - "编程"
