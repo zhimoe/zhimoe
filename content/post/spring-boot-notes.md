@@ -10,7 +10,7 @@ tags:
 ---
 
 一些容易忘记的spring boot知识要点.
-> 注意,.yaml和.yml文件没用任何区别.
+> 注意,.yaml和.yml文件没任何区别.
 
 # 配置
 ## SpringBootApplication注解

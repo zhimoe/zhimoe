@@ -8,7 +8,8 @@ tags:
  - code
  - clojure
 ---
-## 这份笔记试图打造最强的clojure小抄,keep refactoring it...
+## clojure 入门
+这份笔记试图打造最强的clojure小抄,keep refactoring it...
 
 ```clojure
 (ns clj-notes.core

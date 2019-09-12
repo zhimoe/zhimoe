@@ -1,5 +1,5 @@
 ---
-title: 'Java-注解和注解处理器sample'
+title: 'Java-注解和注解处理器'
 date: 2016-01-01
 toc: true
 categories:

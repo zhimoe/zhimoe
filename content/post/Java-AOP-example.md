@@ -1,5 +1,5 @@
 ---
-title: 'Java-AOP-sample'
+title: 'Java AOP example'
 date: 2016-01-01
 toc: true
 categories:
