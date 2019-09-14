@@ -1,5 +1,5 @@
 baseURL = "https://xiongdahu.github.io"
-title = "香取"
+title = "香取海"
 LanguageCode = "zh-CN"
 Theme =  "next"
 MetaDataFormat =  "yaml"
@@ -17,7 +17,7 @@ pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 DefaultContentLanguage = "zh"
 footnoteReturnLinkContents = "↩"
-# 首页摘要长度,单篇中使用<!--more-->可以覆盖这个设置,注意没用more左右没用空格
+# 首页摘要长度单词/字符,单篇中使用<!--more-->可以覆盖这个设置,注意没用more左右没用空格
 summaryLength = 25
 # 使用emoji,
 enableEmoji = true
@@ -26,8 +26,8 @@ enableEmoji = true
 enableGitInfo = true
 # 图片,注意,图片地址/开始表示static目录下的,如果使用相对地址则编译后是siteUrl/post/md-file-name/image-name,即图片和md必须在同一目录
 staticdir = "static"
-
-# googleAnalytics = ""
+# google站点访问日志，国内不建议开启
+#googleAnalytics = ""
 
 # markdown解析引擎blackfriday配置, 
 # extensions :  noEmptyLineBeforeBlock-代码块前面无需空行,hardLineBreak-换行无需使用backslash
@@ -50,15 +50,19 @@ staticdir = "static"
   DateFormat = "2006-01-02"
   YearFormat = "2006年"
   MonthFormat = "01-02"
-  #BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
   Fancybox = true
+  #BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
 
 [Author]
   Name = "熊打虎"
 
+# 评论 见comment.html
 [Params.Share]
   #DuoShuo = "xxx"
   #Baidu = true
+  
+[Params.Comment]  
+  Disqus = "xiongdahu"
 
 [[Menu.Main]]
   Name = "首页"
