@@ -13,17 +13,17 @@ tags:
 all these git tips are from [oh shit git](https://ohshitgit.com/) and stackoverflow.
 
 ## delete all history commit and commit current content
-```shell script
+```bash
 git checkout --orphan tmp_branch && git add -A && git commit -am "first commit" && git branch -D master && git branch -m master && git push -f origin master
 ```
 
 ## store password in local
-```shell script
+```bash
 git config credential.helper store
 ```
 
 ## git reflog
-```shell script
+```bash
 git reflog
 # you will see a list of every thing you've
 # done in git, across all branches!
@@ -34,7 +34,7 @@ git reset HEAD@{index}
 ```
 
 ## git commit --amend
-```shell script
+```bash
 # make your change
 git add . # or add individual files
 git commit --amend --no-edit
@@ -47,7 +47,7 @@ git commit --amend
 ```
 
 # undo a commit
-```shell script
+```bash
 # Oh shit, I need to undo a commit from like 5 commits ago!
 # find the commit you need to undo
 git log
@@ -60,7 +60,7 @@ git revert [saved hash]
 ```
 
 ## undo a file's changes
-```shell script
+```bash
 # find a hash for a commit before the file was changed
 git log
 # use the arrow keys to scroll up and down in history
@@ -73,7 +73,7 @@ git commit -m "Wow, you don't have to copy-paste to undo"
 
 
 ## git stash
-```shell script
+```bash
 # 如果临时想要将代码恢复到最近一次commit,帮助同事复现他的问题
 # 使用git stash 暂存当前修改,这个不是stage,也不是commit
 git stash
@@ -95,7 +95,7 @@ git stash apply stash@{1}
 ## git cherry-pick
 
 ## commit change in submodule
-```shell script
+```bash
 # submodule is a independent repo,
 # so you need commit/push change in submodule first and then 
 # update(commit) the main project to refer a new submodule commit hash
