@@ -52,6 +52,7 @@ staticdir = "static"
   MonthFormat = "01-02"
   Fancybox = true
   #BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
+  RevolverMapId = "55k6ne41ev6"
 
 [Author]
   Name = "熊打虎"
