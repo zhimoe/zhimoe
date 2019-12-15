@@ -9,20 +9,108 @@ tags:
   - code
 --- 
 
-## delete all history commit and keep current content as commit
-```bash
+## copyright
+all these git tips are from [oh shit git](https://ohshitgit.com/) and stackoverflow.
+
+## delete all history commit and commit current content
+```shell script
 git checkout --orphan tmp_branch && git add -A && git commit -am "first commit" && git branch -D master && git branch -m master && git push -f origin master
 ```
 
 ## store password in local
-```bash
+```shell script
 git config credential.helper store
 ```
 
+## git reflog
+```shell script
+git reflog
+# you will see a list of every thing you've
+# done in git, across all branches!
+# each one has an index HEAD@{index}
+# find the one before you broke everything
+git reset HEAD@{index}
+# magic time machine
+```
+
+## git commit --amend
+```shell script
+# make your change
+git add . # or add individual files
+git commit --amend --no-edit
+# now your last commit contains that change!
+# WARNING: never amend public(remote) commits!!!
+
+# I need to change the message on my last commit!
+git commit --amend 
+# follow prompts to change the commit message
+```
+
+# undo a commit
+```shell script
+# Oh shit, I need to undo a commit from like 5 commits ago!
+# find the commit you need to undo
+git log
+# use the arrow keys to scroll up and down in history
+# once you've found your commit, save the hash
+git revert [saved hash]
+# git will create a new commit that undoes that commit
+# follow prompts to edit the commit message
+# or just save and commit
+```
+
+## undo a file's changes
+```shell script
+# find a hash for a commit before the file was changed
+git log
+# use the arrow keys to scroll up and down in history
+# once you've found your commit, save the hash
+git checkout [saved hash] -- path/to/file
+# the old version of the file will be in your index
+git commit -m "Wow, you don't have to copy-paste to undo"
+
+```
+
+
 ## git stash
+```shell script
+# 如果临时想要将代码恢复到最近一次commit,帮助同事复现他的问题
+# 使用git stash 暂存当前修改,这个不是stage,也不是commit
+git stash
+
+# 显示当前暂存历史
+git stash list
+
+# 找回暂存
+git stash apply
+# or spec which the stash 
+git stash apply stash@{1}
+
+```
 
 ## git rebase
 
 ## git pull request
 
 ## git cherry-pick
+
+## commit change in submodule
+```shell script
+# submodule is a independent repo,
+# so you need commit/push change in submodule first and then 
+# update(commit) the main project to refer a new submodule commit hash
+
+# step 1
+cd path/to/submodule
+git add <stuff>
+git commit -m "comment"
+git push
+
+# step 2
+cd /main/project
+git add path/to/submodule
+git commit -m "updated my submodule"
+git push
+
+```
+
