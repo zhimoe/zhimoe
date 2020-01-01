@@ -1,5 +1,5 @@
 ---
-title: 'git useful tips'
+title: 'git 常用命令备忘录'
 date: "2019-09-01T21:01:06+08:00"
 toc: true
 categories:
@@ -8,9 +8,9 @@ tags:
   - git
   - code
 --- 
+记录日常开发中偶尔会遇到的但是总是记不住的git命令.
 
-## copyright
-all these git tips are from [oh shit git](https://ohshitgit.com/) and stackoverflow.
+以下技巧都来自于[oh shit git](https://ohshitgit.com/) 和 [stackoverflow](https://stackoverflow.com). 版权归作者所有.
 
 ## delete all history commit and commit current content
 ```bash
