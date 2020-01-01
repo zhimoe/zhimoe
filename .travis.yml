@@ -33,13 +33,13 @@ script:
   - hugo -d ./dist/
 
 after_success:
-  - git clone https://xiongdahu:${GITHUB_TOKEN}@github.com/xiongdahu/xiongdahu.github.io.git
-  - cd xiongdahu.github.io 
+  - git clone https://cod3fn:${GITHUB_TOKEN}@github.com/cod3fn/cod3fn.github.io.git
+  - cd cod3fn.github.io 
   - git rm -rf . && git clean -fxd 
   - mv -v ../dist/* .
   - git add .
   - git commit -m "update site"
-  - git remote set-url origin https://xiongdahu:${GITHUB_TOKEN}@github.com/xiongdahu/xiongdahu.github.io.git
+  - git remote set-url origin https://cod3fn:${GITHUB_TOKEN}@github.com/cod3fn/cod3fn.github.io.git
   - git remote -v
   - git push -q -f
 

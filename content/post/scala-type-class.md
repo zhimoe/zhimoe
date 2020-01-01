@@ -160,7 +160,7 @@ implicit class HtmlUtil[A](data:A){
   }
 }
 
-val p = new Person("xiongdahu","beijing")
+val p = new Person("cod3fn","beijing")
 p.toHtml
 
 ```
