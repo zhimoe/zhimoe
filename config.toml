@@ -18,7 +18,7 @@ pygmentsCodefencesGuessSyntax = true
 DefaultContentLanguage = "zh"
 footnoteReturnLinkContents = "↩"
 # 首页摘要长度单词/字符,单篇中使用<!--more-->可以覆盖这个设置,注意没用more左右没用空格
-summaryLength = 25
+summaryLength = 67
 # 使用emoji,
 enableEmoji = true
 # Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
@@ -40,7 +40,7 @@ staticdir = "static"
   plainIDAnchors = true
 
 [Params]
-  homeSubtitle = "香取海"
+  homeSubtitle = "cod3fn"
   Introduce = "the craft of programming"
   Description = "编程是一门手艺"
   Keywords =  "读书,代码,架构,JVM,Java,Scala,Python,Clojure,Rust"
