@@ -10,8 +10,8 @@ tags:
 --- 
 
 <!-- TODO: 重构这篇，按照场景和目的分别给出java 7和java 8的文件读写方式。 -->
-*[] 重要的类
-*[] 文件读写场景
+* [x] 重要的类
+* [x] 文件读写场景
 
 资料：[Reading and writing text files](http://www.javapractices.com/topic/TopicAction.do?Id=42)
 
