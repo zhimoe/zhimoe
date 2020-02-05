@@ -9,7 +9,7 @@ tags:
  - rust
 ---
 
-初学rust对于项目的package和crate的关系,module和文件的关系有点不清.做了一点笔记.
+初学rust对于项目的package和crate的关系,module和文件的关系有点理不清.做了一点笔记.
 
 <!--more-->
 
@@ -21,16 +21,16 @@ A Cargo.toml is a package. and must have a package name, like
 name = "actix-web"
 ```
 
-A package contains one or more crates;
+A package(project) contains one or more crates;
 
 A package CAN contain as many binary crates as you’d like, but it must contain at least one crate (either library or binary);
 use src/main.rs, will build to package-name binary, or use src/bin/b1.rs,src/bin/b2.rs, wil get 2 binaries: b1,b2.
 
 A package must contain zero or one(0或者1个) library crates, and no more.
 
-by convention, package-name is use - (dash,can be _), but lib_name must use _ (underscores, can not be -);
+by convention, package-name is use `-` (dash,can be `_`), but lib_name must use `_` (underscores, can not be `-`);
 
-cargo will auto replace the - with _ in package-name to name the  default library crate(lib.rs in src root). Also you can name it in [lib]:
+cargo will auto replace the `-` with `_` in package-name to name the  default library crate(lib.rs in src root). Also you can name it in [lib]:
 
 
 ```toml
@@ -69,7 +69,7 @@ members = [
   "actix-web-codegen",
   "test-server",
 ]
-# awc,actix-http... all are packages that contains Cargo.toml and src/lib.rs; 
+# awc,actix-http... all are packages that contains their own Cargo.toml and src/lib.rs; 
 ``` 
 
 
@@ -130,4 +130,12 @@ use std::{self,Write};
 
 
 
+## summary
 
+1. 简单粗暴的理解,一个项目 == 一个package, 一个package可以包含多个crate. 
+2. crate是Cargo的编译单元,也是Cargo.toml中`[dependencies]`的依赖单元.
+3. 一个package只能包含一个lib crate(`src/lib.rs`),但是可以在`src/main.rs`或者`src/bin/*.rs`下面包含任意多个bin crate;
+4. 对于复杂项目,可以通过cargo的`[workspace]`管理多个crate,这样可以实现一个`Cargo.toml`管理/构建多个lib crate.
+
+5. mod是rust中代码的组织最小单元. `mod mod_name {}` 是定义一个mod;`mod mod_name; ` 表示将`mod_name.rs`或者`mod_name/mod.rs`中的内容插入到当前文件当前位置,并且插入内容被包含在`mod mod_name`中.
+6. crate内部的mod引用使用`self::`开头,引用外部crate则使用`crate::`开头.
