@@ -87,7 +87,7 @@ staticdir = "static"
   Weight = 4
 [[Menu.Main]]
   Name = "思考"
-  Pre = "coffee"
+  Pre = "bathtub"
   URL = "/categories/思考/"
   Weight = 5
 [[Menu.Main]]
@@ -104,3 +104,7 @@ staticdir = "static"
   Name = "知乎"
   Icon = "globe"
   URL = "https://www.zhihu.com/people/boris-hsiung"  
+[[Params.Socials]]
+  Name = "twitter"
+  Icon = "twitter"
+  URL = "https://twitter.com/cod3fn"    
