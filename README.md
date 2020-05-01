@@ -35,7 +35,7 @@ git push
 
 # step 2
 cd github.io/
-git add ./theme/next
+git add ./themes/next
 git commit -m "updated submodule theme"
 git push
 ```
