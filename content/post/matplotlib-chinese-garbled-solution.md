@@ -10,12 +10,13 @@ tags:
 ---
 很久以前写的一个答案,四年来一直有人评论感谢,说只有我的方法是有效的.非常意外也很高兴. 也放到博客中里备份吧.
 <!--more-->
+[zhihu.com](https://www.zhihu.com/question/25404709/answer/67672003)
 ```python
 # https://www.zhihu.com/question/25404709/answer/67672003
 import matplotlib.font_manager as fm
 # 微软雅黑,如果需要宋体,可以用simsun.ttc
 myfont = fm.FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
-# Linux字体目录在"/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", 
+# Linux字体在"/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", 
 # 需要先安装字体">sudo apt install fonts-noto-cjk -y"
 # MacOS中文字体文件在"/System/Library/Fonts/PingFang.ttc"
 # Win10,Linux已测试,MacOS未验证
