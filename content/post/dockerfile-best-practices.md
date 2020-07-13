@@ -109,5 +109,5 @@ replace-with = 'ustc'
 registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 
 ```
-3. build中使用了cargo缓存,即先将项目Cargo.toml和Cargo.lock复制到一个空项目中编译,然后再将远吗复制进去编译.
+3. build中使用了cargo缓存,即先将项目Cargo.toml和Cargo.lock复制到一个空项目中编译,然后再将源码复制进去编译.
 4. `RUN rm ./target/release/deps/rs_notes*`,注意这里的`rs_notes`是下划线.cargo中package name转换为crate name的默认规则.
