@@ -13,55 +13,57 @@ tags:
 ## 问题
 
 1. 
-    ```python 
-    def change(v):
-        v[1] = 4
-        return v
+
+```python 
+def change(v):
+    v[1] = 4
+    return v
     
     
-    a = [1, 2, 3]
-    print(change(a))
-    print(a)    
-    ```
+a = [1, 2, 3]
+print(change(a))
+print(a)    
+```
 
 2. 
-    ```python
-    def append1(x=[]):
-        x.append(1)
-        return x
+```python
+def append1(x=[]):
+    x.append(1)
+    return x
     
     
-    def now(n=time.time()):
-        time.sleep(1)
-        return n
+def now(n=time.time()):
+    time.sleep(1)
+    return n
     
-    print(append1(), append1()) #?
-    print(now(), now()) #?
+print(append1(), append1()) #?
+print(now(), now()) #?
     
-    ```
+```
 3. 
 
-    ```python
-    def arr_multi():
-        x = [[0] * 3] * 3
-        x[0][0] = 42
-        return x
+```python
+def arr_multi():
+    x = [[0] * 3] * 3
+    x[0][0] = 42
+    return x
     
-    print(arr_multi())
-    ```
+print(arr_multi())
+```
 
 4. 
-    ```python
-    def fn_for():
-        f = [lambda x: x * i for i in range(3)]
-        print(f[0](1), f[1](1), f[2](1))
+```python
+def fn_for():
+    f = [lambda x: x * i for i in range(3)]
+    print(f[0](1), f[1](1), f[2](1))
     
-    print(fn_for())
-    ```
+print(fn_for())
+```
 
 ## 解答
 
 1. 
+
 ```py
 [1, 4, 3]
 [1, 4, 3]
@@ -82,7 +84,8 @@ arr3 = deepcopy(arr1) # elements id is new
 
 ```
 
-2. 
+2.
+
 ```py
 # 结果:
 [1, 1] [1, 1]
@@ -105,7 +108,9 @@ def my_func(working_list=None):
 
 ```
 
+
 3. 
+
 ```py
 [[42, 0, 0], [42, 0, 0], [42, 0, 0]]
 # list 是mutable, []*3表示是引用复制三次.
@@ -114,7 +119,7 @@ def my_func(working_list=None):
 
 ```
 4. 
-答案：
+
 ```text
 2 2 2
 None
