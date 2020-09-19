@@ -1,10 +1,10 @@
 +++
-title = "cod3fn"
+title = "熊打虎"
 date = "2017-04-09"
 +++
 
-Programming with Java/Scala, also know a little Rust/Python.
+A JVM lang programmer, use Java/Scala/Clojure, also know a little Python, Go and Rust, yeah, I like learning new programming language.
 
-Writing documents more than coding.
+Most time I write user stories in the daily job.   
 
-I make [programming fonts](https://github.com/cod3fn/programming-fonts), and I really like `theSans` font.
+I make [programming fonts](https://github.com/cod3fn/programming-fonts), and I'm proud of the `Aurulent` font, try it!
