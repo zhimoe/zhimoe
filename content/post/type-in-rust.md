@@ -1,5 +1,5 @@
 ---
-title: "Type in Rust"
+title: "Associated Type in Rust"
 date: "2020-09-20T20:30:41+08:00"
 toc: true
 categories:
@@ -8,6 +8,9 @@ tags:
  - rust
 ---
 
+Associated Type and generic diff in rust
+
+<!--more-->
 
 ## type outside impl
 a `type Foo = Bar` outside is just type alias. most used in generic type.
@@ -53,3 +56,21 @@ pub trait Iterator<T> {
 The quick and dirty answer to when to use generics and when to use associated types is: 
 Use generics if it makes sense to have multiple implementations of a trait for a specific type (such as the `From<T>` trait). 
 Otherwise, use associated types (like `Iterator` and `Deref`).
+
+假设我们实现一个redis 客户端，那么比较适合使用associated types:
+```rust
+trait RedisCommand{
+    type Response;
+    fn receive(&self, message: String) -> Result<Self::Response>;
+}
+
+impl RedisCommand for PingCommand {
+    type Response = String
+    
+    fn receive(&self, message: String) -> Result<Self::Response>{
+        // -- snip --
+    }
+}
+
+```
+
