@@ -32,7 +32,7 @@ install:
 script:
   - hugo -d ./dist/
 
-after_success:zhimoe
+after_success:
   - git clone https://zhimoe:${GITHUB_TOKEN}@github.com/zhimoe/zhimoe.github.io.git
   - cd zhimoe.github.io 
   - git rm -rf . && git clean -fxd 
