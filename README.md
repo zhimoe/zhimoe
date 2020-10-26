@@ -28,7 +28,7 @@ hugo serve # this will generate a public folder for site and you should add publ
 # update(commit) the main project to refer a new submodule commit hash
 
 # step 1
-cd theme/next
+cd themes/next
 git add <stuff>
 git commit -m "update hugo theme"
 git push
