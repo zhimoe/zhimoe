@@ -1,14 +1,14 @@
 # github.io
 personal home page, all about programming and code.
 
-[cod3fn](http://cod3fn.com) stands for code use function
+[zhi.moe](http://zhi.moe)
 
 ## how to add post
 ```bash
 # git clone
 git clone 
 # add theme 
-git submodule add https://github.com/cod3fn/hugo-theme-next.git themes/next
+git submodule add https://github.com/zhimoe/hugo-theme-next.git themes/next
 # update theme
 git submodule update --init --recursive
 # install hugo on local 

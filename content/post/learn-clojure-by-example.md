@@ -260,7 +260,7 @@ tags:
 
 ;namespace
 ;create-ns create a namespace
-(create-ns 'com.cod3fn.clj)
+(create-ns 'zhi.moe.clj)
 
 ;in-ns move to a namespace
 ;require loads a namespace and

@@ -62,7 +62,7 @@ pass
 neo4j browser自带一个教程和电影关系的数据库初始化脚本.方便你可以学习.下面介绍几个常用的命令.
 - :help <topic> help命令显示各种帮助提示. 常见的topic有 :help cypher :help commands :help keys :help param
 - :play 交互式学习命令. 例如,:play movie graph 进入基于电影数据库的教程.
-- :param 命令,设置变量.  :param usrname => "cod3fn",注意,变量名和=>之间有空格.设置变量之后可以使用变量`MATCH (n:Person) WHERE n.name = $usrname`
+- :param 命令,设置变量.  :param usrname => "zhimoe",注意,变量名和=>之间有空格.设置变量之后可以使用变量`MATCH (n:Person) WHERE n.name = $usrname`
 - :params 显示当前已经设置的所有变量.  也可以使用:params {name: 'Stella', age: 24} 覆盖目前的变量. 但是这个命令没用类型安全.
 
 ### spring-neo4j配置

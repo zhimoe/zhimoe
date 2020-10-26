@@ -45,7 +45,7 @@ ENTRYPOINT ["java","-cp","/app","org.springframework.boot.loader.JarLauncher"]
 要点:
 
 1. `# syntax=docker/Dockerfile:experimental`表示启用docker实验特性BuildKit的mount cache功能,这样可以利用maven lib的cache提高镜像构建速度. 大家可以搜索docker BuildKit了解.
-如果没有这一行,那么下面的`--mount=type=cache,target=/root/.m2`就是非法的. 由于是实验特性,构建镜像的时候需要设置一个环境变量`DOCKER_BUILDKIT=1`才能运行:` DOCKER_BUILDKIT=1 docker build -t cod3fn/boot-app .`
+如果没有这一行,那么下面的`--mount=type=cache,target=/root/.m2`就是非法的. 由于是实验特性,构建镜像的时候需要设置一个环境变量`DOCKER_BUILDKIT=1`才能运行:` DOCKER_BUILDKIT=1 docker build -t zhimoe/boot-app .`
 2. spring.io的教程里面使用的build镜像是`openjdk:8-jdk-alpine`,这个镜像是没有maven的,因为教程中的Dockerfile从源码复制了`mvnw,.mvn/`到镜像去.所以这里替换为`maven:3-jdk-8-alpine`
 3. 使用了docker的[multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/)功能,`openjdk:8-jdk-alpine`由于没有maven,所以会比`maven`镜像少20M.
 4. spring.io的教程里面在ENTRYPOINT里面是直接设置main class启动应用的. 这种硬编码方式不通用也不利于维护(修改main class name后Dockerfile也要修改).只要将应用的jar包解压出来的org目录(即org.springframework.boot.loader.jar解压内容,不到1M)保留,即可通过`org.springframework.boot.loader.JarLauncher`启动应用.

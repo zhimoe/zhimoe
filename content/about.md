@@ -7,4 +7,4 @@ A JVM lang programmer, use Java/Scala/Clojure, also know a little Python, Go and
 
 Most time I write user stories in the daily job.   
 
-I make [programming fonts](https://github.com/cod3fn/programming-fonts), and I'm proud of the `Aurulent` font, try it!
+I make [programming fonts](https://github.com/zhimoe/programming-fonts), and I'm proud of the `Aurulent` font, try it!
