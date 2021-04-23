@@ -48,7 +48,7 @@ public class ToolFactory implements FactoryBean<Tool> {
 注册Tool:
 ```xml
 <!-- factorybean-spring-ctx.xml -->
-<beans ...>
+<beans>
  
     <bean id="tool" class="com.baeldung.factorybean.ToolFactory">
         <property name="factoryId" value="9090"/>
@@ -61,7 +61,7 @@ public class ToolFactory implements FactoryBean<Tool> {
 ```java
 
 @Bean(name = "tool")
-public ToolFactory toolFactory() {
+ToolFactory toolFactory() {
     ToolFactory factory = new ToolFactory();
     factory.setFactoryId(7070);
     factory.setToolId(2);
@@ -75,13 +75,13 @@ public ToolFactory toolFactory() {
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:factorybean-spring-ctx.xml" })
 public class FactoryBeanXmlConfigTest {
-    @Autowired
-    private Tool tool;
- 
-    @Test
-    public void testConstructWorkerByXml() {
-        assertThat(tool.getId(), equalTo(1));
-    }
+    @Autowired
+    private Tool tool;
+
+    @Test
+    public void testConstructWorkerByXml() {
+        assertThat(tool.getId(), equalTo(1));
+    }
 }
 ```
 
@@ -103,5 +103,6 @@ public class FactoryBeanXmlConfigTest {
 
 ## 和BeanFactory的区别
 除了FactoryBean,还有一个BeanFactory的接口及其实现.
+
 
 
