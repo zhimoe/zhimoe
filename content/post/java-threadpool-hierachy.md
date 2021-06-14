@@ -1,14 +1,13 @@
 ---
 title: "Java Thread Pool Hierachy"
 date: "2018-06-13T09:57:52+08:00"
-toc: true categories:
-
-- "编程"
-  tags:
-- code
-- java
-- threadpool
-
+toc: true 
+categories:
+  - "编程"
+tags:
+  - code
+  - java
+  - threadpool
 ---
 
 ### thread pool classes hierachy
