@@ -40,3 +40,5 @@
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=zhimoe&show_icons=true&theme=vue" />
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=zhimoe&show_icons=true&theme=vue" />
 </a>
+
+<p align="center"><img src="https://profile-counter.glitch.me/{zhimoe}/count.svg" alt="zhimoe :: Visitor's Count" /></p>
