@@ -56,10 +56,10 @@ jobs:
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
         with:
           source-directory: 'public'
-          destination-github-username: ${{ github.actor }}
+          destination-github-username: 'zhimoe'
           destination-repository-name: 'zhimoe.github.io'
           user-email: xiongwengui67@gmail.com
           target-branch: gh-pages
