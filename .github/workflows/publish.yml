@@ -52,7 +52,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
-      # Step 7 - Push the public folder to {username}.github.io repository ph-pages branch
+      # Step 7 - Push the public folder to {username}.github.io repository gh-pages branch
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
@@ -62,4 +62,4 @@ jobs:
           destination-github-username: ${{ github.actor }}
           destination-repository-name: 'zhimoe.github.io'
           user-email: xiongwengui67@gmail.com
-          target-branch: ph-pages
+          target-branch: gh-pages
