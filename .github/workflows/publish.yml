@@ -46,11 +46,11 @@ jobs:
         run: echo 'zhi.moe' > public/CNAME
 
       # Step 6 - Push our generated site to our gh-pages branch
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./public
 
       # Step 7 - Push the public folder to {username}.github.io repository gh-pages branch
       - name: Pushes to another repository
