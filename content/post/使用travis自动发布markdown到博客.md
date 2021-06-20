@@ -10,7 +10,11 @@ tags:
 toc: true
 ---
 
-github给个人和组织免费提供github pages功能. 就是说如果有个repo的名字为 zhimoe.github.io (zhimoe 为你的github username), 那么这个repo里面的master或者gh-page分支的内容如果存在index.html, 那么其他人可以通过 https://zhimoe.github.io 访问这个站点.
+<!--update at 2021-->
+更新：github开放action功能后，travis-ci已经没有必要了，目前博客使用zhimoe仓库管理源码，使用action编译后将public目录同步到zhimoe.github.io仓库的gh-pages分支。
+注意，由于使用了jsdelivr的cdn功能，切换分支后theme的相关静态文件的path也要修改。
+
+github给个人和组织免费提供github pages功能. 就是说如果有个repo的名字为 zhimoe.github.io (zhimoe 为你的github username), 那么这个repo里面的master或者gh-pages分支的内容如果存在index.html, 那么其他人可以通过 https://zhimoe.github.io 访问这个站点.
 <!--more-->
 借助于一些static gen工具,你可以将你的markdown转换为一个静态网站(html,js,css). 然后把静态网站的内容上传到刚说的repo中, 就有一个自己的博客站点了. static gen工具非常多, github推荐的是[Jekyll(ruby)](https://www.staticgen.com/), 主流的还有hexo(js)和hugo(go), hexo因为是基于js的,所以高质量的主题多(因为做主题是需要js,css技能), hugo的编译快些, 但是好看的主题不多. 高质量的主题除了美观可能还需要考虑移动端(responsive),评论, 访问统计等各种功能. 每个gen工具都有自己的主题站点. hugo的主题在这里找: [hugo themes](https://themes.gohugo.io/).
 
