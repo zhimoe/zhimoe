@@ -8,6 +8,7 @@ tags:
  - 开源
  - 心理健康
 ---
+[原文-Open Source and Mental Health](https://www.redox-os.org/zh/news/open-source-mental-health/)
 
 我一位亲爱的朋友,也是高产的Redox OS贡献者jD91mZM2在2021年3月去世了，年仅18岁。他参与了2018、2019和2020年的Redox OS夏季代码活动。他在开发Redox OS的各个方面都做出了贡献，从内核，到relibc，到移植程序。他的工作详细介绍可以在[Redox OS新闻](https://www.redox-os.org/news/ )中署名为jD91mZM2的帖子看到。
 
