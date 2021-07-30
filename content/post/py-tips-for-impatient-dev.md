@@ -17,12 +17,12 @@ python在看似简单的语法中，有很多tricks。
     ['no', 'yes'][True] # output?
     {True: 'yes', 1: 'no', 1.0: 'maybe'} # output?
     ```
-    > “布尔类型是整数类型的子类型，布尔值在几乎所有环境中的行为都类似于值 0 和
-    1，但在转换为字符串时，分别得到的是字符串 False 或 True。”  -- The Standard Type Hierarchy
+    > “布尔类型是整数类型的子类型，布尔值在几乎所有环境中的行为都类似于值 0 和 1，但在转换为字符串时，分别得到的是字符串 False 或 True。”  
+    >                                                                                    -- The Standard Type Hierarchy
 
 由于True，1， 1.0的__eq__和__hash__都一样，所以出现了神奇的结果。
 
-2. `(1) != (1,)`
+2. `(1) != (1,) #第一个就是int，第二个是tuple`
 
 3. 避免可变的默认参数, 例如:
    ```python
@@ -32,7 +32,8 @@ python在看似简单的语法中，有很多tricks。
    fun()   #[2]
    fun()   #[2,2]
    ```
- 
+4. `...`和`pass`几乎等效的，这是一个ellipsis type的单例。
+
 ## staticmethod classmethod
 > staticmethod和classmethod都可以通过Cls.m()或instance.m()方式访问，都可以被继承，都可以访问全局变量。区别是
   classmethod访问的class变量信息会自动在Derive子类中改变，而staticmethod因为缺少第一个cls参数，所以访问的全局变量始终是父类的变量。
@@ -41,7 +42,7 @@ python在看似简单的语法中，有很多tricks。
 
 
 ## str和bytes
-1. 使用f-string,不要使用` %s`或者 `"".format()`。如果接收用户输入，使用Template做安全校验
+1. py3.6开始，推荐使用f-string,不要使用` %s`或者 `"".format()`。如果接收用户输入，使用Template做安全校验
 2. 多行string
     ```python
     my_very_big_string = (
@@ -53,6 +54,7 @@ python在看似简单的语法中，有很多tricks。
 3. bytes 是不可变的数组，每个元素必须在0～255之间。
    bytearray是可变的，可以修改，增加，删除元素。
    转换 `bytes(ba)`
+4. 小整数池是[-5，256], string也有 string intern。
 
 ## pythonic的代码
 1.  使用for推导式,不要for..in遍历, 也少用map，filter
@@ -61,7 +63,7 @@ python在看似简单的语法中，有很多tricks。
     long_list = [x for x in range(100)]
     a, b, *c, d, e, f = long_list #e==98 f=99
     ```
-3. with语句可以同时打开多个文件,不要嵌套with，更多功能查看contextlib
+3. with语句可以同时打开多个文件,不要嵌套with，更多功能查看`contextlib`
 4. 使用`if x is None`,而不是 `if x == None `
 5. 避免可变的默认参数, 例如:
     ```python
@@ -71,7 +73,7 @@ python在看似简单的语法中，有很多tricks。
     fun()   #[2]
     fun()   #[2,2]
     ```
-6.  新手多使用格式化,多看pycharm的提示,多在逻辑复杂处使用空行
+6. 新手多使用格式化,多看pycharm的提示,多在逻辑复杂处使用空行
 7. 异常处理: 清楚except和assert场合,logging.error('xxxxxxx', exc_info=True).
    自定义异常必须重写__init__() 和 __str__()
 8. 使用for i in range(len(a)):或者for i, v in enumerate(a):都是危险的。
@@ -101,8 +103,8 @@ python在看似简单的语法中，有很多tricks。
 10. `x if x < 10 else y`
 11. use `reversed(lis)` over `lis[::-1]`
 12. use pathlib over os.pathlib。 pathlib的方法不全。
-13.  os module is for system, sys this module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
-14.  @property make a method to class's property. can not use () when access the method cuz it is prop.
+13. os module is for system, sys this module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+14. @property make a method to class's property. can not use () when access the method cuz it is prop.
 15. use assert protect your code. 不要使用assert检查数据， 断言可能被全局禁用，导致数据检查（或者更恐怖的权限检查）被跳过
 
 ## 容器
@@ -168,14 +170,46 @@ python在看似简单的语法中，有很多tricks。
     final = {**system, **user}  # 右边的优先级高
     
     ``` 
-  
+
+
 ## dunder方法,函数,oop
 1. @functools.wraps(func)
 2. `__var` 在class环境中会被改写
 3. 使用abc模块可以避免抽象类只有在未实现方法被调用时才抛出NotImplementedError
+4. 理解python的dunder方法，可以写出超级简洁的方法：
+```python
+import collections
+
+Card = collections.namedtuple('Card', ['rank', 'suit'])
+
+class FrenchDeck:
+    ranks = [str(n) for n in range(2, 11)] + list('JQKA')
+    suits = 'spades diamonds clubs hearts'.split()
+
+    def __init__(self):
+        self._cards = [Card(rank, suit) for suit in self.suits
+                                        for rank in self.ranks]
+
+    def __len__(self):
+        return len(self._cards)
+
+    def __getitem__(self, position):
+        return self._cards[position]
+
+deck = new FrenchDeck()
+from random import choice
+choice(deck)
+# Card(rank='3', suit='hearts')
+```
+上面的例子我们使用了__len__方法和__getitem__方法，好处就是你可以使用python的len(deck)，deck[1]这种语法,也就是说`FrenchDeck`几乎就是一个容器类型，还可以使用for遍历。
 
 ## 调试与编译
 1. 使用help(),dir()获取信息
 2. python中的每个函数都有__code__属性，包含字节码信息
 3. 使用dis模块的dis函数可以查看更容易阅读的汇编(dis == disassembler)
 4. sys.getsizeof(x)获取对象大小
+
+## 优秀资料
+[python 工匠系列](https://github.com/piglei/one-python-craftsman)
+[realpython学习路径](https://realpython.com/learning-paths/)
+[一份非常详尽的python小抄](https://github.com/gto76/python-cheatsheet)
