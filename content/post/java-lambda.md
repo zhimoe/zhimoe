@@ -116,7 +116,7 @@ var add = (Long x, Long y) -> x + y;
 | :------------------------------- | :----------------------- | :---------------------------------------------- |
 | 静态方法                         | `Integer::parseInt`      | `str-> Integer.parseInt(str)`                   |
 | 有限制(Bound receiver)实例引用   | `Instant.now()::isAfter` | `Instant then = Instant.now(); then.isAfter(t)` |
-| 无限制(Unbound receiver)实例引用 | `String::toLowerCase`    | `str -> String.toLowerCase`                     |
+| 无限制(Unbound receiver)实例引用 | `String::toLowerCase`    | `str -> str.toLowerCase`                     |
 | 类构造器                         | `TreeMap<K,V>::new`      | `()-> new TreeMap<K,V>()`                       |
 | 数组构造器                       | `int[]::new`             | ` len->new int[len]`                            |
 

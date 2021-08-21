@@ -18,9 +18,9 @@ tags:
 ## 分支管理
   feature分支开发，pr模式合并
 ## 制品管理
-  含maven,npm,python私服
+  含maven,npm(特别是node-sass在windows的问题),python pip,ruby gem,goproxy, rust crate这些的私服和各开发团队的制品，一般使用jfrog。
 ## 单一可信数据源
-  制品来源统一
+  制品来源统一，统一使用jfrog
 ## 变更过程
 ## 变更追溯
 ## 构建环境 构建方式 构建计划

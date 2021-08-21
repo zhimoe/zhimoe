@@ -30,12 +30,10 @@ hugo serve # this will generate a public folder for site and you should add publ
 # step 1
 cd themes/next
 git add <stuff>
-git commit -m "update hugo theme"
-git push
+git commit -m "update hugo theme" && git push origin HEAD:master
 
 # step 2
-cd github.io/
-git add ./themes/next
-git commit -m "update submodule theme"
+cd ../..
+git add ./themes/next && git commit -m "update submodule theme"
 git push
 ```
