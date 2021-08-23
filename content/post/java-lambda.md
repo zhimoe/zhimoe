@@ -58,7 +58,7 @@ BinaryOperator<Long> add = (x, y) -> {return  x + y;} //类型推断, return和{
 - `java.beans.PropertyChangeListener`
 
 1. this指向调用者,也即是button
-2. lambda的类型时根据上下文来决定的, 所以相同入参和返回值情况下，目标类型可能不同，在无法判断时，需要补充目标类型信息:
+2. lambda的类型是根据上下文来决定的, 所以相同入参和返回值情况下，目标类型可能不同，在无法判断时，需要补充目标类型信息:
 ```java
 Callable<String> c = () -> "done";
 PrivilegedAction<String> a = () -> "done";
@@ -93,7 +93,7 @@ var add = (Long x, Long y) -> x + y;
    | `Supplier      ` | `T get();          ` | `Instant::now        ` |
    | `Consumer      ` | `void accept(T t); ` | `System.out::println ` |
 
-除了是后面的基础接口,还有：
+上面的是基础接口,此外还有：
 * Consumer, Function, Predicate各自有一个2个入参的版本,共3个:BiConsumer,BiFunction,BiPredicate.
 * 6个基础接口对应入参为基本类型int,long,double的接口,共18个:IntSupplier,LongFunction...
 * 6个基础接口对应返回值为基本类型int,long,double的Function和BiFunction,共6个: ToIntBiFunction,ToIntFunction...
@@ -108,7 +108,7 @@ var add = (Long x, Long y) -> x + y;
 在构建自己的函数式接口时,务必使用注解`@FunctionalInterface`标注你的接口，这样可以给IDE lint和使用者提供更加充分信息。
 
 ### 方法引用
-如果lambda表达式的方法体过长,那么就需要抽取方法,Java8提供了更近一步的语法——方法引用。 方法引用表示一个lambda表达式。只需要引用的方法签名和lambda目标类型的抽象方法签名一致即可。
+如果lambda表达式的方法体过长,那么需要抽取方法,Java8提供了更近一步的语法——方法引用。 方法引用表示一个lambda表达式。只需要引用的方法签名和lambda目标类型的抽象方法签名一致即可。
 方法引用一共有5种类型,其中,静态方法是最常用的类型。
 
 
