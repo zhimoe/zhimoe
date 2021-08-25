@@ -8,18 +8,20 @@ tags:
  - code
  - nodejs
 ---
-如何在git hook中调用nodejs脚本。主要采坑在于不知道如何在bash中获取node脚本返回值，搜了好大一圈。
+如何在git hook中调用nodejs脚本。主要踩坑在于不知道如何在bash中获取node脚本返回值，搜了好大一圈。
 <!--more-->
 ## 背景
 微服务模式开发中，每个小组维护自己的应用，通过一个nginx入口反向代理所有的子应用，向用户开放一个站点。nginx应用中需要维护各个子应用的代理，即ng.conf中的location。
 此外，一个应用需要配置DEV,ST,UAT,PRD四个环境的location。目前的做法是www/ngconf/目录下面分为dev、st、uat、prd四个文件夹，在文件夹内部每个小组各自维护一个conf文件。
-每增加一个应用，需要在四个文件夹中自己小组的配置文件添加配置。随着应用越来越多，以及人员流动。会发生不同文件配置相同的location entry。 例如A应用上线一个功能需要依赖B应用，但是新人不知道B已经配置过了，所以又重复添加了一个，导致启动报错。
+每增加一个应用，需要在四个文件夹中自己小组的配置文件添加配置。随着应用越来越多，以及人员流动，会发生不同文件配置相同的location entry。 
+例如A应用上线一个功能需要依赖B应用，但是新人不知道B已经配置过了，所以又重复添加了一个，导致启动报错。
 
 ## 需求
-入口应用是一个nodejs应用，自然选择了js脚本检查conf文件location path是否重复。
+入口应用是一个nodejs应用，自然选择了js脚本检查conf文件location path配置是否重复。
 
 ## 实现
-在git hook目录下，新增一个`pre-commit`文件,添加一下内容：
+在git hook目录下，新增一个`pre-commit`文件,添加内容：
+
 ```bash
 #!/usr/bin/sh
 # 检查项目中同一个目录下面的nginx conf 所有location是否重复
@@ -38,9 +40,10 @@ fi
 exit 0
 ```
 要点： bash中`$?`表示获取上命令的返回值。这里获得的是js脚本的process.exit(code)返回的code。 默认返回是0。
+
 ngconf_check.js：
 
-```
+```javascript
 // 检查ng conf是否有重复的location entry
 const fs = require('fs');
 const path = require('path');
