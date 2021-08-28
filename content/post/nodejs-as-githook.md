@@ -34,7 +34,7 @@ if [ -e ./ngconf_check.js ]; then
 fi
 
 # 如果项目有自定义pre-commit，执行
-if [ -e ././githooks/pre-commit ]; then
+if [ -e ./.git/hooks/pre-commit ]; then
     ./.git/hooks/pre-commit "$@"
 fi
 exit 0
