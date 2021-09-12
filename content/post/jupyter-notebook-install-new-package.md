@@ -13,7 +13,7 @@ tags:
 [installing new python package from jupyter notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
 
 ### 笔记
-在pycharm写代码中如果使用到新的package，例如`numpy`，只需要输入`import numpy` 然后ALT+ENTER在提示中选择install new package极客。
+在pycharm写代码中如果使用到新的package，例如`numpy`，只需要输入`import numpy` 然后ALT+ENTER在提示中选择install new package即可。
 
 在notebook中，网上的教程都说是`!pip install numpy`. 但是这个可能有坑。究其原因是因为:
 ```text

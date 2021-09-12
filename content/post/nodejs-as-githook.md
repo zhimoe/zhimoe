@@ -80,7 +80,6 @@ function countLocationInDir(rootPath) {
             let fullPath = path.join(envDir, filename);
             if (fs.lstatSync(fullPath).isFile() && /[\w\W.].conf$/.test(filename)) {
                 countLocationsInFile(fullPath, LocationEntryMap);
-
             }
         });
     });
