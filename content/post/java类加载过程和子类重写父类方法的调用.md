@@ -12,34 +12,28 @@ tags:
 最近一道非常火的携程面试题:
 
 ```java
-public class Base
-{
-    private String baseName = "base";
-    public Base()
-    {
-        callName();
-    }
- 
-    public void callName()
-    {
-        System.out.println(baseName);
-    }
- 
-    static class Sub extends Base
-    {
-        private String baseName = "sub";
-        public void callName()
-        {
-            System.out.println(baseName) ;
-        }
-    }
-    public static void main(String[] args)
-    {
-        Base b = new Sub();//输出？
-    }
+public class Base {
+    private String baseName = "base";
+    public Base() {
+        callName();
+    }
+
+    public void callName() {
+        System.out.println(baseName);
+    }
+
+    static class Sub extends Base {
+        private String baseName = "sub";
+
+        public void callName() {
+            System.out.println(baseName);
+        }
+    }
+
+    public static void main(String[] args) {
+        Base b = new Sub(); // 输出？
+    }
 }
-
-
 ```
 
 我的理解：
@@ -113,8 +107,6 @@ class B extends Basic {
 	}
 
 }
-
-
 ```
 不仅考察单分派，还有重载的静态多分派。
 进阶版问题的解释需以下知识点：

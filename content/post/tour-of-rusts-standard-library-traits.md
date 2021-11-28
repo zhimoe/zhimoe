@@ -3,15 +3,15 @@ title: "Tour of Rusts Standard Library Traits"
 date: "2021-04-11T21:47:02+08:00"
 toc: true
 categories:
- - "编程"
  - "翻译"
 tags:
  - code
+ - rust
 ---
 
 [原文Tour of Rust's Standard Library Traits](https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md)
 关于rust trait非常好的介绍，比rust book详细，系统。
-
+<!--more-->
 # Tour of Rust's Standard Library Traits
 
 **Table of Contents**

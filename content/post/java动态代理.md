@@ -1,5 +1,5 @@
 ---
-title: 'Java-动态代理'
+title: 'Java动态代理'
 date: 2016-01-01
 toc: true
 categories:

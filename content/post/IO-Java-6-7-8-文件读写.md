@@ -77,7 +77,7 @@ public class FileToStringJava678 {
 
 ```java
 // 记住，bytes 到string 永远指定字符集，即使目前只是英文文件。
-// ### java 8按行读取：
+// java 8按行读取：
 
 public class Main {
     public static void main(String[] args) {
@@ -91,7 +91,7 @@ public class Main {
 }
 
 
-// ### java 7：
+// java 7：
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         while((line = br.readLine()) != null) {
@@ -108,15 +108,15 @@ public class Java7IO {
         Path path = Paths.get("alice.txt");
         String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
         System.out.println("Characters: " + content.length());
-//读取所有行：
+// 读取所有行：
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
         System.out.println("Lines: " + lines.size());
-//JAVA 8 延迟处理：
+// JAVA 8 延迟处理：
         try (Stream<String> lineStream = Files.lines(path, StandardCharsets.UTF_8)) {
             System.out.println("Average line length: " +  lineStream.mapToInt(String::length).average().orElse(0));
         }
 
-//按单词读取：
+// 按单词读取：
         try (Scanner in = new Scanner(path, "UTF-8")) {
             in.useDelimiter("\\PL+");//？
             int words = 0;
@@ -127,7 +127,7 @@ public class Java7IO {
             System.out.println("Words: " + words);
         }
         
-//读取一个网页：   
+// 读取一个网页：   
         URL url = new URL("http://horstmann.com/index.html");
         try (BufferedReader reader
                 = new BufferedReader(new InputStreamReader(url.openStream()))) {
@@ -135,16 +135,16 @@ public class Java7IO {
             System.out.println("Average line length: " + 
 				lineStream.mapToInt(String::length).average().orElse(0));
         }
-//PrintWriter 向文本写文件：
+// PrintWriter 向文本写文件：
         
         path = Paths.get("hello.txt");
         try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(path, StandardCharsets.UTF_8))) {
             out.println("Hello");
         }
-//Files.write向文本写文件：
+// Files.write向文本写文件：
         content = "World\n";
         Files.write(path, content.getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
-        //多行写入
+        // 多行写入
         String fileName = "file.txt";
         Path path = Paths.get("file1.txt");
         List<String> list = new ArrayList<>();
@@ -155,7 +155,7 @@ public class Java7IO {
             e.printStackTrace();
         }
 
-//打印错误栈：  
+// 打印错误栈：  
         StringWriter writer = new StringWriter();
         Throwable throwable = new IllegalStateException();
         throwable.printStackTrace(new PrintWriter(writer));
@@ -165,20 +165,21 @@ public class Java7IO {
 }
 
 
-// 直接将url中的pdf保存下来：//适用于任何二进制文件：
+// 直接将url中的pdf保存下来：
+// 适用于任何二进制文件：
 URL url = new URL("http://www.cninfo.com.cn/1202417936.PDF");
 try (InputStream in = new BufferedInputStream(url.openStream())) {
      Files.copy(in, Paths.get(url.getFile().substring(1)),StandardCopyOption.REPLACE_EXISTING);
-}//url.getFile().substring(1)去掉起始地斜杠符
-//copy()有三种形式
+} 
+// url.getFile().substring(1)去掉起始地斜杠符
+// copy()有三种形式
 	
-//还有一种方式jdk7之前：
+// 还有一种方式jdk7之前：
 URL website = new URL("XXX.pdf");
 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 FileOutputStream fos = new FileOutputStream(url.getFile().substring(1));
 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 
-//FileChannel的抽象方法abstract long	transferFrom(ReadableByteChannel src, long position, long count) 
-
+// FileChannel的抽象方法abstract long	transferFrom(ReadableByteChannel src, long position, long count) 
 
 ```

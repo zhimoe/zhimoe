@@ -86,9 +86,9 @@ staticdir = "static"
   URL = "/categories/翻译/"
   Weight = 4
 [[Menu.Main]]
-  Name = "思考"
+  Name = "项目"
   Pre = "bathtub"
-  URL = "/categories/思考/"
+  URL = "/categories/项目/"
   Weight = 5
 [[Menu.Main]]
   Name = "关于"
@@ -100,11 +100,13 @@ staticdir = "static"
   Name = "GitHub"
   Icon = "github"
   URL = "https://github.com/zhimoe/"
-[[Params.Socials]]
-  Name = "知乎"
-  Icon = "globe"
-  URL = "https://www.zhihu.com/people/boris-hsiung"  
+
 [[Params.Socials]]
   Name = "twitter"
   Icon = "twitter"
-  URL = "https://twitter.com/_zhimoe"    
+  URL = "https://twitter.com/_zhimoe"
+
+[[Params.Socials]]
+  Name = "知乎"
+  Icon = "globe"
+  URL = "https://www.zhihu.com/question/21142149/answer/52383396"  

@@ -1,5 +1,5 @@
 ---
-title: "Learn Clojure by Example"
+title: "通过例子学习Clojure"
 date: "2019-05-13T15:22:05+08:00"
 toc: true
 categories:

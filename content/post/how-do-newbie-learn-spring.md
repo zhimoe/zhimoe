@@ -9,9 +9,10 @@ tags:
  - spring
  - java
 ---
-知乎回答备份，原答案写于15年。
-<!--more-->
+知乎回答备份，[原答案写于15年](https://www.zhihu.com/question/21142149/answer/52383396)。
 6,404 人赞同了该回答
+<!--more-->
+
 4年之后感觉自己当年写的真好。O(∩_∩)O哈哈~
 
 评论里面有人写到现在都用spring boot，个人觉得boot 只要搞清楚一个autoconfig就懂了小半了。

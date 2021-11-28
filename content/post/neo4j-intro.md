@@ -1,5 +1,5 @@
 ---
-title: "neo4j intro"
+title: "Neo4j入门"
 date: 2018-12-01
 toc: true
 categories:

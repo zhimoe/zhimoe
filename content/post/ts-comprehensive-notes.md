@@ -1,14 +1,15 @@
 ---
 title: "Typescript Comprehensive Cheatsheet"
-date: "2021-11-14T22:06:15+08:00"
+date: "2021-08-14T22:06:15+08:00"
 toc: true
 categories:
  - "编程"
 tags:
- - code
  - typescript
 ---
 
+一份详尽的ts语法笔记。 这周在看组里前端同事的代码，感觉完全还是在写JS，以我有限的JS/TS知识，也知道可以写得更加规范一点。但是一上手开始改，还真是手生。又重新过了一遍文档，做了一点笔记。
+<!--more-->
 ### install
 ```bash
 # Install
