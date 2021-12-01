@@ -95,7 +95,7 @@ please show the square_root of 100
 
 ### 委托对象
 
-gradle脚本是一个配置脚本，类似maven中pom.xml文件，不过gradle脚本更为强大，因为.gradle文件就是grrovy文件，所以还可以在脚本里面直接定义groovy对象让脚本使用。
+gradle脚本是一个配置脚本，类似maven中pom.xml文件，不过gradle脚本更为强大，因为.gradle文件就是groovy文件，所以还可以在脚本里面直接定义groovy对象让脚本使用。
 委托对象就是一个groovy对象，用来执行gradle构建脚本中的closure。
 
 

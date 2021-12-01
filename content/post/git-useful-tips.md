@@ -46,7 +46,7 @@ git commit --amend
 # follow prompts to change the commit message
 ```
 
-# undo a commit
+## undo a commit
 ```bash
 # Oh shit, I need to undo a commit from like 5 commits ago!
 # find the commit you need to undo

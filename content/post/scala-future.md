@@ -18,7 +18,7 @@ some notes on scala future, includes:
 
 
 
-# future
+## future
 ```scala
 
 import java.time._
@@ -31,10 +31,10 @@ Future {
 println(s"This is the present at ${LocalTime.now}")
 ```
 
-# executor context
+## executor context
 future need a new thread to execute it task. `import ExecutionContext.Implicits.global` is a implicit threadpool.
 
-# await for future result
+## await for future result
 ```scala
 // for 10.seconds conversion
 import scala.concurrent.duration._
@@ -62,7 +62,7 @@ if (t.isSuccess) println(s"The answer is ${t.get}")
 
 ```
 
-# callback
+## callback
 
 ```scala
 val f = Future { Thread.sleep(10000)

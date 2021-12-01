@@ -12,7 +12,7 @@ tags:
 一些容易忘记的spring boot知识要点.
 > 注意,.yaml和.yml文件没任何区别.
 
-# 配置
+## 配置
 ## SpringBootApplication注解
 
 ```java
@@ -242,4 +242,4 @@ spring:
 # 读取ENV_TYP环境变量的值作为激活profile,如果没用这个环境变量,那么设置为PRD.
 ```
 
-# 测试
+## 测试

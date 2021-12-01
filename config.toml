@@ -1,5 +1,5 @@
 baseURL = "https://zhimoe.github.io"
-title = "zhi.moe"
+title = "zhimoe"
 LanguageCode = "zh-CN"
 Theme =  "next"
 MetaDataFormat =  "yaml"
@@ -55,7 +55,7 @@ staticdir = "static"
   RevolverMapId = "55k6ne41ev6"
 
 [Author]
-  Name = "zhi.moe"
+  Name = "zhimoe"
 
 # 评论 见comment.html
 [Params.Share]
