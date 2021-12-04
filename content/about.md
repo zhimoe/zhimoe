@@ -8,3 +8,5 @@ A JVM lang programmer, use Java/Scala/Clojure, also know a little Python and Rus
 Most time I write [user stories](https://www.atlassian.com/agile/project-management/user-stories) in the daily job.   
 
 I make [programming fonts](https://github.com/zhimoe/programming-fonts), and I'm proud of the `Aurulent` font, try it!
+
+checkout my [resume](../resume)
