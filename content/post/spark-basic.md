@@ -134,7 +134,8 @@ dstream.foreachRDD { rdd =>
     ConnectionPool.returnConnection(connection)  // return to the pool for future reuse
   }
 }
-Note that the connections in the pool should be lazily created on demand and timed out if not used for a while. This achieves the most efficient sending of data to external systems.
+// Note that the connections in the pool should be lazily created on demand and timed out if not used for a while. 
+// This achieves the most efficient sending of data to external systems.
 ```
 
 * DStream的RDD分区数是由topic分区数相同的。
