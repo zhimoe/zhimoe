@@ -98,7 +98,7 @@ DStream的elements:record is ConsumerRecord<K,V>: A key/value pair to be receive
 * DStream is batches of RDDs.
 
 ## 常见错误
-
+### 数据库(mysql redis)连接的可序列化问题
 ```scala
 dstream.foreachRDD { rdd =>
   val connection = createNewConnection()  // executed at the driver
@@ -106,26 +106,29 @@ dstream.foreachRDD { rdd =>
     connection.send(record) // executed at the worker
   }
 }
-// 上面的写法会导致connection 不可序列化的错误。因为connection需要被发送到worker上，所以必须可以序列化；
-// 但是这样的连接对象其实非常少的（第三方库一般都不支持）；
+// 上面的写法会导致connection 不可序列化的错误: Task not serializable
+// RDD的函数(map,foreach)会被序列化发送到worker节点执行,但是connection是和tcp连接,和机器绑定的,无法序列化
+
 dstream.foreachRDD { rdd =>
-  rdd.foreach { record =>
-    val connection = createNewConnection()
+  rdd.foreach { record =>  // on worker node
+    val connection = createNewConnection() // 给每个record处理时新建一个连接，会导致严重的数据库连接性能问题
     connection.send(record)
     connection.close()
   }
 }
-// 上面是给每个record处理时新建一个连接，会导致严重的性能问题。
-// 更好的方式是给每个partation新建一个连接
 
+// 更好的方式是给每个partation新建一个连接
 dstream.foreachRDD { rdd =>
   rdd.foreachPartition { partitionOfRecords =>
-    val connection = createNewConnection()
+    val connection = createNewConnection() 
     partitionOfRecords.foreach(record => connection.send(record))
     connection.close()
   }
 }
+
 // 最好的方法是维护一个静态线程池：
+[ConnectionPool](https://github.com/RedisLabs/spark-redis/blob/master/src/main/scala/com/redislabs/provider/redis/ConnectionPool.scala)
+// then use in partition
 dstream.foreachRDD { rdd =>
   rdd.foreachPartition { partitionOfRecords =>
     // ConnectionPool is a static, lazily initialized pool of connections
@@ -136,7 +139,84 @@ dstream.foreachRDD { rdd =>
 }
 // Note that the connections in the pool should be lazily created on demand and timed out if not used for a while. 
 // This achieves the most efficient sending of data to external systems.
+
+// 示例
+case class RedisCluster(clusterHosts: String, password: String) extends Serializable {
+
+  def this(conf: SparkConf) {
+    this(
+      conf.get("spark.redis.host", Protocol.DEFAULT_HOST),
+      conf.get("spark.redis.auth", null)
+    )
+  }
+
+  /**
+   *
+   * @return use for JedisCluster or JedisPool
+   */
+  def toSet(): java.util.Set[HostAndPort] = {
+    val nodes: mutable.Set[HostAndPort] = mutable.Set()
+    for (host_port <- clusterHosts.split(",")) {
+      val hp = host_port
+      print(hp)
+      nodes += HostAndPort.from(host_port)
+    }
+    nodes.asJava
+  }
+
+}
+
+object RedisClusterUtils extends Serializable {
+
+  @transient private lazy val pools: ConcurrentHashMap[RedisCluster, JedisCluster] =
+    new ConcurrentHashMap[RedisCluster, JedisCluster]()
+
+  /**
+   * 获取一个JedisCluster
+   * @param rc
+   * @return
+   */
+  def connect(rc: RedisCluster): JedisCluster = {
+
+    pools.getOrElseUpdate(rc, {
+      val poolConfig = new JedisPoolConfig();
+      poolConfig.setMaxTotal(250)
+      poolConfig.setMaxIdle(32)
+      poolConfig.setTestOnBorrow(false)
+      poolConfig.setTestOnReturn(false)
+      poolConfig.setTestWhileIdle(false)
+      poolConfig.setNumTestsPerEvictionRun(-1)
+
+      val jedisCluster = new JedisCluster(rc.toSet(),
+        3000,
+        3000,
+        5,
+        rc.password,
+        poolConfig)
+
+      jedisCluster
+    })
+  }
+
+  /**
+   * 查询币种对应汇率
+   * @param jedisCluster 目标redis
+   * @param ccyCd 币种代码
+   * @return 折美元汇率
+   */
+  def getCcyRatio(jedisCluster: JedisCluster, ccyCd:String): Double ={
+    val res = jedisCluster.get("CCY:"+ccyCd)
+    res.split(":")(2).toDouble
+  }
+}
+
+
+
 ```
+参考
+[Design Patterns for using foreachRDD](https://spark.apache.org/docs/latest/streaming-programming-guide.html#design-patterns-for-using-foreachrdd)
+[Redis on Spark:Task not serializable](https://stackoverflow.com/questions/28006517/redis-on-sparktask-not-serializable)
+[How to create connection(s) to a Datasource in Spark Streaming for Lookups](https://stackoverflow.com/questions/55190315/how-to-create-connections-to-a-datasource-in-spark-streaming-for-lookups)
 
 * DStream的RDD分区数是由topic分区数相同的。
 
