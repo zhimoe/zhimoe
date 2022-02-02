@@ -15,6 +15,4 @@ Scala 3 在语法上面新增了一种Python的缩进格式,两种格式都可�
 
 下面是书本上关于Scala3的语法对比. 注意,两个语法格式都是支持的. for和if去掉小括号真的是太棒了.
 
-![ndent-syntax-1](/scala3/indent-syntax/1.png)
-![ndent-syntax-2](/scala3/indent-syntax/2.png)
-![ndent-syntax-3](/scala3/indent-syntax/3.png)
+![scala3-indent-syntax](/scala3/indent-syntax/scala3-indent.jpeg)
