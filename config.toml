@@ -12,19 +12,20 @@ HasCJKLanguage = true
 PreserveTaxonomyNames = false
 UglyUrls = false
 # 代码配色
-PygmentsStyle = "vs"
+PygmentsStyle = "default"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 DefaultContentLanguage = "zh"
 footnoteReturnLinkContents = "↩"
-# 首页摘要长度单词/字符,单篇中使用<!--more-->可以覆盖这个设置,注意没用more左右没用空格
-summaryLength = 120
+# 首页摘要长度单词/字符数,可以使用<!--more-->可以覆盖这个设置,注意more左右不能有空格
+summaryLength = 67
 # 使用emoji,
 enableEmoji = true
 # Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
 # This will then update the Lastmod parameter for each page using the last git commit date for that content file
 enableGitInfo = true
-# 图片,注意,图片地址/开始表示static目录下的,如果使用相对地址则编译后是siteUrl/post/md-file-name/image-name,即图片和md必须在同一目录
+# 图片资源目录,注意,图片地址以/开始表示图片是在static目录下的
+# 如果使用相对地址则编译后是siteUrl/post/md-file-name/image-name,即图片和md必须在同一目录
 staticdir = "static"
 # google站点访问日志，国内不建议开启
 #googleAnalytics = ""
@@ -102,11 +103,6 @@ staticdir = "static"
   URL = "https://github.com/zhimoe/"
 
 [[Params.Socials]]
-  Name = "twitter"
-  Icon = "twitter"
-  URL = "https://twitter.com/_zhimoe"
-
-[[Params.Socials]]
-  Name = "知乎"
+  Name = "ZhiHu"
   Icon = "globe"
   URL = "https://www.zhihu.com/question/21142149/answer/52383396"  
