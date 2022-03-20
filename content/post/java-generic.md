@@ -9,6 +9,10 @@ tags:
   - code
 --- 
 
+Java泛型高级部分
+
+<!--more-->
+
 ### 泛型
 
 ```java
@@ -41,8 +45,8 @@ String middle = GenericCls.getMiddle("hello",0,null);// error
 ```java
 public static <T extends Comparable> T min(T a)
 
-// 如果多个类型，则：T extends Comparable & Serializable
-// 只能有一个类，且类必须紧跟extends，但是可以有多个接口
+// 如果多个类型,则：T extends Comparable & Serializable
+// 只能有一个类,且类必须紧跟extends,但是可以有多个接口
 
 ```
 
@@ -84,7 +88,7 @@ Pair<String>[] table; //声明是合法的,只是无法实例化
 @SafeVarargs
 public static <T> void addAll(Collection<T> coll, T... ts)
 ```
-- Class类本身是泛型。 例如，String.daSS 是一个 Class<String> 的实例（事实上，它是唯一的实例。) 因此，makePair 方法能够推断出 pair 的类型
+- Class类本身是泛型. 例如,String.daSS 是一个 Class<String> 的实例（事实上,它是唯一的实例.) 因此,makePair 方法能够推断出 pair 的类型
 - 泛型类的静态上下文中类型变量无效
   
 ```java

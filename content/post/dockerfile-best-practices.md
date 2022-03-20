@@ -10,12 +10,14 @@ tags:
  - spring
  - rust
 ---
+
 记录spring boot和rust项目的Dockerfile的最佳实践.
+
 <!--more-->
 
 ## spring boot应用Dockerfile
 spring.io提供了一个boot应用的[Dockerfile](https://spring.io/guides/topicals/spring-boot-docker)指导.
-不过有个问题,这个Dockerfile使用的maven是项目源码里面copy过去的.在一般项目中显然不规范.
+不过有个问题,这个Dockerfile使用的maven是项目源码里面copy过去的.在一般企业项目中这么做显然不规范,直接使用maven基础镜像更合理.
 
 Dockerfile的最终版:
 ```Dockerfile

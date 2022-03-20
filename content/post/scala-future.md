@@ -9,7 +9,9 @@ tags:
  - scala
 ---
 some notes on scala future, includes:
+
 <!--more-->
+
 * [x] future
 * [x] executor context
 * [x] await future result

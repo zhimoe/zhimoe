@@ -1,5 +1,5 @@
 ---
-title: "使用redis的hash优化内存使用"
+title: "使用redis的hash优化内存使用[翻译]"
 date: "2019-03-31T00:11:50+08:00"
 toc: true
 categories:
@@ -8,6 +8,11 @@ tags:
  - code
  - redis
 ---
+
+使用redis的hash优化内存使用
+
+<!--more-->
+
 # 原文
 [Understanding Redis hash-max-ziplist-entries](https://www.peterbe.com/plog/understanding-redis-hash-max-ziplist-entries)
 

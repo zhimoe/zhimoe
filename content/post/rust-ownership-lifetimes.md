@@ -10,6 +10,7 @@ tags:
 ---
 
 some notes on rust ownership,reference,string and &str, and lifetimes
+
 <!--more-->
 
 

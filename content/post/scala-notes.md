@@ -7,7 +7,10 @@ categories:
 tags:
  - code
 ---
-# scala-notes
+
+scala notes: setup with maven, case class, companion ...
+
+<!--more-->
 
 some notes on scala, includes:
 * [x] setup with maven
@@ -31,13 +34,13 @@ some notes on scala, includes:
 
 ## import
 
-scala的import语句很灵活，可以在任何地方导入class内部外部，方法内部，代码块内部，这样做有一个好处，限制导入方法和对象的scope，防止污染变量。在后面学了implicit隐式转换后，就知道import scope有多重要了。
+scala的import语句很灵活,可以在任何地方导入class内部外部,方法内部,代码块内部,这样做有一个好处,限制导入方法和对象的scope,防止污染变量.在后面学了implicit隐式转换后,就知道import scope有多重要了.
 ```scala
 import scala.math._ // import everything in math package 
 import java.util.{ ArrayList => _, _} 
-//第一个下划线表示隐藏ArrayList，第二个表示通配符，导入所有
+//第一个下划线表示隐藏ArrayList,第二个表示通配符,导入所有
 
-//默认，scala导入:
+//默认,scala导入:
 java.lang._
 scala._
 scala.Predef._ 
@@ -101,7 +104,7 @@ assert(r1 == r2)//true
 
 
 ## companion object 
-Scala中，除了方法，一切都是对象！函数也是对象,根据参数的个数,函数的类型为FunctionN.N为函数参数个数.
+Scala中,除了方法,一切都是对象！函数也是对象,根据参数的个数,函数的类型为FunctionN.N为函数参数个数.
 伴生对象用于定义一些静态方法(工厂方法),其中apply和unapply方法常用. apply方法用于代替new的工厂方法.
 同时,companion objects can access private fields and methods of their companion trait/class. 
 
@@ -189,19 +192,19 @@ freeUsr match {
 > quote from：<Programming in Scala Second Edition>
 > Martin Odersky - Lex Spoon - Bill Venners
 
-函数由一个参数列表，一个函数体，一个结果类型构成。函数如果作为class，trait或者object（注意，这里的object是scala特有的单例对象，不是Java中的instance）的成员，那么这个函数叫方法。函数和方法的区别就是函数时FunctionN的一个实例,编译后是一个单独的class文件,而方法是依附对象的,调用方法的格式是obj.method(param),而调用函数的格式本质是将调用函数对象的apply方法.
-函数定义在别的函数内部叫局部函数。函数返回值是Unit称为过程（procedures）。
-匿名函数是通过函数字面量（ ()=>{函数体} ）定义的函数。在运行时，函数字面量被实例化对象，叫函数值。
-函数和方法的区别，大部分情况下不用在意区别：
-函数是有类型的： (T1, ..., Tn) => U，是trait FunctionN的一个实例对象，函数有一个apply方法，用来实际执行function的函数体。函数还有toString， andThen ，conpose等方法。
+函数由一个参数列表,一个函数体,一个结果类型构成.函数如果作为class,trait或者object（注意,这里的object是scala特有的单例对象,不是Java中的instance）的成员,那么这个函数叫方法.函数和方法的区别就是函数时FunctionN的一个实例,编译后是一个单独的class文件,而方法是依附对象的,调用方法的格式是obj.method(param),而调用函数的格式本质是将调用函数对象的apply方法.
+函数定义在别的函数内部叫局部函数.函数返回值是Unit称为过程（procedures）.
+匿名函数是通过函数字面量（ ()=>{函数体} ）定义的函数.在运行时,函数字面量被实例化对象,叫函数值.
+函数和方法的区别,大部分情况下不用在意区别：
+函数是有类型的： (T1, ..., Tn) => U,是trait FunctionN的一个实例对象,函数有一个apply方法,用来实际执行function的函数体.函数还有toString, andThen ,conpose等方法.
 
 ```scala
 val fn: Int => String = i => i+"123" //声明一个函数
 fn(3) //实际背后是fn.apply(3);
 ```
-scala中除了method，一切都是instance
-method只能用def 声明，function可以是val和def声明
-method可以有类型参数[] ,function不能有，函数在声明时就需要知道具体类型。
+scala中除了method,一切都是instance
+method只能用def 声明,function可以是val和def声明
+method可以有类型参数[] ,function不能有,函数在声明时就需要知道具体类型.
 ```scala
 def fn(p: List[String]): Map[T] = {...} //is function
 def m[T](t: List[T]): Map[T] = {...} //is method,可以有泛型参数.
@@ -210,10 +213,10 @@ def m[T](t: List[T]): Map[T] = {...} //is method,可以有泛型参数.
 val f1 = m1 _   //下划线表示参数列表 eta-expansion
 val f2: (Int) => Int = m1  //m1 的入参和返回值要和f2的一样
 
-//scala可以自动将method转换为function，如果一个方法需要一个函数作为参数，
-//那么可以直接将m1传递给他，不需要 下划线。
-//每一次将方法转换成function都是得到一个新的function object。
-//function既然是一个instance，那么编译成class文件会有一个class文件。
+//scala可以自动将method转换为function,如果一个方法需要一个函数作为参数,
+//那么可以直接将m1传递给他,不需要 下划线.
+//每一次将方法转换成function都是得到一个新的function object.
+//function既然是一个instance,那么编译成class文件会有一个class文件.
 
 ```
 
@@ -223,11 +226,11 @@ val f2: (Int) => Int = m1  //m1 的入参和返回值要和f2的一样
 /**
   * class Reference[T] {
   * private var contents: T = _  
-  * //使用类型默认值初始化变量，如果T是Int，则contents是0，T是boolean，则是false；Unit则是()
+  * //使用类型默认值初始化变量,如果T是Int,则contents是0,T是boolean,则是false；Unit则是()
   * }
   * 
   *
-  * List(1, 2, 3) foreach (print _ ) //output 123，表示实参
+  * List(1, 2, 3) foreach (print _ ) //output 123,表示实参
   *
   * //在匿名函数中作为参数占位符：
   * List(1, 2, 3) map ( _ + 2 )
@@ -247,16 +250,16 @@ val f2: (Int) => Int = m1  //m1 的入参和返回值要和f2的一样
   *
   * //import中作为通配符和隐藏符
   * import java.util.{ ArrayList => _, _} 
-  * //第一个下划线表示隐藏ArrayList，第二个表示通配符，导入所有
+  * //第一个下划线表示隐藏ArrayList,第二个表示通配符,导入所有
   *
   * //将方法变为value
   * method _     // Eta expansion of method into method value
   *
   * //tuple 的访问
-  * tpl._2 //返回tpl第二个元素，注意，tuple是从1开始的
+  * tpl._2 //返回tpl第二个元素,注意,tuple是从1开始的
   *
   *
-  * //还有很多高级的概念，目前还不理解，so上给出的答案
+  * //还有很多高级的概念,目前还不理解,so上给出的答案
   * def f[M[_]]       // Higher kinded type parameter
   * def f(m: M[_])    // Existential type
   * _ + _             // Anonymous function placeholder parameter
@@ -280,7 +283,7 @@ val f2: (Int) => Int = m1  //m1 的入参和返回值要和f2的一样
 ### 函数字面量分隔参数和函数体
 在函数字面量中 `=>`分隔参数和函数体. 也可以表示一个函数类型.
 ```scala
-(x: Int) => x * 2表示一个匿名函数，接收一个整数，返回参数乘以2的结果。
+(x: Int) => x * 2表示一个匿名函数,接收一个整数,返回参数乘以2的结果.
 
 scala> val f: Function1[Int,String] = argInt => "my int: "+argInt.toString
 f: Int => String = <function1>
@@ -288,13 +291,13 @@ f: Int => String = <function1>
 // Int => String 等价 Function1[Int,String]
 scala> val f2: Int => String = myInt => "my int v2: "+myInt.toString
 f2: Int => String = <function1>
-//注意，匿名函数没有参数也要括号 ()=>{}；
+//注意,匿名函数没有参数也要括号 ()=>{}；
 //() => Unit表示没有返回值的函数
 ```
 	
 ### call-by-name parameter
-在函数的参数声明中使用`=>`(e.g. `def f(arg: => T`))表示这个参数是"by-name parameter",表示这个参数只有在函数体中包含这个参数的语句被执行才会被evaluate。
-这个特点叫call-by-name,arg可以是一个代码块，甚至函数，在传递给f时不会evaluate，只有f函数体内部调用arg时，arg才会被执行。
+在函数的参数声明中使用`=>`(e.g. `def f(arg: => T`))表示这个参数是"by-name parameter",表示这个参数只有在函数体中包含这个参数的语句被执行才会被evaluate.
+这个特点叫call-by-name,arg可以是一个代码块,甚至函数,在传递给f时不会evaluate,只有f函数体内部调用arg时,arg才会被执行.
 ```scala
 scala> def now()={println("nano time:");System.nanoTime}
 
@@ -319,7 +322,7 @@ scala> justCall(now())
 ```
 
 ### 模式匹配中分隔case模式和返回值
-在case语句中，=> 分隔模式和返回表达式。
+在case语句中,=> 分隔模式和返回表达式.
 ```scala
 var a = 1  
 a match{  
@@ -405,7 +408,7 @@ s.bling // *hello*
 //太阳底下无新事,scala常用对象的灵活丰富的语法都是通过隐式转换添加的.
 ```
 ### implicit class
-可以看到上面的第1,2步非常的繁琐，于是[SIP-13](http://link.zhihu.com/?target=https%3A//docs.scala-lang.org/sips/implicit-classes.html)提出一个`implicit class`,将上面的2步合并:
+可以看到上面的第1,2步非常的繁琐,于是[SIP-13](http://link.zhihu.com/?target=https%3A//docs.scala-lang.org/sips/implicit-classes.html)提出一个`implicit class`,将上面的2步合并:
 ```scala
 implicit class BlingString(s:String) {
   def bling = "*"+s+"*"
@@ -415,9 +418,9 @@ implicit class BlingString(s:String) {
 val hi = "hello"
 hi.bling // *hello*
 ```
-注意，这个只是一个语法糖。去糖后就是上面的那个形式。 implicit class有3个约束和一个注解问题：
+注意,这个只是一个语法糖.去糖后就是上面的那个形式. implicit class有3个约束和一个注解问题：
 
-1.  必须要有主一个构造函数且只能一个构造参数（implicit参数除外）。构造参数就是源类型. 这个构造函数即等价上面第2步的隐式转换方法：
+1.  必须要有主一个构造函数且只能一个构造参数（implicit参数除外）.构造参数就是源类型. 这个构造函数即等价上面第2步的隐式转换方法：
 
     ```scala
     implicit class RichDate(date: java.util.Date) // OK!
@@ -436,7 +439,7 @@ hi.bling // *hello*
 
     ```
 
-3. 在当前scope内，不允许有和implicit class同名的方法，对象，变量。因为case class会自动生成同名object对象，所以implicit class不能是case class。
+3. 在当前scope内,不允许有和implicit class同名的方法,对象,变量.因为case class会自动生成同名object对象,所以implicit class不能是case class.
 
     ```scala
     object Bar
@@ -450,7 +453,7 @@ hi.bling // *hello*
 
     ```
 
-4. 还有就是implicit class的注解在去语法糖后会自动添加到类和方法，除非在注解中指明范围：
+4. 还有就是implicit class的注解在去语法糖后会自动添加到类和方法,除非在注解中指明范围：
 
     ```scala
     @bar
@@ -473,17 +476,17 @@ scala 还有一个概念：[value class](http://link.zhihu.com/?target=https%3A/
 
 ```scala
 class Wrapper(val underlying: Int) extends AnyVal
-//1. 一个public val参数表示runtime类型，这里是Int. 编译时是Wrapper类型，所以value class目的是降低分配开销。
+//1. 一个public val参数表示runtime类型,这里是Int. 编译时是Wrapper类型,所以value class目的是降低分配开销.
 //2. value class 需要 extends AnyVal
-//3. value class 只能有 defs, 不能有vals, vars, or nested traits, classes or objects，
-//   因为def是通过静态方法实现的，而val，var这些则必须创建相应类型了。
-//4. value class 只能扩展通用trait（universal traits），
+//3. value class 只能有 defs, 不能有vals, vars, or nested traits, classes or objects,
+//   因为def是通过静态方法实现的,而val,var这些则必须创建相应类型了.
+//4. value class 只能扩展通用trait（universal traits）,
 //   universal traits是A universal trait is a trait that extends Any, only has defs as members, and does no initialization.
 //
 ```
 
 ### extension method
-当implicit class类型参数是AnyVal子类时，value class和上面的implicit class形式相近，所以可以通过value class降低implicit class的分配开销。例如RichtInt
+当implicit class类型参数是AnyVal子类时,value class和上面的implicit class形式相近,所以可以通过value class降低implicit class的分配开销.例如RichtInt
 
 ```scala
 implicit class RichInt(val self: Int) extends AnyVal {
@@ -491,8 +494,8 @@ implicit class RichInt(val self: Int) extends AnyVal {
 }
 ```
 
-因为RichInt是value class，在运行时（runtime）不会有RichInt这个类，而是Int，而`3.toHexString`实际是通过静态方法实现的： `RichInt$.MODULE$.extension$toHexString(3)`,这么做好处是减少对象分配开销(avoid the overhead of allocation)。如果implicit class的类型参数不是AnyVal子类，那么在runtime时会有相应类型对象被创建，用户察觉不到区别。
-value class还有其他作用和局限性，可以参考上面链接。如果发现错误，请指出，先谢过。
+因为RichInt是value class,在运行时（runtime）不会有RichInt这个类,而是Int,而`3.toHexString`实际是通过静态方法实现的： `RichInt$.MODULE$.extension$toHexString(3)`,这么做好处是减少对象分配开销(avoid the overhead of allocation).如果implicit class的类型参数不是AnyVal子类,那么在runtime时会有相应类型对象被创建,用户察觉不到区别.
+value class还有其他作用和局限性,可以参考上面链接.如果发现错误,请指出,先谢过.
 
  [Implicit Design Patterns in Scala​www.lihaoyi.com](http://www.lihaoyi.com/post/ImplicitDesignPatternsinScala.html)
  [The Neophyte's Guide to Scala​](https://danielwestheide.com/scala/neophytes.html)

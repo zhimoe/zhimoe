@@ -8,6 +8,10 @@ tags:
  - code
  - spring
 ---
+ 
+理解Spring FactoryBean 和 ContextAware接口.
+
+<!--more-->
 
 ## FactoryBean
 一句话就是FactoryBean用于返回其他对象实例的,而不是自身类型的实例.

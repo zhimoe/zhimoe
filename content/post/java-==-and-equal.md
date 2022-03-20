@@ -1,5 +1,5 @@
 ---
-title: 'Java-==-and-equal'
+title: 'Java-==-and-equals'
 date: 2016-01-01
 toc: true
 categories:
@@ -8,11 +8,15 @@ tags:
   - java
   - code
 --- 
+  
+samples code and notes on java == and equals
+
+<!--more-->
 
 ```java
 /**
  * samples for == and equal() 
- * @author hsiung
+ * @author zhimoe
  *
  */
 class TestObj {
@@ -46,7 +50,7 @@ public class EqualAndCompare {
 										// static field in class, static String
 										// in class == and equal both always
 										// return *true*
-		// for more infomation，see :
+		// for more infomation,see :
 		// http://stackoverflow.com/questions/7520432/what-is-the-difference-between-vs-equals-in-java
 
 		System.out.println(s1.equals(s2)); // true compare the

@@ -8,9 +8,12 @@ tags:
  - code
  - clojure
 ---
-## clojure 入门
+
 这份笔记试图打造最强的clojure小抄,keep refactoring it...
 
+<!--more-->
+
+## clojure 入门
 ```clojure
 (ns clj-notes.core
   (:gen-class))

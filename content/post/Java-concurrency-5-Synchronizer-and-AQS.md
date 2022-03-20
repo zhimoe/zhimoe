@@ -7,12 +7,16 @@ categories:
 tags: 
   - java
   - code
---- 
+---
 
-#### 好难，看不懂呀！
+Java并发编程笔记5
+
+<!--more-->
+
+#### 好难,看不懂呀！
 
 #### 先自己写一个CountDownLatch的示例：
-CountDownLatch是管理一组线程和一个主线程的先后。主线程wait后就阻塞，直到所有的CountDownLatch调用countDown后主线程接着开始。
+CountDownLatch是管理一组线程和一个主线程的先后.主线程wait后就阻塞,直到所有的CountDownLatch调用countDown后主线程接着开始.
 
 ```java
 package angus.intrview.concurrent;
@@ -21,7 +25,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class CountDownLatchTest {
-	// 这个方法将启动多个任务，并让它们同时执行，计算完成的时间
+	// 这个方法将启动多个任务,并让它们同时执行,计算完成的时间
 	public long timer(int taskNums) throws InterruptedException {
 		CountDownLatch startLatch = new CountDownLatch(1);
 		CountDownLatch finishLatch = new CountDownLatch(taskNums);

@@ -8,9 +8,11 @@ tags:
  - code
  - scala
 ---
- key points in scala-for-impatient 2nd book, best book for java developer to use scala in a rush
 
- <!--more-->
+key points in scala-for-impatient 2nd book, best book for java developer to use scala in a rush.
+scala-for-impatient章节摘要, 这本书对于Java开发者快速上手Scala帮助很大.
+
+<!--more-->
 
 ### Functions
 ```text
@@ -35,6 +37,7 @@ tags:
 • Scala and Java arrays are interoperable; with ArrayBuffer, use scala.collection.JavaConverters._ 
 don't use scala.collection.JavaConversions.
 ```
+
 ```scala
 import scala.collection.mutable.ArrayBuffer
 val b = ArrayBuffer[Int]()

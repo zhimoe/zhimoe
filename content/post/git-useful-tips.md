@@ -8,7 +8,10 @@ tags:
   - git
   - code
 --- 
+
 记录日常开发中偶尔会遇到的但是总是记不住的git命令.
+
+<!--more-->
 
 以下技巧都来自于[oh shit git](https://ohshitgit.com/) 和 [stackoverflow](https://stackoverflow.com). 版权归作者所有.
 

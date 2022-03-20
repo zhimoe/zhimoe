@@ -8,8 +8,11 @@ tags:
  - code
  - docker
 ---
+
 记录docker中exec form和shell form的区别,CMD和ENTRYPOINT区别,以及最佳实践.
+
 <!--more-->
+
 ## exec form VS shell form
 
 ```text
@@ -19,7 +22,6 @@ tags:
 # shell form
 <instruction> <command>
 ```
-
 
 1. exec form 以JSON格式解析,所以命令参数必须使用`""`双引号包裹;
 2. exec form 不会invoke shell. 所以`CMD [ "echo", "$HOME" ]`中`$HOME`变量不会被替换;

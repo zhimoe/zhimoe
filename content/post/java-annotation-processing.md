@@ -53,7 +53,7 @@ implement a processor class
 – `Filer` for creation of new source, class, or auxiliary files  
 – `Messager ` to report errors, warnings, and other notices  
 
-此外，一个产生java文件的重要方法：
+此外,一个产生java文件的重要方法：
 
 ```java
 FileObject sourceFile

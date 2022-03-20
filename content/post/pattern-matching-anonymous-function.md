@@ -8,6 +8,10 @@ tags:
  - code
  - scala
 ---
+Scala中模式匹配匿名函数
+
+<!--more--> 
+
 Scala中很多使用if的地方都可以用match case来替换.常见的就是下面的这种写法:
 ```scala
 val res = msg match {
@@ -36,13 +40,13 @@ def wordsWithoutOutliers(wordFrequencies: Seq[(String, Int)]): Seq[String] =
  wordFrequencies.filter { case (_, f) => f > 3 && f < 25 } map { case (w, _) => w }
 ```
 注意到省略了最早版本的 `wf =>`,IDEA其实会提示你省略这个冗余部分. 
-另一个问题就是上面的操作中我们先过滤想要的序列,然后对序列进行了map映射操作.Scala 集合的 API 有一个叫做 `collect` 的方法，对于 `Seq[A]` ，它有如下方法签名：
+另一个问题就是上面的操作中我们先过滤想要的序列,然后对序列进行了map映射操作.Scala 集合的 API 有一个叫做 `collect` 的方法,对于 `Seq[A]` ,它有如下方法签名：
 
 ```scala
 def collect[B](pf: PartialFunction[A, B]): Seq[B]
 ```
-这个方法将给定的_偏函数(partial function)_ 应用到序列的每一个元素上， 最后返回一个满足条件并处理后新的序列 ,这里偏函数做了 `filter` 和 `map` 要做的事情。
-现在，我们来重构 `wordsWithoutOutliers` ，首先定义需要的偏函数：
+这个方法将给定的_偏函数(partial function)_ 应用到序列的每一个元素上, 最后返回一个满足条件并处理后新的序列 ,这里偏函数做了 `filter` 和 `map` 要做的事情.
+现在,我们来重构 `wordsWithoutOutliers` ,首先定义需要的偏函数：
 
 ```scala
 val pf: PartialFunction[(String, Int), String] = {
@@ -50,7 +54,7 @@ val pf: PartialFunction[(String, Int), String] = {
 }
 wordFrequencies.collect(pf)
 ```
-我们为这个案例加入了 _守卫语句_，不在区间里的元素就没有定义。
+我们为这个案例加入了 _守卫语句_,不在区间里的元素就没有定义.
 以上来自[Scala初学者指南](http://danielwestheide.com/scala/neophytes.html)
 当然有中文版:[Scala初学者指南-gitbook](https://www.gitbook.com/book/windor/beginners-guide-to-scala/details)
 

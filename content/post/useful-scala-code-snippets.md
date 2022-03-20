@@ -9,6 +9,10 @@ tags:
  - scala
 ---
 
+Useful Scala Code Snippets
+
+<!--more-->
+
 ## merge two map and sum its values
 多个map合并,key相同时则value相加
 

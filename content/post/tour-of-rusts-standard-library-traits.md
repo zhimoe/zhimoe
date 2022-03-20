@@ -10,8 +10,10 @@ tags:
 ---
 
 [原文Tour of Rust's Standard Library Traits](https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md)
-关于rust trait非常好的介绍，比rust book详细，系统。
+关于rust trait非常好的介绍,比rust book详细,系统.
+
 <!--more-->
+
 # Tour of Rust's Standard Library Traits
 
 **Table of Contents**

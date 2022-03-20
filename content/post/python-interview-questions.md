@@ -7,7 +7,8 @@ categories:
 tags:
  - code
 ---
-4道常见的python面试题和解答,以及一些python陷阱的链接。
+4道常见的python面试题和解答,以及一些python陷阱的链接.
+
 <!--more-->
 
 ## 问题
@@ -124,7 +125,7 @@ def my_func(working_list=None):
 2 2 2
 None
 ```
-本意其实是想得到一个函数列表[0*x,1*x,2*x]，
+本意其实是想得到一个函数列表[0*x,1*x,2*x],
 但是 **Python’s closures are *late binding*. This means that the values of variables used in closures are looked up at the time the inner function is called.**
 解决方案是偏函数partial
 ```python

@@ -9,6 +9,11 @@ tags:
  - java
  - test
 ---
+
+测试中如果遇到被测试方法调用void方法，在Mockito中改如何处理?
+
+<!--more-->
+
 假设有如下的服务依赖：
 
 ```java
@@ -41,8 +46,8 @@ class AccountSvc {
 
 }
 ```
-这里的AccountSvc只是提供了一个void方法处理了入参accounts，虽然修改入参是被我所不齿的，但是有时改写这类方法挺麻烦的，特别如果方法修改了两个入参的话。
-这种情况下如何测试DepositSvc.dps方法呢? mockito的 `doAnswer`就是用于模拟void方法回调的。
+这里的AccountSvc只是提供了一个void方法处理了入参accounts,虽然修改入参是被我所不齿的,但是有时改写这类方法挺麻烦的,特别如果方法修改了两个入参的话.
+这种情况下如何测试DepositSvc.dps方法呢? mockito的 `doAnswer`就是用于模拟void方法回调的.
 
 ```java
 class DepositSvcTest {

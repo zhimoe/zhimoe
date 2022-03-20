@@ -9,10 +9,13 @@ tags:
  - github
 toc: true
 ---
+如何使用github pages和github actions构建静态个人博客站点
 
-<!--update at 2021-->
-更新：github开放action功能后，travis-ci已经没有必要了，目前博客使用zhimoe仓库管理源码，使用action编译后将public目录同步到zhimoe.github.io仓库的gh-pages分支。
-注意，由于使用了jsdelivr的cdn功能，切换分支后theme的相关静态文件的path也要修改。
+<!--more-->
+
+### update at 2021
+更新：github开放action功能后,travis-ci已经没有必要了,目前博客使用zhimoe仓库管理源码,使用action编译后将public目录同步到zhimoe.github.io仓库的gh-pages分支.
+注意,由于使用了jsdelivr的cdn功能,切换分支后theme的相关静态文件的path也要修改.
 
 github给个人和组织免费提供github pages功能. 就是说如果有个repo的名字为 zhimoe.github.io (zhimoe 为你的github username), 那么这个repo里面的master或者gh-pages分支的内容如果存在index.html, 那么其他人可以通过 https://zhimoe.github.io 访问这个站点.
 <!--more-->
