@@ -12,19 +12,20 @@ tags:
 一些容易忘记的spring boot知识要点.
 > 注意,.yaml和.yml文件没任何区别.
 
-<!--more-->
-
 ## 配置
 ## SpringBootApplication注解
 
 ```java
 @SpringBootApplication
-<=等价=>
+// <=等价=>
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
 
 ```
+
+<!--more-->
+
 ## 自动配置
 spring的自动配置依赖以下注解:
 

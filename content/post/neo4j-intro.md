@@ -11,14 +11,12 @@ tags:
 
 ---
 
-noe4j介绍与cypher查询语言调优,操作符,执行计划,索引,缓存与磁盘IO
-
-<!--more-->
-
 ### neo4j图数据库介绍
 neo4j是目前排名最高的图数据库,分为商业和社区版本,社区版只支持单机,而且查询的运行时(runtime)不同(cypher runtime:interpreted(社区版),slotted(企业版)). 数据库排名可以在 https://db-engines.com/en/ranking/graph+dbms 查看,下一代最有前景的开源图数据库是dgraph,目前还积极开发中,生产未就绪,等他的Java客户端再成熟一点可以试用.
 
 neo4j数据库中只有3个概念: Node, Relationship, Properties. Node表示实体类别,使用Label区分,例如一个节点可以有Person/Father等多个标签,Relationship即关系,雇佣关系,父子关系,投资关系,交易关系等. Node和Relationship都可以有Proerties,属性自身不分是属于节点还是属于关系,例如Person可以有属性name,关系也可以用属性name.你可以在neo4j browser左侧看到当前数据库的所有Node Label,Relationship Type,Properties. 
+
+<!--more-->
 
 #### 本地安装和在线沙箱
 neo4j背后的公司为了吸引用户,提供了一些好玩的数据库沙箱,这些沙箱数据库已经提前放了一些主题数据,例如购物数据,国会关系数据.你可以通过注册登录 https://neo4j.com/sandbox-v2/, 选择一个数据沙箱实例进行学习试玩.当然你也可以下载社区版,命令行 `neo4j.bat console`启动,打开127.0.0.1:7474开始学习.

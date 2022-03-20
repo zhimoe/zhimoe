@@ -9,10 +9,6 @@ tags:
  - JS
  - webpack
 ---
- 
-记录使用记录speed-measure-webpack-plugin优化一个Webpack打包速度问题
-
-<!--more-->
 
 ### 问题
 
@@ -22,6 +18,8 @@ tags:
 
 初步判断是流水线使用的容器CPU性能较弱或者存储mount性能导致的.找流水线同事支持配置了一个纯内存编译流水线,发现还是很慢.
 接下来使用webpack的插件[speed-measure-webpack-plugin](https://www.npmjs.com/package/speed-measure-webpack-plugin)监控性能.
+
+<!--more-->
 
 在webpack.config.js配置：
 ```js

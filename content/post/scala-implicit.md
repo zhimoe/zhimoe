@@ -8,10 +8,6 @@ tags:
  - code
  - scala
 ---
- 
-scala 2 implicit notes
-
-<!--more-->
 
 ## 隐式参数
 ```scala
@@ -27,6 +23,8 @@ addInt(2) // 3
 
 //scala的方法中ExecutionContext一般作为implicit参数.
 ```
+
+<!--more-->
 
 ## 隐式转换方法
 如果想要给String实现一个mkStr方法,简单的给String添加一个Ops!前缀再返回.

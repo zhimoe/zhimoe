@@ -11,14 +11,14 @@ toc: true
 ---
 如何使用github pages和github actions构建静态个人博客站点
 
-<!--more-->
-
 ### update at 2021
 更新：github开放action功能后,travis-ci已经没有必要了,目前博客使用zhimoe仓库管理源码,使用action编译后将public目录同步到zhimoe.github.io仓库的gh-pages分支.
 注意,由于使用了jsdelivr的cdn功能,切换分支后theme的相关静态文件的path也要修改.
 
 github给个人和组织免费提供github pages功能. 就是说如果有个repo的名字为 zhimoe.github.io (zhimoe 为你的github username), 那么这个repo里面的master或者gh-pages分支的内容如果存在index.html, 那么其他人可以通过 https://zhimoe.github.io 访问这个站点.
+
 <!--more-->
+
 借助于一些static gen工具,你可以将你的markdown转换为一个静态网站(html,js,css). 然后把静态网站的内容上传到刚说的repo中, 就有一个自己的博客站点了. static gen工具非常多, github推荐的是[Jekyll(ruby)](https://www.staticgen.com/), 主流的还有hexo(js)和hugo(go), hexo因为是基于js的,所以高质量的主题多(因为做主题是需要js,css技能), hugo的编译快些, 但是好看的主题不多. 高质量的主题除了美观可能还需要考虑移动端(responsive),评论, 访问统计等各种功能. 每个gen工具都有自己的主题站点. hugo的主题在这里找: [hugo themes](https://themes.gohugo.io/).
 
 制作github pages站点的一般做法是把代码(放图片和markdown)放在master分支,static gen编译后的(html,js,css,image)内容放在gh-pages分支.然后在settings里面设置. 这样就可以得到一个站点了. 这么做有个缺点,就是markdown文件会被别人整个下载过去,之前就遇到过一次. 正好github现在有3个免费私有仓库. 所以我把源码放在私有仓库zhimoe.github.io.src里面,而编译后的内容发布的 https://zhimoe.github.io上面去.

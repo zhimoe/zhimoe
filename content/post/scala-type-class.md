@@ -9,11 +9,10 @@ tags:
  - scala
 ---
  
-scala type class notes
+scala type class notes: 
+[关于scala type class非常好的文章](https://scalac.io/typeclasses-in-scala)
 
 <!--more-->
-
-[关于scala type class非常好的文章](https://scalac.io/typeclasses-in-scala)
 
 ## 核心知识点
 ```scala

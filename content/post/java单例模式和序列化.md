@@ -10,9 +10,6 @@ tags:
 --- 
 
 Java单例模式的各种写法和序列化
-
-<!--more-->
-
 [参考资料](http://www.hollischuang.com/archives/205)
 
 ### 饱汉式 
@@ -27,6 +24,9 @@ public class Singleton {
 }  //饱汉式,使用时创建
 
 ```
+
+<!--more-->
+
 ### 饿汉式
 
 ```java

@@ -10,10 +10,6 @@ tags:
   - threadpool
 ---
 
-Java并发编程笔记6
-
-<!--more-->
-
 ### thread pool classes hierachy
 
 ```text
@@ -29,6 +25,8 @@ Executor (java.util.concurrent)
     |---ScheduledExecutorService (java.util.concurrent)
 
 ```
+
+<!--more-->
 
 ### three thread pool interfaces
 

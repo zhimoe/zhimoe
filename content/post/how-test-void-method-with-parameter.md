@@ -19,9 +19,7 @@ tags:
 ```java
 @Service
 class DepositSvc {
-
     @Autowired
-
     private AccountSvc accSvc;
 
     public List<Account> dps(String user) {
@@ -71,8 +69,6 @@ class DepositSvcTest {
         }).when(accountSvc).addLinkedAccounts(any(), anyList(), anyList());
 
         // ...assert
-
     }
-
 }
 ```

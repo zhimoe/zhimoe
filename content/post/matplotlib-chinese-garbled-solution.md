@@ -10,9 +10,6 @@ tags:
 ---
 
 很久以前写的一个答案,四年来一直有人评论感谢,说只有我的方法是有效的.非常意外也很高兴. 也放到博客中里备份吧.
-
-<!--more-->
-
 [zhihu.com](https://www.zhihu.com/question/25404709/answer/67672003)
 
 ```python
@@ -35,3 +32,4 @@ plt.title("pythoner.com",fontproperties=myfont)
 plt.legend(['图例'],prop=myfont)
 plt.show()
 ```
+<!--more-->

@@ -13,7 +13,6 @@ some notes on rust ownership,reference,string and &str, and lifetimes
 
 <!--more-->
 
-
 ### rust ownership
 ```rust
 //heap and stack: stack is store data that known,fixed size.

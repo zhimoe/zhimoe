@@ -10,9 +10,6 @@ tags:
 --- 
 
 最近非常火的一道携程面试题Java
-
-<!--more-->
-
 ```java
 public class Base {
     private String baseName = "base";
@@ -37,6 +34,8 @@ public class Base {
     }
 }
 ```
+
+<!--more-->
 
 我的理解：
 先理解两个方法:  

@@ -9,10 +9,6 @@ tags:
  - scala
 ---
 
-Useful Scala Code Snippets
-
-<!--more-->
-
 ## merge two map and sum its values
 多个map合并,key相同时则value相加
 
@@ -28,6 +24,8 @@ val merged = mapList.reduce((m1, m2) =>
   m1 ++ m2.map { case (k, v) => k -> (v + m1.getOrElse(k, 0)) }
 )
 ```
+
+<!--more-->
 
 ## 文件读
 

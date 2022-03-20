@@ -8,10 +8,6 @@ tags:
   - java
   - code
 --- 
-  
-Java并发编程笔记3
-
-<!--more-->
 
 ### synchronized method和synchronized block的区别
 如果是synchronized(this),那么和synchronized 方法没有任何区别,锁定对象都是方法所在的对象.
@@ -23,6 +19,8 @@ void mymethod() {
   synchronized (this) { ... }
 }
 ```
+<!--more-->
+
 但是synchronized block可以锁定其他对象,而且synchronized block的范围是可以控制更灵活,synchronized 方法的边界只能是整个方法
 
 ```java

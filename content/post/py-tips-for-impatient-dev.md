@@ -9,34 +9,23 @@ tags:
  - python
 ---
 
-python notes: 可变类型用于默认参数, staticmethod和classmethod, pythonic的代码
-
-<!--more-->
-
-python在看似简单的语法中,有很多tricks.例如
-
 ## tricks
 1. python的dict中关于equal和hash计算方式会有意外的效果
+
     ```python
     ['no', 'yes'][True] # output?
     {True: 'yes', 1: 'no', 1.0: 'maybe'} # output?
     ```
     > “布尔类型是整数类型的子类型,布尔值在几乎所有环境中的行为都类似于值 0 和 1,但在转换为字符串时,分别得到的是字符串 False 或 True.”  
-    >                                                                                    -- The Standard Type Hierarchy
+    >                                                                          -- The Standard Type Hierarchy
 
 由于True,1, 1.0的__eq__和__hash__都一样,所以出现了神奇的结果.
 
+<!--more-->
+
 2. `(1) != (1,) #第一个就是int,第二个是tuple`
 
-3. 避免可变的默认参数, 例如:
-   ```python
-   def fun(count=[]):
-       count.append(2) #这里count两次调用如果都使用默认参数的话,则是同一个数组,非常危险!
-       return count
-   fun()   #[2]
-   fun()   #[2,2]
-   ```
-4. `...`和`pass`几乎等效的,这是一个ellipsis type的单例.
+3. `...`和`pass`几乎等效的,这是一个ellipsis type的单例.
 
 ## staticmethod classmethod
 > staticmethod和classmethod都可以通过Cls.m()或instance.m()方式访问,都可以被继承,都可以访问全局变量.区别是

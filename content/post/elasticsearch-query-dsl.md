@@ -11,11 +11,11 @@ tags:
 
 理解ES搜索中JSON DSL有助于自己写JSON查询,特别是手写复杂嵌套json.
 
-<!--more-->
-
 * [x] diffs in es 2.x and es 5.x
 * [x] query dsl
 * [x] aggr query
+
+<!--more-->
 
 # diffs in es 2.x and es 5.x
 

@@ -13,6 +13,7 @@ tags:
 <!--more-->
 
 ### install
+
 ```bash
 # Install
 npm install typescript
@@ -51,6 +52,7 @@ tsc --noEmitOnError hello.ts
 ```
 
 ### ts syntax cheatsheet
+
 ```typescript
 
 //-------------------------------- Basic type 

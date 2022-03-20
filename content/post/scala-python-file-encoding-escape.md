@@ -11,12 +11,10 @@ tags:
 ---
 在文件读取的时候,会遇到非法转义字符,导致文件按行读取失败.此时可以通过忽略转义字符来解决.本文记录了scala和python的方法.
 
-<!--more-->
-
 ## 背景
 有50G的服务器日志,拆分为几千个txt文件,编码是utf8,使用scala和python按行处理：
 
-scala
+### scala
 ```scala
 def main(args: Array[String]): Unit = {
   for (line <- Source.fromFile("./txt1.log","UTF8").getLines()) {
@@ -26,7 +24,9 @@ def main(args: Array[String]): Unit = {
   }
 }
 ```
-python
+<!--more-->
+
+### python
 ```python
 with open('./txt1.log','r',encoding='utf-8') as f:
     for line in f:
@@ -49,7 +49,7 @@ java.nio.charset.MalformedInputException: Input length = 1
 ## 方案
 一般遇到这种非法转义字符,可以跳过这个错误,看成raw string来处理.
 
-scala
+### scala
 ```scala
 import java.nio.charset.CodingErrorAction
 import scala.io.{Codec, Source}
@@ -67,7 +67,7 @@ def main(args: Array[String]): Unit = {
   }
 }
 ```
-python
+### python
 ```python
 with open('./txt1.log','r',encoding='utf-8',errors='ignore') as f:
     for line in f:

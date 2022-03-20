@@ -9,10 +9,6 @@ tags:
   - code
 --- 
 
-Java泛型高级部分
-
-<!--more-->
-
 ### 泛型
 
 ```java
@@ -29,6 +25,7 @@ class ArrayAlg {
 
 }
 ```
+<!--more-->
 
 ```java
 String middle = ArrayAlg.<String>getMiddle("]ohnM, "Q.n, "Public");// right,<String>可以省略

@@ -7,11 +7,6 @@ categories:
 tags:
  - code
 ---
-
-scala notes: setup with maven, case class, companion ...
-
-<!--more-->
-
 some notes on scala, includes:
 * [x] setup with maven
 * [x] import
@@ -26,6 +21,7 @@ some notes on scala, includes:
 * [x] implicit 
 * [x] string
 
+<!--more-->
 ## setup with maven
 
 目前用sbt的项目比较少,maven的更多. 而且sbt烧cpu. maven项目使用scala参考我的gist:[scala_maven_pom.xml](https://gist.github.com/zhimoe/db6caeed070bfabe70102e2bace0e5b0)

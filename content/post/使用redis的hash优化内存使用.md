@@ -11,10 +11,10 @@ tags:
 
 使用redis的hash优化内存使用
 
-<!--more-->
-
 # 原文
 [Understanding Redis hash-max-ziplist-entries](https://www.peterbe.com/plog/understanding-redis-hash-max-ziplist-entries)
+
+<!--more-->
 
 # 问题和方案
 场景: 有3亿张图片放在对象存储(DELL ECS/AMAZON EC2)上面,现在需要保存图片的id->用户id的映射.最直接的思路是:

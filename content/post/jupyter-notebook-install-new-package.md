@@ -11,8 +11,6 @@ tags:
 
 如何正确地在notebook中安装lib package
 
-<!--more-->
-
 ### 原文
 [installing new python package from jupyter notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
 
@@ -20,6 +18,9 @@ tags:
 在pycharm写代码中如果使用到新的package,例如`numpy`,只需要输入`import numpy` 然后ALT+ENTER在提示中选择install new package即可.
 
 在notebook中,网上的教程都说是`!pip install numpy`. 但是这个可能有坑.究其原因是因为:
+
+<!--more-->
+
 ```text
 通过bash启动的notebook的python pip conda这几个命令的环境和实际执行notebook代码的python环境可能不是同一个.
 这种情况一般发生在系统有好几个python的情况,例如系统自带python和用户安装的anaconda python.

@@ -10,8 +10,6 @@ tags:
 
 Associated Type and generic diff in rust
 
-<!--more-->
-
 ## type outside impl
 a `type Foo = Bar` outside is just type alias. most used in generic type.
 
@@ -27,6 +25,9 @@ pub trait Iterator {
     fn next(&mut self) -> Option<Self::Item>;
 }
 ```
+
+<!--more-->
+
 这里Iterator的Implementors将会指定Item的具体类型.例如：
 ```rust
 impl Iterator for Counter {
@@ -40,6 +41,7 @@ impl Iterator for Counter {
 
 ## diff in associated type and generic
 直接将上面的`Iterator`声明为如下泛型不是更简单么？
+
 ```rust
 pub trait Iterator<T> { 
     fn next(&mut self) -> Option<T>;
@@ -58,6 +60,7 @@ Use generics if it makes sense to have multiple implementations of a trait for a
 Otherwise, use associated types (like `Iterator` and `Deref`).
 
 假设我们实现一个redis 客户端,那么比较适合使用associated types:
+
 ```rust
 trait RedisCommand{
     type Response;

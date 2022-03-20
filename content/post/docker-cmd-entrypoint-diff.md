@@ -11,8 +11,6 @@ tags:
 
 记录docker中exec form和shell form的区别,CMD和ENTRYPOINT区别,以及最佳实践.
 
-<!--more-->
-
 ## exec form VS shell form
 
 ```text
@@ -22,6 +20,7 @@ tags:
 # shell form
 <instruction> <command>
 ```
+<!--more-->
 
 1. exec form 以JSON格式解析,所以命令参数必须使用`""`双引号包裹;
 2. exec form 不会invoke shell. 所以`CMD [ "echo", "$HOME" ]`中`$HOME`变量不会被替换;
@@ -43,6 +42,7 @@ Docker有默认的 ENTRYPOINT:`/bin/sh -c`,但是没有默认的CMD.但是一般
 所以到此,可以总结: ENTRYPOINT 是容器的执行入口,CMD是参数设置,不过参数也可以是bash中的可执行命令(例如,`CMD ["echo","hello"]`,实际执行` /bin/sh -c "echo hello"`).
 
 ENTRYPOINT和CMD的搭配可以实现将容器作为一个可执行文件启动,这个特性也是我们日常使用docker的主要目的.例如在Dockerfile中设置:
+
 ```Dockerfile
 ENTRYPOINT ["/bin/cat"]
 ```

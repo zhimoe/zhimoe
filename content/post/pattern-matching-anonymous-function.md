@@ -8,11 +8,9 @@ tags:
  - code
  - scala
 ---
-Scala中模式匹配匿名函数
-
-<!--more--> 
 
 Scala中很多使用if的地方都可以用match case来替换.常见的就是下面的这种写法:
+
 ```scala
 val res = msg match {
 	case it if it.contains("H") => "Hello"
@@ -28,13 +26,17 @@ def message(player: Player) = player match {
 }
 def printMessage(player: Player) = println(message(player))
 ```
+<!--more--> 
+
 其实case还有一种在匿名函数中的用法,看如下的代码,在词频统计或者过滤中很常见:
+
 ```scala
 val wordFrequencies = ("habitual", 6) :: ("and", 56) :: ("consuetudinary", 2)  :: Nil
 def wordsWithoutOutliers(wordFrequencies: Seq[(String, Int)]): Seq[String] =
   wordFrequencies.filter(wf => wf._2 > 3 && wf._2 < 25).map(_._1)
 ```
 上面的代码有比较大的问题是访问tuple元素的方式比较难看,Scala提供了一种pattern matching anonymous function解决这个问题:
+
 ```scala
 def wordsWithoutOutliers(wordFrequencies: Seq[(String, Int)]): Seq[String] =
  wordFrequencies.filter { case (_, f) => f > 3 && f < 25 } map { case (w, _) => w }

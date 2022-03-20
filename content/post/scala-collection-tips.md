@@ -10,12 +10,12 @@ tags:
 ---
 scala collection 提供了一整套独立于Java的高性能集合,使用上非常灵活,所以需要清楚一些常用的方法:
 
-<!--more-->
-
 * [x] reduce fold scan
 * [x] 集合的符号方法
 * [x] 数组,tuple
 * [x] 2.13的集合架构
+
+<!--more-->
 
 ## reduce fold scan
 ```scala

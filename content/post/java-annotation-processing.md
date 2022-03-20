@@ -16,6 +16,8 @@ tags:
 本文根据以下资料并进行部分修改：
 [JavaAnnotationProcessing](http://www.angelikalanger.com/Conferences/Slides/JavaAnnotationProcessing-JSpring-2008.pdf)
 
+<!--more-->
+
 ### 基本知识
 
 annotation processing integrated into javac compiler   
@@ -55,9 +57,8 @@ implement a processor class
 
 此外,一个产生java文件的重要方法：
 
-```java
-FileObject sourceFile
-	= processingEnv.getFiler().createSourceFile(beanClassName);
+```text
+FileObject sourceFile = processingEnv.getFiler().createSourceFile(beanClassName);
 
 process() method takes 2 arguments:
 
@@ -68,7 +69,6 @@ Set<? extends TypeElement> annotations
 RoundEnvironment roundenv  
 – environment for information about the current and prior round  
 – supplies elements annotated with a given annotation or all root elements in the source  
-
 ```
 
 一个自定义的注解处理器格式如下：
@@ -78,7 +78,7 @@ RoundEnvironment roundenv
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 public class PropertyAnnotationProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment env) {
-        process the source file elements using the mirror API
+        // process the source file elements using the mirror API
     }
 }
 
@@ -97,7 +97,7 @@ public class Foo {		    // TypeElement
 }
 
 ```
-TypeElement不能提供父类的信息,如果需要这些信息,需要从Element中得到TypeMirror.TypeMirror::element.asType() 
+TypeElement不能提供父类的信息,如果需要这些信息,需要从Element中得到TypeMirror.TypeMirror::element.asType() 
 
 ### 实例：
 动手写注解处理器：3个类,一个定义注解Comparator.java,一个使用注解的类Name.java,一个处理注解MyProcessor.java.  
@@ -107,7 +107,6 @@ TypeElement不能提供父类的信息,如果需要这些信息,需要从Element
 ！！！注意,这里的内容和连接中资料的已经不一样了,资料里给的process方法并不能产生比较器类.
 
 给出注解定义前看看注解怎么使用：
-
 
 ```java
 // ./Name.java  

@@ -13,14 +13,14 @@ tags:
 
 个人对于编程字体有一点点洁癖.在尝试十几个字体后,终于使用FontForge和fontline.py动手修改制作自己的编程字体:Aurulent和 Fira Code
 
-<!--more-->
-
 ### Aurulent
 [字体下载](https://github.com/zhimoe/programming-fonts)
 
 1. 小写字母来自Aurulent Sans Mono,其他基于Fira Code.Aurulent Sans Mono风格和SourceCodePro非常像,胖宽型,大开大合,简单却有具有设计.特别是字符g,a,p,y,s.
 2. 字母r的思路来自[gintronic](https://www.programmingfonts.org/#gintronic). 优点是在低分辨率屏,r的末尾不会被hint只剩下尖尖.
 3. 问号？也来自gintronic字体,非常漂亮.
+
+<!--more-->
 
 ![Aurulent](/font/aurulent.png)
 

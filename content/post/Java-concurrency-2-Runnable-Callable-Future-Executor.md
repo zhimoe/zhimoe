@@ -8,15 +8,13 @@ tags:
   - java
   - code
 --- 
-  
-Java并发编程笔记2
-
-<!--more-->
 
 ### 定义任务的内容  
 
 多线程编程的核心元素就是任务,任务是独立的活动.不依赖其他任务的状态,结果,以及边界效应.  
 定义任务的内容使用Runnable和Callable.
+
+<!--more-->
 
 Runnable 接口表示没有返回的一个过程（procedure）,没有受检异常.  
 Callabe 接口的call方法会返回一个结果,并有可能抛出受检异常.如果要表示没有返回值,可以使用`Callable<Void> `,但是不鼓励使用这个代替Runable,但一个任务内容没有返回值,只是利用副作用时,应该优先使用Runable,使得含义清晰,并且JDK中ScheduledExecutorService也有只能接收Runable的方法.   

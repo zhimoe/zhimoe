@@ -9,16 +9,14 @@ tags:
   - code
 --- 
 
-Java动态代理笔记
-
-<!--more-->
-
 ### 好文
+
 [Java 动态代理机制分析及扩展](http://www.ibm.com/developerworks/cn/java/j-lo-proxy1/)
 
 更深入的一篇:
 [java设计模式-动态代理模式](http://nemotan.github.io/2015/11/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/)
 
+<!--more-->
 
 ### 优势
 

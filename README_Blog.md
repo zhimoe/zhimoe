@@ -37,3 +37,6 @@ cd ../..
 git add ./themes/next && git commit -m "update submodule theme"
 git push
 ```
+
+## 注意search功能
+如果sidebar的搜索不可用,可能原因是summary中包含特殊字符,导致sitemap.xml解析错误

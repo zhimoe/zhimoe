@@ -8,12 +8,10 @@ tags:
   - java
   - code
 ---
-
-Java并发编程笔记5
+  
+CountDownLatch和CyclicBarrier示例
 
 <!--more-->
-
-#### 好难,看不懂呀！
 
 #### 先自己写一个CountDownLatch的示例：
 CountDownLatch是管理一组线程和一个主线程的先后.主线程wait后就阻塞,直到所有的CountDownLatch调用countDown后主线程接着开始.

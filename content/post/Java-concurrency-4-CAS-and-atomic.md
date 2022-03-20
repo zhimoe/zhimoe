@@ -8,10 +8,6 @@ tags:
   - java
   - code
 --- 
-  
-Java并发编程笔记4
-
-<!--more-->
 
 #### AtomicLong code:
 ```java
@@ -29,6 +25,8 @@ public final long incrementAndGet() {
 }
 
 ```
+<!--more-->
+
 
 #### 基础
 

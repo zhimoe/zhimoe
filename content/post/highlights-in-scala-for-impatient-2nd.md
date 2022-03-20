@@ -7,12 +7,11 @@ categories:
 tags:
  - code
  - scala
+ - scala-for-impatient
 ---
 
 key points in scala-for-impatient 2nd book, best book for java developer to use scala in a rush.
 scala-for-impatient章节摘要, 这本书对于Java开发者快速上手Scala帮助很大.
-
-<!--more-->
 
 ### Functions
 ```text
@@ -27,6 +26,9 @@ scala-for-impatient章节摘要, 这本书对于Java开发者快速上手Scala�
 • Scala has no checked exceptions.
 
 ```
+
+<!--more-->
+
 ### Arrays
 ```text
 • Use an Array if the length is fixed, and an ArrayBuffer if the length can vary.

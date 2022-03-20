@@ -10,18 +10,14 @@ tags:
 --- 
   
 如何在Java中读写文件,这里保留Java6/7版本,但是你永远不应该使用它们,优先使用Path,Files,Paths三个类.
-
-<!--more-->
-
 资料：[Reading and writing text files](http://www.javapractices.com/topic/TopicAction.do?Id=42)
 
 ## Java8最佳实践
+
 不要用File对象,改用Path对象,该对象既表示文件路径,也表示文件文本（应该认为文件也是路径的一部分）,对于以前的File,可以File.toPath()得到一个Path对象.
 Files是一个静态类,操作文件内容.Paths是静态工具类,操作文件路径,例如拼接文件路径,以前要使用平台无关的分隔符表示：File.pathSeparator, File.separator.
-
-例如,构建一个文件对象:
-
-`Path path = Paths.get("~/test/", "foo", "bar", "a.txt");`
+例如,构建一个文件对象:`Path path = Paths.get("~/test/", "foo", "bar", "a.txt");`
+<!--more-->
 
 ## read file to string in java 6/7/8
 ```java

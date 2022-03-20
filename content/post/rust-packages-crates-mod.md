@@ -11,8 +11,6 @@ tags:
 
 初学rust对于项目的package和crate的关系,module和文件的关系有点理不清.做了一点笔记.
 
-<!--more-->
-
 ## packages, crates and modules  
 A Cargo.toml is a package. and must have a package name, like 
 
@@ -20,6 +18,8 @@ A Cargo.toml is a package. and must have a package name, like
 [package]
 name = "actix-web"
 ```
+
+<!--more-->
 
 A package(project) contains one or more crates;
 

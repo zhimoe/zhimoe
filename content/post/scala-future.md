@@ -10,15 +10,13 @@ tags:
 ---
 some notes on scala future, includes:
 
-<!--more-->
-
 * [x] future
 * [x] executor context
 * [x] await future result
 * [x] callback
 * [ ] recover
 
-
+<!--more-->
 
 ## future
 ```scala

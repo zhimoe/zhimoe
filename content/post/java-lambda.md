@@ -10,10 +10,6 @@ tags:
  - lambda
 ---
 
-Java 8 Lambda笔记: 解决的问题,lambda表达式,函数式接口与@FunctionalInterface,以及方法引用.
-
-<!--more-->
-
 ### 问题
 Java是OOP语言,使用对象封装.由于函数不是一等公民,无法在方法中传递函数/方法. 在Java 8之前,使用匿名类表示行为：
 ```java
@@ -29,6 +25,8 @@ button.addActionListener(new ActionListener(){
 });
 
 ```
+<!--more-->
+
 上面的代码主要的问题在于`addActionListener`方法期望的是一个行为,为了描述这个行为（代码即数据的概念）,在Java中不得不传入一个对象. 除了代码冗余,还存在下面问题
 1. 业务逻辑淹没在匿名类语法中,就像Go语言的`if err != nil`一样
 2. 匿名类中的 this 和变量名容易使人产生误解
