@@ -12,7 +12,7 @@ HasCJKLanguage = true
 PreserveTaxonomyNames = false
 UglyUrls = false
 # 代码配色
-PygmentsStyle = "default"
+PygmentsStyle = "xcode"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 DefaultContentLanguage = "zh"
