@@ -5,17 +5,17 @@
   Weight = 1
 [[Main]]
   Name = "归档"
-  Pre = "archive"
+  Pre = "tags"
   URL = "/post/"
   Weight = 2
 [[Main]]
   Name = "编程"
-  Pre = "code"
+  Pre = "wpexplorer"
   URL = "/categories/编程/"
   Weight = 3
 [[Main]]
   Name = "翻译"
-  Pre = "pencil"
+  Pre = "language"
   URL = "/categories/翻译/"
   Weight = 4
 [[Main]]
@@ -25,6 +25,6 @@
   Weight = 5
 [[Main]]
   Name = "关于"
-  Pre = "user"
+  Pre = "grav"
   URL = "/about/"
   Weight = 99 
