@@ -1,0 +1,30 @@
+[[Main]]
+  Name = "首页"
+  Pre = "home"
+  URL = "/"
+  Weight = 1
+[[Main]]
+  Name = "归档"
+  Pre = "archive"
+  URL = "/post/"
+  Weight = 2
+[[Main]]
+  Name = "编程"
+  Pre = "code"
+  URL = "/categories/编程/"
+  Weight = 3
+[[Main]]
+  Name = "翻译"
+  Pre = "pencil"
+  URL = "/categories/翻译/"
+  Weight = 4
+[[Main]]
+  Name = "项目"
+  Pre = "bathtub"
+  URL = "/categories/项目/"
+  Weight = 5
+[[Main]]
+  Name = "关于"
+  Pre = "user"
+  URL = "/about/"
+  Weight = 99 

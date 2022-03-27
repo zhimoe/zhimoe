@@ -1,0 +1,59 @@
+ArticleDecContent = "本博客文章除特别声明外，均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' target='_blank' style='text-decoration: underline;'>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！"
+
+# 站点标题等信息
+homeSubtitle = "zhimoe"
+AuthorName = "zhimoe"
+Introduce = "the craft of programming"
+Description = "编程是一门手艺"
+Keywords =  "读书,代码,架构,JVM,Java,Scala,Python,Clojure,Rust"
+Subtitle = "the craft of programming"
+Imglogo = "/img/logo.png"
+AuthorImg = "/img/avatar.png"
+DateFormat = "2006-01-02"
+YearFormat = "2006年"
+MonthFormat = "01-02"
+Fancybox = true
+
+[Others]
+  RevolverMapId = "55k6ne41ev6"
+  # BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
+  # googleAnalytics = "" # google站点访问日志，国内不建议开启
+
+[Author]
+  Name = "zhimoe"
+
+# Disqus评论 见themes/next/layout/partials/widgets/comment.html
+[Comment]  
+  Disqus = "zhimoe"
+
+[TagsCloud]
+  Enable = true
+  Limit = 10
+
+# 社交媒体
+[[Socials]]
+  Name = "GitHub"
+  Icon = "github"
+  URL = "https://github.com/zhimoe/"
+
+[[Socials]]
+  Name = "ZhiHu"
+  Icon = "globe"
+  URL = "https://www.zhihu.com/question/21142149/answer/52383396"
+
+# 友情链接
+[[Links]]
+  Name = "Nutz"
+  Permalink = "https://nutzam.com/"
+
+[[Links]]
+  Name = "JFinal"
+  Permalink = "https://jfinal.com/"
+
+[[Links]]
+  Name = "Wendal"
+  Permalink = "http://wendal.net/"
+
+[[Links]]
+  Name = "廖雪峰"
+  Permalink = "https://www.liaoxuefeng.com/"

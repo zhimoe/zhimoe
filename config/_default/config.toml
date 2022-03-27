@@ -1,0 +1,75 @@
+baseURL = "https://zhimoe.github.io"
+title = "zhimoe"
+LanguageCode = "zh" # ?
+DefaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
+Theme =  "next"
+MetaDataFormat =  "yaml" # yaml or toml  post元信息格式
+PaginatePath =  "p"
+Paginate = 5
+DisablePathToLower =  false
+HasCJKLanguage = true
+PreserveTaxonomyNames = false
+UglyUrls = false
+CanonifyUrls =  true
+BuildDrafts =  false
+# 代码配色
+PygmentsStyle = "xcode"
+pygmentsCodefences = true
+pygmentsCodefencesGuessSyntax = true
+
+enableEmoji = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+footnoteReturnLinkContents = "↩"
+# 首页摘要长度单词/字符数,可以使用<!--more-->可以覆盖这个设置,注意more左右不能有空格
+summaryLength = 67
+
+timeout = 100000
+ignoreErrors = ["error-remote-getjson"]
+
+[sitemap]
+  filename = "sitemap.xml"
+  changefreq = "weekly"
+  priority = 0.5
+
+[outputFormats]
+  [outputFormats.SearchIndex]
+    mediaType = "application/xml"
+    baseName = "searchindex"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+  home = ["HTML", "RSS", "SearchIndex"]
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+
+## 让Markdown支持写HTML语法
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
+# This will then update the Lastmod parameter for each page using the last git commit date for that content file
+enableGitInfo = true
+# 图片资源目录,注意,图片地址以/开始表示图片是在static目录下的
+# 如果使用相对地址则编译后是siteUrl/post/md-file-name/image-name,即图片和md必须在同一目录
+staticdir = "static"
+
+# markdown解析引擎blackfriday配置, 
+# extensions :  noEmptyLineBeforeBlock-代码块前面无需空行,hardLineBreak-换行无需使用backslash
+# extensionsmask spaceHeaders-标题之间无需空格
+[blackfriday]
+  angledQuotes = true
+  extensions = ["hardLineBreak","noEmptyLineBeforeBlock"]
+  extensionsmask = ["spaceHeaders"]
+  fractions = false
+  plainIDAnchors = true
