@@ -30,7 +30,7 @@ staticdir = "static"
 # google站点访问日志，国内不建议开启
 #googleAnalytics = ""
 
-# markdown解析引擎blackfriday配置, 
+# markdown解析引擎blackfriday配置,
 # extensions :  noEmptyLineBeforeBlock-代码块前面无需空行,hardLineBreak-换行无需使用backslash
 # extensionsmask spaceHeaders-标题之间无需空格
 [blackfriday]
@@ -62,8 +62,8 @@ staticdir = "static"
 [Params.Share]
   #DuoShuo = "xxx"
   #Baidu = true
-  
-[Params.Comment]  
+
+[Params.Comment]
   Disqus = "zhimoe"
 
 [[Menu.Main]]
@@ -105,4 +105,4 @@ staticdir = "static"
 [[Params.Socials]]
   Name = "ZhiHu"
   Icon = "globe"
-  URL = "https://www.zhihu.com/question/21142149/answer/52383396"  
+  URL = "https://www.zhihu.com/question/21142149/answer/52383396"
