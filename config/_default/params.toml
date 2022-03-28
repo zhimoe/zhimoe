@@ -1,20 +1,22 @@
 ArticleDecContent = "本博客文章除特别声明外，均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' target='_blank' style='text-decoration: underline;'>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！"
 
 # 站点标题等信息
-homeSubtitle = "zhimoe"
-AuthorName = "zhimoe"
-Introduce = "the craft of programming"
+Subtitle = "the craft of programming"
 Description = "编程是一门手艺"
 Keywords =  "读书,代码,架构,JVM,Java,Scala,Python,Clojure,Rust"
-Subtitle = "the craft of programming"
 Imglogo = "/img/logo.png"
+Domain = "https://zhi.moe"
+
+AuthorName = "zhimoe"
+Introduce = "the craft of programming"
 AuthorImg = "/img/avatar.png"
+
 DateFormat = "2006-01-02"
 YearFormat = "2006年"
 MonthFormat = "01-02"
 Fancybox = true
 
-[Others]
+[Statistics]
   RevolverMapId = "55k6ne41ev6"
   # BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
   # googleAnalytics = "" # google站点访问日志，国内不建议开启
@@ -38,7 +40,7 @@ Fancybox = true
 
 [[Socials]]
   Name = "ZhiHu"
-  Icon = "desktop"
+  Icon = "globe"
   URL = "https://www.zhihu.com/question/21142149/answer/52383396"
 
 # 友情链接
