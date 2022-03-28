@@ -38,22 +38,31 @@ Fancybox = true
 
 [[Socials]]
   Name = "ZhiHu"
-  Icon = "globe"
+  Icon = "desktop"
   URL = "https://www.zhihu.com/question/21142149/answer/52383396"
 
 # 友情链接
 [[Links]]
-  Name = "Nutz"
-  Permalink = "https://nutzam.com/"
+    Name = "可视化学习Git"
+    Permalink = "https://learngitbranching.js.org/"
 
 [[Links]]
-  Name = "JFinal"
-  Permalink = "https://jfinal.com/"
+    Name = "美团技术团队"
+    Permalink = "https://tech.meituan.com/"
 
 [[Links]]
-  Name = "Wendal"
-  Permalink = "http://wendal.net/"
+    Name = "艺术绘画"
+    Permalink = "https://gallerix.asia/"
 
 [[Links]]
-  Name = "廖雪峰"
-  Permalink = "https://www.liaoxuefeng.com/"
+    Name = "500px"
+    Permalink = "https://500px.com/"
+
+[[Links]]
+    Name = "RustCheatsheet"
+    Permalink = "https://cheats.rs/"
+
+[[Links]]
+    Name = "谷歌机器学习课程"
+    Permalink = "https://developers.google.com/machine-learning/crash-course/"
+
