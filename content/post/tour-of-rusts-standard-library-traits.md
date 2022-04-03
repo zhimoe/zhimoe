@@ -1,5 +1,5 @@
 ---
-title: "Tour of Rusts Standard Library Traits"
+title: "Tour of Rusts Standard Library Traits[翻译]"
 date: "2021-04-11T21:47:02+08:00"
 toc: true
 categories:
@@ -9,7 +9,6 @@ tags:
  - rust
 ---
 
-[原文Tour of Rust's Standard Library Traits](https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md)
 关于rust trait非常好的介绍,比rust book详细,系统.
 
 <!--more-->
@@ -5192,3 +5191,5 @@ Get notified when the next blog post get published by
 - [Learning Rust in 2020](./learning-rust-in-2020.md)
 - [Learn Assembly with Entirely Too Many Brainfuck Compilers](./too-many-brainfuck-compilers.md)
 
+
+source:[Tour of Rust's Standard Library Traits](https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md)

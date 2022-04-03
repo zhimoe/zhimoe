@@ -11,18 +11,16 @@ tags:
 
 使用redis的hash优化内存使用
 
-# 原文
-[Understanding Redis hash-max-ziplist-entries](https://www.peterbe.com/plog/understanding-redis-hash-max-ziplist-entries)
-
-<!--more-->
-
-# 问题和方案
+### 问题和方案
 场景: 有3亿张图片放在对象存储(DELL ECS/AMAZON EC2)上面,现在需要保存图片的id->用户id的映射.最直接的思路是:
 ```bash
 set "media:1155220" "user1"
 set "media:1155221" "user2"
 ```
 这样设计key之后3亿张图片需要21GB的内存,因为redis的string是线性增长的.
+
+<!--more-->
+
 此时可以使用hash优化内存使用.hash是类似java hashmap的数据结构: key field1 value1 field2 value2 ...
 hash的强大在于它可以只获取一个field的value,而无需返回整个key.
 再仔细想想,hash的key可以类比于分库分表的bucket概念.
@@ -57,6 +55,8 @@ zset-max-ziplist-value 64
 你可以使用`debug_object(key)`查看你的key是否使用了`ziplist`结构.
 建议`hash-max-ziplist-entries`最大设置为1000,过大会影响redis性能.
 
-# 参考资料
+### 参考资料
 [redis moemory optimize](https://redis.io/topics/memory-optimization)
 [9.1.1 The ziplist representation-EBOOK – REDIS IN ACTION](https://redislabs.com/ebook/part-2-core-concepts/01chapter-9-reducing-memory-use/9-1-short-structures/9-1-1-the-ziplist-representation/)
+
+source:[Understanding Redis hash-max-ziplist-entries](https://www.peterbe.com/plog/understanding-redis-hash-max-ziplist-entries)

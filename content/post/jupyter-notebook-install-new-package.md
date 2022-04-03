@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook Install New Package"
+title: "Jupyter Notebook Install New Package[翻译]"
 date: "2018-11-01T19:04:32+08:00"
 toc: true
 categories:
@@ -9,12 +9,7 @@ tags:
  - python
 ---
 
-如何正确地在notebook中安装lib package
-
-### 原文
-[installing new python package from jupyter notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
-
-### 笔记
+### notes
 在pycharm写代码中如果使用到新的package,例如`numpy`,只需要输入`import numpy` 然后ALT+ENTER在提示中选择install new package即可.
 
 在notebook中,网上的教程都说是`!pip install numpy`. 但是这个可能有坑.究其原因是因为:
@@ -42,3 +37,5 @@ os: 操作系统的抽象.
 
 sys: 代码和python解释器交互的接口.提供一系列函数来访问修改python解释器环境设置.
 ```
+
+source:[installing new python package from jupyter notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
