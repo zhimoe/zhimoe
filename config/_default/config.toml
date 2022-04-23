@@ -1,19 +1,18 @@
 baseURL = "https://zhimoe.github.io"
 title = "zhimoe"
-LanguageCode = "zh" # ?
-DefaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
-Theme =  "next"
-MetaDataFormat =  "yaml" # yaml or toml  post元信息格式
-PaginatePath =  "p"
-Paginate = 5
-DisablePathToLower =  false
-HasCJKLanguage = true
-PreserveTaxonomyNames = false
-UglyUrls = false
-CanonifyUrls =  true
-BuildDrafts =  false
+languageCode = "zh" # ?
+defaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
+theme =  "next"
+metaDataFormat =  "yaml" # yaml or toml  post元信息格式
+paginatePath =  "p"
+paginate = 5
+disablePathToLower =  false
+preserveTaxonomyNames = false
+uglyUrls = false
+canonifyUrls =  true
+buildDrafts =  false
 # 代码配色
-PygmentsStyle = "xcode"
+pygmentsStyle = "xcode"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 
