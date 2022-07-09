@@ -70,8 +70,21 @@ zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
 ```
 可以看到此时HEAD和master分支还是分离的。
 
+### 真实场景复现
+上面复现的方式很刻意，毕竟极少情况你会checkout一个具体的commit而不手动创建一个分支。日常工作中最可能遇到这个detached HEAD的场景是你使用`Git submodule`的时候。
+敢说每个新手在使用submodule都会碰到detached HEAD问题。
+原因是你的submodule没有记录正确的分支，即你在使用`git submodule add`时没有指定`-b <branch>`参数。
+```shell
+git submodule add -b main https://github.com/zhimoe/hugo-theme-next.git themes/next
+```
+或者直接在项目根目录下的`.gitmodules`文件中加上一行
+```text
+branch = main
+# or branch = master
+```
+
 ### 解决方法
-1. 预防的方法就是没有commit的时候即使切回一个具体分支`git checkout master`
+1. 预防的方法就是没有commit的时候及时切回一个具体分支`git checkout master`
 2. 如果已经提交了的话，给当前游离的commit创建一个分支，切换到该分支
 2.1 
 ```shell
