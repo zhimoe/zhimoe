@@ -7,8 +7,6 @@ personal home page, all about programming and code.
 ```bash
 # git clone
 git clone 
-# add theme 
-git submodule add https://github.com/zhimoe/hugo-theme-next.git themes/next
 # update theme
 git submodule update --init --recursive
 # install hugo on local 

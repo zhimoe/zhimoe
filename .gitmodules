@@ -1,3 +1,4 @@
 [submodule "themes/next"]
 	path = themes/next
 	url = https://github.com/zhimoe/hugo-theme-next.git
+    branch = main
