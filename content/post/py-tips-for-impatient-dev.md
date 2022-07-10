@@ -203,19 +203,19 @@ choice(deck)
 更多查看<fluent python 2nd>.
 
 ## 其他
-### 使用help(),dir()获取信息
-### python中的每个函数都有__code__属性,包含字节码信息
-### 使用dis模块的dis函数可以查看更容易阅读的汇编(dis == disassembler)
-### sys.getsizeof(x)获取对象大小
-### `...`和`pass`几乎等效的,这是一个ellipsis type的单例.
-### 无限大 float('inf') float('-inf')
-### dis查看字节码
-### ==会被__eq__方法改变,判断是否None时应该使用is判断id是否一致
-### python的try可以配合else：当没有任何异常或者try里面没有return break,才执行else部分。这个和finally有很重要的不同
-### with需要实现__enter__ __exit__两个方法
-### with语句可以同时打开多个文件,不要嵌套with,更多功能查看`contextlib`
-### 不要手动做数据校验,使用pydantic
-### 不要使用assert校验参数合法性,因为可以通过-O参数跳过
+- 使用help(),dir()获取信息
+- python中的每个函数都有__code__属性,包含字节码信息
+- 使用dis模块的dis函数可以查看更容易阅读的汇编(dis == disassembler)
+- sys.getsizeof(x)获取对象大小
+- `...`和`pass`几乎等效的,这是一个ellipsis type的单例.
+- 无限大 float('inf') float('-inf')
+- dis查看字节码
+- ==会被__eq__方法改变,判断是否None时应该使用is判断id是否一致
+- python的try可以配合else：当没有任何异常或者try里面没有return break,才执行else部分。这个和finally有很重要的不同
+- with需要实现__enter__ __exit__两个方法
+- with语句可以同时打开多个文件,不要嵌套with,更多功能查看`contextlib`
+- 不要手动做数据校验,使用pydantic
+- 不要使用assert校验参数合法性,因为可以通过-O参数跳过
 
 ## 参考资料
 [Python 工匠系列](https://github.com/piglei/one-python-craftsman)

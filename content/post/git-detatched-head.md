@@ -1,6 +1,6 @@
 ---
 title: "Git 的detatched Head模式和解决问题方法"
-date: "2021-03-09T15:49:09+08:00"
+date: "2022-03-09T15:49:09+08:00"
 toc: true
 categories:
  - "编程"
@@ -18,7 +18,9 @@ To push the history leading to the current (detached HEAD)
 <!--more-->
 
 ### 复现问题
-1. 假设你当前在master分支，且有两次提交
+1. 假设你当前在master分支，且有两次提交。
+
+
 ```shell
 zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
 * 180d098 (HEAD -> master) 2nd commit
@@ -50,6 +52,7 @@ HEAD is now at ec6a47e start
 ```
 git直接会提示你当前HEAD已经detached。这是因为当HEAD离开当前分支（master）的末端commit时，Git会默认你想要离开当前分支，但是Git不会自动创建一个新分支（因为没有提供分支名称）。
 所以HEAD变成没有指向任何分支的窘境，即使你再次回到刚才那个分支的末端commit，还是处于detached状态。
+
 3. 切回master分支的末端commit并提交新内容
 ```shell
 zhimoe@home:~/code/gittest$ git checkout 180d
@@ -85,8 +88,8 @@ branch = main
 
 ### 解决方法
 1. 预防的方法就是没有commit的时候及时切回一个具体分支`git checkout master`
-2. 如果已经提交了的话，给当前游离的commit创建一个分支，切换到该分支
-2.1 
+
+2.1 如果已经提交了的话，给当前游离的commit创建一个分支，切换到该分支
 ```shell
 zhimoe@home:~/code/gittest$ git branch oops fca1add 
 
@@ -133,5 +136,5 @@ zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
 ```
 最后删除oops分支：`git branch -d oops`.
 
-参考
-[一个完美的GitFlow模型](http://matrixzk.github.io/blog/20141104/git-flow-model/)
+
+补充阅读[一个完美的GitFlow模型](http://matrixzk.github.io/blog/20141104/git-flow-model/)
