@@ -30,7 +30,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.69.2'
+          hugo-version: '0.101.0'
 
       # Step 3 - Clean and don't fail
       - name: Clean public directory
