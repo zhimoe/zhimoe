@@ -9,4 +9,4 @@ Most time I write [user stories](https://www.atlassian.com/agile/project-managem
 
 I make [programming fonts](https://github.com/zhimoe/programming-fonts), and I'm proud of the `Aurulent` font, try it!
 
-checkout my [resume](../resume)
+<!-- checkout my [resume](../resume) -->
