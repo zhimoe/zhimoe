@@ -4,9 +4,10 @@ date: "2022-03-09T15:49:09+08:00"
 toc: true
 categories:
 - "编程"
-  tags:
+tags:
 - code
 - git
+
 ---
 
 有时候commit完代码后`git push`会遇到下面的错误

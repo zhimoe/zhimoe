@@ -23,8 +23,8 @@ tags:
 1. 以管理员身份打开 PowerShell（“开始”菜单 >“PowerShell” >单击右键 >“以管理员身份运行”）, 然后输入以下命令:
  `dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart`;
 2. 安装 "适用于 x64 计算机的 WSL2 Linux 内核更新包";
-3. 将WSL设置默认version 2, in powershell: `wsl --set-default-version 2`;
-4. 安装Ubuntu, in powershell: `wsl --install -d Ubuntu-22.04`;
+3. 将WSL设置默认version 2, in PowerShell: `wsl --set-default-version 2`;
+4. 安装Ubuntu, in PowerShell: `wsl --install -d Ubuntu-22.04`;
 
 [更多参考](https://learn.microsoft.com/zh-cn/windows/wsl/install) .  
 
@@ -40,7 +40,6 @@ sudo apt update && sudo apt upgrade -y
 安装配置ssh服务
 ```sh
 sudo apt install openssh-server
-
 sudo vim /etc/ssh/sshd_config
 # 修改下面几个配置
 # Port 2222
@@ -64,8 +63,8 @@ sudo /usr/sbin/service ssh start
 - 点击端口,特定端口设置2222
 - 然后命名之后一路下一步就行
 
-或者通过shell设置防火墙端口,以管理员身份打开 PowerShell:
-```powershell
+或者通过shell设置,以管理员身份打开 PowerShell:
+```PowerShell
 New-NetFirewallRule -Name sshd -DisplayName 'sshd for WSL' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 2222
 ```
 
@@ -78,7 +77,7 @@ ssh -p 2222 wsluser@localhost
 如果连接上说明ssh配置已经完成. 
 
 ### 5 Ubuntu ssh服务开机自动启动
-WSL2的Ubuntu ssh不是跟着Win10开机自动启动的. 在Win10的`%USERPROFILE%`目录下面新建文件`sshd.bat`
+WSL2 Ubuntu 的ssh服务不是跟着Win10开机自动启动的. 在Win10的`%USERPROFILE%`目录下面新建文件`sshd.bat`
 ```
 rem sshd.bat
 @echo off
@@ -96,6 +95,7 @@ endlocal
 - 常规:设置任务名字“Start WSL SSH”, 勾选上“使用最高权限运行”（这是给后面网卡映射命令的权限）
 - 触发器: 新建, 选择“启动时”
 - 操作: 选择上面的sshd.bat脚本文件. 
+
 保存, 重启电脑, 打开Terminal, 重新试试`ssh -p 2222 wsluser@localhost`
 
 ### 5 网卡映射
@@ -103,9 +103,10 @@ endlocal
 
 > WSL 2 is a well-hidden virtual machine, but it is still a virtual machine—and the consequences of this design are leaky. The network interface we see within WSL is a virtual interface that does not match the physical interface that Windows manages. Windows does a good job at hiding this fact when operating directly on the local machine (e.g. you can SSH into WSL from localhost and it will work), but attempts to reach WSL from a separate machine will fail.
 
+
 设置开机自动执行网卡映射命令, 将上面的sshd.bat文件改成如下:
 ```bat
-rem ssh.bat
+rem sshd.bat
 @echo off
 setlocal
 
