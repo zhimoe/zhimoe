@@ -10,6 +10,7 @@ tags:
 ---
 
 ## merge two map and sum its values
+
 多个map合并,key相同时则value相加
 
 ```scala
@@ -20,7 +21,6 @@ val map3 = Map(1 -> 111, 3 -> 3)
 val mapList = List(map1, map2, map3)
 
 val merged = mapList.reduce((m1, m2) =>
-
   m1 ++ m2.map { case (k, v) => k -> (v + m1.getOrElse(k, 0)) }
 )
 ```
@@ -33,7 +33,7 @@ val merged = mapList.reduce((m1, m2) =>
 // """"""可以避免\\符号
 val file = """d:\data\file.txt"""
 for (line <- Source.fromFile(file, encoding).getLines()) {
-          print(line)
+    print(line)
 }
 ```
 

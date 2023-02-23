@@ -122,13 +122,14 @@ Gradle的脚本是配置脚本,当脚本执行时,它是在配置某一个特殊
 
 关于groovy closure 的委托有三个重要属性
 
-
 ```
 • this: refers to the instance of the class that the closure was defined in.
-• owner: is the same as this, unless the closure was defined inside another closure in which case the owner refers to the outer closure.
+• owner: is the same as this, unless the closure was defined inside another closure in which case the owner refers to the outer closure.
 • delegate: is the same as owner. But, it is the only one that can be programmatically changed, and it is the one that makes Groovy closures really powerful.
 
-the closure itself will be checked first, followed by the closure's this scope, than the closure's owner, then its delegate. However, Groovy is so flexible this strategy can be changed. Every closure has a property called resolvedStrategy. This can be set to:
+the closure itself will be checked first, followed by the closure's this scope, then the closure's owner, then its delegate. 
+However, Groovy is so flexible this strategy can be changed. 
+Every closure has a property called resolvedStrategy. This can be set to:
 	• Closure.OWNER_FIRST
 	• Closure.DELEGATE_FIRST
 	• Closure.OWNER_ONLY
@@ -139,7 +140,7 @@ the closure itself will be checked first, followed by the closure's this scope
 ```
 
 gradle是dsl解析工具,是对groovy语法的扩展,build.gradle可以理解为就是一个.groovy文件,gradle会解析这个文件,发现里面的closure,并将这些closure委托给一个对象去执行.
-gradle将groovy的委托机制发挥到极致,要理解gradle内部,就要理解closure的委托！！
+gradle将groovy的委托机制发挥到极致,要理解gradle内部,就要理解closure的委托！
 
 ### closure作为参数传递
 
@@ -219,7 +220,7 @@ publishing { }	Configures the PublishingExtension added by the publishing plugin
 可以看到,Project对象的方法是有限而且通用的.真正有用的是插件,gradle的很多功能也是通过官方写的插件提供的.
 如果你看到一个顶级层的`something { ... }`block,但是在Project源码中没有找到something block的任何信息.那么这个方法就是通过插件提供的.gradle自带很多插件,像java,eclipse,groovy,android等.
 看一个实际的例子:
-在andoird开发中的构建脚本:
+在android开发中的构建脚本:
 
 
 ```groovy

@@ -47,11 +47,11 @@ pub trait Iterator<T> {
     fn next(&mut self) -> Option<T>;
 }
 //  with generice, you can set default type:
-/// trait Generic<T = String>
+/// trait Iterator<T = String>
 ///    where T: Display,
 
 ```
-主要的区别就是generic可是有任意多个实现,因为`Add<Foo>`和`Add<Bar>`是两个不同的类型.
+主要的区别就是generic可是有任意多个实现,因为`Iterator<Foo>`和`Iterator<Bar>`是两个不同的类型.
 而associated type只能有一个实现,因为`Iterator`只有一个类型,所以associated type可以用于限制类型.
 
 ## when use 
