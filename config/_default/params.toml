@@ -17,10 +17,11 @@ MonthFormat = "01-02"
 Fancybox = true
 
 [Statistics]
-  # RevolverMapId = "55k6ne41ev6"
-  # BusuanziCounter = ""
-  # CNNZSiteId = ""
-  # BaiduStatsId = "0b07433b4ab8d587dae7d34e71973839"
+#    RevolverMapId = ""
+#    BusuanziCounter = ""
+#    CNNZSiteId = ""
+#    BaiduStatsId = ""
+#    RevolverMapId = "55k6ne41ev6"
     GoogleAnalytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
 
 [Author]
