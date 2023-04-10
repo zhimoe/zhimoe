@@ -1,5 +1,5 @@
 ---
-title: "Git 的detatched Head模式和解决问题方法"
+title: "Git 的 detatched Head模式和解决问题方法"
 date: "2022-03-09T15:49:09+08:00"
 toc: true
 categories:
@@ -26,7 +26,7 @@ Prj on  master
 * 314c9df (HEAD -> master) 2nd commit
 * ae15845 initial commit
 ```
-2、切回到`ec6a47e`这次提交
+2、切回到第一次提交
 ```shell
 Prj on  master
 ❯ git checkout ae15845
@@ -51,6 +51,7 @@ HEAD is now at ae15845 initial commit
 ```
 git直接会提示你当前HEAD已经detached。这是因为当HEAD离开当前分支（master）的末端commit时，Git会默认你想要离开当前分支，但是Git不会自动创建一个新分支（因为没有提供分支名称）。
 所以HEAD变成没有指向任何分支的窘境，即使你再次回到刚才那个分支的末端commit，还是处于detached状态。
+
 3、切回master分支的末端commit并提交新内容
 ```shell
 Prj (ae15845) # 注意 zsh配置这里展示的是当前HEAD，下面也给了提示
