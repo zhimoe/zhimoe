@@ -17,19 +17,18 @@ MonthFormat = "01-02"
 Fancybox = true
 
 [Statistics]
-#    RevolverMapId = ""
-#    BusuanziCounter = ""
-#    CNNZSiteId = ""
-#    BaiduStatsId = ""
-#    RevolverMapId = "55k6ne41ev6"
-    GoogleAnalytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
+#    busuanzi_counter = ""
+#    cnnz_site_id = ""
+#    revolver_map_id = "55k6ne41ev6"
+    google_analytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
+    cloudflare_worker = "pageview.zhimoe"
 
 [Author]
   Name = "zhimoe"
 
-# Disqus评论 见themes/next/layout/partials/widgets/comment.html
+# disqus评论 见themes/next/layout/partials/widgets/comment.html
 [Comment]
-  Disqus = "zhimoe"
+  disqus = "zhimoe"
 
 [TagsCloud]
   Enable = true
@@ -52,16 +51,8 @@ Fancybox = true
     Permalink = "https://learngitbranching.js.org/"
 
 [[Links]]
-    Name = "美团技术团队"
-    Permalink = "https://tech.meituan.com/"
-
-[[Links]]
     Name = "艺术绘画"
     Permalink = "https://gallerix.asia/"
-
-[[Links]]
-    Name = "500px"
-    Permalink = "https://500px.com/"
 
 [[Links]]
     Name = "RustCheatsheet"
