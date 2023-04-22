@@ -1,5 +1,5 @@
 ---
-title: "Git 的detatched Head模式和解决问题方法"
+title: "Git 的 detatched Head模式和解决问题方法"
 date: "2022-03-09T15:49:09+08:00"
 toc: true
 categories:
@@ -21,15 +21,16 @@ To push the history leading to the current (detached HEAD)
 ### 复现问题
 1、假设你当前在master分支，且有两次提交
 ```shell
-zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
-* 180d098 (HEAD -> master) 2nd commit
-* ec6a47e start
-
+Prj on  master
+❯ git log --oneline --graph --decorate
+* 314c9df (HEAD -> master) 2nd commit
+* ae15845 initial commit
 ```
-2、切回到`ec6a47e`这次提交
+2、切回到第一次提交
 ```shell
-zhimoe@home:~/code/gittest$ git checkout ec6a
-Note: switching to 'ec6a'.
+Prj on  master
+❯ git checkout ae15845
+Note: switching to 'ae15845'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
@@ -46,27 +47,33 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at ec6a47e start
-
+HEAD is now at ae15845 initial commit
 ```
 git直接会提示你当前HEAD已经detached。这是因为当HEAD离开当前分支（master）的末端commit时，Git会默认你想要离开当前分支，但是Git不会自动创建一个新分支（因为没有提供分支名称）。
 所以HEAD变成没有指向任何分支的窘境，即使你再次回到刚才那个分支的末端commit，还是处于detached状态。
+
 3、切回master分支的末端commit并提交新内容
 ```shell
-zhimoe@home:~/code/gittest$ git checkout 180d
-Previous HEAD position was ec6a47e start
-HEAD is now at 180d098 2nd commit
+Prj (ae15845) # 注意 zsh配置这里展示的是当前HEAD，下面也给了提示
+❯ git checkout 314c9df
+Previous HEAD position was ae15845 initial commit
+HEAD is now at 314c9df 2nd commit
 
-zhimoe@home:~/code/gittest$ echo "3nd file " > 3.txt
-zhimoe@home:~/code/gittest$ git add . && git commit -m "3nd commit"
-[detached HEAD fca1add] 3nd commit
+# 提交点新东西
+Prj (314c9df)
+❯  echo "3nd file " > 3.txt
+
+Prj (314c9df) [?]
+❯ git add . && git commit -m "3nd commit"
+[detached HEAD 09fb4a5] 3nd commit
  1 file changed, 1 insertion(+)
  create mode 100644 3.txt
- 
-zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
-* fca1add (HEAD) 3nd commit
-* 180d098 (master) 2nd commit
-* ec6a47e start
+
+Prj (09fb4a5)
+❯ git log --oneline --graph --decorate
+* 09fb4a5 (HEAD) 3nd commit
+* 314c9df (master) 2nd commit
+* ae15845 initial commit
 
 ```
 可以看到此时HEAD和master分支还是分离的。
@@ -79,9 +86,7 @@ zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
 ```shell
 git submodule add -b main https://github.com/zhimoe/hugo-theme-next.git themes/next
 ```
-
 或者直接在项目根目录下的`.gitmodules`文件中加上一行
-
 ```text
 branch = main
 # or branch = master
@@ -94,52 +99,48 @@ branch = main
 2.1、 如果已经提交了的话，给当前游离的commit创建一个分支，切换到该分支
 
 ```shell
-zhimoe@home:~/code/gittest$ git branch oops fca1add 
+Prj (09fb4a5)
+❯ git branch oops 09fb4a5
 
-zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
-* fca1add (HEAD, oops) 3nd commit
-* 180d098 (master) 2nd commit
-* ec6a47e start
+Prj (09fb4a5)
+❯  git log --oneline --graph --decorate
+* 09fb4a5 (HEAD, oops) 3nd commit
+* 314c9df (master) 2nd commit
+* ae15845 initial commit
 
-zhimoe@home:~/code/gittest$ git checkout oops
+Prj (09fb4a5)
+❯ git checkout oops
 Switched to branch 'oops'
-
-zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
-* fca1add (HEAD -> oops) 3nd commit
-* 180d098 (master) 2nd commit
-* ec6a47e start
 
 ```
 
 2.2、 接着使用rebase将oops分支接在master分支的末尾commit之后
 ```shell
-zhimoe@home:~/code/gittest$ git rebase master
+Prj on  oops
+❯ git rebase master
 Current branch oops is up to date.
 
-zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
-* fca1add (HEAD -> oops) 3nd commit
-* 180d098 (master) 2nd commit
-* ec6a47e start
-# 看上去没有变化 回到master分支将oops内容merge进来
+Prj on  oops
+❯ git log --oneline --graph --decorate
+* 09fb4a5 (HEAD -> oops) 3nd commit
+* 314c9df (master) 2nd commit
+* ae15845 initial commit
 
-zhimoe@home:~/code/gittest$ git checkout master
+Prj on  oops
+❯ git checkout master && git merge oops
 Switched to branch 'master'
-
-zhimoe@home:~/code/gittest$ git merge oops
-Updating 180d098..fca1add
+Updating 314c9df..09fb4a5
 Fast-forward
  3.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 3.txt
- 
-zhimoe@home:~/code/gittest$ git log --oneline --graph --decorate
-* fca1add (HEAD -> master, oops) 3nd commit
-* 180d098 2nd commit
-* ec6a47e start
 
+Prj on  master
+❯ git log --oneline --graph --decorate
+* 09fb4a5 (HEAD -> master, oops) 3nd commit
+* 314c9df 2nd commit
+* ae15845 initial commit
 ```
 最后删除oops分支：`git branch -d oops`.
 
-
 参考[一个完美的GitFlow模型](http://matrixzk.github.io/blog/20141104/git-flow-model/)
-1、假设你当前在master分支，且有两次提交
