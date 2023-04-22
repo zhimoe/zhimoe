@@ -1,9 +1,9 @@
 ArticleDecContent = "本博客文章除特别声明外，均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' target='_blank' style='text-decoration: underline;'>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！"
 
 # 站点标题等信息
-Subtitle = "the craft of programming"
+Subtitle = "Captain your own Ship."
 Description = "编程是一门手艺"
-Keywords =  "读书,代码,架构,JVM,Java,Scala,Python,Clojure,Rust"
+Keywords =  "读书,代码,架构,JVM,Java,Kotlin,Python,Rust"
 Imglogo = "/img/logo.png"
 Domain = "https://zhi.moe"
 
@@ -51,7 +51,7 @@ Fancybox = true
     Permalink = "https://learngitbranching.js.org/"
 
 [[Links]]
-    Name = "艺术绘画"
+    Name = "艺术绘画博物馆"
     Permalink = "https://gallerix.asia/"
 
 [[Links]]
