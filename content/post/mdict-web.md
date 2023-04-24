@@ -3,7 +3,7 @@ title: '基于MDX的web词典'
 date: 2020-07-01
 toc: true
 categories:
- - "项目"
+ - "随想"
 tags: 
   - python
   - rust
