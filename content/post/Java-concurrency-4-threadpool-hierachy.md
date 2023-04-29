@@ -1,16 +1,16 @@
 ---
-title: "Java Thread Pool Hierachy"
+title: "Java Thread Pool Hierarchy"
 date: "2018-06-13T09:57:52+08:00"
 toc: true 
 categories:
   - "编程"
 tags:
-  - code
+  - 并发
   - java
-  - threadpool
+  - thread-pool
 ---
 
-### thread pool classes hierachy
+### thread pool classes hierarchy
 
 ```text
 java thread pool class hierarchy
@@ -31,9 +31,9 @@ Executor (java.util.concurrent)
 ### three thread pool interfaces
 
 `Executor`, a simple interface that supports launching new tasks.
-`ExecutorService`, a subinterface of Executor, which adds features that help manage the life cycle, both of the
+`ExecutorService`, a sub-interface of Executor, which adds features that help manage the life cycle, both of the
 individual tasks and of the executor itself.
-`ScheduledExecutorService`, a subinterface of ExecutorService, supports future and/or periodic execution of tasks.
+`ScheduledExecutorService`, a sub-interface of ExecutorService, supports future and/or periodic execution of tasks.
 
 ### common thread pool implements
 
@@ -73,9 +73,10 @@ JDK默认的拒绝策略RejectedExecutionHandler有：
  * ThreadPoolExecutor.CallerRunsPolicy - 提交任务的线程自己执行这个任务
  * ThreadPoolExecutor.DiscardPolicy - 抛弃这个任务
  * ThreadPoolExecutor.DiscardOldestPolicy - 抛弃任务队列中最早提交上来的任务,然后尝试重新提交当前这个任务
-  */
+ */
 
 ```
+
 ### 任务提交执行流程
 ![任务提交执行流程](/javathreadpool/threadpool.svg)
 
