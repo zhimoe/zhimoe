@@ -1,12 +1,11 @@
 ---
-title: 'Java多线程-线程与任务'
+title: 'Javac-线程与任务'
 date: 2016-01-01
 toc: true
 categories:
  - "编程"
 tags: 
   - java
-  - code
   - 并发
 --- 
 

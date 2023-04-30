@@ -1,12 +1,11 @@
 ---
-title: 'Java并发编程-ThreadLocal'
+title: 'Java并发3-ThreadLocal'
 date: 2016-01-01
 toc: true
 categories:
  - "编程"
 tags: 
   - java
-  - code
   - 并发
 --- 
 

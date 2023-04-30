@@ -1,12 +1,11 @@
 ---
-title: 'Java并发编程-同步与锁'
+title: 'Java并发2-同步与锁'
 date: 2016-01-01
 toc: true
 categories:
  - "编程"
 tags: 
   - java
-  - code
   - 并发
 --- 
 
