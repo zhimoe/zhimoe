@@ -116,7 +116,7 @@ suspend函数是协程中的任务描述部分, suspend关键字只是一个语�
 ### coroutine builder
 利用suspend fun只能描述任务/函数, 还需要使用coroutine builder来创建协程. 
 `launch`函数会创建一个协程返回一个`Job`不包含协程结果信息. `async`函数也创建一个协程返回`Deferred`-类似Future包含协程的未来计算结果. 可以通过`Deferred`对象的await方法获取结果值. 
-所有的coroutine builder都是`CoroutineScope`的扩展函数. 
+所有的coroutine builder都是`CoroutineScope`的扩展函数, 因为任何协程的生命周期都由对应的`CoroutineScope`对象管理。后面会看到有些方法会默认创建`CoroutineScope`对象。
 
 ```kotlin
 val time = measureTimeMillis {
@@ -133,9 +133,9 @@ val time = measureTimeMillis {
     val one = async(start = CoroutineStart.LAZY) { doSomethingUsefulOne() }
     val two = async(start = CoroutineStart.LAZY) { doSomethingUsefulTwo() }
 
-    one.start() 
+    one.start() // 不会阻塞，直接下一行执行
     two.start() 
-    println("The answer is ${one.await() + two.await()}") //注意, 如果没有上面两个start的话, 那么两个await会让两个协程顺序执行而不是异步
+    println("The answer is ${one.await() + two.await()}") //注意, 如果没有上面两个start的话, 那么这两个await是先后调用，导致两个协程顺序执行而不是异步
 }
 println("Completed in $time ms")
 ```
@@ -153,7 +153,7 @@ fun main() = runBlocking<Unit> {
     }
 }
 
-suspend fun failedConcurrentSum(): Int = coroutineScope { //coroutineScope 创建一个新的scope 
+suspend fun failedConcurrentSum(): Int = coroutineScope { //coroutineScope函数创建一个新的scope 
     val one = async<Int> { 
         try {
             delay(Long.MAX_VALUE) // Emulates very long computation
@@ -172,8 +172,7 @@ suspend fun failedConcurrentSum(): Int = coroutineScope { //coroutineScope 创�
 结构化并发是kotlin协程的核心优势之一, 只有在你遇到复杂的场景时才能感受到结构化并发的威力与优雅. 
 
 ### Dispatcher
-CoroutineDispatcher用来决定哪个（或几个）线程来运行该协程, 可以将协程的执行限制在一个线程或者某个线程池, 或者不限制. 
-自带的几个dispatcher
+CoroutineDispatcher用来决定哪个（或几个）线程来运行该协程, 可以将协程的执行限制在一个线程或者某个线程池, 或者不限制. 自带的几个dispatcher: 
 `Dispatchers.Main`: A coroutine dispatcher that is confined to the Main thread operating with UI objects. Usually such dispatcher is single-threaded.
 `Dispatchers.Default`: The default CoroutineDispatcher that is used by all standard builders like launch, async, etc. if no dispatcher nor any other ContinuationInterceptor is specified in their context.
 `Dispatchers.IO`: The CoroutineDispatcher that is designed for offloading blocking IO tasks to a shared pool of threads.
