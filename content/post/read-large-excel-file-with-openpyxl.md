@@ -20,9 +20,10 @@ from openpyxl import load_workbook
 wb = load_workbook(filename='large_file.xlsx', read_only=True)
 ws = wb['big_data']
 
-for row in ws.rows:
-    for cell in row:
-        print(cell.value)
+# min_col&max_col: 只处理B列, min_row=2: 从第二行开始, 只读取值
+col_index_B = openpyxl.utils.column_index_from_string('B') 
+for cell_value in ws.iter_rows(min_row=2, min_col=col_index_B, max_col=col_index_B, values_only=True):
+    print(cell_value)
 
 # Close the workbook after reading
 wb.close()
