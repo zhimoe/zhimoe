@@ -12,7 +12,7 @@ uglyUrls = false
 canonifyUrls =  true
 buildDrafts =  false
 # 代码配色
-pygmentsStyle = "vs"
+pygmentsStyle = "xcode"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 
@@ -65,7 +65,7 @@ staticdir = "static"
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      hardWraps = true
+      hardWraps = true #回车换行 无需空行
       unsafe = true
       xhtml = false
 
