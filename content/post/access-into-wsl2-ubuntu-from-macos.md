@@ -98,7 +98,7 @@ endlocal
 
 保存, 重启电脑, 打开Terminal, 重新试试`ssh -p 2222 wsluser@localhost`
 
-### 5 网卡映射
+### 6 网卡映射
 到目前为止, 在Win10本地已经可以在开机后直接通过SSH访问Ubuntu了, 但是你如果在局域网内的其他电脑访问, 还是连不上的. 这是因为WSL2是个虚拟机. 
 
 > WSL 2 is a well-hidden virtual machine, but it is still a virtual machine—and the consequences of this design are leaky. The network interface we see within WSL is a virtual interface that does not match the physical interface that Windows manages. Windows does a good job at hiding this fact when operating directly on the local machine (e.g. you can SSH into WSL from localhost and it will work), but attempts to reach WSL from a separate machine will fail.
