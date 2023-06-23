@@ -1,4 +1,4 @@
-# Workflow to build and deploy site to Github Pages using Hugo
+# Workflow to build and deploy site to GitHub Pages using Hugo
 
 # Name of Workflow
 name: publish github pages
@@ -18,7 +18,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
       # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
       - name: Checkout
         uses: actions/checkout@v3
@@ -30,7 +29,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.111.3'
+          hugo-version: '0.114.1'
 
       # Step 3 - Clean and don't fail
       - name: Clean public directory
@@ -52,8 +51,8 @@ jobs:
 #          github_token: ${{ secrets.GITHUB_TOKEN }}
 #          publish_dir: ./public
 
-      # Step 7 - Push the public folder to {username}.github.io repository gh-pages branch
-      - name: Pushes to another repository
+      # Step 6 - Push the public folder to {username}.github.io repository gh-pages branch
+      - name: Push public directory to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -61,5 +60,5 @@ jobs:
           source-directory: 'public'
           destination-github-username: 'zhimoe'
           destination-repository-name: 'zhimoe.github.io'
-          user-email: xiongwengui67@gmail.com
+          user-email: me@zhi.moe
           target-branch: gh-pages
