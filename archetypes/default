@@ -1,12 +1,9 @@
----
-title: "{{ replace .Name "-" " " | title }}"
-date: "{{ .Date }}"
-toc: true
-categories:
- - "编程"
-tags:
- - code
----
++++
+title = '{{ replace .Name "-" " " | title }}'
+date = '{{ .Date }}'
+categories = ['编程']
+tags = ['code','notes']
++++
 
 summary
 
