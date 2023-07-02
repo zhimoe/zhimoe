@@ -1,5 +1,5 @@
 ---
-title: "使用OpenPyXL read_only write-only模式读写excel大文件"
+title: "使用OpenPyXL读写excel大文件"
 date: "2023-05-07T19:31:45+08:00"
 toc: true
 categories:
