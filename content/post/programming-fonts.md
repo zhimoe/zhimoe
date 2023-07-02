@@ -22,11 +22,10 @@ tags:
 
 <!--more-->
 
-![Aurulent](/font/aurulent.png)
+![Aurulent](https://cdn.staticaly.com/gh/zhimoe/zhi.moe.pic@main/pic/aurulent.4sz6bmooqf80.webp)
 
 ### Fira Code
 Fira Code是全网最受欢迎的字体.但是这个r实在过于fancy,所以重新绘制了一个.只提供regular和bold两个字重.
-![Fira Code](/font/firacode.png)
 
 ### MonoLisa
 目前最喜欢的收费字体, [MonoLisa](https://www.monolisa.dev/)完美体现了官网上面的"font follows function"宣言，整个字体在代码阅读中有一种从左到右的流动感。也是自己第二次付费字体(第一次是方正)
