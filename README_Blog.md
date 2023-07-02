@@ -6,9 +6,7 @@ personal home page, all about programming and code.
 ## how to add post
 ```bash
 # git clone
-git clone 
-# update theme
-git submodule update --init --recursive
+git clone --recurse-submodules -j8 https://github.com/zhimoe/zhimoe.git
 # install hugo on local 
 sudo apt install hugo
 # add post by hugo

@@ -1,14 +1,12 @@
-ArticleDecContent = "本博客文章除特别声明外，均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' target='_blank' style='text-decoration: underline;'>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！"
-
 # 站点标题等信息
 Subtitle = "Captain your own Ship."
 Description = "编程是一门手艺"
 Keywords = "读书,代码,架构,JVM,Java,Kotlin,Python,Rust"
 Imglogo = "/img/logo.png"
-Domain = "https://zhi.moe"
 
+# 作者介绍
 AuthorName = "zhimoe"
-Introduce = "Captain your own Ship."
+Introduce = "xkcd386, bold&bald, builder"
 AuthorImg = "/img/avatar.png"
 
 DateFormat = "2006-01-02"
@@ -17,23 +15,22 @@ MonthFormat = "01-02"
 Fancybox = true
 
 [Statistics]
-#    busuanzi_counter = ""
-#    cnnz_site_id = ""
-#    revolver_map_id = "55k6ne41ev6"
+#revolver_map_id = "55k6ne41ev6"
 google_analytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
 cloudflare_worker = "pageview.zhimoe"
 
-[Author]
-Name = "zhimoe"
 
 # 评论 见themes/next/layout/partials/widgets/comment.html
 [Comment]
 #disqus = "zhimoe"
 giscus = "zhimoe"
 
+
+# 标签云
 [TagsCloud]
 Enable = true
-Limit = 10
+Limit = 12
+
 
 # 社交媒体
 [[Socials]]
@@ -45,6 +42,7 @@ URL = "https://github.com/zhimoe/"
 Name = "ZhiHu"
 Icon = "globe"
 URL = "https://www.zhihu.com/question/21142149/answer/52383396"
+
 
 # 友情链接
 [[Links]]
