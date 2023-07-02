@@ -1,30 +1,35 @@
 [[Main]]
-  Name = "首页"
-  Pre = "home"
-  URL = "/"
-  Weight = 1
+Name = "首页"
+Pre = "home"
+URL = "/"
+Weight = 1
+
 [[Main]]
-  Name = "归档"
-  Pre = "list-alt"
-  URL = "/post/"
-  Weight = 2
+Name = "归档"
+Pre = "list-alt"
+URL = "/post/"
+Weight = 2
+
 [[Main]]
-  Name = "编程"
-  Pre = "wpexplorer"
-  URL = "/categories/编程/"
-  Weight = 3
+Name = "编程"
+Pre = "wpexplorer"
+URL = "/categories/编程/"
+Weight = 3
+
 [[Main]]
-  Name = "翻译"
-  Pre = "language"
-  URL = "/categories/翻译/"
-  Weight = 4
+Name = "翻译"
+Pre = "language"
+URL = "/categories/翻译/"
+Weight = 4
+
 [[Main]]
-  Name = "随想"
-  Pre = "bathtub"
-  URL = "/categories/随想/"
-  Weight = 5
+Name = "随想"
+Pre = "bathtub"
+URL = "/categories/随想/"
+Weight = 5
+
 [[Main]]
-  Name = "关于"
-  Pre = "grav"
-  URL = "/about/"
-  Weight = 99 
+Name = "关于"
+Pre = "grav"
+URL = "/about/"
+Weight = 99

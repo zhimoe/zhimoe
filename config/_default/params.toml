@@ -3,7 +3,7 @@ ArticleDecContent = "本博客文章除特别声明外，均采用 <a href='http
 # 站点标题等信息
 Subtitle = "Captain your own Ship."
 Description = "编程是一门手艺"
-Keywords =  "读书,代码,架构,JVM,Java,Kotlin,Python,Rust"
+Keywords = "读书,代码,架构,JVM,Java,Kotlin,Python,Rust"
 Imglogo = "/img/logo.png"
 Domain = "https://zhi.moe"
 
@@ -20,45 +20,46 @@ Fancybox = true
 #    busuanzi_counter = ""
 #    cnnz_site_id = ""
 #    revolver_map_id = "55k6ne41ev6"
-    google_analytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
-    cloudflare_worker = "pageview.zhimoe"
+google_analytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
+cloudflare_worker = "pageview.zhimoe"
 
 [Author]
-  Name = "zhimoe"
+Name = "zhimoe"
 
-# disqus评论 见themes/next/layout/partials/widgets/comment.html
+# 评论 见themes/next/layout/partials/widgets/comment.html
 [Comment]
-  disqus = "zhimoe"
+#disqus = "zhimoe"
+giscus = "zhimoe"
 
 [TagsCloud]
-  Enable = true
-  Limit = 10
+Enable = true
+Limit = 10
 
 # 社交媒体
 [[Socials]]
-  Name = "GitHub"
-  Icon = "github"
-  URL = "https://github.com/zhimoe/"
+Name = "GitHub"
+Icon = "github"
+URL = "https://github.com/zhimoe/"
 
 [[Socials]]
-  Name = "ZhiHu"
-  Icon = "globe"
-  URL = "https://www.zhihu.com/question/21142149/answer/52383396"
+Name = "ZhiHu"
+Icon = "globe"
+URL = "https://www.zhihu.com/question/21142149/answer/52383396"
 
 # 友情链接
 [[Links]]
-    Name = "可视化学习Git"
-    Permalink = "https://learngitbranching.js.org/"
+Name = "可视化Git"
+Permalink = "https://learngitbranching.js.org/"
 
 [[Links]]
-    Name = "艺术绘画博物馆"
-    Permalink = "https://gallerix.asia/"
+Name = "绘画博物馆"
+Permalink = "https://gallerix.asia/"
 
 [[Links]]
-    Name = "RustCheatsheet"
-    Permalink = "https://cheats.rs/"
+Name = "Rust小抄"
+Permalink = "https://cheats.rs/"
 
 [[Links]]
-    Name = "谷歌机器学习课程"
-    Permalink = "https://developers.google.com/machine-learning/crash-course/"
+Name = "谷歌机器学习"
+Permalink = "https://developers.google.com/machine-learning/crash-course/"
 

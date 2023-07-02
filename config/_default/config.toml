@@ -2,15 +2,15 @@ baseURL = "https://zhimoe.github.io"
 title = "zhimoe"
 languageCode = "zh" # ?
 defaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
-theme =  "next"
-metaDataFormat =  "toml" # yaml or toml  post元信息格式
-paginatePath =  "p"
+theme = "next"
+metaDataFormat = "toml" # yaml or toml  post元信息格式
+paginatePath = "p"
 paginate = 5
-disablePathToLower =  false
+disablePathToLower = false
 preserveTaxonomyNames = false
 uglyUrls = false
-canonifyUrls =  true
-buildDrafts =  false
+canonifyUrls = true
+buildDrafts = false
 # 代码配色
 pygmentsStyle = "xcode"
 pygmentsCodefences = true
@@ -27,28 +27,27 @@ timeout = 100000
 ignoreErrors = ["error-remote-getjson"]
 
 [sitemap]
-  filename = "sitemap.xml"
-  changefreq = "weekly"
-  priority = 0.5
+filename = "sitemap.xml"
+changefreq = "weekly"
+priority = 0.5
 
-[outputFormats]
-  [outputFormats.SearchIndex]
-    mediaType = "application/xml"
-    baseName = "searchindex"
-    isPlainText = true
-    notAlternative = true
+[outputFormats.SearchIndex]
+mediaType = "application/xml"
+baseName = "searchindex"
+isPlainText = true
+notAlternative = true
 
 [outputs]
-  home = ["HTML", "RSS", "SearchIndex"]
+home = ["HTML", "RSS", "SearchIndex"]
 
 [minify]
-  disableCSS = false
-  disableHTML = false
-  disableJS = false
-  disableJSON = false
-  disableSVG = false
-  disableXML = false
-  minifyOutput = true
+disableCSS = false
+disableHTML = false
+disableJS = false
+disableJSON = false
+disableSVG = false
+disableXML = false
+minifyOutput = true
 
 
 # Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
@@ -62,10 +61,8 @@ staticdir = "static"
 # hugo 新版开始使用Goldmark替换blackfriday了 
 # 硬换行hardLineBreak需要改成hardWraps = true
 # unsafe = true # 让Markdown支持写HTML语法
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      hardWraps = true #回车换行 无需空行
-      unsafe = true
-      xhtml = false
+[markup.goldmark.renderer]
+hardWraps = true #回车换行 无需空行
+unsafe = true
+xhtml = false
 
