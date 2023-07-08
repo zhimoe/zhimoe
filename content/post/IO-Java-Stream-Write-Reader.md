@@ -13,14 +13,19 @@ tags:
 
 <!--more-->
 
-### java reader writer stream
+### 概览
 ![Java IO继承图](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/20230708/java_io_stream_reader.4lgp0r6e14w0.webp)
 
+首先理解计算机文件格式都是二进制数据，例如文本，图片，视频，音频等，但是文本非常特殊，所以单独有一类封装设计。
+对于非文本类的文件，一般是读取字节(stream)，而对于文本类文件，则可以读取字符(reader)
+当然，文本文件也可以使用inputstream读取后再转换`Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);`
+
+### stream
 首先是byte流,每次read()读取8 bits,并用一个int的低八位保存：
 
 ```java
-FileInputStream in = null;
-FileOutputStream out = null;
+        FileInputStream in = null;
+        FileOutputStream out = null;
 		try {
 			in = new FileInputStream("xanadu.txt");
 			out = new FileOutputStream("outagain.txt");
@@ -44,25 +49,24 @@ byte流是很基础的流,接下来是字符流,使用int的低16位保存读取
 FileReader extemds InputStreamReader,  
 FileWriter extends OutputStreamWriter  
 
-
 InputStreamReader:字节到字符的桥梁  
 OutputStreamWriter:字符到字节的桥梁：  
 
-```
-        FileReader inputStream = null;
+```java
+        FileReader inputReader = null;
         FileWriter outputStream = null;
 
         try {
-            inputStream = new FileReader("xanadu.txt");
+            inputReader = new FileReader("xanadu.txt");
             outputStream = new FileWriter("characteroutput.txt");
 
             int c;
-            while ((c = inputStream.read()) != -1) {
+            while ((c = inputReader.read()) != -1) {
                 outputStream.write(c);
             }
         } finally {
-            if (inputStream != null) {
-                inputStream.close();
+            if (inputReader != null) {
+                inputReader.close();
             }
             if (outputStream != null) {
                 outputStream.close();
@@ -77,20 +81,17 @@ File I/O现在已经不推荐使用了,推荐nio2的Path及其工具类Files,Pat
 [Path 官方教程](http://docs.oracle.com/javase/tutorial/essential/io/path.html)
 
 ObjectInputStream 和所有FilterInputStream 的子类都是装饰流（装饰器模式的主角）
-
-注意：OutputStream子类中没有StringBuffer为目的地的.ObjectOutputStream 和所有FilterOutputStream 的子类都是装饰流.
+注意：OutputStream子类中没有StringBuffer为目的地的. ObjectOutputStream 和所有FilterOutputStream 的子类都是装饰流.
 
 
 几个特殊的类：  
 PushbackInputStream 的功能是查看最后一个字节,不满意就放入缓冲区.主要用在编译器的语法、词法分析部分.输出部分的BufferedOutputStream 几乎实现相近的功能.
 
-PrintStream 也可以认为是一个辅助工具.主要可以向其他输出流,或者FileInputStream 写入数据,本身内部实现还是带缓冲的.本质上是对其它流的综合运用的一个工具而已.一样可以踢出IO 包！System.out 和System.err 就是PrintStream 的实例！ System.in是inputStream的实例！
+PrintStream 也可以认为是一个辅助工具.主要可以向其他输出流,或者FileInputStream 写入数据,本身内部实现还是带缓冲的.本质上是对其它流的综合运用的一个工具而已.一样可以踢出IO 包！System.out 和System.err 就是PrintStream 的实例！ System.in是InputStream的实例！
 **你永远不应该new PrintStream,请用PrintWriter**
 
 
-看看字符流Reader/Writer相关子类：
-![Reader/Writer](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/20230708/java-io-reader-and-writer.53rpq4pgqa80.webp)
-
+### reader writer
 CharReader、StringReader 是两种基本的介质流,它们分别将Char 数组、String中读取数据.PipedReader 是从与其它线程共用的管道中读取数据.
 
 BufferedReader 很明显就是一个装饰器,它和其子类负责装饰其它Reader 对象.
@@ -111,10 +112,6 @@ PrintStream stream = new PrintStream(outputStream);
 PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
 ```
-
-### Piped流  
-
-这是线程之间通信使用的.后面介绍.
 
 ### RandomAccessFile类
 
@@ -148,13 +145,11 @@ By default, a scanner uses white space to separate tokens. also,u can set :
 
 ### I/O from commandline 
 
-You might expect the Standard Streams to be character streams, but, for **historical** reasons, they are byte streams. `System.out` and `System.err` are defined as `PrintStream` objects. Although it is technically a byte stream, `PrintStream` utilizes an internal character stream object to emulate many of the features of character streams.
+You might expect the Standard Streams to be character streams, but, for **historical** reasons, they are byte streams. `System.out` and `System.err` are defined as `PrintStream` objects. Although it is technically a byte stream, `PrintStream` utilizes an internal character stream object to emulate many of the features of character streams.(！！！妈的,老子开始就困惑很久了,一直不明白System.out怎么可以直接打印出中文.)
 
-By contrast, System.in is a byte stream with no character stream features. To use Standard Input as a character stream, wrap System.in in InputStreamReader.
+By contrast, `System.in` is a byte stream with no character stream features. To use Standard Input as a character stream, wrap System.in in InputStreamReader.
 
 `InputStreamReader cin = new InputStreamReader(System.in);`
-
-！！！！妈的,老子开始就困惑很久了,一直不明白System.out怎么可以直接打印出中文.
 
 jdk1.5开始读写控制台以前常用的是Scanner：
 
@@ -178,5 +173,3 @@ scanner.nextLine();
 
 Data streams support binary I/O of primitive data type values (boolean, char, byte, short, int, long, float, and double) as well as String values. All data streams implement either the DataInput interface or the DataOutput interface. This section focuses on the most widely-used implementations of these interfaces, DataInputStream and DataOutputStream.  
 
-
-致谢：[Oubo的博客](http://www.cnblogs.com/oubo/archive/2012/01/06/2394638.html)
