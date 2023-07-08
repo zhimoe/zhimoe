@@ -22,7 +22,7 @@ tags:
 
 <!--more-->
 Aurulent效果
-![Aurulent](https://cdn.staticaly.com/gh/zhimoe/zhi.moe.pic@main/pic/aurulent.4sz6bmooqf80.webp)
+![Aurulent](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/aurulent.4sz6bmooqf80.webp)
 
 ### Fira Code
 Fira Code是全网最受欢迎的字体，但是这个r实在过于fancy，所以重新构建了一个版本，只提供regular和bold两个字重
@@ -39,7 +39,7 @@ Fira Code是全网最受欢迎的字体，但是这个r实在过于fancy，所�
 3. [TheSansMono](http://www.lucasfonts.com/fonts/the-sans/info): 经典等宽字体。你可以在很多书上面看到这个字体.斜体是所有字体最好看的，收费，作者也是windows经典的代码字体Consolas作者。
 
 Letter Gothic效果   
-![Adobe LetterGothic](https://cdn.staticaly.com/gh/zhimoe/zhi.moe.pic@main/pic/letter-gothic.5krkimcvicw0.webp)
+![Adobe LetterGothic](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/letter-gothic.5krkimcvicw0.webp)
   
 
 ### 非编程英文字体推荐

@@ -14,7 +14,7 @@ tags:
 <!--more-->
 
 ### java reader writer stream
-![Java IO继承图](http://pic002.cnblogs.com/images/2012/384764/2012031413373126.jpg)
+![Java IO继承图](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/20230708/java_io_stream_reader.4lgp0r6e14w0.webp)
 
 首先是byte流,每次read()读取8 bits,并用一个int的低八位保存：
 
@@ -88,8 +88,8 @@ PrintStream 也可以认为是一个辅助工具.主要可以向其他输出流,
 **你永远不应该new PrintStream,请用PrintWriter**
 
 
-看看字符流的对比：
-![Reader/Writer](http://pic002.cnblogs.com/images/2012/384764/2012031413390861.png)
+看看字符流Reader/Writer相关子类：
+![Reader/Writer](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/20230708/java-io-reader-and-writer.53rpq4pgqa80.webp)
 
 CharReader、StringReader 是两种基本的介质流,它们分别将Char 数组、String中读取数据.PipedReader 是从与其它线程共用的管道中读取数据.
 

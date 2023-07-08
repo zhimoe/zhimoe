@@ -25,7 +25,7 @@ Mdict项目是一个糅合了MDX词典、ES例句搜索和AI模型翻译的多�
 
 <!--more-->
 
-![mdict-py](https://cdn.staticaly.com/gh/zhimoe/zhi.moe.pic@main/pic/mdictpy.5i26sz26qyc0.webp)
+![mdict-py](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/mdictpy.5i26sz26qyc0.webp)
 
 ### mdict-rs
 

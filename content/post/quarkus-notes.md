@@ -84,7 +84,7 @@ Byte,Short,Integer,Long,Float,Double,Character,Class(Class.forName)自动转换
 
 #### 属性来源优先级
 
-![config property order](https://cdn.staticaly.com/gh/zhimoe/zhi.moe.pic@main/pic/config-order.7ccnsry6sys0.webp)
+![config property order](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/config-order.7ccnsry6sys0.webp)
 
 #### Profile
 
