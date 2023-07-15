@@ -23,7 +23,7 @@ cloudflare_worker = "pageview.zhimoe"
 # 评论 见themes/next/layout/partials/widgets/comment.html
 [Comment]
 #disqus = "zhimoe"
-giscus = "zhimoe"
+giscus = "zhimoe.github.io"
 
 
 # 标签云
