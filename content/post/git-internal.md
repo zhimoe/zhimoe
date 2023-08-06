@@ -9,15 +9,12 @@ tags = ['git','翻译']
 
 例如我们使用 git commit 时发生了什么？提交（commit）与提交之间保存的是什么？两次提交之间难道只是文件的差异（diff）吗？如果是，这个差异是如何编码的？还是说每次提交都会保存一个当前仓库的完整快照（snapshot）呢？我们使用 git init 时到底发生了什么？
 
-发现[一篇非常精彩的Git内部原理文章](https://medium.com/swimm/a-visualized-intro-to-git-internals-objects-and-branches-68df85864037)以及对应的中文翻译[Git内部原理图解——对象、分支以及如何从零开始建仓库](https://www.freecodecamp.org/chinese/news/git-internals-objects-branches-create-repo/)
+发现一篇非常精彩的Git内部原理文章[Git内部原理图解——对象、分支以及如何从零开始建仓库](https://medium.com/swimm/a-visualized-intro-to-git-internals-objects-and-branches-68df85864037),文章作者甚至制作了[配套讲解视频](https://www.youtube.com/playlist?list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7)
 
-文章作者甚至制作了[配套讲解视频](https://www.youtube.com/playlist?list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7)
-文章里面提到了很多git内部原理和概念:
-[Git 内部原理 - 底层命令与上层命令](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%BA%95%E5%B1%82%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%8A%E5%B1%82%E5%91%BD%E4%BB%A4)
-[Git 内部原理 - Git 对象](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-Git-%E5%AF%B9%E8%B1%A1)
+[中文翻译](https://www.freecodecamp.org/chinese/news/git-internals-objects-branches-create-repo/)
 
 <!--more-->
-下面是简单的笔记
+
 ### Git对象
 git内部有三种对象：
 1. blob: 文件的内容，不包含metadata信息（创建时间，修改时间，作者等）
@@ -123,4 +120,7 @@ first commit
 ```
 可以看到分别是一个blob对象（file.txt)、一个tree对象和一个commit对象，后者依次引用前者。
 
-
+### 参考
+文章里面提到了很多git内部原理和概念:
+[Git 内部原理 - 底层命令与上层命令](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%BA%95%E5%B1%82%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%8A%E5%B1%82%E5%91%BD%E4%BB%A4)
+[Git 内部原理 - Git 对象](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-Git-%E5%AF%B9%E8%B1%A1)
