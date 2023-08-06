@@ -9,9 +9,8 @@ tags = ['git','翻译']
 
 例如我们使用 git commit 时发生了什么？提交（commit）与提交之间保存的是什么？两次提交之间难道只是文件的差异（diff）吗？如果是，这个差异是如何编码的？还是说每次提交都会保存一个当前仓库的完整快照（snapshot）呢？我们使用 git init 时到底发生了什么？
 
-发现一篇非常精彩的Git内部原理文章[Git内部原理图解——对象、分支以及如何从零开始建仓库](https://medium.com/swimm/a-visualized-intro-to-git-internals-objects-and-branches-68df85864037),文章作者甚至制作了[配套讲解视频](https://www.youtube.com/playlist?list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7)
+发现一篇非常精彩的Git内部原理文章[Git内部原理图解——对象、分支以及如何从零开始建仓库](https://medium.com/swimm/a-visualized-intro-to-git-internals-objects-and-branches-68df85864037)，[中文翻译](https://www.freecodecamp.org/chinese/news/git-internals-objects-branches-create-repo/)。文章作者甚至制作了[配套讲解视频](https://www.youtube.com/playlist?list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7)
 
-[中文翻译](https://www.freecodecamp.org/chinese/news/git-internals-objects-branches-create-repo/)
 
 <!--more-->
 
