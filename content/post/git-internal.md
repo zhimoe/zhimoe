@@ -20,7 +20,7 @@ tags = ['git','翻译']
 下面是简单的笔记
 ### Git对象
 git内部有三种对象：
-1. blob: 文件的内容，不包含metadata：创建时间，修改时间，作者等
+1. blob: 文件的内容，不包含metadata信息（创建时间，修改时间，作者等）
 2. tree: 一个目录，包含blobs或者trees
 3. commit: a snapshot of the working tree，一个tree的快照。 
 
