@@ -3,6 +3,7 @@ title = 'Rust Error Handling Notes'
 date = '2023-07-22T21:12:50+08:00'
 categories = ['编程']
 tags = ['rust','notes']
+toc = true
 +++
 
 初学rust的时候，上手写代码总是遇到很多不一样的rust的`Result`类型，不同crate中的函数返回的`Result<T, E>`的`E`都不一样，刚开始都是`unwrap`或者`expect`来处理。如果使用`try!`或者`?`的话总是编译不通过，还是对Error转换和处理不熟练。
