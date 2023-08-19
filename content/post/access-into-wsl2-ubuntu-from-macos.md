@@ -3,6 +3,7 @@ title = '在macOS通过SSH访问Windows的WSL2 Ubuntu'
 date = '2022-10-30T14:14:59+08:00'
 categories = ['编程']
 tags = ['macOS', 'WSL2']
+toc = true
 +++
 
 配置Windows和WSL2, 使得能通过其他电脑远程SSH到WSL2 Ubuntu. 
