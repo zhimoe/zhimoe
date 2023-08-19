@@ -1,15 +1,11 @@
----
-title: "Neo4j入门"
-date: 2018-12-01
-toc: true
-categories:
-- "编程"
-tags: 
-  - neo4j
-  - code
-  - database
++++
+title = "Neo4j入门"
+date = 2018-12-01
+categories = [ "编程",]
+tags = [ "neo4j", "code", "database",]
+toc = "true"
++++
 
----
 
 ### neo4j图数据库介绍
 neo4j是目前排名最高的图数据库,分为商业和社区版本,社区版只支持单机,而且查询的运行时(runtime)不同(cypher runtime:interpreted(社区版),slotted(企业版)). 数据库排名可以在 https://db-engines.com/en/ranking/graph+dbms 查看,下一代最有前景的开源图数据库是dgraph,目前还积极开发中,生产未就绪,等他的Java客户端再成熟一点可以试用.

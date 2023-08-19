@@ -1,14 +1,11 @@
----
-title: "使用travis自动发布markdown到博客"
-date: "2019-03-30T10:56:47+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - github
-toc: true
----
++++
+title = "使用travis自动发布markdown到博客"
+date = "2019-03-30T10:56:47+08:00"
+categories = [ "编程",]
+tags = [ "code", "github",]
+toc = "true"
++++
+
 如何使用github pages和github actions构建静态个人博客站点
 
 ### update at 2021

@@ -1,14 +1,11 @@
----
-title: "Scala Python 文件读取跳过转义字符"
-date: "2020-06-04T21:30:31+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
- - python
----
++++
+title = "Scala Python 文件读取跳过转义字符"
+date = "2020-06-04T21:30:31+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala", "python",]
+toc = "true"
++++
+
 在文件读取的时候,会遇到非法转义字符,导致文件按行读取失败.此时可以通过忽略转义字符来解决.本文记录了scala和python的方法.
 
 ## 背景

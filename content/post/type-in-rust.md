@@ -1,12 +1,11 @@
----
-title: "Associated Type in Rust"
-date: "2020-09-20T20:30:41+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - rust
----
++++
+title = "Associated Type in Rust"
+date = "2020-09-20T20:30:41+08:00"
+categories = [ "编程",]
+tags = [ "rust",]
+toc = "true"
++++
+
 
 Associated Type and generic diff in rust
 

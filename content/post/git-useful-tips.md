@@ -1,13 +1,11 @@
----
-title: 'git 常用命令备忘录'
-date: "2019-09-01T21:01:06+08:00"
-toc: true
-categories:
- - "编程"
-tags: 
-  - git
-  - code
---- 
++++
+title = "git 常用命令备忘录"
+date = "2019-09-01T21:01:06+08:00"
+categories = [ "编程",]
+tags = [ "git", "code",]
+toc = "true"
++++
+
 
 记录日常开发中偶尔会遇到的但是总是记不住的git命令.
 以下技巧都来自于[oh shit git](https://ohshitgit.com/) 和 [stackoverflow](https://stackoverflow.com). 版权归作者所有.

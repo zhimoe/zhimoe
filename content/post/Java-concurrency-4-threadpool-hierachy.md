@@ -1,14 +1,11 @@
----
-title: "Java并发4-线程池与执行器"
-date: "2018-06-13T09:57:52+08:00"
-toc: true 
-categories:
-  - "编程"
-tags:
-  - 并发
-  - java
-  - thread-pool
----
++++
+title = "Java并发4-线程池与执行器"
+date = "2018-06-13T09:57:52+08:00"
+categories = [ "编程",]
+tags = [ "并发", "java", "thread-pool",]
+toc = "true"
++++
+
 
 ### thread pool classes hierarchy
 

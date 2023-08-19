@@ -1,14 +1,11 @@
----
-title: '理解Gradle build脚本结构与语法'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - code
-  - groovy
-  - gradle
---- 
++++
+title = "理解Gradle build脚本结构与语法"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "code", "groovy", "gradle",]
+toc = "true"
++++
+
 
 在看这个之前,希望你有用ant或者maven的使用经验,还有,对groovy的语法有一个简单的了解,不懂也没关系,下面会介绍.
 理解gradle文件的前提是理解一个重要的groovy概念:closure

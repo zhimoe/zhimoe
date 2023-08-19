@@ -1,13 +1,11 @@
----
-title: 'Javac-线程与任务'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - 并发
---- 
++++
+title = "Javac-线程与任务"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "并发",]
+toc = "true"
++++
+
 
 ### 基本概念
 

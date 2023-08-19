@@ -1,12 +1,11 @@
----
-title: "Kotlin Coroutine"
-date: "2023-04-30T11:02:29+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
----
++++
+title = "Kotlin Coroutine"
+date = "2023-04-30T11:02:29+08:00"
+categories = [ "编程",]
+tags = [ "code",]
+toc = "true"
++++
+
     A coroutine is an instance of suspendable computation. 
 
 协程是可被挂起的计算的实例. 换句话说协程是一个对象, 这个对象保存着一段可以切换线程的任务 + 当前执行的状态两部分信息. 

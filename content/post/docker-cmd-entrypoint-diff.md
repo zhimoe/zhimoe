@@ -1,13 +1,11 @@
----
-title: "Docker CMD ENTRYPOINT区别"
-date: "2020-02-02T21:10:18+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - docker
----
++++
+title = "Docker CMD ENTRYPOINT区别"
+date = "2020-02-02T21:10:18+08:00"
+categories = [ "编程",]
+tags = [ "code", "docker",]
+toc = "true"
++++
+
 
 记录docker中exec form和shell form的区别,CMD和ENTRYPOINT区别,以及最佳实践.
 

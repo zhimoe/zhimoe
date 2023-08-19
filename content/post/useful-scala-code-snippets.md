@@ -1,13 +1,11 @@
----
-title: "Useful Scala Code Snippets"
-date: "2019-04-26T07:54:00+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "Useful Scala Code Snippets"
+date = "2019-04-26T07:54:00+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
 
 ## merge two map and sum its values
 

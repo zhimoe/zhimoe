@@ -1,13 +1,11 @@
----
-title: "Spring FactoryBean and ContextAware"
-date: "2019-05-16T22:44:38+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - spring
----
++++
+title = "Spring FactoryBean and ContextAware"
+date = "2019-05-16T22:44:38+08:00"
+categories = [ "编程",]
+tags = [ "code", "spring",]
+toc = "true"
++++
+
  
 理解Spring的FactoryBean 和 ContextAware接口.
 

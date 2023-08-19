@@ -1,13 +1,11 @@
----
-title: "Pattern Matching Anonymous Function"
-date: "2019-03-31T13:10:41+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "Pattern Matching Anonymous Function"
+date = "2019-03-31T13:10:41+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
 
 Scala中很多使用if的地方都可以用match case来替换.常见的就是下面的这种写法:
 

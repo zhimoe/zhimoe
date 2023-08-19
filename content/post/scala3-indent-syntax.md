@@ -1,13 +1,11 @@
----
-title: "Scala3 缩进语法总结表"
-date: "2022-02-02T10:19:05+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - scala3
- - cheatsheet
----
++++
+title = "Scala3 缩进语法总结表"
+date = "2022-02-02T10:19:05+08:00"
+categories = [ "编程",]
+tags = [ "scala3", "cheatsheet",]
+toc = "true"
++++
+
 
 Scala 3 在语法上面新增了一种Python的缩进格式,两种格式都可以使用. 但是目前部分情况还是需要使用括号.
 个人对新语法是支持的. 缩进可以极大地提供代码的可读性和整洁, 最大的体会就是SparkStreaming的rdd处理代码,新手容易写出十几个}括号嵌套代码.

@@ -1,13 +1,11 @@
----
-title: "Python 4道笔试题"
-date: "2020-06-04T21:31:01+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - python
----
++++
+title = "Python 4道笔试题"
+date = "2020-06-04T21:31:01+08:00"
+categories = [ "编程",]
+tags = [ "code", "python",]
+toc = "true"
++++
+
 4道常见的python面试题和解答,以及一些python陷阱的链接.
 
 ## 问题

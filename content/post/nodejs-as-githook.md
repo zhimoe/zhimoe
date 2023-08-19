@@ -1,13 +1,11 @@
----
-title: "在githook中调用nodejs脚本"
-date: "2021-08-22T21:55:06+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - nodejs
----
++++
+title = "在githook中调用nodejs脚本"
+date = "2021-08-22T21:55:06+08:00"
+categories = [ "编程",]
+tags = [ "code", "nodejs",]
+toc = "true"
++++
+
  
 如何在git hook中调用nodejs脚本.主要踩坑在于不知道如何在bash中获取node脚本返回值,搜了好大一圈.
 

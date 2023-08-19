@@ -1,13 +1,11 @@
----
-title: "scala uniform access principle"
-date: "2020-01-31T18:40:10+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "scala uniform access principle"
+date = "2020-01-31T18:40:10+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
 
 虽然代码写的很水,但是我对各种编程语言一直比较感兴趣. 除了工作中使用的Java之外,自己也了解Python,Groovy,Scala,Kotlin,Clojure,Go,Rust.其中Python和Scala在工作中也偶尔使用. 了解不同的编程语言语法对于编程思维的影响还是蛮有意思的.
 例如, 只会Java的开发者可能没有听过模式匹配(pattern match).在我学习了Scala之后,我对模式匹配的理解就是更强更优雅的switch+if. 而在我看过rust和elixir语言中关于模式匹配之后,我对模式匹配的理解就完全不一样了.

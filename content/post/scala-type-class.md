@@ -1,13 +1,11 @@
----
-title: "Scala Type Class"
-date: "2019-03-31T12:58:17+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "Scala Type Class"
+date = "2019-03-31T12:58:17+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
  
 scala type class notes: 
 [关于scala type class非常好的文章](https://scalac.io/typeclasses-in-scala)

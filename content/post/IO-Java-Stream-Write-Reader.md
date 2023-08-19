@@ -1,13 +1,11 @@
----
-title: 'IO-Java-Stream-Write-Reader'
-date: 2016-03-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "IO-Java-Stream-Write-Reader"
+date = 2016-03-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
 
 上次总结了java中不同读写文件的方法,这次总结一下基本的IO流.网上的总结大部分是以Stream和Reader、Writer来介绍的.这次从封装层次来介绍.
 

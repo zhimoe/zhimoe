@@ -1,13 +1,11 @@
----
-title: "使用OpenPyXL读写excel大文件"
-date: "2023-05-07T19:31:45+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - python
----
++++
+title = "使用OpenPyXL读写excel大文件"
+date = "2023-05-07T19:31:45+08:00"
+categories = [ "编程",]
+tags = [ "code", "python",]
+toc = "true"
++++
+
 
 使用python OpenPyXL读写excel大文件时，有专门的read_only write-only模式来提升读写效率。
 

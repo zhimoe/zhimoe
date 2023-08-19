@@ -1,14 +1,11 @@
----
-title: "单元测试如何Mock有参数的void方法"
-date: "2017-04-23T21:51:20+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - java
- - test
----
++++
+title = "单元测试如何Mock有参数的void方法"
+date = "2017-04-23T21:51:20+08:00"
+categories = [ "编程",]
+tags = [ "code", "java", "test",]
+toc = "true"
++++
+
 
 测试中如果遇到被测试方法调用void方法，在Mockito中改如何处理?
 

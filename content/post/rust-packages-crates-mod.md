@@ -1,13 +1,11 @@
----
-title: "Rust Packages Crates Mod Notes"
-date: "2020-01-12T20:03:33+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - rust
----
++++
+title = "Rust Packages Crates Mod Notes"
+date = "2020-01-12T20:03:33+08:00"
+categories = [ "编程",]
+tags = [ "code", "rust",]
+toc = "true"
++++
+
 
 初学rust对于项目的package和crate的关系,module和文件的关系有点理不清.做了一点笔记.
 

@@ -1,13 +1,11 @@
----
-title: 'Java-==-and-equals'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "Java-==-and-equals"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
   
 samples code and notes on java == and equals
 

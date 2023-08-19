@@ -1,13 +1,11 @@
----
-title: "Scala 2 Implicit"
-date: "2019-03-30T12:58:17+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "Scala 2 Implicit"
+date = "2019-03-30T12:58:17+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
 
 ## 隐式参数
 ```scala

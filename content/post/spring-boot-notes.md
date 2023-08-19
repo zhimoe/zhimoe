@@ -1,13 +1,11 @@
----
-title: "Spring Boot Notes"
-date: "2019-04-14T18:33:22+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - spring
----
++++
+title = "Spring Boot Notes"
+date = "2019-04-14T18:33:22+08:00"
+categories = [ "编程",]
+tags = [ "code", "spring",]
+toc = "true"
++++
+
 
 一些容易忘记的spring boot知识要点.
 > 注意,.yaml和.yml文件没任何区别.

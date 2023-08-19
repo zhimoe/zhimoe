@@ -1,13 +1,11 @@
----
-title: "云原生Java开发框架Quarkus学习笔记"
-date: "2022-07-09T22:14:10+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - quarkus
----
++++
+title = "云原生Java开发框架Quarkus学习笔记"
+date = "2022-07-09T22:14:10+08:00"
+categories = [ "编程",]
+tags = [ "code", "quarkus",]
+toc = "true"
++++
+
 
 ## 什么是 MicroProfile
 

@@ -1,15 +1,11 @@
----
-title: "最佳编程字体"
-date: "2020-08-21T22:02:50+08:00"
-toc: true
-categories:
- - "随想"
-tags:
- - font
- - aurulent
- - firacode
++++
+title = "最佳编程字体"
+date = "2020-08-21T22:02:50+08:00"
+categories = [ "随想",]
+tags = [ "font", "aurulent", "firacode",]
+toc = "true"
++++
 
----
 
 个人对于编程字体有一点点洁癖，在尝试十几个字体后，终于使用FontForge和fontline.py动手修改制作自己的编程字体:Aurulent和 Fira Code。
 

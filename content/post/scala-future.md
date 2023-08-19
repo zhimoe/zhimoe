@@ -1,13 +1,11 @@
----
-title: "Scala Future"
-date: "2019-04-21T14:36:36+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "Scala Future"
+date = "2019-04-21T14:36:36+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
 some notes on scala future, includes:
 
 * [x] future

@@ -1,12 +1,11 @@
----
-title: "Scala 学习笔记"
-date: "2019-03-31T00:11:50+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
----
++++
+title = "Scala 学习笔记"
+date = "2019-03-31T00:11:50+08:00"
+categories = [ "编程",]
+tags = [ "code",]
+toc = "true"
++++
+
 some notes on scala, includes:
 * [x] setup with maven
 * [x] import

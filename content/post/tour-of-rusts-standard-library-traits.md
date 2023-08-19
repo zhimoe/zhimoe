@@ -1,13 +1,11 @@
----
-title: "Tour of Rusts Standard Library Traits[翻译]"
-date: "2021-04-11T21:47:02+08:00"
-toc: true
-categories:
- - "翻译"
-tags:
- - code
- - rust
----
++++
+title = "Tour of Rusts Standard Library Traits[翻译]"
+date = "2021-04-11T21:47:02+08:00"
+categories = [ "翻译",]
+tags = [ "code", "rust",]
+toc = "true"
++++
+
 
 关于rust trait非常好的介绍,比rust book详细,系统.
 

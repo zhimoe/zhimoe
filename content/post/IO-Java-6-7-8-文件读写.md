@@ -1,13 +1,11 @@
----
-title: 'Java 6/7/8中文件读写'
-date: 2016-02-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "Java 6/7/8中文件读写"
+date = 2016-02-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
   
 如何在Java中读写文件,这里保留Java6/7版本,但是你永远不应该使用它们,优先使用Path,Files,Paths三个类.
 资料：[Reading and writing text files](http://www.javapractices.com/topic/TopicAction.do?Id=42)

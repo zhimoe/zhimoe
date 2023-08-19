@@ -1,13 +1,11 @@
----
-title: 'Java AOP example'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - aop
---- 
++++
+title = "Java AOP example"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "aop",]
+toc = "true"
++++
+
 
 Java AOP: 找到一个最简单的介绍,不怎么想翻译,直接看原文吧:
 [A Simple Introduction to AOP](https://www.javacodegeeks.com/2012/06/simple-introduction-to-aop.html)

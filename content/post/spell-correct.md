@@ -1,13 +1,11 @@
----
-title: "如何实现一个拼写检查器[翻译]"
-date: "2020-10-25T20:01:27+08:00"
-toc: true
-categories:
- - "翻译"
-tags:
- - code
- - python
----
++++
+title = "如何实现一个拼写检查器[翻译]"
+date = "2020-10-25T20:01:27+08:00"
+categories = [ "翻译",]
+tags = [ "code", "python",]
+toc = "true"
++++
+
 
 谷歌AI负责人norvig在07年写的如何实现一个拼写纠正器的经典博文[How to Write a Spelling Corrector](https://norvig.com/spell-correct.html).
 上面的链接已经是16年更新过了,程序也更新到了python3.

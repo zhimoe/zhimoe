@@ -1,13 +1,11 @@
----
-title: '单例模式和序列化'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "单例模式和序列化"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
 
 Java单例模式的各种写法和序列化
 [参考资料](http://www.hollischuang.com/archives/205)

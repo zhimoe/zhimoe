@@ -1,13 +1,11 @@
----
-title: "Scala Collection Tips"
-date: "2019-05-19T16:49:14+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
----
++++
+title = "Scala Collection Tips"
+date = "2019-05-19T16:49:14+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala",]
+toc = "true"
++++
+
 scala collection 提供了一整套独立于Java的高性能集合,使用上非常灵活,所以需要清楚一些常用的方法:
 
 * [x] reduce fold scan

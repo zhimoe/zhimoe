@@ -1,13 +1,11 @@
----
-title: "Python Tips for Impatient Dev"
-date: "2022-01-31T21:45:45+08:00"
-toc: true
-categories:
-  - "编程"
-tags:
-  - code
-  - python
----
++++
+title = "Python Tips for Impatient Dev"
+date = "2022-01-31T21:45:45+08:00"
+categories = [ "编程",]
+tags = [ "code", "python",]
+toc = "true"
++++
+
 
 ## Python tricks
 ### f-string的妙用

@@ -1,14 +1,11 @@
----
-title: "Java 8 Lambda笔记"
-date: "2020-08-06T22:49:34+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - java
- - lambda
----
++++
+title = "Java 8 Lambda笔记"
+date = "2020-08-06T22:49:34+08:00"
+categories = [ "编程",]
+tags = [ "code", "java", "lambda",]
+toc = "true"
++++
+
 
 ### 问题
 Java是OOP语言,使用对象封装.由于函数不是一等公民,无法在方法中传递函数/方法. 在Java 8之前,使用匿名类表示行为：

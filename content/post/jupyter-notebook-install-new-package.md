@@ -1,13 +1,11 @@
----
-title: "Jupyter Notebook Install New Package[翻译]"
-date: "2018-11-01T19:04:32+08:00"
-toc: true
-categories:
- - "翻译"
-tags:
- - code
- - python
----
++++
+title = "Jupyter Notebook Install New Package[翻译]"
+date = "2018-11-01T19:04:32+08:00"
+categories = [ "翻译",]
+tags = [ "code", "python",]
+toc = "true"
++++
+
 
 ### notes
 在pycharm写代码中如果使用到新的package,例如`numpy`,只需要输入`import numpy` 然后ALT+ENTER在提示中选择install new package即可.

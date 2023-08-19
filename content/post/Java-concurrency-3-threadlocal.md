@@ -1,13 +1,11 @@
----
-title: 'Java并发3-ThreadLocal'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - 并发
---- 
++++
+title = "Java并发3-ThreadLocal"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "并发",]
+toc = "true"
++++
+
 
 
 在通常的业务开发中，ThreadLocal 有两种典型的使用场景。

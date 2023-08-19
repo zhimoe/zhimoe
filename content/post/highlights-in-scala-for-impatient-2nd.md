@@ -1,14 +1,11 @@
----
-title: "Highlights in Scala for Impatient 2nd"
-date: "2020-01-15T21:42:33+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - scala
- - scala-for-impatient
----
++++
+title = "Highlights in Scala for Impatient 2nd"
+date = "2020-01-15T21:42:33+08:00"
+categories = [ "编程",]
+tags = [ "code", "scala", "scala-for-impatient",]
+toc = "true"
++++
+
 
 key points in scala-for-impatient 2nd book, best book for java developer to use scala in a rush.
 scala-for-impatient章节摘要, 这本书对于Java开发者快速上手Scala帮助很大.

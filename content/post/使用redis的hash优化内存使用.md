@@ -1,13 +1,11 @@
----
-title: "使用redis的hash优化内存使用[翻译]"
-date: "2019-03-31T00:11:50+08:00"
-toc: true
-categories:
- - "翻译"
-tags:
- - code
- - redis
----
++++
+title = "使用redis的hash优化内存使用[翻译]"
+date = "2019-03-31T00:11:50+08:00"
+categories = [ "翻译",]
+tags = [ "code", "redis",]
+toc = "true"
++++
+
 
 使用redis的hash优化内存使用
 

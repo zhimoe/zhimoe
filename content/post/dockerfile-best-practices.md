@@ -1,15 +1,11 @@
----
-title: "SpringBoot应用和Rust应用的Dockerfile最佳实践"
-date: "2020-02-03T11:30:55+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - docker
- - spring
- - rust
----
++++
+title = "SpringBoot应用和Rust应用的Dockerfile最佳实践"
+date = "2020-02-03T11:30:55+08:00"
+categories = [ "编程",]
+tags = [ "code", "docker", "spring", "rust",]
+toc = "true"
++++
+
 
 记录spring boot和rust项目的Dockerfile的最佳实践.
 

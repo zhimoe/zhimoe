@@ -1,13 +1,11 @@
----
-title: 'Java注解和注解处理器'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "Java注解和注解处理器"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
 
 ### 注解处理
 

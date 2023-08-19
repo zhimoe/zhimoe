@@ -1,13 +1,11 @@
----
-title: '基于MDX的web词典'
-date: 2020-07-01
-toc: true
-categories:
- - "随想"
-tags: 
-  - python
-  - rust
---- 
++++
+title = "基于MDX的web词典"
+date = 2020-07-01
+categories = [ "随想",]
+tags = [ "python", "rust",]
+toc = "true"
++++
+
 Mdict项目是一个糅合了MDX词典、ES例句搜索和AI模型翻译的多源搜索功能Web词典.特别适合部署在内网中学习使用或者给孩子学习使用.
 python版本增加了一个机器学习模型翻译.rust版本也有模型,但是还没来得及加.
 

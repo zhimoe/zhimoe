@@ -1,13 +1,11 @@
----
-title: 'java generic'
-date: 2016-05-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "java generic"
+date = 2016-05-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
 
 ### 泛型
 

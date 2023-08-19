@@ -1,13 +1,11 @@
----
-title: 'wsl-docker-environment'
-date: 2019-01-01
-categories:
- - "编程"
-tags: 
-  - wsl
-  - code
-toc: true
---- 
++++
+title = "wsl-docker-environment"
+date = 2019-01-01
+categories = [ "编程",]
+tags = [ "wsl", "code",]
+toc = "true"
++++
+
 
 使用wsl,MobaXterm,cmder,docker打造可视化的linux开发环境
 

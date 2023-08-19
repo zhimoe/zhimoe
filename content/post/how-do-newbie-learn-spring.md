@@ -1,14 +1,11 @@
----
-title: "Java新手如何学习SpringMVC框架"
-date: "2015-08-21T22:02:50+08:00"
-toc: true
-categories:
- - "编程"
-tags:
- - code
- - spring
- - java
----
++++
+title = "Java新手如何学习SpringMVC框架"
+date = "2015-08-21T22:02:50+08:00"
+categories = [ "编程",]
+tags = [ "code", "spring", "java",]
+toc = "true"
++++
+
 
 知乎回答备份,[原答案写于15年](https://www.zhihu.com/question/21142149/answer/52383396).
 6,404 人赞同了该回答

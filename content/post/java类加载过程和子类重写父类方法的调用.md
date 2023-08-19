@@ -1,13 +1,11 @@
----
-title: '面试题-类加载过程和子类重写父类方法的调用'
-date: 2016-01-01
-toc: true
-categories:
- - "编程"
-tags: 
-  - java
-  - code
---- 
++++
+title = "面试题-类加载过程和子类重写父类方法的调用"
+date = 2016-01-01
+categories = [ "编程",]
+tags = [ "java", "code",]
+toc = "true"
++++
+
 
 最近非常火的一道携程面试题Java
 ```java

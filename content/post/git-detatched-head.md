@@ -1,14 +1,11 @@
----
-title: "Git 的 detatched Head模式和解决问题方法"
-date: "2022-03-09T15:49:09+08:00"
-toc: true
-categories:
-- "编程"
-tags:
-- code
-- git
++++
+title = "Git 的 detatched Head模式和解决问题方法"
+date = "2022-03-09T15:49:09+08:00"
+categories = [ "编程",]
+tags = [ "code", "git",]
+toc = "true"
++++
 
----
 
 有时候commit完代码后`git push`会遇到下面的错误
 ```shell

@@ -1,14 +1,11 @@
----
-title: "使用speed-measure-webpack-plugin和Happypack优化webpack打包速度"
-date: "2021-09-12T18:02:10+08:00"
-toc: true 
-categories:
- - "编程"
-tags:
- - code
- - JS
- - webpack
----
++++
+title = "使用speed-measure-webpack-plugin和Happypack优化webpack打包速度"
+date = "2021-09-12T18:02:10+08:00"
+categories = [ "编程",]
+tags = [ "code", "JS", "webpack",]
+toc = "true"
++++
+
 
 ### 问题
 
