@@ -1,14 +1,11 @@
----
-title: "Spring Cache Notes"
-date: "2019-04-18T09:42:12+08:00"
-toc: true
-draft: true
-categories:
- - "编程"
-tags:
- - code
- - spring
----
++++
+title = "Spring Cache Notes"
+date = "2019-04-18T09:42:12+08:00"
+categories = [ "编程",]
+tags = [ "code", "spring",]
+toc = "true"
++++
+
 spring的缓存一些技巧和陷阱
 <!--more-->
 spring 的缓存
