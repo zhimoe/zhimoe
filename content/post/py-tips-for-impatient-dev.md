@@ -9,6 +9,7 @@ toc = "true"
 
 ## Python tricks
 ### f-string的妙用
+
 py3.6开始,推荐使用f-string,不要使用` %s`或者 `"".format()`.如果接收用户输入,使用Template做安全校验。
 在python f-string中可以通过变量或者表达式后面加=实现打印变量名或者表达式:
 ```python
@@ -18,6 +19,7 @@ print(f'{(len(arr),v)=}')
 <!--more-->
 
 ### 枚举类Enum略去value方法
+
 假设你想要获得下面`Color`的`#000`, 需要使用`Color.WHITE.value`。但是可以通过`StrEnum`省去这个`.value`
 
 ```python
@@ -28,13 +30,14 @@ class Color(Enum):
 from enum import StrEnum
 
 class Directions(StrEnum):
-    NORTH = 'north',    # notice the trailing comma
-    SOUTH = 'south',
+    NORTH = 'north',    
+    SOUTH = 'south',     # notice the trailing comma, it's ok and recommend
 
 print(Directions.NORTH) # no need .value
 ```
 
-### 使用with管理需要关闭的资源
+### 使用with管理需要关闭的资源，无需多个with
+
 ```python
 with open(file_path, 'w') as file, get_connection(config) as conn:
     file.write('Hello, World!')
@@ -45,9 +48,18 @@ with open(file_path, 'w') as file, get_connection(config) as conn:
 ```python
 if variable == a or variable == b:
     res = do_something(variable)
+
 # better  
 if variable in {a, b}:
     res = do_something(variable)
+
+if 'a' in v or 'b' in v or 'c' in v:
+  pass
+
+# better
+if any(char in v for char in ('a', 'b', 'c')):
+    pass
+
 
 if b > 10:
     a = 0
@@ -60,6 +72,7 @@ if data:
     lst = data
 else:
     lst = [0, 0, 0]
+    
 # better, only use this when data type is collection, 
 # cuz if data is int, then data=0 will make lst = [0,0,0]
 lst = data or [0, 0, 0]
@@ -67,6 +80,7 @@ lst = data or [0, 0, 0]
 
 ```
 ###  Instead of asking for permission, ask for forgiveness
+
 Python的异常比较轻量，所以一般推荐的写法是与其提前判断条件是否满足，不如在try catch中处理异常
 ```python
 try:
@@ -84,16 +98,19 @@ except OSError as exc:
 ```
 
 ### 重要的std lib
+
 ```python
-functools
+functools: 
 contextlib 
-atexit
+atexit: 
 pathlib
 collections
 itertools
+inspect: e.g. inspect the function signature
 ```
 
 ### isinstance
+
 isinstance可以一次判断多个Class类型:
 ```python
 # no need or conditions
@@ -101,6 +118,7 @@ isinstance(foo, (Class1, Class2, ...))
 ```
 
 ### 海象运算符(walrus operator)
+
 python3.8引入海象运算符，解决一个场景:获取一个值，检查它是否为非零，然后使用它。在python3.8之前需要三行:
 ```python
 count = fresh_fruit.get('lemon', 0)
@@ -181,14 +199,25 @@ def fun(count=[]):
 fun()   #[2]
 fun()   #[2,2]
 ```
+同理，需要避免在tuple中放入可变类型元素，例如list。
+```text
+flat seq: str, bytes, bytesarray, memeoryview, array.array
+container seq: list, tuple, collections.deque
+
+immutable: bytes, str, tuple
+mutable: list dict set bytesarray
+```
 
 ## staticmethod classmethod
+
 >  staticmethod和classmethod都可以通过Cls.m()或instance.m()方式访问,都可以被继承,都可以访问全局变量.区别是
 classmethod访问的class变量信息会自动在Derive子类中改变,而staticmethod因为缺少第一个cls参数,所以访问的全局变量始终是父类的变量.
 staticmethod可以理解为Java的StringUtils类,只是和Cls放在一起方便代码阅读和组织.
 classmethod则是可以通过cls参数访问到当前类信息的.
+
 ## 容器方法
 ### 合并字典
+
 ```python
 d1.update(d2) # 遍历d2,更新到d1
 d = dict(**profile, **ext_info) #解构重新创建dict,右边的优先级高
@@ -196,15 +225,17 @@ d = dict(profile.items() | ext_info.items()) #同理
 d = d1 | d2 # 新语法
 {k: v for d in [profile, ext_info] for k, v in d.items()} # 推导式
 ```
-py3.6开始 dict默认插入有序,无需使用OrderDict
+py3.6开始 dict默认插入有序,如果只是希望插入有序则无需使用OrderDict
 
 ### dict get and pop
+
 ```python
 d.get(k,default) 
 d.setdefault(k,default) 
 d.pop(k) #删除不存在的键时,使用del d[k]有异常抛出,pop则不会
 ```
 ### 自定义dict
+
 >自定义自己的dict不能继承dict,而是collections.abc.MutableMapping, 因为自带的list和dict有一些特殊行为无法覆盖
 ### sort dict by key:
 `print(sorted(dic, key=dic.get)) #output: key in asc order`
@@ -239,7 +270,9 @@ Car = namedtuple('Car', 'name date')  # 注意,这里多个属性可以一次性
 from typing import NamedTuple
 ```
 ### list vs array
-list的元素可以不同,更为紧凑的单一类型是array类型
+list的元素可以不同,更为紧凑的单一类型是array类型.
+list 通过append pop两个方法可以实现stack效果。
+
 ### Counter
 `Counter(string).most_common(3)`
 ### deque
@@ -280,9 +313,11 @@ for i in range(len(num_list)-1, -1, -1):
 
 ## str和bytes
 ### bytes 和 bytesarray
+
 bytes是不可变的数组,每个元素必须在0～255之间.
 bytearray是可变的,可以修改,增加,删除元素.
 转换 `bytes(ba)`
+
 ### 多行string
 ```python
 my_very_big_string = (
@@ -292,18 +327,72 @@ my_very_big_string = (
 )
 ```
 多行文本去除缩进可以使用 `textwrap.deden("""\your text""")`
+
 ### str重复n次
 `print(s * n);`
+
 ### int/string intern
 小整数池是[-5,256], string也有 string intern
+
 ### str.partition/str.translate
 有时使用str.partition方法拆分str或者str.translate批量replace子串更方便
+
+### NamedTuple, typing.NamedTuple, dataclass
+```shell
+from collections import namedtuple
+Coordinate = namedtuple('Coordinate', 'lat long')
+issubclass(Coordinate, tuple) # True
+moscow = Coordinate(55.756, 37.617)
+moscow == Coordinate(lat=55.756, long=37.617)  # True __eq__
+
+# typing.NamedTyple also is subclass tuple, not new type 
+import typing
+Coordinate = typing.NamedTuple('Coordinate', [('lat', float), ('long', float)])
+# or with type: Coordinate = typing.NamedTuple('Coordinate', lat=float, long=float)
+issubclass(Coordinate, tuple) # True
+Coordinate.__annotations__
+# {'lat': <class 'float'>, 'long': <class 'float'>}”
+issubclass(Coordinate, typing.NamedTuple)
+# False
+issubclass(Coordinate, tuple)
+# True
+
+### class style
+from typing import NamedTuple
+
+class Coordinate(NamedTuple):
+
+    lat: float
+    long: float
+
+    def __str__(self):
+        ns = 'N' if self.lat >= 0 else 'S'
+        we = 'E' if self.long >= 0 else 'W'
+        return f'{abs(self.lat):.1f}°{ns}, {abs(self.long):.1f}°{we}'
+
+### dataclass
+from dataclasses import dataclass
+
+@dataclass(frozen=True) # frozen=True: exception if re-assign fields after instance initialized
+class Coordinate:
+
+    lat: float
+    long: float
+
+    def __str__(self):
+        ...
+
+dataclasses.asdict(c)
+
+```
 
 ## 重要标准库
 ### bisect
 二分法搜索
+
 ### `pathlib` vs `os.pathlib`
 use `pathlib` over `os.pathlib`. 后者方法不全.
+
 ### os vs sys
 > os module is for system, sys this module provides access to some variables used or maintained by
 > the interpreter and to functions that interact strongly with the interpreter.
@@ -317,10 +406,11 @@ use `pathlib` over `os.pathlib`. 后者方法不全.
 ## pythonic的代码
 - 使用for推导式,不要for..in遍历,也少用map,filter
 - 多使用destructing,这点在Java/Go都不支持,可以在方法内部省很多代码
-    ```python
+    
+  ```python
     long_list = [x for x in range(100)]
     a, b, *c, d, e, f = long_list #e==98 f=99
-    ```
+  ```
 - 使用`if x is None`,而不是 `if x == None `
 
 - 异常处理
@@ -372,8 +462,10 @@ use `pathlib` over `os.pathlib`. 后者方法不全.
 - python的try可以配合else:当没有任何异常或者try里面没有return break,才执行else部分。这个和finally有很重要的不同
 - with需要实现`__enter__` `__exit__`两个方法
 - with语句可以同时打开多个文件,不要嵌套with,更多功能查看`contextlib`
-- 不要手动做数据校验,使用`pydantic`这个库
+- 不要自己手动做数据校验,使用`pydantic`这个库
 - 不要使用assert校验参数合法性,因为可以通过-O参数跳过
+- https://pythontutor.com/
+
 
 ## 参考资料
 [Python 工匠系列](https://github.com/piglei/one-python-craftsman)
