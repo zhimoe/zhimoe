@@ -7,7 +7,7 @@ Imglogo = "/img/logo.png"
 # 作者介绍
 AuthorName = "zhimoe"
 Introduce = "xkcd386, bold&bald, builder"
-AuthorImg = "/img/avatar.png"
+AuthorImg = "/img/avatar.jpg"
 
 DateFormat = "2006-01-02"
 YearFormat = "2006年"
