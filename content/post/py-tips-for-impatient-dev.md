@@ -8,6 +8,19 @@ toc = "true"
 
 ## Python tricks
 
+### f-string的妙用
+
+py3.6开始,推荐使用f-string,不要使用` %s`或者 `"".format()`.如果接收用户输入,使用Template做安全校验。
+在python f-string中可以通过变量或者表达式后面加=实现打印变量名或者表达式:
+
+```python
+print(f'{v=}') # 等价print(f'v={v}')
+print(f'{(len(arr),v)=}') 
+```
+参考: 调式时`icecream`比`print` `log`更好。
+
+<!--more-->
+
 ### 单例模式
 
 参考[creating-a-singleton-in-python](https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python)
@@ -63,18 +76,6 @@ wat = _singleton(wat) # 这样就阻止你通过 another_instance = wat()获取�
 # https://elasticsearch-py.readthedocs.io/en/7.x/#thread-safety
 ```
 
-### f-string的妙用
-
-py3.6开始,推荐使用f-string,不要使用` %s`或者 `"".format()`.如果接收用户输入,使用Template做安全校验。
-在python f-string中可以通过变量或者表达式后面加=实现打印变量名或者表达式:
-
-```python
-print(f'{v=}') # 等价print(f'v={v}')
-print(f'{(len(arr),v)=}') 
-```
-
-<!--more-->
-
 ### 枚举类Enum略去value方法
 
 假设你想要获得下面`Color`的`#000`, 需要使用`Color.WHITE.value`。但是可以通过`StrEnum`省去这个`.value`
@@ -91,6 +92,7 @@ class Directions(StrEnum):
     SOUTH = 'south',     # notice the trailing comma, it's ok and recommend
 
 print(Directions.NORTH) # no need .value
+# 缺点：StrEnum成员不能有int类型
 ```
 
 ### 使用with管理需要关闭的资源，无需多个with
@@ -154,18 +156,6 @@ except PermissionError:
 
 except OSError as exc:
     print(f'An OSError has occurred:\n{exc}')
-```
-
-### 重要的std lib
-
-```python
-functools: 
-contextlib 
-atexit: 
-pathlib
-collections
-itertools
-inspect: e.g. inspect the function signature
 ```
 
 ### isinstance
@@ -445,7 +435,7 @@ my_very_big_string = (
 
 ### NamedTuple, typing.NamedTuple, dataclass
 
-```shell
+```python
 from collections import namedtuple
 Coordinate = namedtuple('Coordinate', 'lat long')
 issubclass(Coordinate, tuple) # True
@@ -494,13 +484,13 @@ dataclasses.asdict(c)
 ```
 
 ## 重要标准库
-
-### bisect
-
-二分法搜索
+```python
+functools contextlib atexit pathlib collections itertools
+inspect: e.g. inspect the function signature
+bisect: 二分查找
+```
 
 ### `pathlib` vs `os.path`
-
 use `pathlib` over `os.path`. 后者方法不全.
 
 ```shell
@@ -576,20 +566,25 @@ def file_abspath(relative_path: str) -> str:
 
 ## 其他
 
+- 数据校验`pydantic`
+- 日志 `loguru`
+- 异常现场`stackprinter`，打印上下文`icecream`
+- 命令行`click` 或者`defopt`
+- 时间处理 `arrow`
+- 查看字节码`dis`
 - 使用help(),dir()获取信息
 - python中的每个函数都有__code__属性,包含字节码信息
 - 使用dis模块的dis函数可以查看更容易阅读的汇编(dis == disassembler)
 - sys.getsizeof(x)获取对象大小
 - `...`和`pass`几乎等效的,这是一个ellipsis type的单例.
 - 无限大 float('inf') float('-inf')
-- dis查看字节码
 - `==`会被`__eq__`方法改变,判断是否None时应该使用is判断id是否一致
 - python的try可以配合else:当没有任何异常或者try里面没有return break,才执行else部分。这个和finally有很重要的不同
-- with需要实现`__enter__` `__exit__`两个方法
+- 使用with需要实现`__enter__` `__exit__`两个方法
 - with语句可以同时打开多个文件,不要嵌套with,更多功能查看`contextlib`
 - 不要自己手动做数据校验,使用`pydantic`这个库
 - 不要使用assert校验参数合法性,因为可以通过-O参数跳过
-- https://pythontutor.com/
+- 代码执行可视化 https://pythontutor.com/
 
 ## 参考资料
 
