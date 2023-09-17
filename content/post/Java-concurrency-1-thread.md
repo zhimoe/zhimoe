@@ -40,7 +40,7 @@ public class FutureTask<V> implements RunnableFuture<V>
 启动线程使用 t.start()， 注意，如果是调用t.run()是在当前线程中执行任务，不是新线程。
 
 线程的生命周期
-![线程生命周期](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/java-thread-lifecycle.4w2mxew710c0.webp)
+![线程生命周期](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/java-thread-lifecycle.4w2mxew710c0.webp)
 详细说明参考[Java并发编程](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Java%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%2078%20%E8%AE%B2-%E5%AE%8C/03%20%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%A6%82%E4%BD%95%E5%9C%A8%206%20%E7%A7%8D%E7%8A%B6%E6%80%81%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2%E7%9A%84%EF%BC%9F.md)
 
 ### Thread.join方法

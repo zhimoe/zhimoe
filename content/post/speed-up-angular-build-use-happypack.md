@@ -33,7 +33,7 @@ module.exports = {
 ```
 
 得到下图左侧的结果,可以看到主要耗时都在angular的PurifyPlugin上.搜索了一番后找到HappPack这个多核执行的插件.
-![smp-result-before-and-after-happypack](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/happypack.1p8mivl0t3k0.webp)
+![smp-result-before-and-after-happypack](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/happypack.1p8mivl0t3k0.webp)
 配置happypack,由于主要耗时都在`const PurifyPlugin = require('@angular-devkit/build-optimizer').PurifyPlugin;`插件上,这里只需要针对这一个插件配置happypack即可.
 
 ```js

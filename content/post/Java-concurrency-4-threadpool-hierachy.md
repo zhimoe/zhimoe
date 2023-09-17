@@ -75,7 +75,7 @@ JDK默认的拒绝策略RejectedExecutionHandler有：
 ```
 
 ### 任务提交执行流程
-![任务提交执行流程](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/threadpool.5d6mli4zovs0.svg)
+![任务提交执行流程](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/threadpool.5d6mli4zovs0.svg)
 
 ### fork/join 框架
 fork/join和上面ThreadPoolExecutor的区别在于使用了任务窃取算法,工作线程完成自己的任务后可以从其他线程偷取任务,提高整体的任务效率.

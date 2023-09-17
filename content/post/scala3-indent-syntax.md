@@ -15,4 +15,4 @@ Scala 3 在语法上面新增了一种Python的缩进格式,两种格式都可�
 
 <!--more-->
 
-![scala3-indent-syntax](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/pic/scala3-indent.67cs88jvxlw0.webp)
+![scala3-indent-syntax](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/scala3-indent.67cs88jvxlw0.webp)

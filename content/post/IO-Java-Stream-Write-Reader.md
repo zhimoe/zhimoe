@@ -12,7 +12,7 @@ toc = "true"
 <!--more-->
 
 ### 概览
-![Java IO继承图](https://cdn.staticaly.com/gh/zhimoe/zhimoe.pic@main/20230708/java_io_stream_reader.4lgp0r6e14w0.webp)
+![Java IO继承图](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/java_io_stream_reader.4lgp0r6e14w0.webp)
 
 首先理解计算机文件格式都是二进制数据，例如文本，图片，视频，音频等，但是文本非常特殊，所以单独有一类封装设计。
 对于非文本类的文件，一般是读取字节(stream)，而对于文本类文件，则可以读取字符(reader)
@@ -22,24 +22,24 @@ toc = "true"
 首先是byte流,每次read()读取8 bits,并用一个int的低八位保存：
 
 ```java
-        FileInputStream in = null;
-        FileOutputStream out = null;
-		try {
-			in = new FileInputStream("xanadu.txt");
-			out = new FileOutputStream("outagain.txt");
-			int c;
-			while ((c = in.read()) != -1) {
-				out.write(c);
-			}
-			
-		} finally { 
-			if (in != null) {
-				in.close();
-			}
-			if (out != null) {
-				out.close();
-			}
-		}
+FileInputStream in = null;
+FileOutputStream out = null;
+try {
+    in = new FileInputStream("xanadu.txt");
+    out = new FileOutputStream("outagain.txt");
+    int c;
+    while ((c = in.read()) != -1) {
+        out.write(c);
+    }
+    
+} finally { 
+    if (in != null) {
+        in.close();
+    }
+    if (out != null) {
+        out.close();
+    }
+}
 
 ```
 byte流是很基础的流,接下来是字符流,使用int的低16位保存读取内容,一个汉字,使用上面那个字节流,需要读取2次,使用下面的字符流,只用一次.其实背后还是一个桥接
@@ -51,25 +51,25 @@ InputStreamReader:字节到字符的桥梁
 OutputStreamWriter:字符到字节的桥梁：  
 
 ```java
-        FileReader inputReader = null;
-        FileWriter outputStream = null;
+FileReader inputReader = null;
+FileWriter outputStream = null;
 
-        try {
-            inputReader = new FileReader("xanadu.txt");
-            outputStream = new FileWriter("characteroutput.txt");
+try {
+    inputReader = new FileReader("xanadu.txt");
+    outputStream = new FileWriter("characteroutput.txt");
 
-            int c;
-            while ((c = inputReader.read()) != -1) {
-                outputStream.write(c);
-            }
-        } finally {
-            if (inputReader != null) {
-                inputReader.close();
-            }
-            if (outputStream != null) {
-                outputStream.close();
-            }
-        }
+    int c;
+    while ((c = inputReader.read()) != -1) {
+        outputStream.write(c);
+    }
+} finally {
+    if (inputReader != null) {
+        inputReader.close();
+    }
+    if (outputStream != null) {
+        outputStream.close();
+    }
+}
 
 ```
 
@@ -159,12 +159,11 @@ scanner.nextLine();
 从 JDK1.6开始,基本类库中增加了java.io.Console 类,用于获得与当前 Java 虚拟机关联的基于字符的控制台设备.在纯字符的控制台界面下,可以更加方便地读取数据.
 
 ```java
-        Console console = System.console();  
-        if (console == null) {  
-            throw new IllegalStateException("不能使用控制台");  
-        }  
-        return console.readLine(prompt);  
-
+Console console = System.console();  
+if (console == null) {  
+    throw new IllegalStateException("不能使用控制台");  
+}  
+return console.readLine(prompt);
 ```
 
 ### Data Streams
