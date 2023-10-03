@@ -9,8 +9,8 @@ toc = "true"
 
 初学rust对于项目的package和crate的关系,module和文件的关系有点理不清.做了一点笔记.
 
-## packages, crates and modules  
-A Cargo.toml is a package. and must have a package name, like 
+## packages and crates
+A Cargo.toml is a package. and must have a package name, defined in `[package]` table:
 
 ```toml
 [package]
@@ -19,26 +19,23 @@ name = "actix-web"
 
 <!--more-->
 
-A package(project) contains one or more crates;
+A package contains one or more crates. 
+a package can only have 0 or 1 library crate, no more; the entry file is `lib.rs`
+A package *can* contain as many binary crates as you’d like. the entry file is `main.rs` or `src/bin/b1.rs` etc.
 
-A package CAN contain as many binary crates as you’d like, but it must contain at least one crate (either library or binary);
-use src/main.rs, will build to package-name binary, or use src/bin/b1.rs,src/bin/b2.rs, wil get 2 binaries: b1,b2.
+by convention, package-name is use `-` (dash), but lib_name must use `_` (underscores, can not be dash `-`);
 
-A package must contain zero or one(0或者1个) library crates, and no more.
-
-by convention, package-name is use `-` (dash,can be `_`), but lib_name must use `_` (underscores, can not be `-`);
-
-cargo will auto replace the `-` with `_` in package-name to name the  default library crate(lib.rs in src root). Also you can name it in [lib]:
-
+cargo will auto replace the `-` with `_` in package-name to name the  default library crate(lib.rs in src root). you can name it in [lib]:
 
 ```toml
+# rename the lib crate
 [lib]
 name = "actix_web"
 path = "src/lib.rs"
 
-
-# also you can rename the binary:
-# it use [[]], array in toml
+# also you can rename the binary crate:
+# it use [[]], array of table in toml, 
+# cuz a package can have many binary crate.
 [[bin]]
 name = "my-cool-binary"
 path = "src/my-cool-binary.rs"
@@ -69,71 +66,97 @@ members = [
 ]
 # awc,actix-http... all are packages that contains their own Cargo.toml and src/lib.rs; 
 ``` 
-
-
+## crate and mod
 A crate is a compilation unit in Rust. 
 
-Whenever rustc some_file.rs is called, some_file.rs is treated as the crate file. 
+Whenever `rustc some_file.rs` is called, some_file.rs is treated as the crate file. 
 If some_file.rs has mod declarations in it, then the contents of the module files would be inserted 
 in places where mod declarations in the crate file are found, before running the compiler it. 
 In other words, modules do not get compiled individually, only crates get compiled.
 
 `mod mod_name {}` defines a mod.
 
-`mod mod_name; ` cargo will look for mod_name.rs or mod_name/mod.rs and insert the content to current file.
+`mod mod_name; ` import a mod. cargo will look for mod_name.rs or mod_name/mod.rs and insert the content to current file.
 
 by default the mod is private; but nested mod is allowed to use any code in super mod;
 
-`self` and `super` is to ref the current mod and super mod;
+`self` and `super` is to ref the current mod and parent mod;
 
 ```rust
 fn main(){
-// absolute path
-crate::music::popular::play();
-          
-// relative path
-music::popular::play();
+    // absolute root path
+    crate::music::popular::play();
+              
+    // relative path
+    music::popular::play();
 }
 ```
 
-the Structs members is all private by default even struct name is pub;
-
-the Enums members is all public by default if the name is pub; 
-
 ## use keyword
 
-the `use` keyword brings path(crate mod path) into scope;
+the `use` keyword brings path into scope;
+
+注意，rust中`mod`才是import，`use`只是简化path长度。在同一个package内部，必须要`mod module_name;`之后才能使用`use module_name::func`.
+如果是`Cargo.toml`中的依赖crate，无需`mod`也无需`use`（使用full path）就可以使用crate的item。
+
+对于function，一般约定是use函数名上一级: `use mods::foo::bar;`，而不是直接use函数`use mods::foo::bar::func_name;`
 
 ```rust
-//bring a module into scope with `use` and a relative path need start `self`:
-use self::music::popular;
-//!!!the self:: is no needed in rust 2018+
+//Providing New Names with the as Keyword
+use std::io::Result as IoResult;
 
-//use the absolute path
-use crate::music::popular;
-
-//make the path to public
+//Re-exporting Names with pub use
 pub use crate::music::popular;
 
-//use
-use std::{cmp::Ordering,io};
-use std::{self,Write};
+//Use nested paths or the glob operator
+use std::{cmp::Ordering, io};
+use std::collections::*;
+
+//by default, use is absolute.
+use crate::music::popular;
+use std::{self,Write}; // std and Write 
+
+//bring a module into scope with `use` and a relative path need start `self`:
+use self::music::popular;
+```
+in most cases you won't need to use `extern crate` anymore because Cargo informs the compiler about what crates are present. (There are one or two exceptions):[sysroot mod](https://doc.rust-lang.org/edition-guide/rust-2018/path-changes.html#an-exception)
+
+### use foo::bar vs use crate::foo::bar
+[use in ](https://doc.rust-lang.org/reference/items/use-declarations.html#use-paths)
+```rust
+mod my_mod {
+    pub mod foo {
+        pub mod bar {
+            pub fn greet() {
+                println!("hello rust");
+            }
+        }
+
+        pub fn greet_twice() {
+            // use super::foo::bar::greet;          // ok 相对路径
+            // use self::bar::greet;                // ok 相对路径
+            // use my_mod::foo::bar::greet;         // error in 2018+ but ok in 2015 edition.
+            use crate::my_mod::foo::bar::greet;     // ok 绝对路径，建议使用
+            greet();
+            greet();
+        }
+    }
+}
+
+fn main() {
+    // use crate::my_mod::foo::bar;   // ok 绝对路径 preferred
+    // use self::my_mod::foo::bar;    // ok 相对路径
+    use my_mod::foo::bar;             // ok 相对路径, 省略了self, error in 2015 edition: relative paths are not allowed without `self`;
+    bar::greet();
+    use crate::my_mod::foo;
+    foo::greet_twice();
+}
 ```
 
 ## split up mod into files
 1. the mod can be defined in mod_name.rs or mod_name/mod.rs. and nested mod can be in mod_name/nested_mod.rs.
 2. you can ref the nested_mod by use `mod nested_mod;` in mod_name.rs;
 
-
-
-
-
-## summary
-
-1. 简单粗暴的理解,一个项目 == 一个package, 一个package可以包含多个crate. 
-2. crate是Cargo的编译单元,也是Cargo.toml中`[dependencies]`的依赖单元.
-3. 一个package只能包含一个lib crate(`src/lib.rs`),但是可以在`src/main.rs`或者`src/bin/*.rs`下面包含任意多个bin crate;
-4. 对于复杂项目,可以通过cargo的`[workspace]`管理多个crate,这样可以实现一个`Cargo.toml`管理/构建多个lib crate.
-
-5. mod是rust中代码的组织最小单元. `mod mod_name {}` 是定义一个mod;`mod mod_name; ` 表示将`mod_name.rs`或者`mod_name/mod.rs`中的内容插入到当前文件当前位置,并且插入内容被包含在`mod mod_name`中.
-6. crate内部的mod引用使用`self::`开头,引用外部crate则使用`crate::`开头.
+## pub in struct and enum
+1. the Struct members is all private by default even struct name is pub;
+2. the Enum members is all public by default if the name is pub;
