@@ -1,5 +1,5 @@
 +++
-title = "单元测试如何Mock有参数的void方法"
+title = "java单元测试如何Mock有参数的void方法"
 date = "2017-04-23T21:51:20+08:00"
 categories = [ "编程",]
 tags = [ "code", "java", "test",]

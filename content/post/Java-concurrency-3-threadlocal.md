@@ -2,7 +2,7 @@
 title = "Java并发3-ThreadLocal"
 date = 2016-01-01
 categories = [ "编程",]
-tags = [ "java", "并发",]
+tags = [ "java", "并发"]
 toc = "true"
 +++
 
@@ -26,13 +26,8 @@ import java.util.Random;
 public class ThreadLocalExample implements Runnable{
 
     // SimpleDateFormat is not thread-safe, so give one to each thread
-    private static final ThreadLocal<SimpleDateFormat> formatter = new ThreadLocal<SimpleDateFormat>(){
-        @Override
-        protected SimpleDateFormat initialValue()
-        {
-            return new SimpleDateFormat("yyyyMMdd HHmm");
-        }
-    };
+    private static final ThreadLocal<SimpleDateFormat> formatter = 
+        ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyyMMdd HHmm"));
     
     public static void main(String[] args) throws InterruptedException {
         ThreadLocalExample obj = new ThreadLocalExample();

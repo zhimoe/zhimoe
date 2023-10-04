@@ -2,7 +2,7 @@
 title = "Java并发4-线程池与执行器"
 date = "2018-06-13T09:57:52+08:00"
 categories = [ "编程",]
-tags = [ "并发", "java", "thread-pool",]
+tags = ["java", "并发", "thread-pool",]
 toc = "true"
 +++
 
@@ -43,6 +43,7 @@ individual tasks and of the executor itself.
 //同样的,Executors还提供了ScheduledExecutorService的工具方法
 // Executors.newSingleThreadScheduledExecutor
 ```
+
 ```java
 /**
  * corePoolSize - 保留存活的线程个数

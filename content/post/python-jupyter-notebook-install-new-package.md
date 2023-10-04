@@ -14,22 +14,24 @@ toc = "true"
 
 <!--more-->
 
-```text
-通过bash启动的notebook的python pip conda这几个命令的环境和实际执行notebook代码的python环境可能不是同一个.
+
+通过bash启动的notebook中的`python pip conda`这几个命令的环境和实际执行notebook代码的python环境可能不是同一个.
 这种情况一般发生在系统有好几个python的情况,例如系统自带python和用户安装的anaconda python.
 可以通过对比以下两个notebook命令的输出判断pip执行环境和notebook代码执行环境是否一致：
+```python
 # pip执行环境python
 !type python
 # notebook 代码执行环境的python
 import sys
 sys.executable
-
+```
 如果不一样,那么需要使用下面命令安装才能在notebook中生效：
 import sys
 !{sys.executable} -m pip install numpy
-```
+
 
 ### sys和os区别
+
 ```text
 os: 操作系统的抽象.
 

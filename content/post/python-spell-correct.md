@@ -1,5 +1,5 @@
 +++
-title = "如何实现一个拼写检查器[翻译]"
+title = "Python如何实现一个拼写检查器[翻译]"
 date = "2020-10-25T20:01:27+08:00"
 categories = [ "翻译",]
 tags = [ "code", "python",]

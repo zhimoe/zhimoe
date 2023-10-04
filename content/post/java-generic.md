@@ -2,7 +2,7 @@
 title = "java generic"
 date = 2016-05-01
 categories = [ "编程",]
-tags = [ "java", "code",]
+tags = [ "java", "泛型",]
 toc = "true"
 +++
 

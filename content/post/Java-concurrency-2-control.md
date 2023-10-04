@@ -10,9 +10,9 @@ toc = "true"
 
 ### Object.wait/notify/notifyAll
 
-这三个方法是在class Object 上面的，也就是所有对象都有这个方法。这里对象就是上面类比的资源,可以当成一个信号量。
-Object.wait() to suspend a thread（等价于sem.wait()）。将当前线程暂停并释放当前对象锁，直到其他线程调用了当前对象的notify/notifyAll方法。
-Object.notify() to wake a thread up（等价sem.signal()）。唤醒一个在等待当前对象锁的线程。
+这三个方法是在class Object 上面的，也就是所有对象都有这个方法。这里对象就是上一篇中类比的资源,可以当成一个信号量。
+`Object.wait()` to suspend a thread（等价于`sem.wait()`）。将当前线程暂停并释放当前对象锁，直到其他线程调用了当前对象的notify/notifyAll方法。
+`Object.notify()` to wake a thread up（等价`sem.signal()`）。唤醒一个在等待当前对象锁的线程。
 以前用wait/notify的地方,现在可以用CyclicBarrier和CountDownLatch同步工具代替
 
 wait方法使用模板:
@@ -92,7 +92,7 @@ sem.release() 释放资源的一个许可证。
 CountDownLatch是管理一组线程和一个主线程的先后.主线程wait后就阻塞,直到所有的CountDownLatch调用countDown后主线程接着开始.
 
 ```java
-package angus.intrview.concurrent;
+package zhimoe.intrview.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -118,7 +118,8 @@ public class CountDownLatchTest {
 	public static void main(String[] args) throws InterruptedException {
 		CountDownLatchTest ct = new CountDownLatchTest();
 		long time = ct.timer(100);
-		System.out.println(TimeUnit.NANOSECONDS.toSeconds(time) + "   SENCODS");
+		System.out.println(
+			TimeUnit.NANOSECONDS.toSeconds(time) + " SENCODS");
 	}
 
 }
@@ -152,8 +153,8 @@ class Task implements Runnable {
 
 }
 ```
-### CyclicBarrier Exchanger
-
+### CyclicBarrier
+### Exchanger
 ### Lock
 
 
