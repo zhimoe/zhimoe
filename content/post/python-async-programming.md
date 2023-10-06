@@ -14,36 +14,33 @@ toc = true
 大多数情况，如果出于性能原因不需要异步，线程通常是更简单的替代方案。
 
 <!--more-->
+> An event loop essentially manages and distributes the execution of different tasks. It registers them and handles distributing the flow of control between them.
 
-### generator
+> Coroutines are special functions that work similarly to Python generators, on await they release the flow of control back to the event loop. A coroutine needs to be scheduled to run on the event loop, once scheduled coroutines are wrapped in Tasks which is a type of Future.
 
-generator示例：
-```python
->>> def multi_yield():
-...     yield_str = "This will print the first string"
-...     yield yield_str
-...     yield_str = "This will print the second string"
-...     yield yield_str
-...
->>> multi_obj = multi_yield()
->>> print(next(multi_obj))
-This will print the first string
->>> print(next(multi_obj))
-This will print the second string
->>> print(next(multi_obj))
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-StopIteration
-```
+> Futures are objects that represent the result of a task that may or may not have been executed. This result may be an exception.
+
+### event loop
+
+The event loop is the core of every asyncio application. Event loops run asynchronous tasks and callbacks, perform network IO operations, and run subprocesses.
+
 
 ```python
-def infinite_sequence():
-    num = 0
-    while True:
-        yield num
-        num += 1
-```
+def get_event_loop():
+    """Return an asyncio event loop.
 
+    When called from a coroutine or a callback (e.g. scheduled with call_soon
+    or similar API), this function will always return the running event loop.
+
+    If there is no running event loop set, the function will return
+    the result of `get_event_loop_policy().get_event_loop()` call.
+    """
+    # NOTE: this function is implemented in C (see _asynciomodule.c)
+    current_loop = get_running_loop()
+    if current_loop is not None:
+        return current_loop
+    return get_event_loop_policy().get_event_loop()
+```
 
 ### coroutine and future and task
 - coroutines declared with the async/await syntax, is awaitable object.
@@ -126,37 +123,24 @@ Future objects are used to bridge low-level callback-based code with high-level 
 The rule of thumb is to never expose Future objects in user-facing APIs, and the recommended way to create a Future object is to call `loop.create_future()`. 
 This way alternative event loop implementations can inject their own optimized implementations of a Future object.
 
+```pythnon
+f: asyncio.Future[R] = asyncio.get_running_loop().create_future()
+```
+
 实际项目中使用future的例子：
 ```python
+# 参考aiohttp
 # TBD
-
 ```
 
-
-### event loop
-The event loop is the core of every asyncio application. Event loops run asynchronous tasks and callbacks, perform network IO operations, and run subprocesses.
-```python
-def get_event_loop():
-    """Return an asyncio event loop.
-
-    When called from a coroutine or a callback (e.g. scheduled with call_soon
-    or similar API), this function will always return the running event loop.
-
-    If there is no running event loop set, the function will return
-    the result of `get_event_loop_policy().get_event_loop()` call.
-    """
-    # NOTE: this function is implemented in C (see _asynciomodule.c)
-    current_loop = _get_running_loop()
-    if current_loop is not None:
-        return current_loop
-    return get_event_loop_policy().get_event_loop()
-```
 
 ### stream
+
 Streams are high-level async/await-ready primitives to work with network connections. Streams allow sending and receiving data without using callbacks or low-level protocols and transports.
 可以理解成channel。主要包含 `asyncio.open_connection` `asyncio.start_server` `asyncio.open_unix_connection` `asyncio.start_unix_server`
 
-### 多线程并发
+
+### 多线程并发[相关内容]
 
 #### threading version
 ```python
@@ -220,3 +204,39 @@ if __name__ == "__main__":
     duration = time.time() - start_time
     print(f"Duration {duration} seconds")
 ```
+
+### generator
+
+generator示例：
+```python
+>>> def multi_yield():
+...     yield_str = "This will print the first string"
+...     yield yield_str
+...     yield_str = "This will print the second string"
+...     yield yield_str
+...
+>>> multi_obj = multi_yield()
+>>> print(next(multi_obj))
+This will print the first string
+>>> print(next(multi_obj))
+This will print the second string
+>>> print(next(multi_obj))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+```
+
+```python
+def infinite_sequence():
+    num = 0
+    while True:
+        yield num
+        num += 1
+```
+
+### 参考
+[asyncio cheatsheet](https://cheat.readthedocs.io/en/latest/python/asyncio.html)
+
+[pymotw.com Waiting for a Future](https://pymotw.com/3/asyncio/futures.html#waiting-for-a-future)
+
+[AsyncIO for the Working Python Developer](https://yeray.dev/python/asyncio/asyncio-for-the-working-python-developer)
