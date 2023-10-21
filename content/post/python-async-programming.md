@@ -1,5 +1,5 @@
 +++
-title = 'Python异步编程'
+title = 'Python 异步编程'
 date = '2023-09-24T08:47:44+08:00'
 categories = ['编程']
 tags = ['async','python']
@@ -7,10 +7,10 @@ toc = true
 +++
 
 异步编程很难，但却是最近十年所有编程语言在发力的方向。
-在面向CPU计算的场景下，多线程基本都能吃满CPU资源。但是在IO场景下，多线程并不能解决问题，大部分时间线程都在等待IO调用的返回。
-实际上python的[官方教程](https://docs.python.org/3/tutorial/index.html)里面并没有async编程的内容，而是在[std lib doc中网络编程章节](https://docs.python.org/3/library/ipc.html)介绍了asyncio这个lib,实际上这也是异步编程的最佳使用场景。
+在面向 CPU 计算的场景下，多线程基本都能吃满 CPU 资源。但是在 IO 场景下，多线程并不能解决问题，大部分时间线程都在等待 IO 调用的返回。
+实际上 python 的[官方教程](https://docs.python.org/3/tutorial/index.html)里面并没有 async 编程的内容，而是在[std lib doc 中网络编程章节](https://docs.python.org/3/library/ipc.html)介绍了 asyncio 这个 lib，实际上这也是异步编程的最佳使用场景。
 
-此外经常会看到“Use async sparingly”,因为异步编程存在染色问题，一旦使用async，会要求你全链路全部为async，否则在block时cpu并无法让出线程资源。
+此外经常会看到“Use async sparingly”,因为异步编程存在染色问题，一旦使用 async，会要求你全链路全部为 async，否则在 block 时 cpu 并无法让出线程资源。
 大多数情况，如果出于性能原因不需要异步，线程通常是更简单的替代方案。
 
 <!--more-->
@@ -24,38 +24,31 @@ toc = true
 
 The event loop is the core of every asyncio application. Event loops run asynchronous tasks and callbacks, perform network IO operations, and run subprocesses.
 
+`get_event_loop`已经废弃，应该使用`get_running_loop`
 
 ```python
-def get_event_loop():
-    """Return an asyncio event loop.
 
-    When called from a coroutine or a callback (e.g. scheduled with call_soon
-    or similar API), this function will always return the running event loop.
-
-    If there is no running event loop set, the function will return
-    the result of `get_event_loop_policy().get_event_loop()` call.
-    """
-    # NOTE: this function is implemented in C (see _asynciomodule.c)
-    current_loop = get_running_loop()
-    if current_loop is not None:
-        return current_loop
-    return get_event_loop_policy().get_event_loop()
 ```
 
 ### coroutine and future and task
-- coroutines declared with the async/await syntax, is awaitable object.
-  an object is an awaitable object if it can be used in an `await` expression. Many asyncio APIs are designed to accept awaitable objects. 
-  There are three main types of awaitable objects: `coroutine`, `Task`, and `Future`.
+- coroutines declared with the async/await syntax, is awaitable object. For an object to be awaitable, it must implement the special `__await__()` method that returns an iterable. 
+  
+- an object is an awaitable object if it can be used in an `await` expression. Many asyncio APIs are designed to accept awaitable objects.  There are three main types of awaitable objects: `coroutine`, `Task`, and `Future`.
+
 - a coroutine function: an async def function; a coroutine object: an object returned by calling a coroutine function.
+  
 - The `asyncio.create_task()` function to run coroutines concurrently as asyncio Tasks.
    Tasks are used to schedule coroutines concurrently.
+
 - A Future is a special low-level awaitable object that represents an eventual result of an asynchronous operation.
+  
 - Normally there is no need to create Future objects at the application level code.
   Future objects in asyncio are needed to allow callback-based code to be used with async/await.(重要)
+
 - A good example of a low-level function that returns a Future object is `loop.run_in_executor()`.
 
 
-coroutine简单示例：
+coroutine 简单示例：
 ```python
 import asyncio
 import time
@@ -76,7 +69,7 @@ asyncio.run(main())
 
 ```
 
-future和coroutine同时使用：
+future 和 coroutine 同时使用：
 ```python
 async def main():
     await function_that_returns_a_future_object()
@@ -87,19 +80,30 @@ async def main():
         some_python_coroutine()
     )
 ```
-
-常用的api：
+可以通过注解将普通方法变成 awaitable object
 ```python
-coroutine asyncio.sleep(delay, result=None)
-awaitable asyncio.gather(*aws, return_exceptions=False)
-loop = asyncio.get_running_loop()
-awaitable asyncio.shield(aw): Protect an awaitable object from being cancelled.
-asyncio.timeout(delay)/timeout_at(when)/wait_for(aw, timeout):
+from types import coroutine
+# NEW: this is an awaitable object!
+@coroutine
+def nice():
+    yield
+```
 
+常用的 api：
+
+```python
+# coroutine asyncio.sleep(delay, result=None)
+# awaitable asyncio.gather(*aws, return_exceptions=False)
+# loop = asyncio.get_running_loop()
+# awaitable asyncio.shield(aw): Protect an awaitable object from being cancelled.
+# asyncio.timeout(delay)/timeout_at(when)/wait_for(aw, timeout):
+
+# example
 async def main():
     async with asyncio.timeout(10):
         await long_running_task()
 ```
+[$✘!?]
 
 ### runner
 runners are built on top of an `event loop` with the aim to simplify async code usage for common wide-spread scenarios.
@@ -127,9 +131,9 @@ This way alternative event loop implementations can inject their own optimized i
 f: asyncio.Future[R] = asyncio.get_running_loop().create_future()
 ```
 
-实际项目中使用future的例子：
+实际项目中使用 future 的例子：
 ```python
-# 参考aiohttp
+# 参考 aiohttp
 # TBD
 ```
 
@@ -137,7 +141,7 @@ f: asyncio.Future[R] = asyncio.get_running_loop().create_future()
 ### stream
 
 Streams are high-level async/await-ready primitives to work with network connections. Streams allow sending and receiving data without using callbacks or low-level protocols and transports.
-可以理解成channel。主要包含 `asyncio.open_connection` `asyncio.start_server` `asyncio.open_unix_connection` `asyncio.start_unix_server`
+可以理解成 channel。主要包含 `asyncio.open_connection` `asyncio.start_server` `asyncio.open_unix_connection` `asyncio.start_unix_server`
 
 
 ### 多线程并发[相关内容]
@@ -207,7 +211,7 @@ if __name__ == "__main__":
 
 ### generator
 
-generator示例：
+generator 示例：
 ```python
 >>> def multi_yield():
 ...     yield_str = "This will print the first string"
@@ -240,3 +244,7 @@ def infinite_sequence():
 [pymotw.com Waiting for a Future](https://pymotw.com/3/asyncio/futures.html#waiting-for-a-future)
 
 [AsyncIO for the Working Python Developer](https://yeray.dev/python/asyncio/asyncio-for-the-working-python-developer)
+
+[Some thoughts on asynchronous API design in a post-async/await world](https://vorpus.org/blog/some-thoughts-on-asynchronous-api-design-in-a-post-asyncawait-world/)
+
+[a-tale-of-event-loops](https://github.com/AndreLouisCaron/a-tale-of-event-loops)
