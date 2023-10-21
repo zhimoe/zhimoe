@@ -7,7 +7,7 @@ toc = "true"
 +++
 
 
-初学rust对于项目的package和crate的关系,module和文件的关系有点理不清.做了一点笔记.
+初学 rust 对于项目的 package 和 crate 的关系，module 和文件的关系有点理不清。做了一点笔记。
 
 ## packages and crates
 A Cargo.toml is a package. and must have a package name, defined in `[package]` table:
@@ -96,10 +96,10 @@ fn main(){
 
 the `use` keyword brings path into scope;
 
-注意，rust中`mod`才是import，`use`只是简化path长度。在同一个package内部，必须要`mod module_name;`之后才能使用`use module_name::func`.
-如果是`Cargo.toml`中的依赖crate，无需`mod`也无需`use`（使用full path）就可以使用crate的item。
+注意，rust 中`mod`才是 import，`use`只是简化 path 长度。在同一个 package 内部，必须要`mod module_name;`之后才能使用`use module_name::func`.
+如果是`Cargo.toml`中的依赖 crate，无需`mod`也无需`use`（使用 full path）就可以使用 crate 的 item。
 
-对于function，一般约定是use函数名上一级: `use mods::foo::bar;`，而不是直接use函数`use mods::foo::bar::func_name;`
+对于 function，一般约定是 use 函数名上一级：`use mods::foo::bar;`，而不是直接 use 函数`use mods::foo::bar::func_name;`
 
 ```rust
 //Providing New Names with the as Keyword
@@ -146,7 +146,7 @@ mod my_mod {
 fn main() {
     // use crate::my_mod::foo::bar;   // ok 绝对路径 preferred
     // use self::my_mod::foo::bar;    // ok 相对路径
-    use my_mod::foo::bar;             // ok 相对路径, 省略了self, error in 2015 edition: relative paths are not allowed without `self`;
+    use my_mod::foo::bar;             // ok 相对路径，省略了 self, error in 2015 edition: relative paths are not allowed without `self`;
     bar::greet();
     use crate::my_mod::foo;
     foo::greet_twice();

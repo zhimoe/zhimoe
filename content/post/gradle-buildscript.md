@@ -1,5 +1,5 @@
 +++
-title = "理解Gradle build脚本结构与语法"
+title = "理解 Gradle build 脚本结构与语法"
 date = 2016-01-01
 categories = [ "编程",]
 tags = [ "code", "groovy", "gradle",]
@@ -7,19 +7,19 @@ toc = "true"
 +++
 
 
-在看这个之前,希望你有用ant或者maven的使用经验,还有,对groovy的语法有一个简单的了解,不懂也没关系,下面会介绍.
-理解gradle文件的前提是理解一个重要的groovy概念:closure
+在看这个之前，希望你有用 ant 或者 maven 的使用经验，还有，对 groovy 的语法有一个简单的了解，不懂也没关系，下面会介绍。
+理解 gradle 文件的前提是理解一个重要的 groovy 概念:closure
 
 #### closure
-一个closure是一个定义在groovy文件中的{}代码块,这个代码块类似js中的匿名函数,它可以被赋值给变量,可以被调用,可以接收参数,还可以作为参数传递给别的函数.
+一个 closure 是一个定义在 groovy 文件中的{}代码块，这个代码块类似 js 中的匿名函数，它可以被赋值给变量，可以被调用，可以接收参数，还可以作为参数传递给别的函数。
 
-closure中最重要的两个概念是委托对象和作为参数传递的语法格式（理解gradle文件很重要）.
+closure 中最重要的两个概念是委托对象和作为参数传递的语法格式（理解 gradle 文件很重要）.
 
 <!--more-->
 
-#### groovy方法调用括号的省略
+#### groovy 方法调用括号的省略
 
-groovy提供非常优雅的方法调用格式,总结起来是:
+groovy 提供非常优雅的方法调用格式，总结起来是：
 
 ```groovy
 //可以省略参数括号,并且链式调用
@@ -56,14 +56,14 @@ take 3 cookies
 
 ```
 
-上面调用的格式是dsl的基础.也是看懂gradle文件格式的基础.
+上面调用的格式是 dsl 的基础。也是看懂 gradle 文件格式的基础。
 
-让我们再深入一点,上面讲的是调用格式,那么怎么创建这种可以链式调用的方法呢？
-- groovy和scala的方法返回值不需要return,最后一行就是返回值.
-- closure是一个匿名函数,格式`{ [closureParameters -> ] statements }`,默认自带一个名为it的参数,所以只接受一个参数时可以省略->.
-- closure可以访问scope（作用域）内任何变量.并且这个scope是可以通过委托来改变的.
-- groovy中Map对象的value如果是closure,那么可以接着调用:`mapp.keyy({closure}) `
-有了上面的基础,我们看一个简单的例子:
+让我们再深入一点，上面讲的是调用格式，那么怎么创建这种可以链式调用的方法呢？
+- groovy 和 scala 的方法返回值不需要 return，最后一行就是返回值。
+- closure 是一个匿名函数，格式`{ [closureParameters -> ] statements }`,默认自带一个名为 it 的参数，所以只接受一个参数时可以省略->.
+- closure 可以访问 scope（作用域）内任何变量。并且这个 scope 是可以通过委托来改变的。
+- groovy 中 Map 对象的 value 如果是 closure，那么可以接着调用：`mapp.keyy({closure}) `
+有了上面的基础，我们看一个简单的例子：
 
 
 ```groovy
@@ -88,13 +88,13 @@ please show the square_root of 100
 
 ```
 
-总结一下就是,将你需要的操作封装成一个closure,给一个直观的命名,保证整个DSL调用语句有语义,定义返回一个map的函数作为入口,map的key是方法名,value是closure,这样可以在key后面传递一个closure接着调用这个value.
+总结一下就是，将你需要的操作封装成一个 closure，给一个直观的命名，保证整个 DSL 调用语句有语义，定义返回一个 map 的函数作为入口，map 的 key 是方法名，value 是 closure，这样可以在 key 后面传递一个 closure 接着调用这个 value.
 
 
 ### 委托对象
 
-gradle脚本是一个配置脚本,类似maven中pom.xml文件,不过gradle脚本更为强大,因为.gradle文件就是groovy文件,所以还可以在脚本里面直接定义groovy对象让脚本使用.
-委托对象就是一个groovy对象,用来执行gradle构建脚本中的closure.
+gradle 脚本是一个配置脚本，类似 maven 中 pom.xml 文件，不过 gradle 脚本更为强大，因为.gradle 文件就是 groovy 文件，所以还可以在脚本里面直接定义 groovy 对象让脚本使用。
+委托对象就是一个 groovy 对象，用来执行 gradle 构建脚本中的 closure.
 
 
 ```groovy
@@ -108,16 +108,16 @@ Init script	->Gradle
 Settings script(setting.gradle)	->Settings
 
 ```
-构建中的每一个project,Gradle都会创建一个Project对象,并将这个对象与构建脚本相关联.  
+构建中的每一个 project,Gradle 都会创建一个 Project 对象，并将这个对象与构建脚本相关联。 
 
-Project对象与build.gradle是一对一的关系.
+Project 对象与 build.gradle 是一对一的关系。
 
-Gradle的脚本是配置脚本,当脚本执行时,它是在配置某一个特殊类型的对象.比如一个构建脚本的执行,它就是在配置一个Project类型的对象.这个对象叫做脚本的代理对象.
+Gradle 的脚本是配置脚本，当脚本执行时，它是在配置某一个特殊类型的对象。比如一个构建脚本的执行，它就是在配置一个 Project 类型的对象。这个对象叫做脚本的代理对象。
 
-委托有个重要的概念就是scope,指closure的变量引用范围:有时变量不在当前scope中,但是可以通过委托,改变closure的委托对象,这样就拥有了委托者的scope,从而可以在closure中使用委托者的变量.
+委托有个重要的概念就是 scope，指 closure 的变量引用范围：有时变量不在当前 scope 中，但是可以通过委托，改变 closure 的委托对象，这样就拥有了委托者的 scope，从而可以在 closure 中使用委托者的变量。
 
 
-关于groovy closure 的委托有三个重要属性
+关于 groovy closure 的委托有三个重要属性
 
 ```
 • this: refers to the instance of the class that the closure was defined in.
@@ -136,12 +136,12 @@ Every closure has a property called resolvedStrategy. This can be set to:
 
 ```
 
-gradle是dsl解析工具,是对groovy语法的扩展,build.gradle可以理解为就是一个.groovy文件,gradle会解析这个文件,发现里面的closure,并将这些closure委托给一个对象去执行.
-gradle将groovy的委托机制发挥到极致,要理解gradle内部,就要理解closure的委托！
+gradle 是 dsl 解析工具，是对 groovy 语法的扩展，build.gradle 可以理解为就是一个.groovy 文件，gradle 会解析这个文件，发现里面的 closure，并将这些 closure 委托给一个对象去执行。
+gradle 将 groovy 的委托机制发挥到极致，要理解 gradle 内部，就要理解 closure 的委托！
 
-### closure作为参数传递
+### closure 作为参数传递
 
-将closure作为参数传递的方法有多种:
+将 closure 作为参数传递的方法有多种：
 
 ```groovy
 //method accepts 1 parameter - closure 
@@ -163,9 +163,9 @@ myMethod(arg1, { println 'Hello World' })
 myMethod(arg1) { println 'Hello World' }
 
 ```
-注意第三种和最后一种调用方式,是不是和gradle文件中很眼熟？只不过在gradle脚本中出现的closure更加复杂,因为有closure嵌套！！！但是万变不离其宗.下面我们会介绍嵌套不过是**委托链**的表现.
+注意第三种和最后一种调用方式，是不是和 gradle 文件中很眼熟？只不过在 gradle 脚本中出现的 closure 更加复杂，因为有 closure 嵌套！！！但是万变不离其宗。下面我们会介绍嵌套不过是**委托链**的表现。
 
-看一个脚本代码:
+看一个脚本代码：
 
 
 ```groovy
@@ -179,26 +179,26 @@ buildscript {
 }
 
 ```
-buildscript是一个方法,接收一个closure.至于这个方法在哪,可以定义在任何地方,但是可以肯定的是,这个方法一定能够被Project对象调用.
-因为build.gradle脚本就是委托给Project对象执行的.事实上,Project对象也不是亲自执行这个方法,而是委托给ScriptHandler执行.
-这里,我们ScriptHandler对象会搜索到两个配置closure:repositories和dependencies.我们可以在ScriptHandler api中搜索到这两个方法.从api中我们又发现:
+buildscript 是一个方法，接收一个 closure.至于这个方法在哪，可以定义在任何地方，但是可以肯定的是，这个方法一定能够被 Project 对象调用。
+因为 build.gradle 脚本就是委托给 Project 对象执行的。事实上，Project 对象也不是亲自执行这个方法，而是委托给 ScriptHandler 执行。
+这里，我们 ScriptHandler 对象会搜索到两个配置 closure:repositories 和 dependencies.我们可以在 ScriptHandler api 中搜索到这两个方法。从 api 中我们又发现：
 
-传递给dependencies的closure又被委托给了`DependencyHandler`对象....... 这就是委托链.
+传递给 dependencies 的 closure 又被委托给了`DependencyHandler`对象....... 这就是委托链。
 
 [ScriptHandler api](https://docs.gradle.org/current/javadoc/org/gradle/api/initialization/dsl/ScriptHandler.html#dependencies)  
 
 [Project api](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html)
 
-**注意**:这里buildscript {...}整体称为一个 script block. 脚本块就是一个接受closure参数的方法调用.还有的方法是不接受closure的,那些称为statement（看下面解释）.
+**注意**:这里 buildscript {...}整体称为一个 script block. 脚本块就是一个接受 closure 参数的方法调用。还有的方法是不接受 closure 的，那些称为 statement（看下面解释）.
 >A script block is a method call which takes a closure as a parameter
 
 ### 插件
 
-先看看构建脚本的构成:
+先看看构建脚本的构成：
 >A build script is made up of zero or more **statements** and **script blocks**. Statements can include method calls, property assignments, and local variable definitions. A script block is a method call which takes a closure as a parameter. The closure is treated as a configuration closure which configures some delegate object as it executes. 
 
-就是说脚本有两种内容:script block和statement.
-Project接口预先定义了几个block:
+就是说脚本有两种内容:script block 和 statement.
+Project 接口预先定义了几个 block:
 
 ```groovy
 allprojects { }	 Configures this project and each of its sub-projects.
@@ -212,12 +212,12 @@ subprojects { }	Configures the sub-projects of this project.
 publishing { }	Configures the PublishingExtension added by the publishing plugin.
 
 ```
-这些closure参数基本都是委托给其他对象执行的.
+这些 closure 参数基本都是委托给其他对象执行的。
 
-可以看到,Project对象的方法是有限而且通用的.真正有用的是插件,gradle的很多功能也是通过官方写的插件提供的.
-如果你看到一个顶级层的`something { ... }`block,但是在Project源码中没有找到something block的任何信息.那么这个方法就是通过插件提供的.gradle自带很多插件,像java,eclipse,groovy,android等.
-看一个实际的例子:
-在android开发中的构建脚本:
+可以看到，Project 对象的方法是有限而且通用的。真正有用的是插件，gradle 的很多功能也是通过官方写的插件提供的。
+如果你看到一个顶级层的`something { ... }`block，但是在 Project 源码中没有找到 something block 的任何信息。那么这个方法就是通过插件提供的.gradle 自带很多插件，像 java,eclipse,groovy,android 等。
+看一个实际的例子：
+在 android 开发中的构建脚本：
 
 
 ```groovy
@@ -243,7 +243,7 @@ android {
 }
 
 ```
-这里,出现了android{},Project对象并没有这个script block.所以,这其实是由插件提供的block.我们找到com.android.application[入口代码](https://android.googlesource.com/platform/tools/build/+/cab495f54cd31e4e93c36e6aa4b7af661aac2357/gradle/src/main/groovy/com/android/build/gradle/AppPlugin.groovy)
+这里，出现了 android{},Project 对象并没有这个 script block.所以，这其实是由插件提供的 block.我们找到 com.android.application[入口代码](https://android.googlesource.com/platform/tools/build/+/cab495f54cd31e4e93c36e6aa4b7af661aac2357/gradle/src/main/groovy/com/android/build/gradle/AppPlugin.groovy)
 
 ```groovy
 extension = project.extensions.create('android', AppExtension,
@@ -253,15 +253,15 @@ extension = project.extensions.create('android', AppExtension,
 
 
 ```
-extensions是一个ExtensionContainer实例,其中create API:  
+extensions 是一个 ExtensionContainer 实例，其中 create API:  
 `<T> T	create(String name, Class<T> type, Object... constructionArguments)`
-这里就创建了一个android属性,是一个AppExtension对象,我们在脚本中提供给android block的{}其实是配置了一个AppExtension对象.我们可以在AppExtension中找到compileSdkVersion等属性.
+这里就创建了一个 android 属性，是一个 AppExtension 对象，我们在脚本中提供给 android block 的{}其实是配置了一个 AppExtension 对象。我们可以在 AppExtension 中找到 compileSdkVersion 等属性。
 
-所以,插件扩展的Project对象,提供了很多方法,这样,可以在脚本中使用插件定义的方法（script block）了.
+所以，插件扩展的 Project 对象，提供了很多方法，这样，可以在脚本中使用插件定义的方法（script block）了。
 
-一个插件就是实现实现了org.gradle.api.Plugin接口的groovy类.
+一个插件就是实现实现了 org.gradle.api.Plugin 接口的 groovy 类。
 
-我们看怎么写一个插件:
+我们看怎么写一个插件：
 
 
 ```groovy
@@ -299,17 +299,17 @@ class GreetingPluginExtension {
 
 
 ```
-[官方文档:如何自己写一个插件](https://docs.gradle.org/current/userguide/custom_plugins.html)
+[官方文档：如何自己写一个插件](https://docs.gradle.org/current/userguide/custom_plugins.html)
 
-#####参考:
+#####参考：
 [gradle-tip-2](http://trickyandroid.com/gradle-tip-2-understanding-syntax/)
 
-[Gradle深入与实战（六）Gradle的背后是什么？](http://benweizhu.github.io/blog/2015/03/31/deep-into-gradle-in-action-6/)
+[Gradle 深入与实战（六）Gradle 的背后是什么？](http://benweizhu.github.io/blog/2015/03/31/deep-into-gradle-in-action-6/)
 
-### DSL语法
+### DSL 语法
 
-gradle使用的基于groovy中的DSL语法,所谓的dsl,就是基于groovy发明的新的“编程语言”,gradle dsl是groovy的超集,就是你可以完全使用groovy的语法,但是你还是会看到很多不是groovy语法,这时不要困惑,这些语法不过是gradle利用groovy提供的元编程能力提供的新语法.
-以新建task的语法为例,在Project API中有四个重载形式:
+gradle 使用的基于 groovy 中的 DSL 语法，所谓的 dsl，就是基于 groovy 发明的新的“编程语言”,gradle dsl 是 groovy 的超集，就是你可以完全使用 groovy 的语法，但是你还是会看到很多不是 groovy 语法，这时不要困惑，这些语法不过是 gradle 利用 groovy 提供的元编程能力提供的新语法。
+以新建 task 的语法为例，在 Project API 中有四个重载形式：
 
 ```groovy
 Task task(String name, Closure configureClosure);
@@ -318,7 +318,7 @@ Task task(Map<String, ?> args, String name) throws InvalidUserDataException;
 Task task(String name) throws InvalidUserDataException;
 ```
 
-但是你会看到这样的调用方式:
+但是你会看到这样的调用方式：
 
 ```groovy
 task intro(dependsOn: hello) {
@@ -326,9 +326,9 @@ task intro(dependsOn: hello) {
 }
 ```
 
-这是dsl,具体的解析方式在[TaskDefinitionScriptTransformer](https://github.com/gradle/gradle/blob/master/subprojects/core/src/main/java/org/gradle/groovy/scripts/internal/TaskDefinitionScriptTransformer.java)
+这是 dsl，具体的解析方式在[TaskDefinitionScriptTransformer](https://github.com/gradle/gradle/blob/master/subprojects/core/src/main/java/org/gradle/groovy/scripts/internal/TaskDefinitionScriptTransformer.java)
 
-具体见我在sf的提问[gradle task method syntax in build.gradle](http://stackoverflow.com/questions/38627258/gradle-task-method-syntax-in-build-gradle/38629336?noredirect=1#comment64685234_38629336)
+具体见我在 sf 的提问[gradle task method syntax in build.gradle](http://stackoverflow.com/questions/38627258/gradle-task-method-syntax-in-build-gradle/38629336?noredirect=1#comment64685234_38629336)
 
 #### more tips
 [gradle-tips](https://github.com/shekhargulati/gradle-tips/blob/master/README.md)

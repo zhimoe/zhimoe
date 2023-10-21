@@ -1,5 +1,5 @@
 +++
-title = "通过例子学习Clojure"
+title = "通过例子学习 Clojure"
 date = "2019-05-13T15:22:05+08:00"
 categories = [ "编程",]
 tags = [ "code", "clojure",]
@@ -7,7 +7,7 @@ toc = "true"
 +++
 
 
-这份笔记试图打造最强的clojure小抄,keep refactoring it...
+这份笔记试图打造最强的 clojure 小抄，keep refactoring it...
 
 <!--more-->
 

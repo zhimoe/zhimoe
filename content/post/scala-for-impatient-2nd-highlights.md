@@ -8,7 +8,7 @@ toc = "true"
 
 
 key points in scala-for-impatient 2nd book, best book for java developer to use scala in a rush.
-scala-for-impatient章节摘要, 这本书对于Java开发者快速上手Scala帮助很大.
+scala-for-impatient 章节摘要，这本书对于 Java 开发者快速上手 Scala 帮助很大。
 
 ### Functions
 ```text

@@ -7,7 +7,7 @@ toc = "true"
 +++
 
 
-Java单例模式的各种写法和序列化
+Java 单例模式的各种写法和序列化
 [参考资料](http://www.hollischuang.com/archives/205)
 
 ### 饱汉式 
@@ -19,7 +19,7 @@ public class Singleton {
 	    public static Singleton getInstance() {  
 	        if(instance == null)             instance = new Singleton();         return instance;  
     }  
-}  //饱汉式,使用时创建
+}  //饱汉式，使用时创建
 
 ```
 
@@ -72,7 +72,7 @@ public class Singleton {
 
 ```
 ### 双重校验锁
-其实是不安全的,多线程开销很大,甚至死锁.原因在于指令重排序.
+其实是不安全的，多线程开销很大，甚至死锁。原因在于指令重排序。
 
 ```
 	public class Singleton {  
@@ -93,7 +93,7 @@ public class Singleton {
 
 ```
 ### 序列化
-使用静态内部类举例,只要提供一个readResolve方法
+使用静态内部类举例，只要提供一个 readResolve 方法
 
 ```	
 public class Singleton { 
@@ -114,7 +114,7 @@ public class Singleton {
 }
 
 ```
-无论是实现Serializable接口,或是Externalizable接口,当从I/O流中读取对象时,readResolve()方法都会被调用到.实际上就是用readResolve()中返回的对象直接替换在反序列化过程中创建的对象,而被创建的对象则会被垃圾回收掉.
+无论是实现 Serializable 接口，或是 Externalizable 接口，当从 I/O 流中读取对象时，readResolve() 方法都会被调用到。实际上就是用 readResolve() 中返回的对象直接替换在反序列化过程中创建的对象，而被创建的对象则会被垃圾回收掉。
 
 	
 	

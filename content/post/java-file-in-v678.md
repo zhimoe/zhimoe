@@ -1,5 +1,5 @@
 +++
-title = "Java 6/7/8中文件读写"
+title = "Java 6/7/8 中文件读写"
 date = 2016-02-01
 categories = [ "编程",]
 tags = [ "java", "code",]
@@ -7,14 +7,14 @@ toc = "true"
 +++
 
   
-如何在Java中读写文件,这里保留Java6/7版本,但是你永远不应该使用它们,优先使用Path,Files,Paths三个类.
+如何在 Java 中读写文件，这里保留 Java6/7 版本，但是你永远不应该使用它们，优先使用 Path,Files,Paths 三个类。
 资料：[Reading and writing text files](http://www.javapractices.com/topic/TopicAction.do?Id=42)
 
-## Java8最佳实践
+## Java8 最佳实践
 
-不要用File对象,改用Path对象,该对象既表示文件路径,也表示文件文本（应该认为文件也是路径的一部分）,对于以前的File,可以File.toPath()得到一个Path对象.
-Files是一个静态类,操作文件内容.Paths是静态工具类,操作文件路径,例如拼接文件路径,以前要使用平台无关的分隔符表示：File.pathSeparator, File.separator.
-例如,构建一个文件对象:`Path path = Paths.get("~/test/", "foo", "bar", "a.txt");`
+不要用 File 对象，改用 Path 对象，该对象既表示文件路径，也表示文件文本（应该认为文件也是路径的一部分）,对于以前的 File，可以 File.toPath() 得到一个 Path 对象。
+Files 是一个静态类，操作文件内容.Paths 是静态工具类，操作文件路径，例如拼接文件路径，以前要使用平台无关的分隔符表示：File.pathSeparator, File.separator.
+例如，构建一个文件对象：`Path path = Paths.get("~/test/", "foo", "bar", "a.txt");`
 <!--more-->
 
 ## read file to string in java 6/7/8
@@ -118,7 +118,7 @@ public class Java8IO {
             out.println("Hello");
         }
         
-        // Files.write向文本写文件：
+        // Files.write 向文本写文件：
         content = "World\n";
         Files.write(path, content.getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
         
@@ -143,21 +143,21 @@ public class Java8IO {
         // 输入流保存到文件：
         Files.copy(inputStream,filepath,StandardCopyOption.REPLACE_EXISTING);
         
-        // 直接将url中的pdf保存下来：
+        // 直接将 url 中的 pdf 保存下来：
         // 适用于任何二进制文件：
         URL url = new URL("http://www.cninfo.com.cn/1202417936.PDF");
         try (InputStream in = new BufferedInputStream(url.openStream())) {
             Files.copy(in, Paths.get(url.getFile().substring(1)),StandardCopyOption.REPLACE_EXISTING);
         }
-        // url.getFile().substring(1)去掉起始地斜杠符
-        // copy()有三种形式
+        // url.getFile().substring(1) 去掉起始地斜杠符
+        // copy() 有三种形式
 
-        // 还有一种方式用于jdk7之前：
+        // 还有一种方式用于 jdk7 之前：
         URL website = new URL("XXX.pdf");
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(url.getFile().substring(1));
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        // FileChannel的抽象方法abstract long	transferFrom(ReadableByteChannel src, long position, long count) 
+        // FileChannel 的抽象方法 abstract long	transferFrom(ReadableByteChannel src, long position, long count) 
 
     }
 }

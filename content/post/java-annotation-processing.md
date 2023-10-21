@@ -1,5 +1,5 @@
 +++
-title = "Java注解和注解处理器"
+title = "Java 注解和注解处理器"
 date = 2016-01-01
 categories = [ "编程",]
 tags = [ "java", "code",]
@@ -9,8 +9,8 @@ toc = "true"
 
 ### 注解处理
 
-注解是jdk1.5出现的,但是自定义处理注解的功能是1.6才有的.Element等关于注解源码抽象的支持类都是1.6出现的.
-关于注解的定义就不说了,主要说说注解处理
+注解是 jdk1.5 出现的，但是自定义处理注解的功能是 1.6 才有的.Element 等关于注解源码抽象的支持类都是 1.6 出现的。
+关于注解的定义就不说了，主要说说注解处理
 本文根据以下资料并进行部分修改：
 [JavaAnnotationProcessing](http://www.angelikalanger.com/Conferences/Slides/JavaAnnotationProcessing-JSpring-2008.pdf)
 
@@ -31,29 +31,29 @@ implement a processor class
 – typically derived from `AbstractProcessor`  
 – new package javax.annotation.processing  
 
-同时自定义注解处理器需要指定注解选项：  specify supported annotation + options  
+同时自定义注解处理器需要指定注解选项：specify supported annotation + options  
 
 – by means of annotations:
 @SupportedAnnotationTypes
 @SupportedOptions
 @SupportedSourceVersion
 
-编译器编译源码是会有很多轮(round)：
+编译器编译源码是会有很多轮 (round)：
 
-1st round：编译器得到所有的注解-获取所有的注解处理器-进行match并process,如果匹配的处理器中process方法的返回值是`true`,表示该注解被 claim,不再查询其他处理器.如果是`false`,接着查询匹配处理器处理,所以注解处理器在META-INF/services/javax.annotation.processing.Processor声明顺序是有关系的-- 所有的注解都被claim后,注解处理完成.
+1st round：编译器得到所有的注解 - 获取所有的注解处理器 - 进行 match 并 process，如果匹配的处理器中 process 方法的返回值是`true`,表示该注解被 claim，不再查询其他处理器。如果是`false`,接着查询匹配处理器处理，所以注解处理器在 META-INF/services/javax.annotation.processing.Processor 声明顺序是有关系的-- 所有的注解都被 claim 后，注解处理完成。
 
-如果注解处理器产生新的java文件,那么新的一轮处理开始,前面被调用的那些处理器又被调用,直到没有java文件产生.
+如果注解处理器产生新的 java 文件，那么新的一轮处理开始，前面被调用的那些处理器又被调用，直到没有 java 文件产生。
 
-最后一轮又要调用一遍所有处理器,完成他们的各自工作.
+最后一轮又要调用一遍所有处理器，完成他们的各自工作。
 
-最最后,编译器编译源码和注解处理器生成的源码.
+最最后，编译器编译源码和注解处理器生成的源码。
 
-还有一个很重要的类AbstractProcessor： 有一个引用processingEnv    
+还有一个很重要的类 AbstractProcessor：有一个引用 processingEnv    
 提供了两个重要工具类：  
 – `Filer` for creation of new source, class, or auxiliary files  
 – `Messager ` to report errors, warnings, and other notices  
 
-此外,一个产生java文件的重要方法：
+此外，一个产生 java 文件的重要方法：
 
 ```text
 FileObject sourceFile = processingEnv.getFiler().createSourceFile(beanClassName);
@@ -82,7 +82,7 @@ public class PropertyAnnotationProcessor extends AbstractProcessor {
 
 ```
 
-jdk1.6 对注解的处理支持建立在对源码的抽象,Element是`javax.lang.model.*`中定义的,各种Element是对源码抽象数据结构,如：  
+jdk1.6 对注解的处理支持建立在对源码的抽象，Element 是`javax.lang.model.*`中定义的，各种 Element 是对源码抽象数据结构，如：  
 
 
 ```java
@@ -95,20 +95,20 @@ public class Foo {		    // TypeElement
 }
 
 ```
-TypeElement不能提供父类的信息,如果需要这些信息,需要从Element中得到TypeMirror.TypeMirror::element.asType() 
+TypeElement 不能提供父类的信息，如果需要这些信息，需要从 Element 中得到 TypeMirror.TypeMirror::element.asType() 
 
 ### 实例：
-动手写注解处理器：3个类,一个定义注解Comparator.java,一个使用注解的类Name.java,一个处理注解MyProcessor.java.  
-我将定义一个注解@Comparator,使用在方法上,被注释的方法能够返回一个Comparator.  
-一个注解处理器,解析所有被注释的方法,为每一个方法产生一个Comparator类.
+动手写注解处理器：3 个类，一个定义注解 Comparator.java，一个使用注解的类 Name.java，一个处理注解 MyProcessor.java.  
+我将定义一个注解@Comparator，使用在方法上，被注释的方法能够返回一个 Comparator.  
+一个注解处理器，解析所有被注释的方法，为每一个方法产生一个 Comparator 类。
 
-！！！注意,这里的内容和连接中资料的已经不一样了,资料里给的process方法并不能产生比较器类.
+！！！注意，这里的内容和连接中资料的已经不一样了，资料里给的 process 方法并不能产生比较器类。
 
 给出注解定义前看看注解怎么使用：
 
 ```java
 // ./Name.java  
-// ./  表示当前命令行文件夹,后面所有的javc命令都以这个文件夹为准
+// ./  表示当前命令行文件夹，后面所有的 javc 命令都以这个文件夹为准
 package java.interview.annotation;
 
 public class Name {
@@ -134,7 +134,7 @@ public class Name {
 
 ```
 
-其中被注解注释的方法将产生一个NameByFirstNameComparator.java文件：
+其中被注解注释的方法将产生一个 NameByFirstNameComparator.java 文件：
 
 ```java
 // ./angus/initerview/annotation/NameByFirstNameComparator.java
@@ -174,7 +174,7 @@ public @interface Comparator {
 
 ```
 
-接下来定义我们的注解处理器,有详细注解,特别注意generate源码中的空格和分号不要弄丢了：
+接下来定义我们的注解处理器，有详细注解，特别注意 generate 源码中的空格和分号不要弄丢了：
 
 ```java
 package angus.interview.annotation;
@@ -287,15 +287,15 @@ public class MyProcessor extends AbstractProcessor {
 ```
 
 ### 测试处理器
-两种方法,
+两种方法，
 
 一种是使用 -cp：
 
-在项目的根目录中（pom.xml同级目录）新建META-INF文件夹,并在里面新建services文件夹,再在里面新建一个文件 javax.annotation.processing.Processor,并在该文件中注册我们的处理器,第一行写入：angus.interview.annotation.MyProcessor.
-然后用eclipse将项目export得到一个jar包,jar必须包含target文件夹（处理器class文件）和META-INF文件夹（注册处理器）.这里将jar包命名为process.jar. 复制jar包到Name.java目录中,并在该目录打开终端,输入：
+在项目的根目录中（pom.xml 同级目录）新建 META-INF 文件夹，并在里面新建 services 文件夹，再在里面新建一个文件 javax.annotation.processing.Processor，并在该文件中注册我们的处理器，第一行写入：angus.interview.annotation.MyProcessor.
+然后用 eclipse 将项目 export 得到一个 jar 包，jar 必须包含 target 文件夹（处理器 class 文件）和 META-INF 文件夹（注册处理器）.这里将 jar 包命名为 process.jar. 复制 jar 包到 Name.java 目录中，并在该目录打开终端，输入：
 >javac -cp process.jar Name.java
    
-将会得到Name.class文件和一个angus文件夹,最里面是NameByFirstNameComparator.java和NameByFirstNameComparator.class.
-打开NameByFirstNameComparator.java,发现内容和上面给出的一模一样.
+将会得到 Name.class 文件和一个 angus 文件夹，最里面是 NameByFirstNameComparator.java 和 NameByFirstNameComparator.class.
+打开 NameByFirstNameComparator.java，发现内容和上面给出的一模一样。
 
-第二种方法是使用-processor参数,但是还没搞懂MyProcessor.class应该放在哪里.暂时先到这.
+第二种方法是使用-processor 参数，但是还没搞懂 MyProcessor.class 应该放在哪里。暂时先到这。

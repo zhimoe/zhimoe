@@ -1,16 +1,16 @@
 +++
-title = "Python 4道笔试题"
+title = "Python 4 道笔试题"
 date = "2020-06-04T21:31:01+08:00"
 categories = [ "编程",]
 tags = [ "code", "python",]
 toc = "true"
 +++
 
-4道常见的python面试题和解答,以及一些python陷阱的链接.
+4 道常见的 python 面试题和解答，以及一些 python 陷阱的链接。
 
 ## 问题
 
-1. 题目1
+1. 题目 1
 
 ```python 
     def change(v):
@@ -24,7 +24,7 @@ toc = "true"
 ```
 <!--more-->
 
-2. 题目2
+2. 题目 2
 
 ```python
 def append1(x=[]):
@@ -41,7 +41,7 @@ print(now(), now()) #?
     
 ```
 
-3. 题目3
+3. 题目 3
 
 ```python
 def arr_multi():
@@ -52,7 +52,7 @@ def arr_multi():
 print(arr_multi())
 ```
 
-4. 题目4
+4. 题目 4
 
 ```python
 def fn_for():
@@ -61,7 +61,7 @@ def fn_for():
     
 print(fn_for())
 ```
-5. 题目5
+5. 题目 5
 ```python
 >>> t = (1, 2, [30, 40])
 >>> t[2] += [50, 60]
@@ -82,9 +82,9 @@ D. Both *A* and *B*.
 [1, 4, 3]
 [1, 4, 3]
 
-# 就是简单的引用传递,但是很多人不自信,在选择题里面频频出错.
-# python中所有的都是对象, id(obj)会返回地址. 
-# 但是如果新建对象是short string,int [-5,256],不可变的空集合(empty tuples) 等情况不会真的创建新对象.
+# 就是简单的引用传递，但是很多人不自信，在选择题里面频频出错。
+# python 中所有的都是对象，id(obj) 会返回地址。
+# 但是如果新建对象是 short string,int [-5,256],不可变的空集合 (empty tuples) 等情况不会真的创建新对象。
 
 from copy import copy, deepcopy
 
@@ -101,18 +101,18 @@ arr3 = deepcopy(arr1) # elements id is new
 2.
 
 ```python
-# 结果:
+# 结果：
 [1, 1] [1, 1]
 1590544209.9695618 1590544209.9695618
 
-# 不少人认为是: [1] [1, 1].其实还是没有深入理解引用的原理,
-# 翻译一下就很好理解了:
+# 不少人认为是：[1] [1, 1].其实还是没有深入理解引用的原理，
+# 翻译一下就很好理解了：
 y = append1()  # id(y) == id(x), y=[1]
 y = append1()  # id(y) == id(x), y=[1,1]
 print(y,y)
 
 
-# 最好不要使用[]作为默认参数,使用下面的形式:
+# 最好不要使用 [] 作为默认参数，使用下面的形式：
 def my_func(working_list=None):
     if working_list is None: 
         working_list = []
@@ -122,7 +122,7 @@ def my_func(working_list=None):
 
 # 或者
 def fun(count=[]):
-    count.append(2) #这里count两次调用如果都使用默认参数的话,则是同一个数组,非常危险!
+    count.append(2) #这里 count 两次调用如果都使用默认参数的话，则是同一个数组，非常危险！
     return count
 fun()   #[2]
 fun()   #[2,2]
@@ -133,7 +133,7 @@ fun()   #[2,2]
 3.
 ```py
 [[42, 0, 0], [42, 0, 0], [42, 0, 0]]
-# list 是mutable, []*3表示是引用复制三次.
+# list 是 mutable, []*3 表示是引用复制三次。
 
 # 赋值后为什么只改变列的值？
 
@@ -147,7 +147,7 @@ None
 
 本意其实是想得到一个函数列表[0*x,1*x,2*x],
 但是 **Python’s closures are *late binding*. This means that the values of variables used in closures are looked up at the time the inner function is called.**
-解决方案是偏函数partial
+解决方案是偏函数 partial
 
 ```python
 from functools import partial
@@ -173,6 +173,6 @@ fl=[lambda x, i=i: x*i for i in range(3)]
 
 ```
 
-[常见python陷阱](https://docs.python-guide.org/writing/gotchas/)
+[常见 python 陷阱](https://docs.python-guide.org/writing/gotchas/)
 [The 10 Most Common Mistakes in Python](https://www.toptal.com/python/top-10-mistakes-that-python-programmers-make)
 [Some Common Gotchas in Python](https://8thlight.com/blog/shibani-mookerjee/2019/05/07/some-common-gotchas-in-python.html)

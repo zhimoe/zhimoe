@@ -9,7 +9,7 @@ toc = "true"
 
 ## merge two map and sum its values
 
-多个map合并,key相同时则value相加
+多个 map 合并，key 相同时则 value 相加
 
 ```scala
 val map1 = Map(1 -> 1, 2 -> 2)

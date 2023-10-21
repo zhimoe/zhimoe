@@ -1,5 +1,5 @@
 +++
-title = "Rust Ownerships Lifetimes教程"
+title = "Rust Ownerships Lifetimes 教程"
 date = "2020-02-22T15:55:13+08:00"
 categories = [ "编程",]
 tags = [ "code", "rust",]
@@ -26,12 +26,12 @@ some notes on rust ownership,reference,string and &str, and lifetimes
 // stack only data(栈内数据) assignment will make a copy operation, since it is fixed size, the copy is fast
 // rust use h.clone() make a heap data deeply copy.
 // impl the Copy trait can make the original variable still usable after assignment.
-// Copy trait can not use with Drop trait, Drop可以理解为destructor,当数据超过自己的scope时, drop()方法被调用;
+// Copy trait can not use with Drop trait, Drop 可以理解为 destructor，当数据超过自己的 scope 时，drop() 方法被调用;
 fn copy() {
     let x = 5;
     let y = x; //copy the value(5) in the stack,since it is fixed-size, the copy operation is fast
 
-    let s1 = String::from("hello"); //String 和 &str区别见后文
+    let s1 = String::from("hello"); //String 和 &str 区别见后文
     let s2 = s1; //now s1 is invalid
     // println!("{}, world!", s1); //error, the "hello" ownership move to s2
 
@@ -88,7 +88,7 @@ fn dangle() -> &String {
 //  3c. in stack: when use str::from_utf8(x).unwrap(); x is stack-value ref
 
 //> the &str param can accept a &String since the String implement Deref<Target=str>.
-// 即接受&str的地方都可以使用&String
+// 即接受&str 的地方都可以使用&String
 
 //!!! since the str is unknown size, one can only use it by &str, called slice. slice is a view of some data. 
 

@@ -7,10 +7,10 @@ toc = "true"
 +++
 
  
-理解Spring的FactoryBean 和 ContextAware接口.
+理解 Spring 的 FactoryBean 和 ContextAware 接口。
 
 ## FactoryBean
-一句话就是FactoryBean用于返回其他对象实例的,而不是自身类型的实例.
+一句话就是 FactoryBean 用于返回其他对象实例的，而不是自身类型的实例。
 
 <!--more-->
 
@@ -46,7 +46,7 @@ public class ToolFactory implements FactoryBean<Tool> {
     // standard setters and getters
 }
 ```
-注册Tool:
+注册 Tool:
 ```xml
 <!-- factorybean-spring-ctx.xml -->
 <beans>
@@ -58,7 +58,7 @@ public class ToolFactory implements FactoryBean<Tool> {
 </beans>
 
 ```
-使用注解注册:
+使用注解注册：
 ```java
 
 @Bean(name = "tool")
@@ -71,7 +71,7 @@ ToolFactory toolFactory() {
 
 ```
 
-使用Tool:
+使用 Tool:
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:factorybean-spring-ctx.xml" })
@@ -86,7 +86,7 @@ public class FactoryBeanXmlConfigTest {
 }
 ```
 
-访问ToolFactory,在bean id前面添加 `&`:
+访问 ToolFactory，在 bean id 前面添加 `&`:
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:factorybean-spring-ctx.xml" })
@@ -102,8 +102,8 @@ public class FactoryBeanXmlConfigTest {
 }
 ```
 
-## 和BeanFactory的区别
-除了FactoryBean,还有一个BeanFactory的接口及其实现.
+## 和 BeanFactory 的区别
+除了 FactoryBean，还有一个 BeanFactory 的接口及其实现。
 
 
 

@@ -1,5 +1,5 @@
 +++
-title = "Git 的 detatched Head模式和解决问题方法"
+title = "Git 的 detatched Head 模式和解决问题方法"
 date = "2022-03-09T15:49:09+08:00"
 categories = [ "编程",]
 tags = [ "code", "git",]
@@ -7,16 +7,16 @@ toc = "true"
 +++
 
 
-有时候commit完代码后`git push`会遇到下面的错误
+有时候 commit 完代码后`git push`会遇到下面的错误
 ```shell
 To push the history leading to the current (detached HEAD)
 ```
-错误提示说当前HEAD没有指向任何分支，但是你记得明明有指向一个分支的
+错误提示说当前 HEAD 没有指向任何分支，但是你记得明明有指向一个分支的
 
 <!--more-->
 
 ### 复现问题
-1、假设你当前在master分支，且有两次提交
+1、假设你当前在 master 分支，且有两次提交
 ```shell
 Prj on  master
 ❯ git log --oneline --graph --decorate
@@ -46,10 +46,10 @@ Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at ae15845 initial commit
 ```
-git直接会提示你当前HEAD已经detached。这是因为当HEAD离开当前分支（master）的末端commit时，Git会默认你想要离开当前分支，但是Git不会自动创建一个新分支（因为没有提供分支名称）。
-所以HEAD变成没有指向任何分支的窘境，即使你再次回到刚才那个分支的末端commit，还是处于detached状态。
+git 直接会提示你当前 HEAD 已经 detached。这是因为当 HEAD 离开当前分支（master）的末端 commit 时，Git 会默认你想要离开当前分支，但是 Git 不会自动创建一个新分支（因为没有提供分支名称）。
+所以 HEAD 变成没有指向任何分支的窘境，即使你再次回到刚才那个分支的末端 commit，还是处于 detached 状态。
 
-3、切回master分支的末端commit并提交新内容
+3、切回 master 分支的末端 commit 并提交新内容
 ```shell
 Prj (ae15845) # 注意 zsh配置这里展示的是当前HEAD，下面也给了提示
 ❯ git checkout 314c9df
@@ -73,12 +73,12 @@ Prj (09fb4a5)
 * ae15845 initial commit
 
 ```
-可以看到此时HEAD和master分支还是分离的。
+可以看到此时 HEAD 和 master 分支还是分离的。
 
 ### 真实场景复现
-上面复现的方式很刻意，毕竟极少情况你会checkout一个具体的commit而不手动创建一个分支。日常工作中最可能遇到这个detached HEAD的场景是你使用`Git submodule`的时候。
-敢说每个新手在使用submodule都会碰到detached HEAD问题。
-原因是你的submodule没有记录正确的分支，即你在使用`git submodule add`时没有指定`-b <branch>`参数。
+上面复现的方式很刻意，毕竟极少情况你会 checkout 一个具体的 commit 而不手动创建一个分支。日常工作中最可能遇到这个 detached HEAD 的场景是你使用`Git submodule`的时候。
+敢说每个新手在使用 submodule 都会碰到 detached HEAD 问题。
+原因是你的 submodule 没有记录正确的分支，即你在使用`git submodule add`时没有指定`-b <branch>`参数。
 
 ```shell
 git submodule add -b main https://github.com/zhimoe/hugo-theme-next.git themes/next
@@ -91,9 +91,9 @@ branch = main
 
 ### 解决方法
 
-1、预防的方法就是没有commit的时候及时切回一个具体分支`git checkout master`
+1、预防的方法就是没有 commit 的时候及时切回一个具体分支`git checkout master`
 
-2.1、 如果已经提交了的话，给当前游离的commit创建一个分支，切换到该分支
+2.1、如果已经提交了的话，给当前游离的 commit 创建一个分支，切换到该分支
 
 ```shell
 Prj (09fb4a5)
@@ -111,7 +111,7 @@ Switched to branch 'oops'
 
 ```
 
-2.2、 接着使用rebase将oops分支接在master分支的末尾commit之后
+2.2、接着使用 rebase 将 oops 分支接在 master 分支的末尾 commit 之后
 ```shell
 Prj on  oops
 ❯ git rebase master
@@ -138,6 +138,6 @@ Prj on  master
 * 314c9df 2nd commit
 * ae15845 initial commit
 ```
-最后删除oops分支：`git branch -d oops`.
+最后删除 oops 分支：`git branch -d oops`.
 
-参考[一个完美的GitFlow模型](http://matrixzk.github.io/blog/20141104/git-flow-model/)
+参考[一个完美的 GitFlow 模型](http://matrixzk.github.io/blog/20141104/git-flow-model/)

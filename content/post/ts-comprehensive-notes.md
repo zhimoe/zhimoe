@@ -7,8 +7,8 @@ toc = "true"
 +++
 
 
-一份详尽的ts语法笔记. 这周在看组里前端同事的代码,感觉完全还是在写JS,以我有限的JS/TS知识,也知道可以写得更加规范一点.但是一上手开始改,还真是手生.
-又重新过了一遍文档,做了一点笔记.
+一份详尽的 ts 语法笔记。这周在看组里前端同事的代码，感觉完全还是在写 JS，以我有限的 JS/TS 知识，也知道可以写得更加规范一点。但是一上手开始改，还真是手生。
+又重新过了一遍文档，做了一点笔记。
 
 <!--more-->
 
@@ -292,7 +292,7 @@ const longerString = longest("alice", "bob");
 const notOK = longest(10, 100);
 
 // Working with Constrained Values
-// 期望返回Type,而不是具有{ length: number }约束的类型.即期望子类,返回了父类,会导致属性变少
+// 期望返回 Type，而不是具有{ length: number }约束的类型。即期望子类，返回了父类，会导致属性变少
 function minimumLength<Type extends { length: number }>(
   obj: Type,
   minimum: number
@@ -330,7 +330,7 @@ const d3 = makeDate(1, 3);
 // Because of this, it’s a feature which you should know exists, but maybe hold off on using unless you are sure
 enum Color {Red, Green, Blue = 4} // default get Red=0, all of the following members are auto-incremented Green=1, except you give.
 let c: Color = Color.Green
-// enum有两种, value是number（默认）或string的.
+// enum 有两种，value 是 number（默认）或 string 的。
 // !!!numeric enums members also get a reverse mapping from enum values to enum names, for example:
 // !!! careful with numeric enum iteration
 enum LogLevel {
@@ -339,7 +339,7 @@ enum LogLevel {
   INFO
 }
 for (let element in LogLevel) {
-        // 先遍历index,再遍历value
+        // 先遍历 index，再遍历 value
         console.log(element +" - "+ LogLevel[element]);// output
         // [LOG]: "0 - ERROR"
         // [LOG]: "1 - WARN"
@@ -348,8 +348,8 @@ for (let element in LogLevel) {
         // [LOG]: "WARN - 1"
         // [LOG]: "INFO - 2"
 }
-// string value enum没有上面这个问题.
-// 在编译内部, ts编译得到一个name->value value->name的双向map
+// string value enum 没有上面这个问题。
+// 在编译内部，ts 编译得到一个 name->value value->name 的双向 map
 enum Enum {
   VAL,
 }
@@ -362,10 +362,10 @@ var Enum;
 })(Enum || (Enum = {}));
 
 
-// for in是ES5标准,遍历key.  in会遍历原型链prototype上面的属性.非底层代码,禁止使用for..in.
-// for of是ES6标准,遍历value.
+// for in 是 ES5 标准，遍历 key.  in 会遍历原型链 prototype 上面的属性。非底层代码，禁止使用 for..in.
+// for of 是 ES6 标准，遍历 value.
 
-// 语法上enum允许 string value 和 numeric value并存,但是代码业务含义
+// 语法上 enum 允许 string value 和 numeric value 并存，但是代码业务含义
 enum BooleanLikeHeterogeneousEnum {
   No = 0,
   Yes = "YES",
@@ -480,7 +480,7 @@ Pick<{ x: number; y: number; z: number; }, 'x' | 'y'>
 // is equivalent to
 { x: number; y: number; }
 
-// Record, 和 index signature区别是 后者key限制在 string number symbol
+// Record, 和 index signature 区别是 后者 key 限制在 string number symbol
 Record<'x' | 'y' | 'z', number>
 // is equivalent to
 { x: number; y: number; z: number; }

@@ -6,18 +6,18 @@ tags = [ "code", "scala",]
 toc = "true"
 +++
 
-scala collection 提供了一整套独立于Java的高性能集合,使用上非常灵活,所以需要清楚一些常用的方法:
+scala collection 提供了一整套独立于 Java 的高性能集合，使用上非常灵活，所以需要清楚一些常用的方法：
 
 * [x] reduce fold scan
 * [x] 集合的符号方法
-* [x] 数组,tuple
-* [x] 2.13的集合架构
+* [x] 数组，tuple
+* [x] 2.13 的集合架构
 
 <!--more-->
 
 ## reduce fold scan
 ```scala
-//reduce是一个二元函数,遍历整个集合
+//reduce 是一个二元函数，遍历整个集合
 List(1, 3, 5).reduceLeft(_ + _)
 // == ((1+3)+5)
 //reduceRight start from end of the collection
@@ -27,12 +27,12 @@ List(1, 3, 5).foldLeft("")(_ + _)
 //foldLeft 等价于 \: 操作符
 (0 /: List(1, 3, 5)) (_ - _)
 
-//folding 常用于替代for-loop
+//folding 常用于替代 for-loop
 val wf1 = scala.collection.mutable.Map[Char, Int]()
 for (c <- "Mississippi") wf1(c) = wf1.getOrElse(c, 0) + 1
 // Now freq is Map('i' -> 4, 'M' -> 1, 's' -> 4, 'p' -> 2)
 
-//注意使用了不可变map
+//注意使用了不可变 map
 val wf = (Map[Char, Int]() /: "Mississippi") {
   (m, c) => m + (c -> (m.getOrElse(c, 0) + 1))
 }
@@ -63,10 +63,10 @@ coll2 ++: coll
 // prepend to lst
 elem :: lst 
 lst2 ::: lst
-// 等价list ++: list2
+// 等价 list ++: list2
 list ::: list2
 
-// 含有=的表示修改,必须是mutable的集合
+// 含有=的表示修改，必须是 mutable 的集合
 
 // TIP: As you can see, Scala provides many operators for adding and removing
 // elements. Here is a summary:
@@ -101,7 +101,7 @@ for (i <- 0 until days.length) println(days(i))
 for (day <- days) println(day)
 days foreach println
 
-//遍历中使用index
+//遍历中使用 index
 days.zipWithIndex.map { case (e, i) => (i, e) }
 //faster
 for (i <- days.indices) yield (i, days(i))
@@ -121,7 +121,7 @@ days.filter(day => day.length > 4)
 Array(1, 2, 3, 4, 5).map(x => x * x)
 //sort
 Array(3, 6, 2, 0, 8, 5).sortWith((e1, e2) => e1 < e2) //小的在前
-//reduce,下面的会提示使用sum,
+//reduce，下面的会提示使用 sum,
 Array(1, 2, 3, 4, 5).reduce((e1, e2) => e1 + e2)
 
 //不定长数组
@@ -136,8 +136,8 @@ val oneAndTwo1 = Tuple2(1, 2)
 //Pair is alias of Tuple2
 val oneAndTwo2 = Pair(1, "two")
 val oneAndTwo3 = 1 -> 2
-//访问元素下标是从1开始,这是因为tuple里面每个元素类型不一样,为了能够和list等区分开
-//使用了类似Haskell/ML的习惯
+//访问元素下标是从 1 开始，这是因为 tuple 里面每个元素类型不一样，为了能够和 list 等区分开
+//使用了类似 Haskell/ML 的习惯
 val two = oneAndTwo._2
 
 //option
@@ -181,9 +181,9 @@ Seq(1).toSet
 
 //zip, zipAll, zipWithIndex, unzip
 "abcde" zip 1.to(5)
-//zipAll:第二个参数是调用者元素缺失使用的默认值,第三个参数是第一个实参不够长的默认值
+//zipAll:第二个参数是调用者元素缺失使用的默认值，第三个参数是第一个实参不够长的默认值
 "abcde".zipAll(1.to(2), "caller", "arg")
-//尝试自己实现一个zipAll?
+//尝试自己实现一个 zipAll?
 //
 "abcde" zipWithIndex
 
@@ -193,6 +193,6 @@ val s = Seq("a", "b")
 ```
 
 ## scala 2.13 collection
-基本重写了.参考这两个文档:
+基本重写了。参考这两个文档：
 [collections migration 2.13](https://docs.scala-lang.org/overviews/core/collections-migration-213.html)
 [the architecture of scala 2.13’s collections](https://docs.scala-lang.org/overviews/core/architecture-of-scala-213-collections.html)

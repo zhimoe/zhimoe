@@ -30,9 +30,9 @@ String middle = ArrayAlg.<String>getMiddle("]ohnM, "Q.n, "Public");// right,<Str
 
 String middle = GenericCls.getMiddle("hello",0,null);// error
 
-//  Errr:(7, 45) java: 不兼容的类型: 推断类型不符合上限
-//     推断: java.lang.Object&java.io.Serializable&java.lang.Comparable<? extends java.lang.Object&java.io.Serializable&java.lang.Comparable<?>>
-//     上限: java.lang.String,java.lang.Object 
+//  Errr:(7, 45) java: 不兼容的类型：推断类型不符合上限
+//     推断：java.lang.Object&java.io.Serializable&java.lang.Comparable<? extends java.lang.Object&java.io.Serializable&java.lang.Comparable<?>>
+//     上限：java.lang.String,java.lang.Object 
 ```
 
 #### 类型限定
@@ -40,8 +40,8 @@ String middle = GenericCls.getMiddle("hello",0,null);// error
 ```java
 public static <T extends Comparable> T min(T a)
 
-// 如果多个类型,则：T extends Comparable & Serializable
-// 只能有一个类,且类必须紧跟extends,但是可以有多个接口
+// 如果多个类型，则：T extends Comparable & Serializable
+// 只能有一个类，且类必须紧跟 extends，但是可以有多个接口
 
 ```
 
@@ -51,7 +51,7 @@ public static <T extends Comparable> T min(T a)
 
 //Tuple<T,S>在虚拟机变为
 class Tuple {
-    private Object first;//当调用getFirst时,则发生强制转换
+    private Object first;//当调用 getFirst 时，则发生强制转换
     private Object second;
 }
 
@@ -64,7 +64,7 @@ public static Comparable min(Comparable a)
 
 ### 约束
 
-- 不能用基本类型实例化泛型,`Pair<double>`不允许
+- 不能用基本类型实例化泛型，`Pair<double>`不允许
 - 运行时参数类型检查只能检查原始类型
 
 ```java
@@ -76,14 +76,14 @@ Pair<String> p = (Pair<String>) a; //warning
 
 ```java
 Pair<String>[] table = new Pair<String>[10]; // Error
-Pair<String>[] table; //声明是合法的,只是无法实例化
+Pair<String>[] table; //声明是合法的，只是无法实例化
 ```
-- 借助@SafeVarargs参数化类型的数组
+- 借助@SafeVarargs 参数化类型的数组
 ```java
 @SafeVarargs
 public static <T> void addAll(Collection<T> coll, T... ts)
 ```
-- Class类本身是泛型. 例如,String.daSS 是一个 Class<String> 的实例（事实上,它是唯一的实例.) 因此,makePair 方法能够推断出 pair 的类型
+- Class 类本身是泛型。例如，String.daSS 是一个 Class<String> 的实例（事实上，它是唯一的实例.) 因此，makePair 方法能够推断出 pair 的类型
 - 泛型类的静态上下文中类型变量无效
   
 ```java
@@ -108,7 +108,7 @@ public class Pair<T> {
     T first;
     T second;
 
-    public boolean equals(T value) { //error 和Object.equals冲突
+    public boolean equals(T value) { //error 和 Object.equals 冲突
         return first.equals(value) && second, equals(value);
     }
 }
@@ -120,7 +120,7 @@ public class Pair<T> {
 class Employee
 class Manager extends Employee
 
-//Pair<Employee> 和Pair<Manager> 没用任何继承关系
+//Pair<Employee> 和 Pair<Manager> 没用任何继承关系
 
 ```
 ### 通配符 和 PECS
