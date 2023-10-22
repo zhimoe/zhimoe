@@ -40,7 +40,7 @@ implement a processor class
 
 编译器编译源码是会有很多轮 (round)：
 
-1st round：编译器得到所有的注解 - 获取所有的注解处理器 - 进行 match 并 process，如果匹配的处理器中 process 方法的返回值是`true`,表示该注解被 claim，不再查询其他处理器。如果是`false`,接着查询匹配处理器处理，所以注解处理器在 META-INF/services/javax.annotation.processing.Processor 声明顺序是有关系的-- 所有的注解都被 claim 后，注解处理完成。
+1st round：编译器得到所有的注解 - 获取所有的注解处理器 - 进行 match 并 process，如果匹配的处理器中 process 方法的返回值是`true`，表示该注解被 claim，不再查询其他处理器。如果是`false`，接着查询匹配处理器处理，所以注解处理器在 META-INF/services/javax.annotation.processing.Processor 声明顺序是有关系的-- 所有的注解都被 claim 后，注解处理完成。
 
 如果注解处理器产生新的 java 文件，那么新的一轮处理开始，前面被调用的那些处理器又被调用，直到没有 java 文件产生。
 

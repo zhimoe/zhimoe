@@ -3,7 +3,7 @@ title = "zhimoe"
 languageCode = "zh" # ?
 defaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
 theme = "next"
-metaDataFormat = "toml" # yaml or toml  post元信息格式
+metaDataFormat = "toml" # yaml or toml  post 元信息格式
 paginatePath = "p"
 paginate = 5
 disablePathToLower = false
@@ -20,7 +20,7 @@ enableEmoji = true
 enableRobotsTXT = true
 hasCJKLanguage = true
 footnoteReturnLinkContents = "↩"
-# 首页摘要长度单词/字符数,可以使用<!--more-->可以覆盖这个设置,注意more左右不能有空格
+# 首页摘要长度单词/字符数，可以使用<!--more-->可以覆盖这个设置，注意 more 左右不能有空格
 summaryLength = 67
 
 timeout = 100000
@@ -53,14 +53,14 @@ minifyOutput = true
 # Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
 # This will then update the Lastmod parameter for each page using the last git commit date for that content file
 enableGitInfo = true
-# 图片资源目录,注意,图片地址以/开始表示图片是在static目录下的
-# 如果使用相对地址则编译后是siteUrl/post/md-file-name/image-name,即图片和md必须在同一目录
+# 图片资源目录，注意，图片地址以/开始表示图片是在 static 目录下的
+# 如果使用相对地址则编译后是 siteUrl/post/md-file-name/image-name，即图片和 md 必须在同一目录
 staticdir = "static"
 
 
-# hugo 新版开始使用Goldmark替换blackfriday了 
-# 硬换行hardLineBreak需要改成hardWraps = true
-# unsafe = true # 让Markdown支持写HTML语法
+# hugo 新版开始使用 Goldmark 替换 blackfriday 了 
+# 硬换行 hardLineBreak 需要改成 hardWraps = true
+# unsafe = true # 让 Markdown 支持写 HTML 语法
 [markup.goldmark.renderer]
 hardWraps = true #回车换行 无需空行
 unsafe = true

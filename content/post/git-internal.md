@@ -30,7 +30,7 @@ A branch is just a named reference to a commit.
 
 在上面的图片中，可以通过哈希值来引用一个 commit，但是不方便，所以分支用来引用 commit。可以理解为分支是一个指针，指向一个 commit，一般默认是指向最后一个 commit（也可以不是最后一个 commit）。
 
-git 通过`HEAD`指针来确认当前所在分支。`HEAD`指针其实是`.git`目录下的一个`HEAD文件`,内容如下
+git 通过`HEAD`指针来确认当前所在分支。`HEAD`指针其实是`.git`目录下的一个`HEAD文件`，内容如下
 ```shell
 > cat .git/HEAD
 ref: refs/heads/master
@@ -62,7 +62,7 @@ ref: refs/heads/master
 # 添加object到staging area
 >git update-index --add --cacheinfo 100644 <blob-hash> <filename>
 
-# 创建一个tree对象,在tree对象中记录index内容
+# 创建一个tree对象 在tree对象中记录index内容
 >git write-tree
 
 # 为tree对象创建一个commit对象

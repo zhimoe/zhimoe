@@ -10,21 +10,21 @@ toc = true
 
 
 ### 背景
-之前的电脑配置是 LinuxMint 台式机 + M1 macbook 笔记本。使用 Linux 主要原因是命令行和 Docker. 最近由于二十大，工作 VPN 在 macOS 不让用，只能将台式机安装上 Win10, 发现 docker 在 WSL2 运行非常丝滑，这样正好可以当作 macbook 的 Docker 服务器。切换到 Windows 还有一个原因就是，Linux 的桌面真的不行，最近三年各种版本的桌面使用一圈，Budgie,Gnome,Cinnamon,Xfce 这些桌面总是偶尔界面失去响应，KDE 用的不多，卡顿没遇到但是启动总是慢半秒。Win10 除了没有 Bash/Zsh, 中文字体垃圾点，其他的都完胜 Linux. 
+之前的电脑配置是 LinuxMint 台式机 + M1 macbook 笔记本。使用 Linux 主要原因是命令行和 Docker. 最近由于二十大，工作 VPN 在 macOS 不让用，只能将台式机安装上 Win10，发现 docker 在 WSL2 运行非常丝滑，这样正好可以当作 macbook 的 Docker 服务器。切换到 Windows 还有一个原因就是，Linux 的桌面真的不行，最近三年各种版本的桌面使用一圈，Budgie，Gnome，Cinnamon，Xfce 这些桌面总是偶尔界面失去响应，KDE 用的不多，卡顿没遇到但是启动总是慢半秒。Win10 除了没有 Bash/Zsh，中文字体垃圾点，其他的都完胜 Linux. 
 下面的教程主要参考：[Configuring SSH access into WSL 1 and WSL 2](https://jmmv.dev/2022/02/wsl-ssh-access.html)
 
 <!--more-->
 
 ### 1 Win10 安装 WSL2 Ubuntu
-注意，是安装 WSL2. 方法参考这个[enable-virtual-machine-feature](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#step-3---enable-virtual-machine-feature): 
+注意，是安装 WSL2，方法参考这个[enable-virtual-machine-feature](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#step-3---enable-virtual-machine-feature)：
 
-1. 以管理员身份打开 PowerShell（“开始”菜单 >“PowerShell” >单击右键 >“以管理员身份运行”）, 然后输入以下命令：
- `dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart`;
-2. 安装 "适用于 x64 计算机的 WSL2 Linux 内核更新包";
-3. 将 WSL 设置默认 version 2, in PowerShell: `wsl --set-default-version 2`;
-4. 安装 Ubuntu, in PowerShell: `wsl --install -d Ubuntu-22.04`;
+1. 以管理员身份打开 PowerShell（“开始”菜单 >“PowerShell” >单击右键 >“以管理员身份运行”），然后输入以下命令：
+ `dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart`；
+2. 安装 "适用于 x64 计算机的 WSL2 Linux 内核更新包"；
+3. 将 WSL 设置默认 version 2，in PowerShell: `wsl --set-default-version 2`；
+4. 安装 Ubuntu，in PowerShell: `wsl --install -d Ubuntu-22.04`。
 
-[更多参考](https://learn.microsoft.com/zh-cn/windows/wsl/install) .  
+[更多参考](https://learn.microsoft.com/zh-cn/windows/wsl/install) 
 
 
 ### 2 配置 SSH server（在 Ubuntu 执行）
@@ -45,7 +45,7 @@ sudo vim /etc/ssh/sshd_config
 # ListenAddress 0.0.0.0
 # PasswordAuthentication yes
 
-# 如果启动遇到这个错误, 请执行下面命令: sshd: no hostkeys available -- exiting
+# 如果启动遇到这个错误 请执行下面命令: sshd: no hostkeys available -- exiting
 sudo ssh-keygen -A
 
 # 启动ssh服务
@@ -67,7 +67,7 @@ New-NetFirewallRule -Name sshd -DisplayName 'sshd for WSL' -Enabled True -Direct
 ```
 
 ### 4 本地验证 SSH 访问 Ubuntu
-打开 Windows Terminal, 尝试 ssh 访问 Ubuntu
+打开 Windows Terminal，尝试 ssh 访问 Ubuntu
 ```
 ssh -p 2222 wsluser@localhost
 
@@ -89,12 +89,12 @@ endlocal
 注意上面 `bash.exe -c` 和 `wsl.exe -e` 两个功能是一样的。bash 后面不维护了，wsl 是官方推荐命令，但是 bash 有输出。
 
 接下来把上面的脚本配置成开机自动执行：
-- 按下 Win 键，搜索“任务计划程序”, 右边点击“创建任务”,  
-- 常规：设置任务名字“Start WSL SSH”, 勾选上“使用最高权限运行”（这是给后面网卡映射命令的权限）
+- 按下 Win 键，搜索“任务计划程序”，右边点击“创建任务”。
+- 常规：设置任务名字“Start WSL SSH”，勾选上“使用最高权限运行”（这是给后面网卡映射命令的权限）
 - 触发器：新建，选择“启动时”
 - 操作：选择上面的 sshd.bat 脚本文件。
 
-保存，重启电脑，打开 Terminal, 重新试试`ssh -p 2222 wsluser@localhost`
+保存，重启电脑，打开 Terminal，重新试试`ssh -p 2222 wsluser@localhost`
 
 ### 6 网卡映射
 到目前为止，在 Win10 本地已经可以在开机后直接通过 SSH 访问 Ubuntu 了，但是你如果在局域网内的其他电脑访问，还是连不上的。这是因为 WSL2 是个虚拟机。

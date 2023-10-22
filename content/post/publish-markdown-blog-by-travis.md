@@ -16,7 +16,7 @@ github 给个人和组织免费提供 github pages 功能。就是说如果有�
 
 <!--more-->
 
-借助于一些 static gen 工具，你可以将你的 markdown 转换为一个静态网站 (html,js,css). 然后把静态网站的内容上传到刚说的 repo 中，就有一个自己的博客站点了。static gen 工具非常多，github 推荐的是[Jekyll(ruby)](https://www.staticgen.com/), 主流的还有 hexo(js) 和 hugo(go), hexo 因为是基于 js 的，所以高质量的主题多 (因为做主题是需要 js,css 技能), hugo 的编译快些，但是好看的主题不多。高质量的主题除了美观可能还需要考虑移动端 (responsive),评论，访问统计等各种功能。每个 gen 工具都有自己的主题站点。hugo 的主题在这里找：[hugo themes](https://themes.gohugo.io/).
+借助于一些 static gen 工具，你可以将你的 markdown 转换为一个静态网站 (html,js,css). 然后把静态网站的内容上传到刚说的 repo 中，就有一个自己的博客站点了。static gen 工具非常多，github 推荐的是[Jekyll(ruby)](https://www.staticgen.com/), 主流的还有 hexo(js) 和 hugo(go)。hexo 因为是基于 js 的，所以高质量的主题多 (因为做主题是需要 js,css 技能), hugo 的编译快些，但是好看的主题不多。高质量的主题除了美观可能还需要考虑移动端 (responsive),评论，访问统计等各种功能。每个 gen 工具都有自己的主题站点。hugo 的主题在这里找：[hugo themes](https://themes.gohugo.io/).
 
 制作 github pages 站点的一般做法是把代码 (放图片和 markdown) 放在 master 分支，static gen 编译后的 (html,js,css,image) 内容放在 gh-pages 分支。然后在 settings 里面设置。这样就可以得到一个站点了。这么做有个缺点，就是 markdown 文件会被别人整个下载过去，之前就遇到过一次。正好 github 现在有 3 个免费私有仓库。所以我把源码放在私有仓库 zhimoe.github.io.src 里面，而编译后的内容发布的 https://zhimoe.github.io上面去.
 

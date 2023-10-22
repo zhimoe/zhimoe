@@ -79,7 +79,7 @@ JDK 默认的拒绝策略 RejectedExecutionHandler 有：
 ![任务提交执行流程](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/threadpool.5d6mli4zovs0.svg)
 
 ### fork/join 框架
-fork/join和上面ThreadPoolExecutor的区别在于使用了任务窃取算法,工作线程完成自己的任务后可以从其他线程偷取任务,提高整体的任务效率.
+fork/join和上面ThreadPoolExecutor的区别在于使用了任务窃取算法，工作线程完成自己的任务后可以从其他线程偷取任务，提高整体的任务效率.
 核心是一个`ForkJoinPool` class 和一个扩展的`AbstractExecutorService`.   执行`ForkJoinTask` 任务。
 在 JDK8 中有个`java.util.Arrays.parallelSort()`使用的就是 fork/join.
 

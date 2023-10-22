@@ -34,11 +34,11 @@ git add ./themes/next && git commit -m "update submodule theme"
 git push
 ```
 
-## 注意search功能
-如果sidebar的搜索不可用,可能原因是summary中包含特殊字符,导致sitemap.xml解析错误
+## 注意 search 功能
+如果 sidebar 的搜索不可用，可能原因是 summary 中包含特殊字符，导致 sitemap.xml 解析错误
 
 ## 图片链接
-图片需要放在项目或者主题项目的`static`目录下面，编译后会将static下平移到public目录下面。引用图片需使用绝对路径 例如
+图片需要放在项目或者主题项目的`static`目录下面，编译后会将 static 下平移到 public 目录下面。引用图片需使用绝对路径 例如
 ```html
 <img src="/img/logo.jpg"
 ```

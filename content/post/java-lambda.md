@@ -78,7 +78,7 @@ var add = (Long x, Long y) -> x + y;
         R apply(T t);
     }
 ```
-这里 T,R 是泛型，这是一个非常泛化的函数式接口。所以 Java8 在 util.function 包中新增了 43 个函数式接口，目的就是方便框架开发者能够减少新建自己的 FunctionalInterface.
+这里 `T,R` 是泛型，这是一个非常泛化的函数式接口。所以 Java8 在 util.function 包中新增了 43 个函数式接口，目的就是方便框架开发者能够减少新建自己的 FunctionalInterface.
 基础的接口只有 6 个：
    
 
@@ -101,7 +101,7 @@ var add = (Long x, Long y) -> x + y;
 
 第一次见到 BooleanSupplier 可能完全不知道使用场景，毕竟有 Supplier<Boolean>不就可以了么？
 
-上面的基础接口虽然非常通用，但是如果有更好的接口名称时，应该使用更合适的那个。例如 Comparator{int compare(T o1, T o2);}和 ToIntBiFunction<T, U> {int applyAsInt(T t, U u);}签名完全一致，但是还是在比较的时候使用 Comparator.
+上面的基础接口虽然非常通用，但是如果有更好的接口名称时，应该使用更合适的那个。例如 `Comparator{int compare(T o1, T o2);}`和 `ToIntBiFunction<T, U> {int applyAsInt(T t, U u);}`签名完全一致，但是还是在比较的时候使用 Comparator.
 
 在构建自己的函数式接口时，务必使用注解`@FunctionalInterface`标注你的接口，这样可以给 IDE lint 和使用者提供更加充分信息。
 

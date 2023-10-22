@@ -10,7 +10,7 @@ toc = true
 在面向 CPU 计算的场景下，多线程基本都能吃满 CPU 资源。但是在 IO 场景下，多线程并不能解决问题，大部分时间线程都在等待 IO 调用的返回。
 实际上 python 的[官方教程](https://docs.python.org/3/tutorial/index.html)里面并没有 async 编程的内容，而是在[std lib doc 中网络编程章节](https://docs.python.org/3/library/ipc.html)介绍了 asyncio 这个 lib，实际上这也是异步编程的最佳使用场景。
 
-此外经常会看到“Use async sparingly”,因为异步编程存在染色问题，一旦使用 async，会要求你全链路全部为 async，否则在 block 时 cpu 并无法让出线程资源。
+此外经常会看到 "Use async sparingly"，因为异步编程存在染色问题，一旦使用 async，会要求你全链路全部为 async，否则在 block 时 cpu 并无法让出线程资源。
 大多数情况，如果出于性能原因不需要异步，线程通常是更简单的替代方案。
 
 <!--more-->
@@ -26,9 +26,6 @@ The event loop is the core of every asyncio application. Event loops run asynchr
 
 `get_event_loop`已经废弃，应该使用`get_running_loop`
 
-```python
-
-```
 
 ### coroutine and future and task
 - coroutines declared with the async/await syntax, is awaitable object. For an object to be awaitable, it must implement the special `__await__()` method that returns an iterable. 
@@ -103,7 +100,6 @@ async def main():
     async with asyncio.timeout(10):
         await long_running_task()
 ```
-[$✘!?]
 
 ### runner
 runners are built on top of an `event loop` with the aim to simplify async code usage for common wide-spread scenarios.
@@ -141,7 +137,7 @@ f: asyncio.Future[R] = asyncio.get_running_loop().create_future()
 ### stream
 
 Streams are high-level async/await-ready primitives to work with network connections. Streams allow sending and receiving data without using callbacks or low-level protocols and transports.
-可以理解成 channel。主要包含 `asyncio.open_connection` `asyncio.start_server` `asyncio.open_unix_connection` `asyncio.start_unix_server`
+stream 可以理解成 channel。主要包含 `asyncio.open_connection` `asyncio.start_server` `asyncio.open_unix_connection` `asyncio.start_unix_server`
 
 
 ### 多线程并发[相关内容]

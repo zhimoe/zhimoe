@@ -44,7 +44,7 @@ ENTRYPOINT ["java","-cp","/app","org.springframework.boot.loader.JarLauncher"]
 
 1. `# syntax=docker/Dockerfile:experimental`表示启用 docker 实验特性 BuildKit 的 mount cache 功能，这样可以利用 maven lib 的 cache 提高镜像构建速度。可以搜索 docker BuildKit 了解。
 如果没有这一行，那么下面的`--mount=type=cache,target=/root/.m2`就是非法的。由于是实验特性，构建镜像的时候需要设置一个环境变量`DOCKER_BUILDKIT=1`才能运行：` DOCKER_BUILDKIT=1 docker build -t zhimoe/boot-app .`
-2. spring.io 的教程里面使用的 build 镜像是`openjdk:8-jdk-alpine`,这个镜像是没有 maven 的，因为教程中的 Dockerfile 从源码复制了`mvnw,.mvn/`到镜像去。所以这里替换为`maven:3-jdk-8-alpine`
+2. spring.io 的教程里面使用的 build 镜像是`openjdk:8-jdk-alpine`，这个镜像是没有 maven 的，因为教程中的 Dockerfile 从源码复制了`mvnw和.mvn/`到镜像去。所以这里替换为`maven:3-jdk-8-alpine`
 3. 使用了 docker 的[multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/)功能，`openjdk:8-jdk-alpine`由于没有 maven，所以会比`maven`镜像少 20M.
 4. spring.io 的教程里面在 ENTRYPOINT 里面是直接设置 main class 启动应用的。这种硬编码方式不通用也不利于维护 (修改 main class name 后 Dockerfile 也要修改).只要将应用的 jar 包解压出来的 org 目录 (即 org.springframework.boot.loader.jar 解压内容，不到 1M) 保留，即可通过`org.springframework.boot.loader.JarLauncher`启动应用。
 5. 注意`java -cp /app`中的 classpath:`/app` 一定是绝对路径，否则 java 找不到 main class，报错：`Error: Could not find or load main class org.springframework.boot.loader.JarLauncher`
@@ -97,7 +97,7 @@ CMD ["./rs-notes"]
 ```
 
 要点：
-1. 如果使用 scratch 或者 alpine 镜像，那么需要将编译目标设置为`MUSL`,网络上有教程，个人感觉不需要.rust 应用使用 debian-slim 基本在 60M 左右，只有 spring boot 应用镜像的一半大小。
+1. 如果使用 scratch 或者 alpine 镜像，那么需要将编译目标设置为`MUSL`，网络上有教程，个人感觉不需要.rust 应用使用 debian-slim 基本在 60M 左右，只有 spring boot 应用镜像的一半大小。
 2. 在国内由于网络问题，所以修改了 cargo 的 crate.io mirror 地址：`COPY ./config $CARGO_HOME/`. config 内容如下：
 ```ini
 [source.crates-io]

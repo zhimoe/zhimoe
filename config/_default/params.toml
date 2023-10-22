@@ -16,11 +16,11 @@ Fancybox = true
 
 [Statistics]
 #revolver_map_id = "55k6ne41ev6"
-google_analytics = "G-CJJZFN2DZR" # google站点访问日志，国内不建议开启
+google_analytics = "G-CJJZFN2DZR" # google 站点访问日志，国内不建议开启
 cloudflare_worker = "pageview.zhimoe"
 
 
-# 评论 见themes/next/layout/partials/widgets/comment.html
+# 评论 见 themes/next/layout/partials/widgets/comment.html
 [Comment]
 giscus = "zhimoe.github.io"
 

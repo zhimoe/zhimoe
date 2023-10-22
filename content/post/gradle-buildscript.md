@@ -215,7 +215,7 @@ publishing { }	Configures the PublishingExtension added by the publishing plugin
 这些 closure 参数基本都是委托给其他对象执行的。
 
 可以看到，Project 对象的方法是有限而且通用的。真正有用的是插件，gradle 的很多功能也是通过官方写的插件提供的。
-如果你看到一个顶级层的`something { ... }`block，但是在 Project 源码中没有找到 something block 的任何信息。那么这个方法就是通过插件提供的.gradle 自带很多插件，像 java,eclipse,groovy,android 等。
+如果你看到一个顶级层的`something { ... }`block，但是在 Project 源码中没有找到 something block 的任何信息。那么这个方法就是通过插件提供的，gradle 自带很多插件，像 java，eclipse，groovy，android 等。
 看一个实际的例子：
 在 android 开发中的构建脚本：
 

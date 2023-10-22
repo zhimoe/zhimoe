@@ -182,7 +182,7 @@ CoroutineDispatcher 用来决定哪个（或几个）线程来运行该协程，
 注意，Dispatcher 实现了 CoroutineContext 接口，所以会看到`withContext(Dispatchers.IO) {}`用法。
 
 ### CoroutineContext
-协程执行时总有带有一个 CoroutineContext, 可以理解为就是一个元信息 Map, 保存了 Job、coroutine dispatcher 等信息：
+协程执行时总有带有一个 CoroutineContext，可以理解为就是一个元信息 Map，保存了 Job、coroutine dispatcher 等信息：
 Job: 控制协程的生命周期。
 CoroutineDispatcher: 将工作分派到适当的线程。
 CoroutineName: 协程的名称，可用于调试。
@@ -190,8 +190,8 @@ CoroutineExceptionHandler: 处理未捕获的异常。
 
 coroutine builder（async、launch）接收可选的 CoroutineContext 对象参数。CoroutineContext 最常见的用途就是指定协程的 dispatcher. 
 
-在 kotlin 中，`CoroutineContext`表示协程的 context, 包含了多个元素。而`CoroutineContext.Element`表示 context 的一个元素。类似 map 和 kv 的关系。
-但是`CoroutineContext.Element`继承了`CoroutineContext`, 即一个 element 也是一个 context. 这种抽象可以简化一些 API 设计，例如，withContext 函数的参数类型是 CoroutineContext，但是我们常常会传入一个 CoroutineContext.Element 的实现类如 Dispatchers. 由于后者继承了前者，所以这样的使用方式也是被允许的。
+在 kotlin 中，`CoroutineContext`表示协程的 context，包含了多个元素。而`CoroutineContext.Element`表示 context 的一个元素。类似 map 和 kv 的关系。
+但是`CoroutineContext.Element`继承了`CoroutineContext`，即一个 element 也是一个 context. 这种抽象可以简化一些 API 设计，例如，withContext 函数的参数类型是 CoroutineContext，但是我们常常会传入一个 CoroutineContext.Element 的实现类如 Dispatchers. 由于后者继承了前者，所以这样的使用方式也是被允许的。
 由于实现了 plus 操作符方法，`Job() + Dispatchers.Main`也表示一个`CoroutineContext`。
 
 ### CoroutineScope
@@ -364,7 +364,7 @@ println("Done!")
 runBlocking 运行一个新的协程，并可中断地阻塞当前线程，直到协程完成。此函数不应在协程中使用。它旨在将常规的阻塞代码与挂起风格编写的库连接起来，以便在 main 函数和测试中使用。
 
 前面说过，所有的协程都应该在一个 CoroutineScope 下面被管理。在`runBlocking {}`大括号内部写代码时 IDE 会提示你当前 this 的 type 是 CoroutineScope，这个 scope 实际是 runBlocking 方法内构建的 BlockingCoroutine 对象。
-由于`AbstractCoroutine`接口继承了`CoroutineScope`,所以 BlockingCoroutine 也是一个 CoroutineScope 实例。
+由于`AbstractCoroutine`接口继承了`CoroutineScope`，所以 BlockingCoroutine 也是一个 CoroutineScope 实例。
 
 
 `kotlin.system.measureTimeMillis` Executes the given block and returns elapsed time in milliseconds.

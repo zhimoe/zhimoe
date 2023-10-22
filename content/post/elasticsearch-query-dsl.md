@@ -183,7 +183,7 @@ bool, boosting, constant_score, dis_max,
 function_score, has_child, has_parent, 
 indices, nested, span_first, span_multi,span_first, 
 span_multi, span_near, span_not, span_or, span_term, top_children,
-filtered(废弃,使用bool包含一个must和一个filter替代)
+filtered(废弃，使用bool包含一个must和一个filter替代)
 ```
 ### bool
 bool 查询的外框架结构为：

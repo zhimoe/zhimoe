@@ -74,8 +74,8 @@ git commit -m "Wow, you don't have to copy-paste to undo"
 
 ## git stash
 ```bash
-# 如果临时想要将代码恢复到最近一次commit,帮助同事复现他的问题
-# 使用git stash 暂存当前修改,这个不是stage,也不是commit
+# 如果临时想要将代码恢复到最近一次commit 帮助同事复现他的问题
+# 使用git stash 暂存当前修改，这个不是stage，也不是commit
 git stash
 
 # 显示当前暂存历史
