@@ -20,11 +20,11 @@ toc = "true"
 ```
 <!--more-->
 
-1. exec form 以 JSON 格式解析，所以命令参数必须使用`""`双引号包裹;
-2. exec form 不会 invoke shell. 所以`CMD [ "echo", "$HOME" ]`中`$HOME`变量不会被替换;
-3. shell form 实际是执行`/bin/sh -c "<command>"`;
-4. 优先使用 exec form，因为在 shell form 中[spawns your application in a new process and you won’t receive signals from Docker][1],在 k8s 中会遇到问题;
-5. 在 shell form 也可以使用`exec <cmd>`形式;
+1. exec form 以 JSON 格式解析，所以命令参数必须使用`""`双引号包裹。
+2. exec form 不会 invoke shell. 所以`CMD [ "echo", "$HOME" ]`中`$HOME`变量不会被替换。
+3. shell form 实际是执行`/bin/sh -c "<command>"`。
+4. 优先使用 exec form，因为在 shell form 中[spawns your application in a new process and you won’t receive signals from Docker][1],在 k8s 中会遇到问题。
+5. 在 shell form 也可以使用`exec <cmd>`形式。
 
 
 ## CMD VS ENTRYPOINT

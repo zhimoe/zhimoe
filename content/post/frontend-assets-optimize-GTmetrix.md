@@ -7,6 +7,6 @@ toc = "true"
 +++
 
 
-GTmetrix 是一个前端页面测试的网站，可以发现你的站点哪些图片加载速度较慢，并针对性的优化。
+GTmetrix 是一个前端页面测试的网站，可以发现你的站点哪些资源加载速度较慢，并针对性的优化。本文包含如何使用 GTmetrix 优化网站图片性能。
 source:[How to Optimize Images: A Practical Guide](https://gtmetrix.com/blog/how-to-optimize-images-a-practical-guide/)
 <!--more-->

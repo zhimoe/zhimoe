@@ -14,13 +14,11 @@ java thread pool class hierarchy
 Executor (java.util.concurrent)
 |---ExecutorService (java.util.concurrent)
     |---AbstractExecutorService (java.util.concurrent)
-    |   |---AbstractEventExecutor (io.netty.util.concurrent)
     |   |---ForkJoinPool (java.util.concurrent)
     |   |---ThreadPoolExecutor (java.util.concurrent)
     |   |   |---ScheduledThreadPoolExecutor (java.util.concurrent)
     |---DelegatedExecutorService in Executors (java.util.concurrent)
     |---ScheduledExecutorService (java.util.concurrent)
-
 ```
 
 <!--more-->
@@ -28,8 +26,10 @@ Executor (java.util.concurrent)
 ### three thread pool interfaces
 
 `Executor`, a simple interface that supports launching new tasks.
+
 `ExecutorService`, a sub-interface of Executor, which adds features that help manage the life cycle, both of the
 individual tasks and of the executor itself.
+
 `ScheduledExecutorService`, a sub-interface of ExecutorService, supports future and/or periodic execution of tasks.
 
 ### common thread pool implements
@@ -40,8 +40,9 @@ individual tasks and of the executor itself.
 //Executors.newFixedThreadPool
 //Executors.newCachedThreadPool
 //Executors.newSingleThreadExecutor
+
 //同样的，Executors 还提供了 ScheduledExecutorService 的工具方法
-// Executors.newSingleThreadScheduledExecutor
+//Executors.newSingleThreadScheduledExecutor
 ```
 
 ```java

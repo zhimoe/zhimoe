@@ -8,12 +8,12 @@ toc = "true"
 
 
 在看这个之前，希望你有用 ant 或者 maven 的使用经验，还有，对 groovy 的语法有一个简单的了解，不懂也没关系，下面会介绍。
-理解 gradle 文件的前提是理解一个重要的 groovy 概念:closure
+理解 gradle 文件的前提是理解一个重要的 groovy 概念 -- closure
 
 #### closure
 一个 closure 是一个定义在 groovy 文件中的{}代码块，这个代码块类似 js 中的匿名函数，它可以被赋值给变量，可以被调用，可以接收参数，还可以作为参数传递给别的函数。
 
-closure 中最重要的两个概念是委托对象和作为参数传递的语法格式（理解 gradle 文件很重要）.
+closure 中最重要的两个概念是委托对象和作为参数传递的语法格式（理解 gradle 文件很重要）。
 
 <!--more-->
 
@@ -62,30 +62,30 @@ take 3 cookies
 - groovy 和 scala 的方法返回值不需要 return，最后一行就是返回值。
 - closure 是一个匿名函数，格式`{ [closureParameters -> ] statements }`,默认自带一个名为 it 的参数，所以只接受一个参数时可以省略->.
 - closure 可以访问 scope（作用域）内任何变量。并且这个 scope 是可以通过委托来改变的。
-- groovy 中 Map 对象的 value 如果是 closure，那么可以接着调用：`mapp.keyy({closure}) `
-有了上面的基础，我们看一个简单的例子：
+- groovy 中 Map 对象的 value 如果是 closure，那么可以接着调用：`m .k { arg_expressiong }`
 
+
+有了上面的基础，我们看一个复杂点的例子：
 
 ```groovy
-//将closure赋值给一个变量,这个closure接收一个参数,参数名是默认的,it
+//将closure赋值给一个变量,这个closure接收一个参数,参数名是默认的 it
 show = { println it }
 square_root = { Math.sqrt(it) }
 
-
 //为了容易理解,我将参数的type都添加上了,
 //please方法需要一个closure,接着返回一个map,map的key是the,value是一个closure,
-//这个closure接收一个closure,并返回一个map,这个map的of的value又是一个closure(不要晕了)
-//最后一个closure接收一个参数n.
+//这个closure接收一个closure,并返回一个map,
+//这个map的keyu是of,value又是一个closure(不要晕了)
+//最后一个closure接收一个参数n
 def please(Closure action) {
      [the: { Closure what ->
         [of: { n -> action(what(n)) }]
     }]
 }
 //调用:
-// 等价: please(show).the(square_root).of(100)
 please show the square_root of 100
-// ==> 10.0
-
+// 上面等价 please(show).the(square_root).of(100)
+// 或 please { println it } .the { Math.sqrt(it) } .of 100
 ```
 
 总结一下就是，将你需要的操作封装成一个 closure，给一个直观的命名，保证整个 DSL 调用语句有语义，定义返回一个 map 的函数作为入口，map 的 key 是方法名，value 是 closure，这样可以在 key 后面传递一个 closure 接着调用这个 value.
@@ -108,7 +108,7 @@ Init script	->Gradle
 Settings script(setting.gradle)	->Settings
 
 ```
-构建中的每一个 project,Gradle 都会创建一个 Project 对象，并将这个对象与构建脚本相关联。 
+构建中的每一个 project，Gradle 都会创建一个 Project 对象，并将这个对象与构建脚本相关联。 
 
 Project 对象与 build.gradle 是一对一的关系。
 

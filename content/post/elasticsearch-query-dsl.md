@@ -7,7 +7,7 @@ toc = "true"
 +++
 
 
-理解 ES 搜索中 JSON DSL 有助于自己写 JSON 查询，特别是手写复杂嵌套 json. 
+理解 ES 搜索中 JSON DSL 有助于自己写 JSON 查询，特别是手写复杂嵌套 json。
 
 * [x] diffs in es 2.x and es 5.x
 * [x] query dsl
@@ -17,7 +17,7 @@ toc = "true"
 
 # diffs in es 2.x and es 5.x
 
-## 没有 string 类型，改为 text 和 keyword 2 个类型了.text 字段可以指定 fields 来不分词。如下：city 字段被 ingest 为 city 和 city.raw2 个字段。
+## 没有 string 类型，改为 text 和 keyword 2 个类型。text 字段可以指定 fields 来不分词。如下：city 字段被 ingest 为 city 和 city.raw 2 个字段。
    
 ```json5
 {
@@ -78,11 +78,11 @@ term,
 terms,
 wildcard
 ```
-其中`common, ids, prefix, span_term, term, terms, wildcard` 是不分析 (即不能用于 text 字段) 搜索，`match,	multi_match,	query_string,	simple_query_string`是全文检索，几乎可以确保可以返回结果。而`prefix,regexp,wildcard`是模式检索。这里分别给一些例子：
+其中`common, ids, prefix, span_term, term, terms, wildcard` 是不分析搜索 (即不能用于 text 字段) ，`match,	multi_match,	query_string,	simple_query_string`是全文检索，几乎可以确保可以返回结果。而`prefix,regexp,wildcard`是模式检索。这里分别给一些例子：
 
 ### multi_match
 > multi_match 查询为能在多个字段上反复执行相同查询提供了一种便捷方式
-既然时多字段查询，则有 3 中场景:best_fields、most_fields 和 cross_fields（最佳字段、多数字段、跨字段）
+既然是多字段查询，则有 3 中场景:best_fields、most_fields 和 cross_fields（最佳字段、多数字段、跨字段）
 ```json5
 {
     "multi_match": {
@@ -148,9 +148,10 @@ wildcard
 
 ```
 上面的 query 字段语法可以参考：[query_string_syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)
-`simple_query_string`不会抛出异常，直接忽略无效语句。
-### term terms
 
+`simple_query_string`不会抛出异常，而是直接忽略无效语句。
+
+### term、terms 完全匹配
 ```json5
 // 不要用于 text 字段
 // GET /_search
@@ -169,7 +170,7 @@ wildcard
 
 ### prefix
 ```json5
-// user 字段 (不分词字段) 中以"ki"开头的文档
+// user 字段 (不分词字段) 中以"ki"开头的文档 类似 SQL 中的 like 'ki%'
 { "query": {
     "prefix" : { "user" : "ki" }
   }
@@ -178,12 +179,10 @@ wildcard
 
 ## 组合查询
 
-```js
-bool, boosting, constant_score, dis_max, 
-function_score, has_child, has_parent, 
-indices, nested, span_first, span_multi,span_first, 
+```text
+bool, boosting, constant_score, dis_max, function_score, has_child, has_parent, indices, nested, span_first, span_multi,span_first, 
 span_multi, span_near, span_not, span_or, span_term, top_children,
-filtered(废弃，使用bool包含一个must和一个filter替代)
+filtered(废弃，使用 bool 包含一个 must 和一个 filter 替代)
 ```
 ### bool
 bool 查询的外框架结构为：

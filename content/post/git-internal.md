@@ -19,7 +19,7 @@ toc = true
 git 内部有三种对象：
 1. blob: 文件的内容，不包含 metadata 信息（创建时间，修改时间，作者等）
 2. tree: 一个目录，包含 blobs 或者 trees
-3. commit: a snapshot of the working tree，一个 tree 的快照。 
+3. commit: a snapshot of the working tree，一个 tree 的快照
 
 三种 git 对象都是通过 SHA-1 哈希值来唯一标识，如下图所示。每个 commit 对象中，对于 tree 里面那些没有改动的内容，继续通过原 hash 引用。
 
@@ -57,8 +57,10 @@ ref: refs/heads/master
 # 查看一个git object类型 -t type
 >git cat-file -t [obj-hash]
 # blob|tree|commit
+
 # 查看一个git object内容 -p pretty-print
 >git cat-file -p [obj-hash]
+
 # 添加object到staging area
 >git update-index --add --cacheinfo 100644 <blob-hash> <filename>
 

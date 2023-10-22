@@ -17,14 +17,14 @@ toc = "true"
 
 ### 任务
 
-多线程编程的核心元素就是任务，任务是独立的活动，不依赖其他任务的状态、结果、以及边界效应。定义任务的内容使用 Runnable 和 Callable.
+多线程编程的核心元素就是任务，任务是独立的活动，不依赖其他任务的状态、结果、以及边界效应。定义任务的内容使用 Runnable 和 Callable。
 
 Runnable 接口表示没有返回的一个过程（procedure），没有受检异常；
 Callable 接口的 call 方法会返回一个结果，并有可能抛出受检异常。如果要表示没有返回值，可以使用`Callable<Void>`，但是不鼓励使用这个代替 Runnable，当一个任务内容没有返回值，只是利用副作用时，应该优先使用 Runable，使得含义清晰，并且 JDK 中`ScheduledExecutorService`也有只能接收 Runable 的方法。
 
 Future 接口描述了任务的生命周期，并提供方法获得任务执行的结果。该接口有一个实现类：`FutureTask`.该类的实例一定和一个具体任务相关。`ExecutorService`所有的 submit 方法都会返回一个 Future 实例。你也可以直接通过 FutureTask 构造函数将 Runnable/Callable 对象构建成一个 FutureTask 实例，该实例将管理该任务的生命周期。
 
-注意，FutureTask 实现了 Runnable 和 Future（通过实现 RunnableFuture 接口）,所以既可以使用 ExecutorService，也可以使用 Thread 执行 FutureTask 任务内容。
+注意，FutureTask 实现了 Runnable 和 Future（通过实现 RunnableFuture 接口），所以既可以使用 ExecutorService，也可以使用 Thread 执行 FutureTask 任务内容。
 
 ```java
 // FutureTask 接口关系

@@ -10,7 +10,8 @@ toc = true
 
 
 ### 背景
-之前的电脑配置是 LinuxMint 台式机 + M1 macbook 笔记本。使用 Linux 主要原因是命令行和 Docker. 最近由于二十大，工作 VPN 在 macOS 不让用，只能将台式机安装上 Win10，发现 docker 在 WSL2 运行非常丝滑，这样正好可以当作 macbook 的 Docker 服务器。切换到 Windows 还有一个原因就是，Linux 的桌面真的不行，最近三年各种版本的桌面使用一圈，Budgie，Gnome，Cinnamon，Xfce 这些桌面总是偶尔界面失去响应，KDE 用的不多，卡顿没遇到但是启动总是慢半秒。Win10 除了没有 Bash/Zsh，中文字体垃圾点，其他的都完胜 Linux. 
+之前的电脑配置是 LinuxMint 台式机 + M1 macbook 笔记本。使用 Linux 主要原因是命令行和 Docker. 最近由于二十大，工作 VPN 在 macOS 不让用，只能将台式机安装上 Win10，发现 docker 在 WSL2 运行非常丝滑，这样正好可以当作 macbook 的 Docker 服务器。切换到 Windows 还有一个原因就是，Linux 的桌面真的不行，最近三年各种版本的桌面使用一圈，Budgie，Gnome，Cinnamon，Xfce 这些桌面总是偶尔界面失去响应，KDE 用的不多，卡顿没遇到但是启动总是慢半秒。Win10 除了没有 Bash/Zsh，中文字体垃圾点，其他的都完胜 Linux。
+
 下面的教程主要参考：[Configuring SSH access into WSL 1 and WSL 2](https://jmmv.dev/2022/02/wsl-ssh-access.html)
 
 <!--more-->

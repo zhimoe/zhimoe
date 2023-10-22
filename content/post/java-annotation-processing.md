@@ -9,38 +9,31 @@ toc = "true"
 
 ### 注解处理
 
-注解是 jdk1.5 出现的，但是自定义处理注解的功能是 1.6 才有的.Element 等关于注解源码抽象的支持类都是 1.6 出现的。
-关于注解的定义就不说了，主要说说注解处理
-本文根据以下资料并进行部分修改：
-[JavaAnnotationProcessing](http://www.angelikalanger.com/Conferences/Slides/JavaAnnotationProcessing-JSpring-2008.pdf)
+注解是 jdk1.5 出现的，但是自定义处理注解的功能是 1.6 才有的。Element 等关于注解源码抽象的支持类都是 1.6 出现的。
 
 <!--more-->
 
 ### 基本知识
 
-annotation processing integrated into javac compiler   
-
-– since Java 6.0; known as `pluggable annotation processing`  
-– compiler automatically searches for annotation processors  
-– unless disabled with `-proc:none `option for javac  
-– processors can be specified explicitly with `-processor ` option for javac or `-cp processor.jar`,processor.jar include /META-INF/service/javax.annotation.processing.Processor file and your processor decalared in file;
+> annotation processing integrated into javac compiler since Java 6.0, known as `pluggable annotation processing`. compiler automatically searches for annotation processors unless disabled with `-proc:none `option for javac. processors can be specified explicitly with `-processor ` option for javac or `-cp processor.jar`, `processor.jar` must include the `/META-INF/service/javax.annotation.processing.Processor` file and your processor decalared in file;
   
 
-implement a processor class  
+implement a processor class:  
 – must implement `Processor` interface  
 – typically derived from `AbstractProcessor`  
 – new package javax.annotation.processing  
 
-同时自定义注解处理器需要指定注解选项：specify supported annotation + options  
-
+同时自定义注解处理器需要指定注解选项：
+```
 – by means of annotations:
 @SupportedAnnotationTypes
 @SupportedOptions
 @SupportedSourceVersion
+```
 
 编译器编译源码是会有很多轮 (round)：
 
-1st round：编译器得到所有的注解 - 获取所有的注解处理器 - 进行 match 并 process，如果匹配的处理器中 process 方法的返回值是`true`，表示该注解被 claim，不再查询其他处理器。如果是`false`，接着查询匹配处理器处理，所以注解处理器在 META-INF/services/javax.annotation.processing.Processor 声明顺序是有关系的-- 所有的注解都被 claim 后，注解处理完成。
+第一轮编译器得到所有的注解 - 获取所有的注解处理器 - 进行 match 并 process，如果匹配的处理器中 process 方法的返回值是`true`，表示该注解被 claim，不再查询其他处理器。如果是`false`，接着查询匹配处理器处理，所以注解处理器在 META-INF/services/javax.annotation.processing.Processor 声明顺序是有关系的-- 所有的注解都被 claim 后，注解处理完成。
 
 如果注解处理器产生新的 java 文件，那么新的一轮处理开始，前面被调用的那些处理器又被调用，直到没有 java 文件产生。
 
@@ -53,13 +46,13 @@ implement a processor class
 – `Filer` for creation of new source, class, or auxiliary files  
 – `Messager ` to report errors, warnings, and other notices  
 
-此外，一个产生 java 文件的重要方法：
+此外，一个生成 java 文件的重要方法：
 
-```text
+```java
 FileObject sourceFile = processingEnv.getFiler().createSourceFile(beanClassName);
-
-process() method takes 2 arguments:
-
+```
+```text
+// process() method takes 2 arguments:
 Set<? extends TypeElement> annotations  
 – the annotation types requested to be processed  
 – subset of the supported annotations  
@@ -74,8 +67,11 @@ RoundEnvironment roundenv
 ```java
 @SupportedAnnotationTypes({"Property"})
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
-public class PropertyAnnotationProcessor extends AbstractProcessor {
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment env) {
+public class PropertyAnnotationProcessor 
+extends AbstractProcessor {
+    public boolean process(
+		Set<? extends TypeElement> annotations,
+	    RoundEnvironment env) {
         // process the source file elements using the mirror API
     }
 }
@@ -95,21 +91,16 @@ public class Foo {		    // TypeElement
 }
 
 ```
-TypeElement 不能提供父类的信息，如果需要这些信息，需要从 Element 中得到 TypeMirror.TypeMirror::element.asType() 
+TypeElement 不能提供父类的信息，如果需要这些信息，需要从 Element 中得到 `TypeMirror.TypeMirror::element.asType()`
 
-### 实例：
-动手写注解处理器：3 个类，一个定义注解 Comparator.java，一个使用注解的类 Name.java，一个处理注解 MyProcessor.java.  
-我将定义一个注解@Comparator，使用在方法上，被注释的方法能够返回一个 Comparator.  
-一个注解处理器，解析所有被注释的方法，为每一个方法产生一个 Comparator 类。
-
-！！！注意，这里的内容和连接中资料的已经不一样了，资料里给的 process 方法并不能产生比较器类。
+### 实战
+动手写注解处理器：定义一个注解`@Comparator`，使用在方法上。通过一个注解处理器，解析所有被注释的方法，为每一个方法产生一个 Comparator 类。
+一共三个类，注解定义，注解使用，注解处理器。
 
 给出注解定义前看看注解怎么使用：
 
 ```java
-// ./Name.java  
-// ./  表示当前命令行文件夹，后面所有的 javc 命令都以这个文件夹为准
-package java.interview.annotation;
+package moe.zhi;
 
 public class Name {
 
@@ -137,26 +128,23 @@ public class Name {
 其中被注解注释的方法将产生一个 NameByFirstNameComparator.java 文件：
 
 ```java
-// ./angus/initerview/annotation/NameByFirstNameComparator.java
+package moe.zhi;
+public class NameByFirstNameComparator 
+  implements java.util.Comparator<Name> {
 
-public class NameByFirstNameComparator implements java.util.Comparator<Name> {
 	public int compare(Name o1, Name o2) {
 		return o1.compareToByFirstName(o2);
 	}
-
 	public boolean equals(Object other) {
 		return this.getClass() == other.getClass();
 	}
 }
-
 ```
 
-
-我们定义注解：
+定义注解：
 
 ```java
-// ./Comparator.java 
-package angus.interview.annotation;
+package moe.zhi;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -169,15 +157,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE)
 public @interface Comparator {
 	String value();
-
 }
-
 ```
 
-接下来定义我们的注解处理器，有详细注解，特别注意 generate 源码中的空格和分号不要弄丢了：
+接下来定义注解处理器，有详细注解，特别注意 generate 源码中的空格和分号不要弄丢了：
 
 ```java
-package angus.interview.annotation;
+package moe.zhi;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -197,105 +183,110 @@ import javax.lang.model.type.TypeMirror;
 import javax.tools.Diagnostic;
 import javax.tools.FileObject;
 
-@SupportedAnnotationTypes({ "angus.interview.annotation.Comparator" })
+import static java.lang.StringTemplate.STR;
+
+@SupportedAnnotationTypes({"moe.zhi.Comparator"})
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class MyProcessor extends AbstractProcessor {
 
-	@Override
-	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-		
-		
-		for( final Element element: roundEnv.getElementsAnnotatedWith( Comparator.class ) ) {
-			if(element instanceof ExecutableElement){
-				ExecutableElement m = (ExecutableElement) element;
-				TypeElement className = (TypeElement)m.getEnclosingElement();
-				Comparator a = m.getAnnotation(Comparator.class);
-				if (a != null) {
+    @Override
+    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        for (final Element element : roundEnv.getElementsAnnotatedWith(Comparator.class)) {
+            if (element instanceof ExecutableElement m) {
+                TypeElement className = (TypeElement) m.getEnclosingElement();
+                Comparator annotation = m.getAnnotation(Comparator.class);
+                if (annotation == null) {
+                    continue;
+                }
+                TypeMirror returnType = m.getReturnType();
+                if (!(returnType instanceof PrimitiveType)
+                        || returnType.getKind() != TypeKind.INT) {
+                    processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR,
+                            "@Comparator can only be applied to methods that return int");
+                    continue;
+                }
+                // prepare for java file generation
+                String theProcessedClassesName = className.getQualifiedName().toString();
+                String comparatorClassName = annotation.value();
+                String compareToMethodName = m.getSimpleName().toString();
+                try {
+                    writeComparatorFile(theProcessedClassesName, comparatorClassName, compareToMethodName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end for
+        return true; // claimed now,no need next processor
+    }
 
-					TypeMirror returnType = m.getReturnType();
+    // be careful with spaces and ";" in content
+    private void writeComparatorFile(String fullClassName, String comparatorClassName, String compareToMethodName)
+            throws IOException {
+        int lastIndexOfDot = fullClassName.lastIndexOf(".");
+        String packageName = fullClassName.substring(0, lastIndexOfDot);
+        FileObject sourceFile = processingEnv.getFiler().createSourceFile(packageName + "." + comparatorClassName);
+        if (sourceFile == null) {
+            System.out.println("create source file failed");
+            throw new IOException("create source file failed:" + packageName + "." + comparatorClassName);
+        }
+        PrintWriter out = new PrintWriter(sourceFile.openWriter());
 
-					if (!(returnType instanceof PrimitiveType)
-							|| ((PrimitiveType) returnType).getKind() != TypeKind.INT) {
-						processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR,
-								"@Comparator can only be applied to methods that return int");
-						continue;
-					}
-					// prepare for java file generation
-					// t m a mean ?
-					String comparatorClassName = a.value();
-					String comparetoMethodName = m.getSimpleName().toString();
-					String theProcessedClassesName = className.getQualifiedName().toString();
-					try {
-						writeComparatorFile(theProcessedClassesName, comparatorClassName, comparetoMethodName);
-					} catch (IOException e) {
-						e.printStackTrace();
-						
-					}
+        String parametrizedType = fullClassName.substring(lastIndexOfDot + 1); //!! careful the index
+        var packageLine = "";
+        if (lastIndexOfDot > 0) {
+            packageLine = STR."package \{ packageName };" ;
+        }
+        // 下面使用了 Java 21 的 STR 模板
+        var content = STR."""
+                \{ packageLine }
 
-				}
-			}
-			
-		}
+                public class \{ comparatorClassName }  
+				  implements java.util.Comparator<\{ parametrizedType }> {
 
-		return true;// claimed now,no need next processor
-	}
+                    public int compare( \{ parametrizedType } o1, 
+					  \{ parametrizedType } o2 ){
+                        return o1.\{ compareToMethodName }(o2);
+                    }
 
-	/*
-	 * 
-	 * public class NameByFirstNameComparator implements java.util.Comparator<Name> { 
-     *   public int compare(Name o1, Nameo2) { return o1.compareToByFirstName(o2); }
-	 * 
-	 *   public boolean equals(Object other) { return this.getClass() == other.getClass(); } }
-	 */
-
-	//!!!careful with spaces and ";"!!!
-	private void writeComparatorFile(String fullClassName, String comparatorClassName, String compareToMethodName)
-			throws IOException {
-		int i = fullClassName.lastIndexOf(".");
-		String packageName = fullClassName.substring(0, i);
-		FileObject sourceFile = processingEnv.getFiler().createSourceFile(packageName + "." + comparatorClassName);
-		if (sourceFile == null) {
-			System.out.println("create source file failed");
-		}
-		PrintWriter out = new PrintWriter(sourceFile.openWriter());
-
-		if (i > 0) {
-			out.println("package " + packageName + ";");
-		}
-		String parametrizedType = fullClassName.substring(i + 1);//!!
-		out.println(
-				"public class " + comparatorClassName + " implements java.util.Comparator<" + parametrizedType + "> {");
-		out.println();
-		out.println("public int compare( " + parametrizedType + " o1 , " + parametrizedType + " o2 ){");
-		out.println("return o1." + compareToMethodName + "(o2);");
-		out.println("}");
-		
-		out.println();
-		out.println();
-		out.println("public boolean equals(Object other) {");
-		out.println("return this.getClass() == other.getClass();");
-		out.println("}");
-
-		out.println("}");
-
-		out.close();
-	}
+                    public boolean equals(Object other) {
+		                return this.getClass() == other.getClass();
+	                }
+                }
+                """ ;
+        out.println(content);
+        out.close();
+    }
 
 }
-
-
 ```
 
 ### 测试处理器
-两种方法，
+<!-- todo -->
 
-一种是使用 -cp：
+### 代码生成工具
+方法 1：使用 [javapoet](https://github.com/square/javapoet) 
 
-在项目的根目录中（pom.xml 同级目录）新建 META-INF 文件夹，并在里面新建 services 文件夹，再在里面新建一个文件 javax.annotation.processing.Processor，并在该文件中注册我们的处理器，第一行写入：angus.interview.annotation.MyProcessor.
-然后用 eclipse 将项目 export 得到一个 jar 包，jar 必须包含 target 文件夹（处理器 class 文件）和 META-INF 文件夹（注册处理器）.这里将 jar 包命名为 process.jar. 复制 jar 包到 Name.java 目录中，并在该目录打开终端，输入：
->javac -cp process.jar Name.java
-   
-将会得到 Name.class 文件和一个 angus 文件夹，最里面是 NameByFirstNameComparator.java 和 NameByFirstNameComparator.class.
-打开 NameByFirstNameComparator.java，发现内容和上面给出的一模一样。
+```java
+MethodSpec main = MethodSpec.methodBuilder("main")
+    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+    .returns(void.class)
+    .addParameter(String[].class, "args")
+    .addStatement("$T.out.println($S)", System.class, "Hello, JavaPoet!")
+    .build();
 
-第二种方法是使用-processor 参数，但是还没搞懂 MyProcessor.class 应该放在哪里。暂时先到这。
+TypeSpec helloWorld = TypeSpec.classBuilder("HelloWorld")
+    .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
+    .addMethod(main)
+    .build();
+
+JavaFile javaFile = JavaFile.builder("com.example.helloworld", helloWorld)
+    .build();
+
+javaFile.writeTo(System.out);
+```
+方法 2：使用 STR
+
+参考上面的例子
+
+### 参考
+[java 注解](https://lotabout.me/2017/Notes-on-Java-Annotation-Processor/)

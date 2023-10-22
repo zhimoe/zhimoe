@@ -59,21 +59,23 @@ FROM rust:latest AS builder
 RUN USER=root cargo new --bin prj
 WORKDIR /prj
 
-# copy over your manifests
+# copy the manifests to WORKDIR/src
 COPY ./Cargo.lock ./Cargo.toml ./
-
-# change the crate.io source
+# change the crate.io source url if in China mainland
 COPY ./config $CARGO_HOME/
 
+# build without project source code
 # this build step will cache your dependencies
 RUN cargo build --release
-RUN rm -r src/*
 
+# remove the WORKDIR/src
+RUN rm -r src/*
 # copy your source files to WORKDIR/src
 COPY ./src ./src
 COPY ./static ./static
 
-# build for release, note! the Cargo.toml package name in deps is _, not -
+# build for release, 
+# note! the Cargo.toml package name in deps is _, not -
 RUN rm ./target/release/deps/rs_notes*
 RUN cargo build --release
 
@@ -97,7 +99,7 @@ CMD ["./rs-notes"]
 ```
 
 要点：
-1. 如果使用 scratch 或者 alpine 镜像，那么需要将编译目标设置为`MUSL`，网络上有教程，个人感觉不需要.rust 应用使用 debian-slim 基本在 60M 左右，只有 spring boot 应用镜像的一半大小。
+1. 如果使用 scratch 或者 alpine 镜像，那么需要将编译目标设置为`MUSL`，网络上有教程，感觉不需要考虑这个体积问题。rust 应用使用 debian-slim 基本在 60M 左右，只有 spring boot 应用镜像的一半大小。
 2. 在国内由于网络问题，所以修改了 cargo 的 crate.io mirror 地址：`COPY ./config $CARGO_HOME/`. config 内容如下：
 ```ini
 [source.crates-io]
@@ -108,4 +110,4 @@ registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 
 ```
 3. build 中使用了 cargo 缓存，即先将项目 Cargo.toml 和 Cargo.lock 复制到一个空项目中编译，然后再将源码复制进去编译。
-4. `RUN rm ./target/release/deps/rs_notes*`,注意这里的`rs_notes`是下划线.cargo 中 package name 转换为 crate name 的默认规则。
+4. `RUN rm ./target/release/deps/rs_notes*`，注意这里的`rs_notes`是下划线，是 cargo 中 package name 转换为 crate name 的默认规则。

@@ -93,7 +93,7 @@ branch = main
 
 1、预防的方法就是没有 commit 的时候及时切回一个具体分支`git checkout master`
 
-2.1、如果已经提交了的话，给当前游离的 commit 创建一个分支，切换到该分支
+2、如果已经提交了的话，给当前游离的 commit 创建一个分支，切换到该分支
 
 ```shell
 Prj (09fb4a5)
@@ -111,7 +111,7 @@ Switched to branch 'oops'
 
 ```
 
-2.2、接着使用 rebase 将 oops 分支接在 master 分支的末尾 commit 之后
+接着使用 rebase 将 oops 分支接在 master 分支的末尾 commit 之后
 ```shell
 Prj on  oops
 ❯ git rebase master
