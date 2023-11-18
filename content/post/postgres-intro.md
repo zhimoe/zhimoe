@@ -14,7 +14,7 @@ postgres 数据库是目前使用第二广泛的开源数据库，并且由于�
 ## 安装
 ### 使用 docker 安装 server
 ```bash
-docker run --rm -P -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="pass1234" --name pg postgres
+docker run --rm -P -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="angus" --name pg postgres
 ```
 ### 安装客户端
 macOS 可以通过 brew 安装 psql cli 工具而不是安装整个 postgres。
@@ -27,7 +27,7 @@ ln -s /opt/homebrew/opt/libpq/bin/psql /usr/local/bin/psql
 ```
 连接数据库：
 ```bash
-psql postgresql://postgres:pass1234@localhost:5432/postgres
+psql postgresql://postgres:angus@localhost:5432/postgres
 ```
 也可以安装 dbeaver GUI 客户端。
 
