@@ -4,7 +4,7 @@
 
 - 🔭 &nbsp; Exploring new technologies and developing software solutions and quick hacks.
 - 🎓 &nbsp; Master's Degree in physics,from Tongji University.
-- 💼 &nbsp; Working as a Backend Developer at CMBNT(Hangzhou).
+- 💼 &nbsp; Working as a Backend Developer for 7 years.
 - 🌱 &nbsp; Learning more about Web Development, Systems Design and Artificial Intelligence.
 - 📝 &nbsp; Blog Writing as hobbies/side hustles, [homepage](https://zhi.moe/).
 
