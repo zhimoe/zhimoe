@@ -1,8 +1,9 @@
 # 站点标题等信息
 Subtitle = "Captain your own Ship."
 Description = "Captain your own Ship."
-Keywords = "读书,代码,架构,JVM,Java,Kotlin,Python,Rust"
+Keywords = "Reading,Typography,Programming,Java,Scala,Python,Clojure,Rust"
 Imglogo = "/img/logo.png"
+Domain = "https://zhi.moe"
 
 # 作者介绍
 AuthorName = "zhimoe"
