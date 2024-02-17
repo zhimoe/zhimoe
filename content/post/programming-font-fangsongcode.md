@@ -6,6 +6,7 @@ tags = ['font','fangsongcode']
 toc = true
 +++
 
+update: 2024年 GitHub发布了 Monaspace Argon字体是目前最喜欢的字体。
 
 个人对于字体有严重的强迫症，在过去十年里（以后应该也会）一直在换各种编程字体，也会使用 fontforge 对字体做一些小修改，甚至在 reddit 上面看的咨询编程字体的图片可以一眼认出。 
 对于[编程等宽字体](https://www.programmingfonts.org/)，曾经用过比较久的有 Fira Code，Aurulent，TheSansMono，Go Mono，Source Code Pro，Plex Mono，Drafting Mono。也用过一些收费字体例如 MonoLisa，PragmataPro，Operator Mono，Gintronic 等。目前最喜欢的还是 Fira Code（MonoLisa 第二），只是 Fira Code 个性突出，在中英文混排中看着非常显眼。
