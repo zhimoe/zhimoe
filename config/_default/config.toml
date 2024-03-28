@@ -1,0 +1,63 @@
+baseURL = "https://zhimoe.github.io"
+relativeURLs = true
+title = "香取海"
+languageCode = "zh" # ?
+defaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
+theme = "paged"
+metaDataFormat = "toml" # yaml or toml  post 元信息格式
+paginatePath = "p"
+paginate = 5
+disablePathToLower = false
+preserveTaxonomyNames = false
+uglyUrls = false
+canonifyUrls = true
+buildDrafts = false
+# 代码配色
+pygmentsStyle = "xcode"
+pygmentsCodefences = true
+pygmentsCodefencesGuessSyntax = true
+
+enableEmoji = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+footnoteReturnLinkContents = "↩"
+# 首页摘要长度单词/字符数，可以使用<!--more-->可以覆盖这个设置，注意 more 左右不能有空格
+summaryLength = 67
+
+timeout = 100000
+ignoreErrors = ["error-remote-getjson"]
+
+[sitemap]
+filename = "sitemap.xml"
+changefreq = "weekly"
+priority = 0.5
+
+
+[outputs]
+home = [ "html", "rss", "json" ]
+
+[minify]
+disableCSS = false
+disableHTML = false
+disableJS = false
+disableJSON = false
+disableSVG = false
+disableXML = false
+minifyOutput = true
+
+
+# Enable .GitInfo object for each page (if the Hugo site is versioned by Git)
+# This will then update the Lastmod parameter for each page using the last git commit date for that content file
+enableGitInfo = true
+# 图片资源目录，注意，图片地址以/开始表示图片是在 static 目录下的
+# 如果使用相对地址则编译后是 siteUrl/post/md-file-name/image-name，即图片和 md 必须在同一目录
+staticdir = "static"
+
+
+# hugo 新版开始使用 Goldmark 替换 blackfriday 了 
+# 硬换行 hardLineBreak 需要改成 hardWraps = true
+# unsafe = true # 让 Markdown 支持写 HTML 语法
+[markup.goldmark.renderer]
+hardWraps = true #回车换行 无需空行
+unsafe = true
+xhtml = false

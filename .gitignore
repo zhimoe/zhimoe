@@ -1,0 +1,10 @@
+*.exe
+.idea/
+public/
+*.iml
+.settings/
+*.classpath
+*.project
+.DS_Store
+dump.rdb
+.hugo_build.lock

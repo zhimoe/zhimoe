@@ -1,0 +1,4 @@
+[submodule "themes/paged"]
+	path = themes/paged
+	url = https://github.com/zhimoe/hugo-paged.git
+    branch = main
