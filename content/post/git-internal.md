@@ -23,7 +23,7 @@ git 内部有三种对象：
 
 三种 git 对象都是通过 SHA-1 哈希值来唯一标识，如下图所示。每个 commit 对象中，对于 tree 里面那些没有改动的内容，继续通过原 hash 引用。
 
-![git 对象以及关系示意图](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/git-objects.1pz0i807ve0w.webp)
+![git 对象以及关系示意图](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/git-objects.1pz0i807ve0w.webp)
 
 ### 分支
 A branch is just a named reference to a commit.
@@ -44,7 +44,7 @@ ref: refs/heads/master
 
 三者的关系如下图所示
 
-![git-repo-workingdir](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/git-repo-workingdir.39ykllsr2to0.webp)
+![git-repo-workingdir](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/git-repo-workingdir.39ykllsr2to0.webp)
 
 ### git 底层命令 (plumbing) 和上层命令 (porcelain)
 区分 底层（plumbing）和 上层（porcelain）两类 git 命令会对你很有帮助。这两个术语的应用奇怪地来自于马桶（没错，就是🚽）。马桶通常是用陶瓷（porcelain）做的，它的基本结构是管道（plumbing，上水道和下水道）。

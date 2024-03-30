@@ -12,9 +12,9 @@ Ian 安全结是登山系鞋带的首选，它越穿越紧，不会松开。解�
 
 <!--more-->
 
-![如何正确的系鞋带-Ian 安全结](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/ian-secure-knot.1eocvnlk4jc0.webp)
+![如何正确的系鞋带-Ian 安全结](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/ian-secure-knot.1eocvnlk4jc0.webp)
 
-![正确 Ian 安全结的效果图，水平，对称](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/ian-secure-knot-demo.72rn5p9d7gg0.webp)
+![正确 Ian 安全结的效果图，水平，对称](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/ian-secure-knot-demo.72rn5p9d7gg0.webp)
 
 以上是 Ian 结的步骤。下面是重点：
 

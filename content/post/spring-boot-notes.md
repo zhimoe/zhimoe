@@ -27,7 +27,7 @@ toc = "true"
 ## 自动配置
 spring 的自动配置依赖以下注解：
 
-![spring-boot-autoconfig-conditional](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/spring-boot-autoconfig-conditional.15t8ho20v6n4.webp)
+![spring-boot-autoconfig-conditional](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/spring-boot-autoconfig-conditional.15t8ho20v6n4.webp)
 
 ## 配置文件
 任何时候硬编码的配置总是不好的，spring 支持从很多环境中读取配置：配置文件，yaml 文件，环境变量，命令参数。

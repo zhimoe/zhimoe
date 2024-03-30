@@ -60,7 +60,7 @@ class 的 (clinit) 方法和 (init) 方法不同：这两个方法一个是虚�
 
 回到面试题：我们看看创建一个实例对象的调用栈：
 
-![创建实例时调用栈 - 图片](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/base-sub.7jmh61bdbbo0.webp)
+![创建实例时调用栈 - 图片](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/base-sub.7jmh61bdbbo0.webp)
 
 可以看到依次进入 16，8，21 行代码：
 

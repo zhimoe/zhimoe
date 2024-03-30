@@ -24,6 +24,6 @@ toc = true
 
 最终的效果如下：
 
-![FangSongCode1](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/20230708/FangSongCode.4t8q5v8g5zq0.webp)
-![FangSongCode2](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/20230708/fangsongcode-carbon.7196xry1lvs0.webp)
+![FangSongCode1](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/fangsongcode.4t8q5v8g5zq0.webp)
+![FangSongCode2](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/fangsongcode.7196xry1lvs0.webp)
 

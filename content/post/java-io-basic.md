@@ -13,7 +13,7 @@ toc = "true"
 
 ### 概览
 
-![Java IO 继承图](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/java_io_stream_reader.4lgp0r6e14w0.webp)
+![Java IO 继承图](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/java_io_stream_reader.4lgp0r6e14w0.webp)
 
 首先理解计算机文件格式都是二进制数据，例如文本，图片，视频，音频等，但是文本非常特殊，所以单独有一类封装设计。
 对于非文本类的文件，一般是读取字节 (stream)，而对于文本类文件，则可以读取字符 (reader)

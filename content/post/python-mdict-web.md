@@ -23,7 +23,7 @@ Mdict 项目是一个糅合了 MDX 词典、ES 例句搜索和 AI 模型翻译�
 
 <!--more-->
 
-![mdict-py](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/mdictpy.5i26sz26qyc0.webp)
+![mdict-py](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/mdictpy.5i26sz26qyc0.webp)
 
 ### mdict-rs
 

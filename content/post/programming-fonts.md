@@ -19,7 +19,7 @@ toc = "true"
 <!--more-->
 Aurulent 效果
 
-![Aurulent](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/aurulent.4sz6bmooqf80.webp)
+![Aurulent](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/aurulent.4sz6bmooqf80.webp)
 
 ### Fira Code
 Fira Code 是全网最受欢迎的字体，但是这个 r 实在过于 fancy，所以重新构建了一个版本，只提供 regular 和 bold 两个字重
@@ -37,7 +37,7 @@ Fira Code 是全网最受欢迎的字体，但是这个 r 实在过于 fancy，�
 
 Letter Gothic 效果 
 
-![Adobe LetterGothic](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/letter-gothic.5krkimcvicw0.webp)
+![Adobe LetterGothic](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/letter-gothic.5krkimcvicw0.webp)
   
 
 ### 非编程英文字体推荐

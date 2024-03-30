@@ -16,7 +16,7 @@ toc = "true"
 * HDFS 是 hadoop 的虚拟分布式文件系统。满足大数据问题下要求的：可扩展的，容错的，硬件通用的和高并发的特性.HDFS 最重要的特性是不可变性--数据提交到 HDFS 后即不可更新了，也就是所谓的 WORM(write once read many).
 * 文件在 HDFS 中是以 block 构成，默认一个 block 是 128M.block 是是分布式的，即如果集群中如果有多于 1 个节点，那么有文件可能会被分布在多个节点上.block 是被复制的，这主要是两个目的：1.容错，2.增加数据局部性的概率，有利于访问.block 复制在数据节点接收（ingest：消化）block 时同时发生。如图所示：
 
-![File ingestion into a multi-node cluster](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/File-ingestion-into-a-multinode-cluster.78cwj4jjnjg0.webp)
+![File ingestion into a multi-node cluster](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/File-ingestion-into-a-multinode-cluster.78cwj4jjnjg0.webp)
 
 * NameNode：不知道怎么翻译，NameNode 主要负责管理 HDFS 的元数据，包括 directory，文件对象和相关属性（e.g. ACL),元数据是常驻内存中的，硬盘上也有备份以及日志保证持久性和崩溃后的一致性（和数据库相似）.还包括 block 的位置信息--block 之间的关系。注意，数据（文件）并不经过 NameNode，否则很容易成为性能瓶颈，数据是直接到达 DataNode，并上报给 NameNode 管理。
 * 数据节点（DataNode）负责：block 复制；管理本节点的存储；向 NameNode 上报 block 信息。注意，数据节点不会意识到 HDFS 的目录（directory）和文件（Files）的概念，这些信息是 NameNode 管理保存的，客户端只会和 NameNode 交道。
@@ -38,7 +38,7 @@ hadoop fs -rm -r /user/dahu/jour
 
 * YARN:Yet Another Resource Negotiator 是 hadoop 的资源管理器.YARN 有个守护进程--ResourceManager，负责全局的资源管理和任务调度，把整个集群当作计算资源池，只关注分配，不管应用，且不负责容错.YARN 将 application（或者叫 job）分发给各个 NodeManager,NodeManager 是实际的 worker 或者 worker 的代理.ResourceManager 主要有两个组件：Scheduler 和 ApplicationsManager. 下图是 YARN 的结构示意图：
 
-![yarn_architecture](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/yarn_architecture.3l75sdsbjm00.gif)
+![yarn_architecture](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/yarn_architecture.3l75sdsbjm00.gif)
 
 *  上图中 ResourceManager 负责管理和分配全局的计算资源。而 NodeManager 看着更复杂一些：1.用户提交一个 app 给 RM（ResourceManager）；2.RM 在资源充足的 NodeManager 上启动一个 ApplicationMaster（也就是这个 app 对应的第一个 container）.3.ApplicationMaster 负责在所有 NodeManagers 中协调创建几个 task container，也包括 ApplicationMaster 自己所在的 NodeManager（上图中紫色 2 个和红色的 4 个分别表示 2 个 app 的 task container 和 ApplicationMaster）.4. NodeManager 向各个 ApplicationMaster 汇报 task container 的进展和状态.5. ApplicationMaster 向 RM 汇报应用的进展和状态.6.RM 向用户返回 app 的进度，状态，结果。用户一般可通过 Web UI 查看这些。
 
@@ -52,7 +52,7 @@ hadoop fs -rm -r /user/dahu/jour
 * WorkerNode: 集群中运行 app 代码的节点，也就是上图中 YARN 的 NodeManager 节点。一个节点运行一个/多个 executor.
 * Executor：app 运行在 worker 节点的一个进程，进程负责执行 task 的 planning.Spark On YARN 中这个进程叫 CoarseGrainedExecutorBackend.每个进程能并行执行的 task 数量取决于分配给它的 CPU 个数了。下图是一个 Spark 程序集群概览图，和上图很相似。
 
-![cluster-overview](https://jsd.cdn.zzko.cn/gh/zhimoe/zhimoe.pic@main/pic/cluster-overview.67t13s367a40.webp)
+![cluster-overview](https://cdn.jsdelivr.net/gh/zhimoe/picx-images-hosting@master/pic/cluster-overview.67t13s367a40.webp)
 
 * 仔细对比上面两个示意图，在 YARN 的结构示意图中，ResourceManager 为程序在某个 NodeManager 上创建的第一个 container 叫 ApplicationMaster,ApplicationMaster 负责只是其他的 task container.在 Spark On YARN 有两种运行模式：client 和 cluster 模式。在 cluster 模式下，用户编写的 driver 程序运行在 YARN 的 ApplicationMaster 的内部。
 *RDD:Spark 的核心数据结构。后面详细介绍，可以简单的理解为一个 Spark 程序所有需要处理的数据在 Spark 中被抽象成一个 RDD，数据需要被拆分分发到各个 worker 去计算，所以 RDD 有一个分区（Partation）概念。一般我们的数据是放在分布式文件系统上的 (e.g. HDFS),可以简单理解为一个 RDD 包含一或多个 Partation，每个 Partation 对应的就是 HDFS 的一个 block.当然，Partation 不是和 HDFS 的 block 绑定的，你也可以手动的对数据进行分区，即使他们只是待处理的一个本地文件或者一个小数组。一个 Partation 包含一到多个 Record,Record 可以理解为文本中的一行，excel 的一条记录或者是 kafka 的一条消息。
