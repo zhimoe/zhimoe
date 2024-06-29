@@ -85,7 +85,7 @@ Have you ever wondered what's the difference between:
 - `Clone`, `Copy`, and `ToOwned`?
 - `From<T>` and `Into<T>`?
 - `TryFrom<&str>` and `FromStr`?
-- `FnOnce`, `FnMut`, `Fn`, and `fn`?
+- `FnOnce`, `FnMut`, `Fn`, and ` fn`?
 
 Or ever asked yourself the questions:
 - _"When do I use associated types vs generic types in my trait?"_
