@@ -9,7 +9,7 @@ My literary inclinations reveal a preference for the intricate narratives of Jin
 
 My coding endeavors are primarily rooted in Java and Python, but my personal affections gravitate towards the elegance and expressiveness of Scala and Swift.
 
-For leisure, I indulge in the customization of [programming fonts]((https://github.com/zhimoe/programming-fonts)) for fun.
+For leisure, I indulge in the customization of [programming fonts](https://github.com/zhimoe/programming-fonts) for fun.
 
 email: me#zhi.moe
 
