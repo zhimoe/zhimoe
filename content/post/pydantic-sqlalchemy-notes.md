@@ -10,13 +10,13 @@ toc = true
 
 <!--more-->
 
-### .venv 在项目 root dir 中必要设置
+## .venv 在项目 root dir 中必要设置
 If you store the .venv inside the project, right-click it in the project tree -> Mark directory as -> Excluded.
 否则 pycharm 会将.venv 看成 project file，每次重构时都会检索一遍。
 
-### Pydantic 技巧
-#### 自定义 datetime 字段 json string 格式
-# schemas 表示 pydantic class
+## Pydantic 技巧
+### 自定义 datetime 字段 json string 格式
+
 可以通过`@field_serializer`注解自定义 datetime 字段在 json 序列化时的格式，默认格式是 datetime(X,X,X) 的 str，不适合给前端展示。
 ```python
 from datetime import datetime
@@ -39,7 +39,7 @@ class Message(BaseModel):
         return dt_format(dt)
 ```
 
-#### model 和 dict 相互转换
+### model 和 dict 相互转换
 - 获取 model 的 fields name: `msg.model_fields()`
 - `m.model_dump_json` vs `m.model_dump`区别
 ```
