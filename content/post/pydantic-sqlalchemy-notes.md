@@ -12,6 +12,7 @@ toc = true
 
 ## .venv 在项目 root dir 中必要设置
 If you store the .venv inside the project, right-click it in the project tree -> Mark directory as -> Excluded.
+Or go to Settings -> Editor -> File Types -> Ignored Files and Folders, and ignore `.venv` folder globally.
 否则 pycharm 会将.venv 看成 project file，每次重构时都会检索一遍。
 
 ## Pydantic 技巧
