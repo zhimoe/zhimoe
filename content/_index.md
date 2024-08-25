@@ -11,6 +11,6 @@ My coding endeavors are primarily rooted in Java and Python, but my personal aff
 
 For leisure, I indulge in the customization of [programming fonts](https://github.com/zhimoe/programming-fonts) for fun.
 
-email: me#zhi.moe
+email: x#zhi.moe
 
 <!-- checkout my [resume](../resume) -->
