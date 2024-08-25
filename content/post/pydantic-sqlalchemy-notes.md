@@ -1,12 +1,12 @@
 +++
-title = 'Pydantic Sqlalchemy 项目开发总结'
+title = 'Pydantic v2 Sqlalchemy v2 项目开发总结'
 date = '2024-08-10T22:32:37+08:00'
 categories = ['编程']
 tags = ['code','python']
 toc = true
 +++
 
-最近使用 fastapi pydantic sqlalchemy 写了一个两千行左右的 API 项目，这是第一次面向 class 写 python 项目，和以前使用 requests、pandas 写数据处理脚本有很大区别，特别是 sqlalchemy 第一次使用，看文档内容非常多，在和 pydantic 的 schema 相互转换遇到很多问题，所以做一个笔记。
+最近使用 fastapi pydantic(v2) sqlalchemy(v2)  写了一个两千行左右的 API 项目，这是第一次面向 class 写 python 项目，和以前使用 requests、pandas 写数据处理脚本有很大区别，特别是 sqlalchemy 第一次使用，看文档内容非常多，在和 pydantic 的 schema 相互转换遇到很多问题，所以做一个笔记。
 
 <!--more-->
 
@@ -57,6 +57,8 @@ print(repr(u.model_dump_json()))
 ```json
 {'banana': 3.14, 'foo': 'hello', 'bar': BarModel(whatever=123)}
 ```
+> use .model_dump() instead of .dict() if you can use Pydantic v2.
+
 - field 的校验
 ```python
 from pydantic import Field
@@ -68,6 +70,50 @@ class BookModel:
     isbn: str = Field(..., regex="^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$")
     published_date: datetime.date = Field(..., gt=datetime.date(1800, 1, 1))
 ```
+
+## Sqlalchemy 技巧
+### 数据库连接池的超时设置:pool_recycle
+容器云环境一般会有一个 http 连接自动断开时间，平台的连接断开应用是无法感知的，会导致你的应用中连接池出现失效，所以应用自身需要做连接池中连接主动失效或者使用前检测。在 sqlalchemy 中最简单的做法就是设置`pool_recycle`时间小于平台的断开时间。
+```python
+# 假设容器平台 300s 会断开未使用的 http 连接
+engine = sqlalchemy.create_engin(db_url,pool_recycle=290)
+```
+### pydantic schema to sqlalchemy model
+从 pydantic schema 构建 db model:
+
+```python
+# 将 pydantic object 导出成 dict 然后通过 **kwargs 结构传递给 db model 构建函数
+db_item = models.Item(**item.model_dump())
+```
+如果两边字段不一致那么需要使用 model_dump 方法的 include 参数
+```python
+table_cols = {col.name for col in MsgModel.__table__.columns}
+db_msg = MsgModel(**msg.model_dump(include=table_cols))
+```
+
+### sqlalchemy model to pydantic schema 
+简单粗暴的做法是通过 dict 转换：
+
+```python
+msg = Msg(**msg_model.__dict__)
+```
+
+官方的做法是通过[Arbitrary class instances](https://docs.pydantic.dev/2.8/concepts/models/#arbitrary-class-instances)
+注意，在 v1 版本这个配置叫 orm_mode，实际上不准确，因为 pydantic 支持任意 class，不只是 orm 的 model。
+```python
+class Company(BaseModel):
+    # 如果没有 from_attributes=True, 则 model_validate 只能接收 dict 或者 Company 实例，其他类型会报错
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    public_key: Annotated[str, StringConstraints(max_length=20)]
+
+# co_orm is sqlalchemy model instance
+com = Company.model_validate(co_orm)
+
+# 或者省略 model_config = ConfigDict(from_attributes=True)，而是在 model_validate 调用中设置
+com1 = Company.model_validate(co_orm, from_attributes=True)
+```
+通过 dict 转换 和 `from_attributes=True` 没有区别，因为使用构建函数也是有 validate 动作的。 
 
 [Pydantic Tips & Tricks](https://www.bhavaniravi.com/python/advanced-python/pydantic-tips-tricks)
 [Advanced Pydantic Usage Guide](https://gist.github.com/shiningflash/f17eabef18b38a70a38fb510130be58b)
