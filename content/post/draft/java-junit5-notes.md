@@ -11,12 +11,12 @@ draft = true
 
 <!--more-->
 
-### Junit5 的基本使用与 Junit4 迁移
+## Junit5 的基本使用与 Junit4 迁移
 
-#### Prefer extension points over features
+### Core Principles: Prefer extension points over features
 [Core Principles](https://github.com/junit-team/junit5/wiki/Core-Principles)
 
-#### 基本注解
+### 基本注解
 除了`@Test`外最常用的是`@ParameterizedTest`，配合`@CsvSource`等注解可以简化准备测试案例的代码，详细的教程可以看[JUnit 5 Parameterized Tests](https://baeldung.com/parameterized-tests-junit-5)
 
 `@RepeatedTest`一般用于测试缓存或者副作用等功能。
@@ -58,7 +58,7 @@ https://www.programcreek.com/java-api-examples/?code=domaframework%2Fdoma%2Fdoma
 ```
 
 
-#### 修改测试 display name
+### 修改测试 display name
 `src/test/resources/junit-platform.properties`中配置
 ``` yaml
 junit.jupiter.displayname.generator.default = \
@@ -66,7 +66,7 @@ junit.jupiter.displayname.generator.default = \
 ```
 
 
-#### 常用 assert
+### 常用 assert
 ```java
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -76,7 +76,7 @@ import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 ```
-#### Junit4 迁移
+### Junit4 迁移
 看官方文档最直接[migrating-from-junit4](https://junit.org/junit5/docs/current/user-guide/#migrating-from-junit4)
 | Junit4          | Junit5   | 说明      |
 | --------------- | -------- | -------- |
@@ -89,13 +89,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 | @Test(expected = …​) ExpectedException | Assertions.assertThrows(…​)   |   |
 
 
-### Mockito
-1. If you are using argument matchers, *all* arguments have to be provided by matchers.
+### Mockito notes
+
+1. If you are using argument matchers, **all** arguments have to be provided by matchers.
+   
 ```java
 verify(mock).someMethod(anyInt(), anyString(), "third argument");
 //above is incorrect - exception will be thrown because third argument is given without an argument matcher.
 ```
 2. Matcher methods like any(), eq() do not return matchers. Internally, they record a matcher on a stack and return a dummy value (usually null). This implementation is due to static type safety imposed by the java compiler. The consequence is that you cannot use any(), eq() methods outside of verified/stubbed method.
+   
 3.  MockitoAnnotations.openMocks(testClass);
  
 You can use built-in runner: MockitoJUnitRunner or a rule: MockitoRule. For JUnit5 tests, refer to the JUnit5 extension described in section 45.
