@@ -10,4 +10,4 @@ intro
 
 <!--more-->
 
-### section 1
+## section 1
