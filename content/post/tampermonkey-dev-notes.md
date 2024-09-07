@@ -147,6 +147,7 @@ async function checkFromClipboard() {
   console.log(`lines ${lines}`);
 
   for (const line of lines) {
+    // 等待 resolve() 执行才会继续下一行
     await checkTheBox(input, line);
   }
 }
@@ -159,8 +160,10 @@ async function checkTheBox(input, value) {
       let checkbox = document.querySelector("re-checkbox > label > input");
       if (checkbox) {
         checkbox.click();
+        // 轮循检查实现方式
         clearInterval(checkInterval);
-        resolve(); // 这里是关键~~~
+        // 这里是关键，利用 Promise + resolve 信号 + await 实现同步等待的效果。
+        resolve(); 
       }
     }, 400);
   });
