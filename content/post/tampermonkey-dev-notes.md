@@ -31,11 +31,11 @@ toc = true
    ```
 
 
-### hot-reload
-如何让 match 的网页自动更新 dev 环境的脚本呢？[油猴脚本自动更新](https://bbs.tampermonkey.net.cn/thread-5575-1-1.html)
+### 脚手架与热更新
+目前项目比较小，直接使用 js 更方面也容易维护。但是如果是需要在网页上面增加很多样式或者卡片的脚本，建议还是找一些脚手架。通过 react 等一些框架写代码，然后 build 之后生成一个 js 有打开 chrome 油猴安装页面，同时脚手架一般能支持自动将 npm 依赖转换成@require。有些脚手架还支持热更新，这样不用每次 build 后手动刷新目标网页才能生效。
+目前比较好的开发插件是[vite-plugin-monkey](https://github.com/lisonge/vite-plugin-monkey/blob/main/README_zh.md)
 
-### 脚手架
-目前项目比较小，直接使用 js 更方面也容易维护。但是如果是需要在网页上面增加很多样式或者卡片的脚本，建议还是找一些脚手架。将项目编译后得到一个脚本发布或者复制到油猴扩展上面。
+此外还有一些热门脚本[awesome-userscripts](https://github.com/awesome-scripts/awesome-userscripts)
 
 ### 剪切板
 读取剪切板这个动作的代码必须通过用户事件去触发，在用户脚本中执行读取剪切板会被 chrome 拦截（安全考虑）。
