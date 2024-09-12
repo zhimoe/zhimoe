@@ -113,63 +113,74 @@ input.dispatchEvent(ev);
 ### 异步方法处理循环动作
 由于 js 是单线程异步的，对于那种需要等待返回再执行下一次循环的场景需要特殊处理。
 假设场景如下：向一个 input 输入一个项目名称，搜索后等待网页更新，检查搜索结果的 div，勾选第一个 checkbox，然后再输入下一个项目名称搜索，如此循环。每次循环需要等网页更新勾选完成后才能触发下一次搜索，否则搜索结果就被覆盖了。
-
+下面是一个完整示例：
 ```js
-(function () {
+
+(() => {
   "use strict";
   main();
 })();
 
 async function main() {
-  if (
-    document.readyState === "complete" &&
-    document.querySelector('input[name="pipelineName"]')) {
-
-    let element = document.querySelector(
-      "div.page-title.highlight > span.text-right"
-    );
-    let button = document.createElement("button");
-    button.id = "copyButton";
-    button.textContent = "从剪切板复制";
-    element.parentNode.insertBefore(button, element);
-    console.log(`button added`);
-    button.addEventListener("click", checkFromClipboard);
-  } else {
-    console.log(`document unready, try later in 500ms`);
-    setTimeout(main, 5000);
-  }
+  await waitForDocReady();
+  addCopyBtn();
 }
 
-async function checkFromClipboard() {
-  let input = document.querySelector('input[name="pipelineName"]');
-  let text = await navigator.clipboard.readText();
-  const lines = text.split("\n");
-  console.log(`lines ${lines}`);
-
-  for (const line of lines) {
-    // 等待 resolve() 执行才会继续下一行
-    await checkTheBox(input, line);
-  }
-}
-
-async function checkTheBox(input, value) {
+function waitForDocReady() {
   return new Promise((resolve) => {
-    inputThenSearch(input, value);
-    
-    const checkInterval = setInterval(() => {
-      let checkbox = document.querySelector("re-checkbox > label > input");
-      if (checkbox) {
-        checkbox.click();
-        // 轮循检查实现方式
-        clearInterval(checkInterval);
-        // 这里是关键，利用 Promise + resolve 信号 + await 实现同步等待的效果。
-        resolve(); 
+    const docReadyInterval = setInterval(() => {
+      if (
+        document.readyState === "complete" &&
+        document.querySelector('input[name="pipelineName"]')
+      ) {
+        clearInterval(docReadyInterval);
+        resolve();
       }
     }, 400);
   });
 }
 
-function inputThenSearch(input, value) {
+function addCopyBtn() {
+  let button = document.createElement("button");
+  button.id = "copyButton";
+  button.textContent = "从剪切板复制";
+
+  let element = document.querySelector(
+    "div.page-title.highlight > span.text-right"
+  );
+  element.parentNode.insertBefore(button, element);
+
+  button.addEventListener("click", copyBtnHandler);
+  console.log(`button added`);
+}
+
+async function copyBtnHandler() {
+  let input = document.querySelector('input[name="pipelineName"]');
+
+  let text = await navigator.clipboard.readText();
+  const lines = text.split("\n");
+  console.log(`lines ${lines}`);
+
+  for (const value of lines) {
+    await searchAndCheck(input, value);
+  }
+}
+
+async function searchAndCheck(input, value) {
+  return new Promise((resolve) => {
+    searchByInput(input, value);
+    const checkInterval = setInterval(() => {
+      let checkbox = document.querySelector("re-checkbox > label > input");
+      if (checkbox) {
+        checkbox.click();
+        clearInterval(checkInterval);
+        resolve();//这里很巧妙
+      }
+    }, 400);
+  });
+}
+
+function searchByInput(input, value) {
   input.value = value;
   let ev = new Event("input", { bubbles: true, cancelable: false });
   input.dispatchEvent(ev);
@@ -186,5 +197,11 @@ function inputThenSearch(input, value) {
   input.dispatchEvent(event);
   console.log("keydown dispatched");
 }
+
+
+
+
+
+
 ```
 
