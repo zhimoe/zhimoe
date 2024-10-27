@@ -32,13 +32,13 @@ toc = true
 
 
 ### 脚手架与热更新
-目前项目比较小，直接使用 js 更方面也容易维护。但是如果是需要在网页上面增加很多样式或者卡片的脚本，建议还是找一些脚手架。通过 react 等一些框架写代码，然后 build 之后生成一个 js 有打开 chrome 油猴安装页面，同时脚手架一般能支持自动将 npm 依赖转换成@require。有些脚手架还支持热更新，这样不用每次 build 后手动刷新目标网页才能生效。
+目前项目比较小，直接使用 js 更方面也容易维护。但是如果是需要在网页上面增加很多样式或者卡片的脚本，建议还是找一些脚手架。通过 react 等一些框架写代码，然后 build 之后生成一个 js 并自动打开 chrome 油猴安装页面，同时脚手架一般能支持自动将 npm 依赖转换成@require。有些脚手架还支持热更新，这样不用每次 build 后手动刷新目标网页才能生效。
 目前比较好的开发插件是[vite-plugin-monkey](https://github.com/lisonge/vite-plugin-monkey/blob/main/README_zh.md)
 
 此外还有一些热门脚本[awesome-userscripts](https://github.com/awesome-scripts/awesome-userscripts)
 
 ### 剪切板
-读取剪切板这个动作的代码必须通过用户事件去触发，在用户脚本中执行读取剪切板会被 chrome 拦截（安全考虑）。
+读取剪切板这个动作的代码必须通过用户事件（鼠标或者键盘）去触发，在用户脚本中执行读取剪切板会被 chrome 拦截（安全考虑）。
 
 ## js 相关的经验
 
@@ -81,13 +81,32 @@ window.addEventListener('message', function(event) {
 let input = document.querySelector('input[name="pipelineName"]')
 // div with id
 let input = document.querySelector('input#pipelineNameSearchForm_customizeSearchInput')
-
 // 带 css 伪类的，注意 这里 div > button.tab___3x3nt 返回的还是一个嵌套元素（不是 element 数组），取嵌套元素的第二个（从 1 开始）
 let btn = document.querySelector('div > button.tab___3x3nt:nth-child(2)')
 ```
+
 ### 脚本执行时机
-什么时候执行用户脚本一般通过一些`load`事件注册，但是好像大部分事件注册都不如下面的脚本来得有效：
+页面加载有几个重要事件。
+1. 首先是 document 对象上面的`DOMContentLoaded`事件，表示页面元素加载完成，js（async 例外）加载执行完成，但是 css 和图片不一定。
+   Firefox，Chrome 和 Opera 都会在 DOMContentLoaded 中自动填充表单。
+```js
+document.addEventListener("DOMContentLoaded", readyHandler);
 ```
+2. 当整个页面，包括样式、图片和其他资源被加载完成时，会触发 window 对象上的 load 事件。可以通过 onload 属性获取此事件。
+```js
+ window.onload = function() {}
+```
+当访问者离开页面时，window 对象上的 unload 事件就会被触发。我们可以在那里做一些**不涉及延迟**的操作，例如关闭相关的弹出窗口。
+`navigator.sendBeacon`是一个特殊方法：它在后台发送数据，转换到另外一个页面不会有延迟：浏览器离开页面，但仍然在执行 sendBeacon。
+```js
+ window.onunload = function(){
+  navigator.sendBeacon("/analytics", JSON.stringify(analyticsData)); // must < 64kb
+ }
+```
+3. `document.readyState` 属性可以为我们提供当前加载状态的信息。包含`loading` `interactive` `complete`三种状态 每种状态变化时 document 都会有一个`readystatechange`事件。
+
+一般在油猴脚本中使用下面判断元素是否就绪：
+```js
 function main(){
     if (
         document.readyState === "complete" &&
@@ -126,6 +145,8 @@ async function main() {
   addCopyBtn();
 }
 
+// 这里使用了 Promise 和 setInterval 轮询页面就绪状态
+// 使用 window.onload 应该也可以实现相同效果
 function waitForDocReady() {
   return new Promise((resolve) => {
     const docReadyInterval = setInterval(() => {
