@@ -70,6 +70,30 @@ class BookModel:
     isbn: str = Field(..., regex="^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$")
     published_date: datetime.date = Field(..., gt=datetime.date(1800, 1, 1))
 ```
+### 校验 list
+通过 TypeAdapter 可以校验一个 list：
+```python
+import pathlib
+from typing import List
+
+from pydantic import BaseModel, EmailStr, PositiveInt, TypeAdapter
+
+class Person(BaseModel):
+    name: str
+    age: PositiveInt
+    email: EmailStr
+
+person_list_adapter = TypeAdapter(List[Person])  
+
+json_string = pathlib.Path('people.json').read_text()
+people = person_list_adapter.validate_json(json_string)
+print(people)
+#> [Person(name='John Doe', age=30, email='john@example.com'), Person(name='Jane Doe', age=25, email='jane@example.com')]
+
+# or jsonl file with for expression
+json_lines = pathlib.Path('people.jsonl').read_text().splitlines()
+people_list = [Person.model_validate_json(line) for line in json_lines]
+```
 
 ## Sqlalchemy 技巧
 ### 数据库连接池的超时设置:pool_recycle
@@ -78,26 +102,26 @@ class BookModel:
 # 假设容器平台 300s 会断开未使用的 http 连接
 engine = sqlalchemy.create_engin(db_url,pool_recycle=290)
 ```
-### pydantic schema to sqlalchemy model
-从 pydantic schema 构建 db model:
+### pydantic schema -> sqlalchemy model
+从 pydantic schema 构建  model:
 
 ```python
-# 将 pydantic object 导出成 dict 然后通过 **kwargs 结构传递给 db model 构建函数
-db_item = models.Item(**item.model_dump())
+# 将 pydantic object 导出成 dict 然后通过 **kwargs dict 结构传递给 sqlalchemy model 构建函数
+db_orm = models.ItemOrm(**item.model_dump())
 ```
 如果两边字段不一致那么需要使用 model_dump 方法的 include 参数
 ```python
-table_cols = {col.name for col in MsgModel.__table__.columns}
+table_cols = {col.name for col in MsgOrm.__table__.columns}
 db_msg = MsgModel(**msg.model_dump(include=table_cols))
 ```
 
-### sqlalchemy model to pydantic schema 
+### sqlalchemy model -> pydantic model
+Pydantic 也给了[一些建议](https://docs.pydantic.dev/latest/examples/orms/#sqlalchemy)
+
 简单粗暴的做法是通过 dict 转换：
-
 ```python
-msg = Msg(**msg_model.__dict__)
+msg = Msg(**msg_orm.__dict__)
 ```
-
 官方的做法是通过[Arbitrary class instances](https://docs.pydantic.dev/2.8/concepts/models/#arbitrary-class-instances)
 注意，在 v1 版本这个配置叫 orm_mode，实际上不准确，因为 pydantic 支持任意 class，不只是 orm 的 model。
 ```python
