@@ -5,12 +5,13 @@ categories = ['编程']
 tags = ['code','js']
 toc = true
 +++
+
 一些很甜的 JS 语法糖。
 
 <!--more-->
 
 ### Nullish Coalescing Operator (??) 
-当值为 nullish 时使用默认值。注意，nullish 和 truthy 范围不一样。
+当值为 nullish 时使用默认值。注意，nullish 和 truthy 不一样。
 nullish: null or undefined.
 ```js
 const foo = null ?? 'default string';
@@ -62,8 +63,8 @@ console.log(b);
 ```
 ### Optional chaining (?.)
 kotlin 笑而不语。超级有用的语法糖。
-既可以访问对象也可以方法 function。
-注意返回的是 undefined 而不是 null。
+既可以访问对象的属性也可以访问 function。
+注意如果变量是 undefined/null 时返回的是 undefined 而不是 null。
 ```js
 const adventurer = {
   name: 'Alice',
@@ -96,8 +97,8 @@ import 不需要指定<script type="module".>
 ```
 
 ### Private properties
-不用使用 `#constructor`;
-在 chrome devtool 中可以在外部访问 private properties，只是一个开发特性。
+变量名不能是 `#constructor`;
+在 chrome devtool 中可以在外部访问 private properties，只是一个 chrome 开发特性，不是语法问题。
 [MDN doc:private properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties)
 ```js
 class ClassWithPrivate {
@@ -122,7 +123,7 @@ instance.#privateField; // Syntax error
 ```
 
 ### error.cause
-新增的属性，用来在 error 中传递原始错误。
+error 新增的属性，用来在 error 中传递原始错误信息。
 ```js
 try {
     conn = getDbConnection();
@@ -133,12 +134,16 @@ try {
 ### Array functions
 
 ```js
-Array.toSorted return new sorted Array
-array.findLast
-array.toReversed()
-array.toSpliced
-array.with()
-array.fromAsync()
+arr.toSorted 
+const values = [1, 10, 21, 2];
+const sortedValues = values.toSorted((a, b) => a - b);
+
+arr.findLast
+const found = array1.findLast((element) => element > 45);
+arr.toReversed()
+arr.toSpliced
+arr.with()
+arr.fromAsync()
 ```
 
 ### apply,call, bind
@@ -170,5 +175,5 @@ bind(this,arg1,arg2,arg3) like call but return the new function.
 // 这个 call 函数的 this 是 Array.prototype.slice;
 const slice = Function.prototype.call.bind(Array.prototype.slice);
 slice(arguments);
-// 为什么不是 Array.prototype.slice.call.bind(Array.prototype.slice);
+// 为什么不是 Array.prototype.slice.call.bind(Array.prototype.slice) ?
 ```
