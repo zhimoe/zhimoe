@@ -134,17 +134,30 @@ try {
 ### Array functions
 
 ```js
-arr.toSorted 
+// arr.toSorted 
 const values = [1, 10, 21, 2];
 const sortedValues = values.toSorted((a, b) => a - b);
 
-arr.findLast
+// findLast
 const found = array1.findLast((element) => element > 45);
-arr.toReversed()
-arr.toSpliced
-arr.with()
-arr.fromAsync()
+// toReversed()
+// toSpliced(start, deleteCount, item1, item2, /* …, */ itemN)
+
+// with return new array
+const arr = [1, 2, 3, 4, 5];
+console.log(arr.with(2, 6)); // [1, 2, 6, 4, 5]
+
+// Array.fromAsync() static method 
+Array.fromAsync(
+  new Set([Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)]),
+).then((array) => console.log(array));
+// [1, 2, 3]
 ```
+  Array.fromAsync() and Promise.all() can both turn an iterable of promises into a promise of an array. However, there are two key differences:
+
+  Array.fromAsync() awaits each value yielded from the object sequentially. Promise.all() awaits all values concurrently.
+
+  Array.fromAsync() iterates the iterable lazily, and doesn't retrieve the next value until the current one is settled. Promise.all() retrieves all values in advance and awaits them all.
 
 ### apply,call, bind
 三个方法都是用于修改函数本身的的 context。

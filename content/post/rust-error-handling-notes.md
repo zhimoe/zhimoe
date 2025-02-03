@@ -145,10 +145,12 @@ pub enum AppError {
 
 
 参考：
+[推荐：GreptimeDB 如何使用 snafu 处理复杂项目的错误类型](https://greptime.com/blogs/2024-05-07-error-rust)
+[Rust error handling is perfect actually](https://bitfieldconsulting.com/posts/rust-errors-option-result)
 [rust by example - 处理多种错误类型](https://rustwiki.org/zh-CN/rust-by-example/error/multiple_error_types.html)
 [Option 和 Result 的一些方法](https://zyfjeff.github.io/%E5%8D%9A%E5%AE%A2/doc/rust/rust-error-handle/)
 [rust doc Error Handling](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
 [简谈 Rust 中的错误处理](https://lotabout.me/2017/rust-error-handling/)
 [细说 rust 错误处理](https://baoyachi.github.io/Rust/rust_error_handle.html#%E7%BB%86%E8%AF%B4rust%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86)
 [?在 Result 中的使用](https://doc.rust-lang.org/rust-by-example/std/result/question_mark.html)
-[蚂蚁集团 CeresDB 团队 | 关于 Rust 错误处理的思考](https://rustmagazine.github.io/rust_magazine_2021/chapter_2/rust_error_handle.html)
+[推荐：蚂蚁集团 CeresDB 团队 | 关于 Rust 错误处理的思考](https://rustmagazine.github.io/rust_magazine_2021/chapter_2/rust_error_handle.html)
