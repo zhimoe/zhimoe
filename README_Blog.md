@@ -6,7 +6,7 @@ personal home page, all about programming and code.
 ## how to add post
 ```bash
 # git clone
-git clone --recurse-submodules -j8 https://github.com/zhimoe/zhimoe.git
+git clone --recurse-submodules -j6 https://github.com/zhimoe/zhimoe.git
 # or git clone zhimoe repo and then 
 git submodule add https://github.com/zhimoe/hugo-paged.git themes/paged
 # or git submodule update --init
@@ -27,13 +27,13 @@ hugo serve # this will generate a public folder for site and you should add publ
 # update(commit) the main project to refer a new submodule commit hash
 
 # step 1
-cd themes/next
+cd themes/paged
 git add <stuff>
 git commit -m "update hugo theme" && git push origin HEAD:master
 
 # step 2
 cd ../..
-git add ./themes/next && git commit -m "update submodule theme"
+git add ./themes/paged && git commit -m "update submodule theme"
 git push
 ```
 
