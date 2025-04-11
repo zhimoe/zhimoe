@@ -8,6 +8,7 @@ toc = true
 
 update on 2024.10 英文字符切换成了 GitHub 出品的 Monaspace Argon 字体，更加美观耐看了。文末截图没有更新。
 中英宽度 2:1 的字体推荐 LXGW Bright Code，是霞鹜文楷和 Monaspace Argon 合并的字体。
+
 ------
 
 个人对于字体有严重的强迫症，在过去十年里（以后应该也会）一直在换各种编程字体，也会使用 fontforge 对字体做一些小修改，甚至在 reddit 上面看的咨询编程字体的图片可以一眼认出。 
