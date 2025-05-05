@@ -43,7 +43,8 @@ class Message(BaseModel):
 ### model 和 dict 相互转换
 - 获取 model 的 fields name: `msg.model_fields()`
 - `m.model_dump_json` vs `m.model_dump`区别
-```
+
+```python
 d = {"user_id": "zhi", "born_at": "1990-01-01 00:00:01"}
 u = User(**d)
 print(repr(u.model_dump()))
@@ -53,7 +54,9 @@ print(repr(u.model_dump_json()))
 #> '{"user_id":"zhi","born_at":"1990-01-01 00:00:01"}'
 
 ```
+
 - `m.dict` return raw value of super-model field, like:
+
 ```json
 {'banana': 3.14, 'foo': 'hello', 'bar': BarModel(whatever=123)}
 ```
