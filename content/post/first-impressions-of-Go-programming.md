@@ -1,7 +1,7 @@
 +++
 title = 'Golang 编程初体验'
 date = '2025-05-05T21:50:27+08:00'
-categories = ['编程',]
+categories = ['编程']
 tags = ['code','golang']
 toc = true
 +++
