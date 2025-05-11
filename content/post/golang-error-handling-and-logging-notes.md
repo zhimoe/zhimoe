@@ -6,27 +6,27 @@ tags = ['code','golang']
 toc = true
 +++
 
-Go语言的错误处理和日志规范。
-- 大部分情况下包装error使用 %w，而不是%v，另外有了%w后pkg/errors这个包也需要了。
-- 错误包装需要避免failed to这种前缀，只需要模块名： err即可。参考 [uber-golang-style](https://github.com/uber-go/guide/blob/master/style.md#error-wrapping)
-- 错误包装可以添加额外的变量信息： return fmt.Errorf("get user %q: %w", id, err)
-- 全局错误变量使用Err开头，例如  ErrBrokenLink = errors.New("link is broken")
-- 如果是自定义错误struct类型 则使用Error结尾 type NotFoundError struct {}
-- logging优先使用slog即可。
+Go 语言的错误处理和日志规范。
+- 大部分情况下包装 error 使用 %w，而不是%v，另外有了%w后 pkg/errors 这个包也需要了。
+- 错误包装需要避免 failed to 这种前缀，只需要模块名：err 即可。参考 [uber-golang-style](https://github.com/uber-go/guide/blob/master/style.md#error-wrapping)
+- 错误包装可以添加额外的变量信息：return fmt.Errorf("get user %q: %w", id, err)
+- 全局错误变量使用 Err 开头，例如  ErrBrokenLink = errors.New("link is broken")
+- 如果是自定义错误 struct 类型 则使用 Error 结尾 type NotFoundError struct {}
+- logging 优先使用 slog 即可。
 <!--more-->
 
 ## error handling
 
-### error变量或者类型
+### error 变量或者类型
 ```go
 package myerrors
 
 import "errors"
-// Err前缀
+// Err 前缀
 var ErrNotFound = errors.New("not found")
 
-// 或者自定义一个错误类型 实现Error()方法用于error wrap
-// 一般是Error结尾
+// 或者自定义一个错误类型 实现 Error() 方法用于 error wrap
+// 一般是 Error 结尾
 type ValidationError struct {
     Field string
     Msg   string
@@ -36,9 +36,9 @@ func (v *ValidationError) Error() string {
     return "validation failed: field=" + v.Field + ", msg=" + v.Msg
 }
 ```
-### error包装
+### error 包装
 ```go
-// 使用全局error变量
+// 使用全局 error 变量
 func Svc1() error {
     return myerrors.ErrNotFound
 }
@@ -60,10 +60,10 @@ func CallSvc1() {
     return nil
 }
 ```
-- %w 表示wrap，错误包装，99.99%的场景下面应该使用这个包装错误
-- %v 表示value，等于value，适用于任意类型，%+v表示显示字段名
-- %s 表示str 字符串（或 []byte 转换为字符串）
-- %dboxXc 分别表示十进制 二进制 八进制 十六进制大小写和Unicode
+- %w 表示 wrap，错误包装，99.99% 的场景下面应该使用这个包装错误
+- %v 表示 value，等于 value，适用于任意类型，%+v 表示显示字段名
+- %s 表示 str 字符串（或 []byte 转换为字符串）
+- %dboxXc 分别表示十进制 二进制 八进制 十六进制大小写和 Unicode
 
 ### errors.Is
 ```go
@@ -76,7 +76,7 @@ import (
 func main() {
     err := CallSvc1()
     if err != nil {
-        // 这里会一直unwrap到匹配或者最后
+        // 这里会一直 unwrap 到匹配或者最后
         if errors.Is(err, myerrors.ErrNotFound) {
             fmt.Println("handle not found error specifically")
         } else {
@@ -103,7 +103,7 @@ func cleanup() error {
     return errors.Join(errs...) // 返回合并后的错误
 }
 
-// 可以使用errors.Is
+// 可以使用 errors.Is
 func main() {
     err := doSomething()
 
@@ -139,7 +139,7 @@ func main() {
     }
 }
 ```
-`errors.As(err, &myErr)`将err转换成myErr类型并赋值给myErr，如果成功，则可以使用myErr，否则myErr为nil，执行else逻辑。
+`errors.As(err, &myErr)`将 err 转换成 myErr 类型并赋值给 myErr，如果成功，则可以使用 myErr，否则 myErr 为 nil，执行 else 逻辑。
 
 ### if err styles
 ```go 
@@ -155,7 +155,7 @@ if result, err := doSomething(); err != nil {
 ```
 
 ## logging
-go 1.21有了slog之后，日志可以统一使用slog即可。下面是一个包含ctx实现链路日志的示例
+go 1.21 有了 slog 之后，日志可以统一使用 slog 即可。下面是一个包含 ctx 实现链路日志的示例
 
 ```go 
 // 日志初始化
@@ -173,7 +173,7 @@ func initLogger() *slog.Logger {
 	return logger
 }
 
-// 注入trace_id
+// 注入 trace_id
 import (
 	"context"
 	"github.com/google/uuid"
@@ -193,7 +193,7 @@ func RequestContextMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-// 在业务逻辑中使用slogger
+// 在业务逻辑中使用 slogger
 func handleLogin(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	logger := slog.FromContext(ctx)
@@ -204,6 +204,6 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 	slog.InfoContext(ctx, "auth success", slog.String("user", "alice"))
 }
 ```
-其他logging资料：
+其他 logging 资料：
 - [Go official-Structured Logging with slog](https://go.dev/blog/slog)
 - [Logging in Go with Slog](https://betterstack.com/community/guides/logging/logging-in-go/)
