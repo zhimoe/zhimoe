@@ -29,7 +29,7 @@ toc = true
 ## 缺点
 项目写到一半我就感觉有点恶心了，可能是用过 swift 和 rust、scala 的原因，golang 的语法感觉就是半成品，连 Java 都比他严谨一点。
 ### 错误处理
-golang 的错误处理有两个问题，一是繁琐，整个代码充斥的 if err != nil {}，美其名曰在错误发生的地方处理错误，但是又允许通过 r, _=fn() 省略 err，这个本质上是奖励偷懒者。二是 error 是值，导致传递的信息非常有限，一旦你使用 Errorf 包装了之后，就无法对 error 进行区分处理（使用 string 前缀/包含 匹配或许可以），对于 java 过来的人，没有 stack trace 而 err 只是一个 string 真的非常不习惯，感觉上了生产仅靠一行 error string 定位错误非常困难吧，虽然我还没遇到生产问题。
+golang 的错误处理有两个问题，一是繁琐，整个代码充斥的 if err != nil {}，美其名曰在错误发生的地方处理错误，但是又允许通过 r, _=fn() 省略 err，这个本质上是奖励偷懒者。二是 error 是值，导致传递的信息非常有限，底层errorf + %w 其实是一个error string错误链，然后使用error.Is判断处理，对于 java 过来的人，没有 stack trace 而 err 只是一个 string 真的非常不习惯，感觉上了生产仅靠一行 error string 定位错误非常困难吧，虽然我还没遇到生产问题。
 
 ### 空值设计
 这个问题其实比错误处理还搞笑，感觉 golang 的 json 序列化就是玩的，也不知道 golang web 开发前后端是怎么约定空值的，前端还需要额外约定的 json 明显属于 json 包设计有 bug 就这么用了十几年。当然 1.24 的 omitzero 可以解决一部分问题。[JSON 包新提案：用“omitzero”解决编码中的空值困局](https://tonybai.com/2024/09/12/solve-the-empty-value-dilemma-in-json-encoding-with-omitzero/)
