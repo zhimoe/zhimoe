@@ -1,5 +1,5 @@
 +++
-title = 'Golang log和错误处理'
+title = 'Golang 错误处理和日志'
 date = '2025-05-11T08:30:13+08:00'
 categories = ['编程']
 tags = ['code','golang']
@@ -12,20 +12,21 @@ Go语言的错误处理和日志规范。
 - 错误包装可以添加额外的变量信息： return fmt.Errorf("get user %q: %w", id, err)
 - 全局错误变量使用Err开头，例如  ErrBrokenLink = errors.New("link is broken")
 - 如果是自定义错误struct类型 则使用Error结尾 type NotFoundError struct {}
-- logging
+- logging优先使用slog即可。
 <!--more-->
 
-## 错误处理
+## error handling
 
-### 创建错误
+### error变量或者类型
 ```go
 package myerrors
 
 import "errors"
-
+// Err前缀
 var ErrNotFound = errors.New("not found")
 
 // 或者自定义一个错误类型 实现Error()方法用于error wrap
+// 一般是Error结尾
 type ValidationError struct {
     Field string
     Msg   string
@@ -35,9 +36,9 @@ func (v *ValidationError) Error() string {
     return "validation failed: field=" + v.Field + ", msg=" + v.Msg
 }
 ```
-### 错误包装
+### error包装
 ```go
-// 使用错误
+// 使用全局error变量
 func Svc1() error {
     return myerrors.ErrNotFound
 }
@@ -49,7 +50,7 @@ func Svc1() error {
     }
     
 }
-// 包装错误
+// wrap error
 func CallSvc1() {
     err := Svc1()
     if err != nil {
@@ -64,7 +65,7 @@ func CallSvc1() {
 - %s 表示str 字符串（或 []byte 转换为字符串）
 - %dboxXc 分别表示十进制 二进制 八进制 十六进制大小写和Unicode
 
-### 错误判断 errors.Is
+### errors.Is
 ```go
 import (
     "errors"
@@ -84,7 +85,7 @@ func main() {
     }
 }
 ```
-### 错误组合
+### errors.Join
 ```go 
 func cleanup() error {
     var errs []error
@@ -111,7 +112,7 @@ func main() {
 }
 
 ```
-### 错误转换
+### errors.As
 
 ```go
 type MyError struct {
@@ -140,7 +141,7 @@ func main() {
 ```
 `errors.As(err, &myErr)`将err转换成myErr类型并赋值给myErr，如果成功，则可以使用myErr，否则myErr为nil，执行else逻辑。
 
-### 错误判断两种形式
+### if err styles
 ```go 
 // 这是最常见、最推荐的写法，清晰简洁。
 if err != nil {
@@ -203,6 +204,6 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 	slog.InfoContext(ctx, "auth success", slog.String("user", "alice"))
 }
 ```
-其他资料：
+其他logging资料：
 - [Go official-Structured Logging with slog](https://go.dev/blog/slog)
 - [Logging in Go with Slog](https://betterstack.com/community/guides/logging/logging-in-go/)
