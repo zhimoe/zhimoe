@@ -6,12 +6,12 @@ tags = ['code','python']
 toc = true
 +++
 
-在日常开发中，python 项目常用的 log 方法就是 `logger.info(f"xxx failed, {user=}, {filename=}")`, 这种文本日志具备一定的信息，在大多数情况下是够用的，但是在大型、可观测性要求较高的情况，还需要更多的上下文信息才能定位问题，例如，这个日志属于哪个请求，日志里面充满了相同用户的不同文件名称的日志，你也不知道上一步某个关键信息（缺乏关联）和这个日志属于同一个请求。这时候结构化日志就很有必要了。
+在日常开发中，python 项目常用的 log 方法就是 `logger.info(f"xxx failed, {user=}, {filename=}")`, 这样的日志包含一定的信息，在大多数情况下是够用的，但是在大型、可观测性要求较高的情况，还需要更多的上下文信息才能定位问题，例如，这个日志属于哪个请求，如果日志里面充满了相同用户的不同文件名称的日志，还是无法定位上一步某个关键信息（缺乏关联）和这个日志属于同一个请求。这时候结构化日志就很有必要。
 
 <!--more-->
 
 ## 基础
-每个 python log 方法都会创建一个`LogRecord`, 这个 record 会经过`Logger` `Filter` `Handler` `Formatter`四个组件处理。具体可以参考[logging how-to](https://docs.python.org/3/howto/logging.html#logging-howto)
+每个 python log 方法都会创建一个`LogRecord`, 这个 record 会经过`Logger`  `Filter`  `Handler`  `Formatter`四个组件处理。具体可以参考[logging how-to](https://docs.python.org/3/howto/logging.html#logging-howto)
 
 在非脚本项目中，应该在 main.py 中设置 logging 基本设置。 
 ```py
