@@ -7,7 +7,7 @@ toc = true
 +++
 
 Go 语言的错误处理和日志规范。
-- 大部分情况下包装 error 使用 %w，而不是%v，另外有了%w后 pkg/errors 这个包也需要了。
+- 大部分情况下包装 error 使用 %w，而不是%v，另外有了%w后 pkg/errors 这个包（大部分情况）也需要了。
 - 错误包装需要避免 failed to 这种前缀，只需要模块名：err 即可。参考 [uber-golang-style](https://github.com/uber-go/guide/blob/master/style.md#error-wrapping)
 - 错误包装可以添加额外的变量信息：return fmt.Errorf("get user %q: %w", id, err)
 - 全局错误变量使用 Err 开头，例如  ErrBrokenLink = errors.New("link is broken")
@@ -63,7 +63,7 @@ func CallSvc1() {
 - %w 表示 wrap，错误包装，99.99% 的场景下面应该使用这个包装错误
 - %v 表示 value，等于 value，适用于任意类型，%+v 表示显示字段名
 - %s 表示 str 字符串（或 []byte 转换为字符串）
-- %dboxXc 分别表示十进制 二进制 八进制 十六进制大小写和 Unicode
+- %dboXxc 分别表示十进制 二进制 八进制 十六进制大小写和 Unicode
 
 ### errors.Is
 ```go
