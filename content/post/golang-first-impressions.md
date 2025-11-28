@@ -37,7 +37,53 @@ golang 的错误处理有两个问题，一是繁琐，整个代码充斥的 if 
 这个问题其实比错误处理还搞笑，一个 int 你无法判断是 nil 还是 0。还有感觉 golang 的 json 序列化就是玩的，也不知道 golang web 开发前后端是怎么约定空值的，前端还需要额外约定的 json 明显属于 json 包设计有 bug 就这么用了十几年。当然 1.24 的 `omitzero` 可以解决一部分问题。[JSON 包新提案：用“omitzero”解决编码中的空值困局](https://tonybai.com/2024/09/12/solve-the-empty-value-dilemma-in-json-encoding-with-omitzero/)
 
 ### interface 的胖指针 nil 比较问题
-待补充
+```go
+func IsNil(i interface{}) {
+	if i == nil {
+		fmt.Println("i is nil")
+		return
+	}
+	fmt.Println("i isn't nil")
+}
+func main() {
+	var sl []string
+	if sl == nil {
+		fmt.Println("sl is nil")
+	}
+	IsNil(sl)
+}
+```
+上面是一个经典的 golang 面试题。接口值 interface{} 的内部表示是两部分：动态类型（type）和动态值（value），表示为 (type, value)。所以 interface 的指针比较是比较的两个信息 value 和 type，这里 sl 的 type 不是 nil 而是[]string。
+
+除了上面函数 interface nil 判断错误，还有其他常见的坑
+- 返回 error interface nil
+```go
+func do() error {
+    var e *MyErr = nil
+    return e         // 返回后，err != nil，因为接口包装了 *MyErr 类型
+}
+```
+- `var m map[string]int（nil map）` 读取 m["x"] 返回零值，不会 panic，但赋值 m["x"] = 1 会 panic。
+- 使用 reflect.DeepEqual 比较 slice 是否“空，nil 和 empty slice 不同的，这个比较直观，但是 nil slice 可以 for 循环不太直观。
+
+- reflect.ValueOf 对 interface 类型 nil 判断也会有坑
+```go
+import "reflect"
+
+func IsNilInterface(i interface{}) bool {
+    if i == nil {
+        return true
+    }
+    v := reflect.ValueOf(i)
+    // Only these Kinds may be nil
+    // 这里必须使用 switch 判断，其他 Kind 调用 v.IsNil() 会 panic
+    switch v.Kind() {
+    case reflect.Chan, reflect.Func, reflect.Map, reflect.Ptr, reflect.Interface, reflect.Slice:
+        return v.IsNil()
+    }
+    return false
+}
+```
 
 ### 其他
 time 格式、for-range 的变量捕获问题这些就不吐槽了，官方也在不停修复，但是感觉 golang 和 golang 那些项目都是发版跟玩似的（说的就是 hugo 你），严肃语言怎么也不会把 `omitepmty` 不支持 time 这种东西发布出来吧，把工作甩给前端开发么？
