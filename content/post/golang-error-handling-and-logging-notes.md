@@ -207,3 +207,5 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 其他 logging 资料：
 - [Go official-Structured Logging with slog](https://go.dev/blog/slog)
 - [Logging in Go with Slog](https://betterstack.com/community/guides/logging/logging-in-go/)
+关于错误处理的一篇实践总结，工具其实差不多还是上面的 errors 包，只是规范上面做了加强，以及一些不错的 error 包装方法。
+- [How We Centralized and Structured Error Handling](https://olivernguyen.io/w/namespace.error/)
