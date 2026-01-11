@@ -40,3 +40,4 @@ toc = true
 [A Guide to Claude Code 2.0](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/)
 [How I code with agents, without being 'technical'](https://x.com/bentossell/status/2006352820140749073)
 [Orange AI 写的关于 cc 的小白安装文档](https://x.com/oran_ge/status/2005419365450252425)
+[Advent of Claude: 31 Days of Claude Code](https://adocomplete.com/advent-of-claude-2025/)
