@@ -61,6 +61,7 @@ ClawdBot 支持 多 Agent 架构。一个 Gateway 可以托管多个独立的 Ag
 核心理解：每一个消息来源，绑定一个特定的 Agent。
 消息来源 = channel（渠道）+ accountId（账号）+ peer（对话方）
 配置示例：
+```json
 {
   "bindings": [
     // 优先级最高：特定群组
@@ -71,7 +72,7 @@ ClawdBot 支持 多 Agent 架构。一个 Gateway 可以托管多个独立的 Ag
     { "agentId": "personal", "match": { "channel": "whatsapp" } }
   ]
 }
-
+```
 ### Agent Loop — 思考与行动的循环
 Agent Loop 是 ClawdBot 的核心运行时。
 
