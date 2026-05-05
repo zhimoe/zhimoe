@@ -41,3 +41,6 @@ toc = true
 [How I code with agents, without being 'technical'](https://x.com/bentossell/status/2006352820140749073)
 [Orange AI 写的关于 cc 的小白安装文档](https://x.com/oran_ge/status/2005419365450252425)
 [Advent of Claude: 31 Days of Claude Code](https://adocomplete.com/advent-of-claude-2025/)
+[Claude Code Guide for Designers](https://x.com/felixleezd/status/2018728056249254377?s=20)
+[claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice)
+[plantegg 组织的分享](https://x.com/plantegg/status/2019706381662585151?s=20)
