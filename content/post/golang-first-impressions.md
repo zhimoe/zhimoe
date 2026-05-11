@@ -107,3 +107,6 @@ time 格式、for-range 的变量捕获问题这些就不吐槽了，官方也�
 [Lies we tell ourselves to keep using Golang](https://fasterthanli.me/articles/lies-we-tell-ourselves-to-keep-using-golang)
 [My reflections on Golang - DEV Community](https://dev.to/deepu105/my-reflections-on-golang-38jk)
 [Why Go Is Not Good :: Will Yager](https://yager.io/programming/go.html)
+[100 Go Mistakes and How to Avoid Them: maps-memory-leaks](https://100go.co/28-maps-memory-leaks/)
+[unexpected-go](https://unexpected-go.com/)
+
