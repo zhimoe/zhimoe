@@ -25,11 +25,11 @@ jobs:
           submodules: true  # Fetch Hugo themes
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      # Step 2 - Sets up the latest version of Hugo
+      # Step 2 - Sets up Hugo (保持与本地 Homebrew 版本一致, 避免版本差异导致的构建问题)
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.151.2'
+          hugo-version: '0.164.0'
       # Step 3 - Clean and don't fail
       - name: Clean public directory
         run: rm -rf public
