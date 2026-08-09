@@ -1,7 +1,7 @@
 baseURL = "https://zhimoe.github.io"
 relativeURLs = true
 title = "香取海"
-languageCode = "zh" # ?
+locale = "zh" # v0.158.0+ languageCode 改为 locale
 defaultContentLanguage = "zh" # config/languages.toml和themes/next/i18n/
 theme = "paged"
 metaDataFormat = "toml" # yaml or toml  post 元信息格式
@@ -61,3 +61,8 @@ staticdir = "static"
 hardWraps = true #回车换行 无需空行
 unsafe = true
 xhtml = false
+
+# v0.158.0+ 默认禁止 content/ 下的 .html 文件作为页面内容
+# 注意：该列表是 allowlist, 需要同时保留站点用到的 text/markdown
+[security]
+allowContent = ['^text/html$', '^text/markdown$']
