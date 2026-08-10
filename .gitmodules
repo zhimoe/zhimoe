@@ -1,3 +1,7 @@
+[submodule "themes/next"]
+	path = themes/next
+	url = https://github.com/zhimoe/hugo-theme-next.git
+    branch = main
 [submodule "themes/paged"]
 	path = themes/paged
 	url = https://github.com/zhimoe/hugo-paged.git
