@@ -25,7 +25,7 @@ jobs:
           submodules: true  # Fetch Hugo themes
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      # Step 2 - Sets up Hugo (保持与本地 Homebrew 版本一致, 避免版本差异导致的构建问题)
+      # Step 2 - Sets up Hugo (保持与本地 Homebrew 版本一致，避免版本差异导致的构建问题)
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
