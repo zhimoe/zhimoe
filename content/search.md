@@ -23,9 +23,12 @@ Powered by `fuse.js`. support search operators: `hello | world` (or), `hello wor
 .single .main a, .single .main h2 {
   border-bottom: none;
 }
+.search .article-meta .meta-line {
+  display: none;
+}
 </style>
 
-<input type="search" id="search-input">
+<input type="search" id="search-input" autofocus>
 
 <div class="search-results">
 <section>
