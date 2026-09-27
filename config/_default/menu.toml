@@ -1,25 +1,21 @@
-[[Main]]
-Name = "博客"
-Pre = "list-alt"
-URL = "/post/"
-Weight = 1
+[[main]]
+name = "博客"
+url = "/post/"
+weight = 1
 
-[[Main]]
-Name = "编程"
-Pre = "wpexplorer"
-URL = "/categories/编程/"
-Weight = 2
+[[main]]
+name = "编程"
+url = "/categories/编程/"
+weight = 2
 
-[[Main]]
-Name = "翻译"
-Pre = "language"
-URL = "/categories/翻译/"
-Weight = 3
+[[main]]
+name = "翻译"
+url = "/categories/翻译/"
+weight = 3
 
-[[Main]]
-Name = "随想"
-Pre = "bathtub"
-URL = "/categories/随想/"
-Weight = 4
+[[main]]
+name = "随想"
+url = "/categories/随想/"
+weight = 4
 
 
