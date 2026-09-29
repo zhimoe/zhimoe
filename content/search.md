@@ -13,6 +13,13 @@ Powered by `fuse.js`. support search operators: `hello | world` (or), `hello wor
   width: 100%;
   font-size: 1.2em;
   padding: .5em;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  color: var(--ink-color);
+}
+#search-input:focus {
+  border-color: #aaa193;
+  outline: none;
 }
 .search-results b {
   background-color: yellow;
