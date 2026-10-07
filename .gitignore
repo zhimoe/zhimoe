@@ -8,3 +8,4 @@ public/
 .DS_Store
 dump.rdb
 .hugo_build.lock
+resources/_gen/
