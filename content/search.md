@@ -5,35 +5,6 @@ weight = 99
 +++
 
 Powered by `fuse.js`. support search operators: `hello | world` (or), `hello world` (and), `"hello world"`(exact phrase) 
-<style>
-.main {
-  width: 100%;
-}
-#search-input {
-  width: 100%;
-  font-size: 1.2em;
-  padding: .5em;
-  box-sizing: border-box;
-  border: 1px solid var(--border-color);
-  color: var(--ink-color);
-}
-#search-input:focus {
-  border-color: #aaa193;
-  outline: none;
-}
-.search-results b {
-  background-color: yellow;
-}
-.search-preview {
-  margin-left: 2em;
-}
-.single .main a, .single .main h2 {
-  border-bottom: none;
-}
-.search .article-meta .meta-line {
-  display: none;
-}
-</style>
 
 <input type="search" id="search-input" autofocus>
 
