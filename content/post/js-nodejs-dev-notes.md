@@ -2,7 +2,7 @@
 title = 'Modern Javascript Features'
 date = '2025-01-12T15:03:05+08:00'
 categories = ['编程']
-tags = ['code','js']
+tags = ['code','JS']
 toc = true
 +++
 
