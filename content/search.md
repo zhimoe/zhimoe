@@ -4,7 +4,7 @@ title = '搜索'
 weight = 99
 +++
 
-Powered by `fuse.js`. support search operators: `hello | world` (or), `hello world` (and), `"hello world"`(exact phrase) 
+Powered by `fuse.js`. support search operators: `hello | world` (or), `hello world` (and), `"hello world"`(exact phrase)
 
 <input type="search" id="search-input" autofocus>
 
