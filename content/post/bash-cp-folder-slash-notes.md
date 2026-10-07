@@ -1,5 +1,5 @@
 +++
-title = 'bash 和 dockerfile 的复制命令是否是否需要包含/'
+title = 'sufffix slash in cp and dockerfile'
 date = '2026-08-09T22:37:32+08:00'
 categories = ['编程']
 tags = ['code','bash']
