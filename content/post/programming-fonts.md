@@ -7,7 +7,7 @@ toc = "true"
 +++
 
 
-个人对于编程字体有*严重的*强迫症，几乎每个月都会在X上面搜索“programming font”或者看下 [programmingfonts.org](https://www.programmingfonts.org/)上面有没有上新字体。下面总结自己曾经用的比较久的字体，主要是编程字体。
+个人对于编程字体有*严重的*强迫症，几乎每个月都会在 X 上面搜索“programming font”或者看下 [programmingfonts.org](https://www.programmingfonts.org/)上面有没有上新字体。下面总结自己曾经用的比较久的字体，主要是编程字体。
 
 ### Aurulent
 [Aurulent 下载](https://github.com/zhimoe/programming-fonts)
@@ -27,7 +27,7 @@ Fira Code 是全网最受欢迎的编程字体，可以说是这个字体让 Lig
 唯一不足的是和 fira code 相比，开发者在 hint 方面不太行，每个版本总是会有一些 hint 问题，在非 4K 显示器上面效果会很糟糕，例如"=>"的等号会明显上下粗细不一致。因为自己都是 4K 显示器，干脆就使用 fontforge 进行 dehint 处理。
 
 ### Source Code Pro
-[SourceCodePro](https://github.com/adobe-fonts/source-code-pro)出来之前，程序员基本只有Consolas 和 Menlo 两个字体可以选择，可以说是在字体荒芜时代 Adobe 给码农的一个重磅福利，在可读性和字符数上面远超前辈，只是这个 r 在低分辨率下渲染是一塌糊涂，自己结合 office code pro 做了一个更适合正文的[SourceCodePro 版本](https://github.com/zhimoe/programming-fonts/blob/master/screenshots/scp.png)
+[SourceCodePro](https://github.com/adobe-fonts/source-code-pro)出来之前，程序员基本只有 Consolas 和 Menlo 两个字体可以选择，可以说是在字体荒芜时代 Adobe 给码农的一个重磅福利，在可读性和字符数上面远超前辈，只是这个 r 在低分辨率下渲染是一塌糊涂，自己结合 office code pro 做了一个更适合正文的[SourceCodePro 版本](https://github.com/zhimoe/programming-fonts/blob/master/screenshots/scp.png)
 
 ### Letter Gothic
 [Adobe LetterGothic](https://fonts.adobe.com/fonts/letter-gothic)：这是一个经典的 IBM 打字机字体。这个字体经典在于字符 r，是我认为所有字体里面设计的最漂亮的，在字体设计中，感觉 r 是最难设计的，像 fira code 这种 r，有点过于 fancy，很容易吸引你的目光; 像 source code pro 那种超级简洁，在 win 下面渲染除非是高分屏，否则一塌糊涂。除了字符 r，letter gothic 作为 1960 时代打字机默认字体之一，在字符 n，u 的角上，都保留了非常漂亮而含蓄的细节，这一点，我非常吐槽 jetbrains mono 字体，居然把小写 u 的尾巴去掉，声称可以加快阅读，或许能提速，但是丢了美感。
@@ -38,15 +38,15 @@ Fira Code 是全网最受欢迎的编程字体，可以说是这个字体让 Lig
 ### The Sans Mono
 [TheSansMono](http://www.lucasfonts.com/fonts/the-sans/info): 经典等宽字体。你可以在很多书上面看到这个字体特别是斜体，这是一个收费字体，作者同时也是 windows 经典的代码字体 Consolas 作者。
 
-![thesansmono-italic](https://github.com/zhimoe/picx-images-hosting/raw/master/thesansmono-italic.5fkgi3hfjd.webp)
+![thesansmono-italic](https://github.com/zhimoe/picx-images-hosting/raw/master/pic/thesansmono-italic.5fkgi3hfjd.webp)
 
 ### Right Grotesk Mono
 [Right Grotesk Mono](https://pangrampangram.com/products/right-grotesk-mono)是偶然发现的一个等宽字体，具有独特的气质，而且字体宽度是 1064 的，压缩到 1024 变成 half-width 看着也不违和，相比 Iosevka、PragmataPro、M+ 等半宽字体设计感更足。
 
-![thesansmono-italic](https://github.com/zhimoe/picx-images-hosting/raw/master/rightgroteskmono.5tqw8z29kv.webp)
+![thesansmono-italic](https://github.com/zhimoe/picx-images-hosting/raw/master/pic/rightgroteskmono.5tqw8z29kv.webp)
 
 ### SF Mono
-苹果官方的等宽字体，个人感觉整体设计感不足，胜在耐看，数字部分非常好看，特别是 4，6，9几个数字。 SF Mono 和 SF 系列其他字体搭配比较容易。
+苹果官方的等宽字体，个人感觉整体设计感不足，胜在耐看，数字部分非常好看，特别是 4，6，9 几个数字。SF Mono 和 SF 系列其他字体搭配比较容易。
 
 
 
@@ -54,7 +54,7 @@ Fira Code 是全网最受欢迎的编程字体，可以说是这个字体让 Lig
 #### Sans Serif
 一般黑体中文适合搭配 Sans 英文字体，推荐经典的 `Open Sans`，`Inter`，`Lato`，`Fira Sans`。Inter 风头正盛，很多网站包括 2023 的 JetBrains IDE UI 字体都换成这个了，特点就是没有任何特色。个人认为 Lato 设计细节最佳，但确实不适合用于 UI，但是在网站正文中使用非常不错。
 收费字体中`Sana Sans`在正文中效果也不错，播客网站 [Changelog](http://changelog.com) 用的就是这个字体。
-`Jost`是一个非常有个性的字体，字符j很有特点，在设计向网页可以适当使用。
+`Jost`是一个非常有个性的字体，字符 j 很有特点，在设计向网页可以适当使用。
 
 #### Serif
 一般宋体中文适合搭配衬线英文字体，推荐 `Palatino` 和 `Merriweather`，后者是 google font 上面排名第一的 serif 字体，缺点是字体偏粗。
