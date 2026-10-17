@@ -37,8 +37,6 @@
 
 
 <a href="https://github.com/zhimoe">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=zhimoe&show_icons=true&theme=vue" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=zhimoe&show_icons=true&theme=vue" />
+  <img height="180em" src="https://github-stats-extended.vercel.app/api?username=zhimoe&show_icons=true&include_all_commits=true&theme=shades-of-purple" />
+  <img height="180em" src="https://github-stats-extended.vercel.app/api/top-langs?username=zhimoe&langs_count=6&theme=shades-of-purple" />
 </a>
-
-<p align="center"><img src="https://profile-counter.glitch.me/{zhimoe}/count.svg" alt="zhimoe :: Visitor's Count" /></p>
