@@ -2,7 +2,7 @@
 title = '支持中文的等宽编程字体：FangSongCode'
 date = '2023-10-28T08:12:20+08:00'
 categories = ['随想']
-tags = ['font','ArgonHan']
+tags = ['font']
 toc = true
 +++
 
