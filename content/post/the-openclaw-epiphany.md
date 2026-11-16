@@ -1,5 +1,5 @@
 +++
-title = '爆火的Clawdbot，是AI agent的未来么'
+title = '爆火的 OpenClaw，是 AI agent 的未来么'
 date = '2026-02-01T22:09:37+08:00'
 categories = ['编程']
 tags = ['code','notes']
